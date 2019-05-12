@@ -71,4 +71,16 @@
 + (NSString *)getCurrectTimeWithPar:(NSString *)par;
 
 + (NSString *)getIPAddress;
+/**
+ 富文本实现文章末尾增加自定义后缀文字
+ 
+ @param label 正文内容
+ @param morestr 内容末尾强制增加的文字
+ @param nameDict 正文内容属性
+ @param moreDict 强制增加的文字属性
+ @param num 正文内容要展示的行数
+ @return 返回富文本
+ */
++ (NSMutableAttributedString *)addWithName:(UILabel *)label more:(NSString *)morestr nameDict:(NSDictionary *)nameDict moreDict:(NSDictionary *)moreDict numberOfLines:(NSInteger)num;
+
 @end

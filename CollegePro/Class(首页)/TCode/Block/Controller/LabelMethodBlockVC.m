@@ -28,10 +28,10 @@
     [super viewDidLoad];
 	self.navigationItem.title = @"侧滑";
 	self.view.backgroundColor = [UIColor whiteColor];
-	
+//    [self.view addSubview:[self tableView]];
 	
 	UIButton *buttonName = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	[buttonName setFrame:CGRectMake(120, 64, 60, 20)];
+	[buttonName setFrame:CGRectMake(120, 100, 60, 20)];
 //	if (!u) {
 		[buttonName setTitle:@"YY" forState:UIControlStateNormal];
 
@@ -45,7 +45,7 @@
 	
 	UIButton *pushButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	[pushButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-	[pushButton setFrame:CGRectMake(10.0 ,64.0 ,120.0 ,20.0)];
+	[pushButton setFrame:CGRectMake(10.0 ,100.0 ,120.0 ,20.0)];
 	[pushButton setTitle:@"带方法的Block" forState:(UIControlStateNormal)];
 	pushButton.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.00];       //背景颜
 	[pushButton addTarget:self action:@selector(pushBlockMetnod) forControlEvents:(UIControlEventTouchUpInside)];
@@ -54,21 +54,20 @@
 	
 	UIButton *pushNillButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	[pushNillButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-	[pushNillButton setFrame:CGRectMake(10.0 ,94.0 ,120.0 ,20.0)];
+	[pushNillButton setFrame:CGRectMake(10.0 ,150.0 ,120.0 ,20.0)];
 	pushNillButton.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.00];       //背景颜
 	[pushNillButton setTitle:@"不带方法的Block" forState:(UIControlStateNormal)];
 	[pushNillButton addTarget:self action:@selector(pushBlockNilMetnod) forControlEvents:(UIControlEventTouchUpInside)];
 	[self.view addSubview:pushNillButton];
-	[self tz_popGestureRecognizer];
+//    [self tz_popGestureRecognizer];
 	
 	UIView*yxStateView;
-	
 	//运行状态
 	yxStateView = [[UIView alloc]init];
 	yxStateView.layer.borderColor = [UIColor redColor].CGColor;
 	yxStateView.layer.borderWidth = 0.3;
 	yxStateView.frame = CGRectMake(15 , 120 , DH_DeviceWidth-30, 110);
-	[self.view addSubview:yxStateView];
+//    [self.view addSubview:yxStateView];
 //
 //	UILabel *nameLabel = [[UILabel alloc]init];
 //	nameLabel.text = @"运行状态";
@@ -107,10 +106,10 @@
 //		[self.view addSubview:btn];
 //	}
 	
-	UILabel *questionText = [[UILabel alloc] initWithFrame:CGRectMake(0,0,280,20)];
-	questionText.backgroundColor = [UIColor clearColor];
-	questionText.text = @"Which color do you like?";
-	[yxStateView addSubview:questionText];
+    UILabel *questionText = [[UILabel alloc] initWithFrame:CGRectMake(0,0,280,20)];
+    questionText.backgroundColor = [UIColor clearColor];
+    questionText.text = @"Which color do you like?";
+    [yxStateView addSubview:questionText];
 	
 //    RadioButton *rb1 = [[RadioButton alloc] initWithGroupId:@"first group" index:0];
 //    RadioButton *rb2 = [[RadioButton alloc] initWithGroupId:@"first group" index:1];
@@ -155,8 +154,6 @@
 	self.alert.tapDismissEnable = YES;
 	self.alert.contentView = [self tableView];
 
-
-
 	[self.alert show];
 }
 
@@ -195,7 +192,7 @@
 	
 }
 
-
+/*
 - (UIPanGestureRecognizer *)tz_popGestureRecognizer {
 	UIPanGestureRecognizer *pan = objc_getAssociatedObject(self, _cmd);
 	if (!pan) {
@@ -233,6 +230,7 @@
 - (void)tz_addPopGestureToView:(UIView *)view{
 	[self tz_addPopGestureToView:self.view];
 }
+ */
 - (void)pushBlockMetnod{
 	LabelMethodBlockSubVC *subVC = [[LabelMethodBlockSubVC alloc]init];
 	[subVC returnText:^(NSString *showText) {
@@ -240,9 +238,10 @@
 		
 	}];
 	
-	[self presentViewController:subVC animated:YES completion:^{
-		
-	}];
+//    [self presentViewController:subVC animated:YES completion:^{
+//
+//    }];
+    [self.navigationController pushViewController:subVC animated:NO];
 }
 
 - (void)pushBlockNilMetnod{
@@ -253,9 +252,11 @@
 		
 	};
 	
-	[self presentViewController:subVC animated:YES completion:^{
-		
-	}];
+//    [self presentViewController:subVC animated:YES completion:^{
+//
+//    }];
+    [self.navigationController pushViewController:subVC animated:NO];
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

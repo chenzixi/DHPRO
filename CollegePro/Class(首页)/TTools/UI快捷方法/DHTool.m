@@ -7,8 +7,9 @@
 //
 
 #import "DHTool.h"
-//获取设备当前连接网段IP
 
+#import <CoreText/CoreText.h>
+//获取设备当前连接网段IP
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <net/if.h>
@@ -370,5 +371,131 @@
 	}
 	return nil;
 }
-
++ (NSMutableAttributedString *)addWithName:(UILabel *)label more:(NSString *)morestr nameDict:(NSDictionary *)nameDict moreDict:(NSDictionary *)moreDict numberOfLines:(NSInteger)num{
+    
+    NSArray *array = [self getSeparatedLinesFromLabel:label];
+    NSString *showText = @"";
+    //    if (array.count == 4){
+    //        //最后一行显示的内容
+    //        NSString *line4String = array[3];
+    //        //整体显示内容拼接
+    //        showText = [NSString stringWithFormat:@"%@%@%@%@…%@", array[0], array[1], array[2], [line4String substringToIndex:line4String.length-2],morestr];
+    //    }
+    //    if (array.count == 3){
+    //        NSString *line4String = array[2];
+    //        showText = [NSString stringWithFormat:@"%@%@%@…%@", array[0], array[1], [line4String substringToIndex:line4String.length-2],morestr];
+    //    }
+    //    if (array.count == 2){
+    //        NSString *line4String = array[1];
+    //        showText = [NSString stringWithFormat:@"%@%@…%@", array[0], [line4String substringToIndex:line4String.length-2],morestr];
+    //    }
+    //    if (array.count == 1){
+    //        NSString *line4String = array[0];
+    //        showText = [NSString stringWithFormat:@"%@…%@",[line4String substringToIndex:line4String.length-2],morestr];
+    //    }
+    //判断行数限制
+    if (num == 1){
+        if (array.count>0) {
+            NSString *line4String = array[0];
+            showText = [NSString stringWithFormat:@"%@…%@",[line4String substringToIndex:line4String.length-3],morestr];
+        }else{
+            showText = label.text;
+            //设置label的attributedText富文本
+            NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:showText attributes:nameDict];
+            return attStr;
+        }
+    }
+    if (num == 2){
+        if (array.count>1) {
+            NSString *line4String = array[1];
+            showText = [NSString stringWithFormat:@"%@%@…%@", array[0], [line4String substringToIndex:line4String.length-3],morestr];
+        }else{
+            showText = label.text;
+            //设置label的attributedText富文本
+            NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:showText attributes:nameDict];
+            return attStr;
+        }
+    }
+    if (num == 3){
+        if (array.count>2) {
+            NSString *line4String = array[2];
+            showText = [NSString stringWithFormat:@"%@%@%@…%@", array[0], array[1], [line4String substringToIndex:line4String.length-3],morestr];
+        }else{
+            showText = label.text;
+            //设置label的attributedText富文本
+            NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:showText attributes:nameDict];
+            return attStr;
+        }
+    }
+    if (num == 4){
+        if (array.count>3) {
+            NSString *line4String = array[3];
+            showText = [NSString stringWithFormat:@"%@%@%@%@…%@", array[0], array[1], array[2], [line4String substringToIndex:line4String.length-3],morestr];
+        }else{
+            showText = label.text;
+            //设置label的attributedText富文本
+            NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:showText attributes:nameDict];
+            return attStr;
+        }
+    }
+    if (array.count == 0) {
+        return nil;
+    }
+    //设置label的attributedText富文本
+    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:showText attributes:nameDict];
+    [attStr addAttributes:moreDict range:NSMakeRange(showText.length-3, 3)];
+    return attStr;
+    /*
+     4行
+     NSString *line4String = array[3];
+     NSString *showText = [NSString stringWithFormat:@"%@%@%@%@...更多>", array[0], array[1], array[2], [line4String substringToIndex:line4String.length-5]];
+     
+     
+     //3
+     NSString *line4String = array[2];
+     NSString *showText = [NSString stringWithFormat:@"%@%@%@%@", array[0], array[1], [line4String substringToIndex:line4String.length-5],str];
+     
+     //2
+     NSString *line4String = array[1];
+     NSString *showText = [NSString stringWithFormat:@"%@%@%@%@", array[0], [line4String substringToIndex:line4String.length-5],str];
+     
+     //1
+     NSString *line4String = array[0];
+     NSString *showText = [NSString stringWithFormat:@"%@%@%@%@", [line4String substringToIndex:line4String.length-5],str];
+     */
+}
++ (NSArray *)getSeparatedLinesFromLabel:(UILabel *)name
+{
+    NSString *text = [name text];
+    UIFont   *font = [name font];
+    CGRect    rect = [name frame];
+    //设置字体属性
+    //这里设置了同样的字体格式
+    CTFontRef myFont = CTFontCreateWithName((__bridge CFStringRef)([font fontName]), [font pointSize], NULL);
+    //设置富文本
+    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:text];
+    [attStr addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)myFont range:NSMakeRange(0, attStr.length)];
+    //对同一段字体进行多属性设置 计算富文本行高
+    CTFramesetterRef frameSetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)attStr);
+    //创建绘制路劲
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathAddRect(path, NULL, CGRectMake(0,0,rect.size.width,MAXFLOAT));
+    //设置富文本位置属性
+    CTFrameRef frame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(0, 0), path, NULL);
+    //设置富文本的基线
+    NSArray *lines = (__bridge NSArray *)CTFrameGetLines(frame);
+    NSMutableArray *linesArray = [[NSMutableArray alloc]init];
+    
+    for (id line in lines)
+    {
+        CTLineRef lineRef = (__bridge CTLineRef )line;
+        CFRange lineRange = CTLineGetStringRange(lineRef);
+        NSRange range = NSMakeRange(lineRange.location, lineRange.length);
+        
+        NSString *lineString = [text substringWithRange:range];
+        [linesArray addObject:lineString];
+    }
+    return linesArray;
+    
+}
 @end

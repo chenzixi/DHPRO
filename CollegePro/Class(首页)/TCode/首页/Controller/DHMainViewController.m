@@ -9,6 +9,8 @@
 #import "DHMainViewController.h"
 #import "MeasurNetTools.h"
 #import "QBTools.h"
+#import "UIColor+Expanded.h"
+
 //功能展示
 #import <CoreMotion/CoreMotion.h>
 #import "ViewController.h"
@@ -56,6 +58,11 @@
 #import "IndexViewController.h"//苏宁小出、
 #import "AdaptionListViewController.h"//自适应列表
 #import "SectionsViewController.h"//铃声
+#import "MVPViewController.h"//MVP&MVVP架构
+#import "MVVMViewController.h"
+#import "CustomCollectionViewController.h"//长按拖动collectioncell
+#import "TurntableViewController.h"//转盘
+
 #import <AVFoundation/AVFoundation.h>
 
 #include <ifaddrs.h>
@@ -95,6 +102,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self setUPUI];
     displayLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, DH_DeviceHeight-50, DH_DeviceWidth, 40)];
     displayLabel.backgroundColor = [UIColor colorWithRed:0.962 green:0.971 blue:1.000 alpha:1.000];
@@ -166,7 +174,9 @@
     NSDictionary *dict = notif.userInfo;
     NSString*str_data= [dict valueForKey:@"dict"];
     NSLog(@"str_data %@",str_data);
-    [self showHint:[NSString stringWithFormat:@"后台执行时间 %@",str_data] yOffset:10];
+    //    [self showHint:[NSString stringWithFormat:@"后台执行时间 %@",str_data] yOffset:10];
+    
+    [MBProgressHUD showWarnMessage:[NSString stringWithFormat:@"后台执行时间 %@",str_data]];
 }
 - (void)proximityStateDidChange
 {
@@ -255,6 +265,24 @@
     NSLog(@"\n[getInterfaceBytes-Total]%d,%d",iBytes,oBytes);
     return iBytes + oBytes;
 }
++ (NSString *)formatNetWork:(long long int)rate {
+    if (rate <1024) {
+        return [NSString stringWithFormat:@"%lldB/秒", rate];
+    } else if (rate >=1024&& rate <1024*1024) {
+        return [NSString stringWithFormat:@"%.1fKB/秒", (double)rate /1024];
+    } else if (rate >=1024*1024&& rate <1024*1024*1024) {
+        return [NSString stringWithFormat:@"%.2fMB/秒", (double)rate / (1024*1024)];
+    } else {
+        return@"10Kb/秒";
+    };
+}
+
+
++ (NSString *)getByteRate {
+    long long intcurrentBytes = [DHMainViewController getInterfaceBytes];
+    NSString *rateStr = [DHMainViewController formatNetWork:intcurrentBytes];
+    return rateStr;
+}
 
 - (void)developer{
     
@@ -288,7 +316,8 @@
         
         //        NSLog(@"速度:%@",[NSByteCountFormatter stringFromByteCount:[DHTool getInterfaceBytes] countStyle:NSByteCountFormatterCountStyleFile]);
         //
-        //        NSLog(@",获取网速:%.4lld KB",[DHMainViewController getInterfaceBytes]/1024);
+        //        NSLog(@"获取网速:%.4lld KB--网速是%@",[DHMainViewController getInterfaceBytes],[DHMainViewController getByteRate]);
+        
         
     }];
     
@@ -379,13 +408,14 @@
     
     UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    flowLayout.minimumLineSpacing = 0.0;//minimumLineSpacing cell上下之间的距离
+    //    flowLayout.minimumLineSpacing = 0.0;//minimumLineSpacing cell上下之间的距离
     //    flowLayout.minimumInteritemSpacing = 5.0;//cell左右之间的距离
     //    flowLayout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, 20);
     
-    _collectionView=[[UICollectionView alloc] initWithFrame:CGRectMake(15, 0, DH_DeviceWidth-30, DH_DeviceHeight) collectionViewLayout:flowLayout];
+    _collectionView=[[UICollectionView alloc] initWithFrame:CGRectMake(15, 0, DH_DeviceWidth-30, DH_DeviceHeight-75) collectionViewLayout:flowLayout];
     //    _collectionView=[[UICollectionView alloc] init];
     //    _collectionView.collectionViewLayout = flowLayout;
+    
     //注册Cell，必须要有
     [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"GradientCell"];
     [_collectionView registerClass:[THomeCollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([THomeCollectionViewCell class])];
@@ -408,7 +438,6 @@
     [self addCell:@"碰撞球" class:@"TMotionViewController"];
     [self addCell:@"侧边栏" class:@"TSidebarViewController"];
     [self addCell:@"购物车" class:@"TShopAnimationViewController"];
-//    [self addCell:@"12身份证" class:@"IDCardViewController"];
     [self addCell:@"图片滚动" class:@"ScrollImageViewViewController"];
     [self addCell:@"添加图片" class:@"DHImagePickerViewController"];
     [self addCell:@"文档" class:@"DocumentViewController"];
@@ -423,9 +452,10 @@
     [self addCell:@"通讯录" class:@"BaseAdressBookViewController"];
     [self addCell:@"弹出框" class:@"ShowViewController"];
     [self addCell:@"QQ联系人" class:@"QQListViewController"];
-//    [self addCell:@"27信用卡识别" class:@"BankCardViewController"];
-//    [self addCell:@"28银行卡识别" class:@"BankCartViewController"];
-//    [self addCell:@"29身份证识别" class:@"XLIDScanViewController"];
+    //    [self addCell:@"身份证" class:@"IDCardViewController"];
+    //    [self addCell:@"信用卡识别" class:@"BankCardViewController"];
+    //    [self addCell:@"银行卡识别" class:@"BankCartViewController"];
+    //    [self addCell:@"身份证识别" class:@"XLIDScanViewController"];
     [self addCell:@"手势解锁" class:@"DisassemblyViewController"];
     [self addCell:@"CEll自适应高度" class:@"ACEViewController"];
     [self addCell:@"记事本" class:@"DHNoteJoyViewController"];
@@ -437,7 +467,10 @@
     [self addCell:@"iCloud文件" class:@"iCloudViewController"];
     [self addCell:@"获取健康信息" class:@"HealthViewController"];
     [self addCell:@"闹铃" class:@"TRViewController"];
+//    [self addCell:@"托拽排序" class:@"CustomCollectionViewController"];
+    [self addCell:@"转盘" class:@"TurntableViewController"];
     [_collectionView reloadData];
+    
     _lb_showinfo = [[UILabel alloc]init];
     _lb_showinfo.backgroundColor = [UIColor brownColor];
     _lb_showinfo.textColor = [UIColor redColor];
@@ -447,9 +480,7 @@
     _lb_showinfo.frame = CGRectMake(0, DH_DeviceHeight-44-30, DH_DeviceWidth, 25);
     [self.view addSubview:_lb_showinfo];
     
-    
     //    [self scrollerLabel];
-    
 }
 - (void)addCell:(NSString *)title class:(NSString *)className {
     [self.titles addObject:title];
@@ -471,15 +502,16 @@
 //每个UICollectionView展示的内容
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString * CellIdentifier = @"THomeCollectionViewCell";
-    THomeCollectionViewCell *_cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
-    _cell.imageCover.image = [UIImage imageNamed:@"Facebook"];
+    //    static NSString * CellIdentifier = @"THomeCollectionViewCell";
+    THomeCollectionViewCell *_cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([THomeCollectionViewCell class]) forIndexPath:indexPath];
+    _cell.imageName = @"Facebook";
     //    _cell.layer.shouldRasterize = YES;
     //    _cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
-    _cell.labelName.text = [NSString stringWithFormat:@"0%ld_%@",indexPath.row,_titles[indexPath.row]];
-    
-    _cell.layer.borderColor = [UIColor redColor].CGColor;
+    _cell.title = indexPath.row>9?[NSString stringWithFormat:@"%ld_%@",(long)indexPath.row,_titles[indexPath.row]]:[NSString stringWithFormat:@"0%ld_%@",(long)indexPath.row,_titles[indexPath.row]];
+    //    _cell.labelName.text = indexPath.row>9?[NSString stringWithFormat:@"%ld_%@",(long)indexPath.row,_titles[indexPath.row]]:[NSString stringWithFormat:@"0%ld_%@",(long)indexPath.row,_titles[indexPath.row]];
+    _cell.layer.borderColor = [UIColor colorWithHexString:@"#cde6fe"].CGColor;
     _cell.layer.borderWidth = 1.0;
+    _cell.layer.cornerRadius = 5.0;
     
     return _cell;
     
@@ -505,29 +537,36 @@
     
     
 }
+//l多少列
+#define BRANDSECTION 4
+//每列间距
+#define BRANDDEV 10
+//item 宽度
+#define LISTCELLWIDTH (DH_DeviceWidth - (BRANDSECTION + 1) * BRANDDEV)/BRANDSECTION
+
 #pragma mark --UICollectionViewDelegateFlowLayout
 //////定义每个Item 的大小(cell的宽高)
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat width = (self.view.frame.size.width/6);//间隙
+//    CGFloat width = ((self.view.frame.size.width-15)/5);//间隙
     
-    return CGSizeMake(width,width);
+    return CGSizeMake(LISTCELLWIDTH,LISTCELLWIDTH);
     
 }
-//定义每个UICollectionView 的 margin
--(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-{
-    return UIEdgeInsetsMake(0, 0, 0, 0);//(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right)
-}
+////定义每个UICollectionView 的 margin
+//-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+//{
+//    return UIEdgeInsetsMake(10, 15, 10, 15);//(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right)
+//}
 
 //minimumLineSpacing 上下item之间的距离
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
-    
+
     return 5;
 }
 //minimumInteritemSpacing 左右item之间的距离
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    
+
     return 5;
 }
 

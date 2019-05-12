@@ -8,9 +8,6 @@
 
 #import "showView.h"
 
-#define kScreenWidth [UIScreen mainScreen].bounds.size.width
-#define kScreenHeight  [UIScreen mainScreen].bounds.size.height
-
 @interface showView ()
 
 + (instancetype)instance;
@@ -36,7 +33,7 @@ static showView *instance;
 
 - (instancetype)init
 {
-    if ((self = [super initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)]))
+    if ((self = [super initWithFrame:CGRectMake(0, 0, DH_DeviceWidth, DH_DeviceHeight)]))
     {
         self.backgroundColor = [UIColor clearColor];
         if (self.window == nil)

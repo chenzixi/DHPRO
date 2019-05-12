@@ -33,8 +33,44 @@
     // 触发弹出
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick:)];
     [label addGestureRecognizer:tap];
+    
+    
+    UILabel *labell = [[UILabel alloc]initWithFrame:CGRectMake(50, 100, 275, 50)];
+    labell.text = @"不会是我吧推技术";
+    labell.textAlignment = NSTextAlignmentCenter;
+    labell.font = [UIFont systemFontOfSize:30];
+    labell.textColor = [UIColor redColor];
+    labell.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:labell];
+    labell.text = [self inputValue:labell.text];
+    
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    transform = CGAffineTransformScale(transform, 0, 0.5);
+    transform = CGAffineTransformMakeRotation(M_PI*1);
+    labell.transform = transform;
+    
+    CABasicAnimation* rotationAnimation;
+    //    //绕哪个轴，那么就改成什么：这里是绕y轴 ---> transform.rotation.y
+    rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
+    //    //旋转角度
+    rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI];
+    labell.transform = CGAffineTransformMakeRotation(-M_PI);
+    [labell.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    
 }
-
+-(NSString *)inputValue:(NSString *)str{
+    
+    NSMutableString *string=[[NSMutableString alloc] init];
+    
+    for(int i=0;i<str.length;i++){
+        
+        [string appendString:[str substringWithRange:NSMakeRange(str.length-i-1, 1)]];
+        
+    }
+    
+    return string;
+    
+}
 #pragma mark - Private Method
 
 - (void)tapClick: (UITapGestureRecognizer *)tap {
