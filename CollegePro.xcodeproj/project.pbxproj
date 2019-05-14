@@ -29,7 +29,7 @@
 		384C3FD022887D7A00F01586 /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FBC22887D7900F01586 /* BaseViewModel.m */; };
 		384C3FD122887D7A00F01586 /* MVVMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FBD22887D7900F01586 /* MVVMViewController.m */; };
 		384C3FD422887FE100F01586 /* HAMLogOutputWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FD322887FE100F01586 /* HAMLogOutputWindow.m */; };
-		384C3FDE228881F800F01586 /* Persion.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FDA228881F700F01586 /* Persion.m */; };
+		384C3FDE228881F800F01586 /* Persion.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FDA228881F700F01586 /* Persion.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		384C3FDF228881F800F01586 /* KYDog.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FDB228881F700F01586 /* KYDog.m */; };
 		384C3FE922888DBF00F01586 /* ZQVariableMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FE222888DBF00F01586 /* ZQVariableMenuView.m */; };
 		384C3FEA22888DBF00F01586 /* ZQVariableMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FE422888DBF00F01586 /* ZQVariableMenuCell.m */; };
@@ -77,6 +77,8 @@
 		384C409422888DFA00F01586 /* 创建文稿@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 384C406A22888DF900F01586 /* 创建文稿@2x.png */; };
 		384C409522888DFA00F01586 /* 回传管理.png in Resources */ = {isa = PBXBuildFile; fileRef = 384C406B22888DF900F01586 /* 回传管理.png */; };
 		384C409622888DFA00F01586 /* 线索.png in Resources */ = {isa = PBXBuildFile; fileRef = 384C406C22888DF900F01586 /* 线索.png */; };
+		386422CB228AC3F2006DB570 /* SliderMainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 386422CA228AC3F2006DB570 /* SliderMainStoryboard.storyboard */; };
+		386422CE228AC455006DB570 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386422CD228AC455006DB570 /* MenuViewController.m */; };
 		38C845382278249900BCAD87 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C845372278249900BCAD87 /* AppDelegate.m */; };
 		38C8453B2278249900BCAD87 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 38C8453A2278249900BCAD87 /* ViewController.mm */; };
 		38C8453E2278249900BCAD87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38C8453C2278249900BCAD87 /* Main.storyboard */; };
@@ -582,6 +584,9 @@
 		384C406A22888DF900F01586 /* 创建文稿@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "创建文稿@2x.png"; sourceTree = "<group>"; };
 		384C406B22888DF900F01586 /* 回传管理.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "回传管理.png"; sourceTree = "<group>"; };
 		384C406C22888DF900F01586 /* 线索.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "线索.png"; sourceTree = "<group>"; };
+		386422CA228AC3F2006DB570 /* SliderMainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SliderMainStoryboard.storyboard; sourceTree = "<group>"; };
+		386422CC228AC455006DB570 /* MenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		386422CD228AC455006DB570 /* MenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		38C845332278249900BCAD87 /* CollegePro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollegePro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38C845362278249900BCAD87 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		38C845372278249900BCAD87 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1501,6 +1506,16 @@
 			path = menus;
 			sourceTree = "<group>";
 		};
+		386422C9228AC3AE006DB570 /* slidermenu */ = {
+			isa = PBXGroup;
+			children = (
+				386422CA228AC3F2006DB570 /* SliderMainStoryboard.storyboard */,
+				386422CC228AC455006DB570 /* MenuViewController.h */,
+				386422CD228AC455006DB570 /* MenuViewController.m */,
+			);
+			path = slidermenu;
+			sourceTree = "<group>";
+		};
 		38C8452A2278249900BCAD87 = {
 			isa = PBXGroup;
 			children = (
@@ -2011,6 +2026,7 @@
 		38C84640227827EF00BCAD87 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				386422C9228AC3AE006DB570 /* slidermenu */,
 				38C84644227827EF00BCAD87 /* SidebarViewController.h */,
 				38C84648227827EF00BCAD87 /* SidebarViewController.m */,
 				38C84642227827EF00BCAD87 /* TSidebarViewController.h */,
@@ -3558,6 +3574,7 @@
 				38C84993227827F100BCAD87 /* soul3@3x.png in Resources */,
 				38C84A15227827F200BCAD87 /* SenderVoiceNodeDownloading.png in Resources */,
 				384C408922888DFA00F01586 /* UGC@3x.png in Resources */,
+				386422CB228AC3F2006DB570 /* SliderMainStoryboard.storyboard in Resources */,
 				384C407922888DFA00F01586 /* 快速发稿@3x.png in Resources */,
 				384C408722888DFA00F01586 /* 回传管理@3x.png in Resources */,
 				38C849A3227827F100BCAD87 /* soul2.png in Resources */,
@@ -4116,6 +4133,7 @@
 				38C8495C227827F100BCAD87 /* ScreenShotView.m in Sources */,
 				38C8494D227827F100BCAD87 /* AddCellViewController.m in Sources */,
 				38C84A5C227827F200BCAD87 /* split.c in Sources */,
+				386422CE228AC455006DB570 /* MenuViewController.m in Sources */,
 				38C84A67227827F200BCAD87 /* ZLDashboardView.m in Sources */,
 				38C84A6D227827F200BCAD87 /* AdaptionListViewController.m in Sources */,
 				384C3FEC22888DBF00F01586 /* ZQVariableMenuHeader.m in Sources */,
@@ -4202,7 +4220,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -4255,7 +4273,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -4274,7 +4292,7 @@
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CollegePro/TestHeader.pch";
 				INFOPLIST_FILE = CollegePro/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4365,7 +4383,7 @@
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CollegePro/TestHeader.pch";
 				INFOPLIST_FILE = CollegePro/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -97,6 +97,17 @@
 		_tableView.delegate=self;
 		_tableView.tableFooterView = [[UIView alloc] init];
 		[_tableView registerNib:[UINib nibWithNibName:UserCellIdetifeir bundle:nil] forCellReuseIdentifier:UserCellIdetifeir];
+        
+        // 解决方法二：直接使用tableView属性进行设置,修复该UI错乱
+        _tableView.sectionHeaderHeight = 0;
+        _tableView.sectionFooterHeight = 5;
+        [_tableView setContentInset:UIEdgeInsetsMake(-35, 0, 0, 0)];
+        // 解决方法三：添加以下代码关闭估算行高
+        _tableView.estimatedRowHeight = 0;
+        _tableView.estimatedSectionHeaderHeight = 0;
+        _tableView.estimatedSectionFooterHeight = 0;
+        
+        
 		[self.view addSubview:_tableView];
 	}
 	[_tableView setTableHeaderView:[self headImageView]];
@@ -247,6 +258,22 @@
 	}
 	
 }
+// 有些界面以下使用代理方法来设置，发现并没有生效
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+//    return 1;
+//}
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+//    return 1;
+//}
+// 这样的原理是因为之前只是实现了高度的代理方法，却没有实现View的代理方法，iOS10及以前这么写是没问题的，iOS11开启了行高估算机制引起的bug，因此有以下几种解决方法：
+// 解决方法一：添加实现View的代理方法，只有实现下面两个方法，方法 (CGFloat)tableView: heightForFooterInSection: 才会生效
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    return nil;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return nil;
+}
+
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
 	
 	int contentOffsety = scrollView.contentOffset.y;

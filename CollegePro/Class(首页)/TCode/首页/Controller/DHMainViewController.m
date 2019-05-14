@@ -62,7 +62,7 @@
 #import "MVVMViewController.h"
 #import "CustomCollectionViewController.h"//长按拖动collectioncell
 #import "TurntableViewController.h"//转盘
-
+#import "MenuViewController.h"//storyboard
 #import <AVFoundation/AVFoundation.h>
 
 #include <ifaddrs.h>
@@ -467,7 +467,8 @@
     [self addCell:@"iCloud文件" class:@"iCloudViewController"];
     [self addCell:@"获取健康信息" class:@"HealthViewController"];
     [self addCell:@"闹铃" class:@"TRViewController"];
-//    [self addCell:@"托拽排序" class:@"CustomCollectionViewController"];
+    [self addCell:@"托拽排序" class:@"CustomCollectionViewController"];
+    [self addCell:@"storyboard" class:@"MenuViewController"];
     [self addCell:@"转盘" class:@"TurntableViewController"];
     [_collectionView reloadData];
     
@@ -527,6 +528,14 @@
         [UIApplication sharedApplication].keyWindow.rootViewController = navController;
         return;
     }
+    //storyboard
+    if ([className isEqualToString:@"MenuViewController"]) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SliderMainStoryboard" bundle:[NSBundle mainBundle]];
+        MenuViewController *detailVC = [storyboard instantiateViewControllerWithIdentifier:@"MenuViewController"];
+        [self.navigationController pushViewController:detailVC animated:YES];
+        return;
+    }
+    
     
     Class class = NSClassFromString(className);
     if (class) {

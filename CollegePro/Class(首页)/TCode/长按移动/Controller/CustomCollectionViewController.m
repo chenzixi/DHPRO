@@ -22,6 +22,7 @@ static CGFloat CellMarginY = 10.0f;
     UICollectionView *_collectionView;
     NSArray *_currentMenus;
 }
+@property(strong,nonatomic) NSArray *currentMenus;
 
 @property(strong,nonatomic)UICollectionView * collectionview;
 /**
@@ -60,11 +61,11 @@ static CGFloat CellMarginY = 10.0f;
 //    self.isexp = NO;
 //    [self.view addSubview:self.collectionview];
 //    [self getMyapplicationlist];
+    
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showChannel)];
     [self buildUI];
     [self reloadCollectionView];
-
 }
 
 -(void)buildUI
@@ -89,12 +90,12 @@ static CGFloat CellMarginY = 10.0f;
 
 - (void)reloadCollectionView
 {
-    _currentMenus = [NSArray arrayWithContentsOfFile:ShowMenusPath];
+    self.currentMenus = [NSArray arrayWithContentsOfFile:ShowMenusPath];
     
-    if (_currentMenus.count>0) {
+    if (self.currentMenus.count>0) {
     }else
     {
-        _currentMenus = @[@"素材回传",@"内容库",@"直播",@"消息",@"UGC",@"选题管理",@"串联单",@"移动文稿"];
+        self.currentMenus = @[@"素材回传",@"内容库",@"直播",@"消息",@"UGC",@"选题管理",@"串联单",@"移动文稿"];
     }
     [_collectionView reloadData];
 }
@@ -103,8 +104,8 @@ static CGFloat CellMarginY = 10.0f;
 -(void)showChannel
 {
     NSMutableArray *UnShowMenus = [NSMutableArray arrayWithArray:@[@"素材回传",@"内容库",@"直播",@"消息",@"UGC",@"移动文稿",@"任务",@"选题管理",@"串联单",@"线索"]];
-    [UnShowMenus removeObjectsInArray:_currentMenus];
-    [[ZQVariableMenuControl shareControl] showChannelViewWithInUseTitles:_currentMenus unUseTitles:UnShowMenus fixedNum:2 finish:^(NSArray *inUseTitles, NSArray *unUseTitles) {
+    [UnShowMenus removeObjectsInArray:self.currentMenus];
+    [[ZQVariableMenuControl shareControl] showChannelViewWithInUseTitles:self.currentMenus unUseTitles:UnShowMenus fixedNum:2 finish:^(NSArray *inUseTitles, NSArray *unUseTitles) {
         [inUseTitles writeToFile:ShowMenusPath atomically:YES];
         [self reloadCollectionView];
     }];
@@ -116,7 +117,7 @@ static CGFloat CellMarginY = 10.0f;
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return _currentMenus.count;
+    return self.currentMenus.count;
 }
 
 
@@ -124,8 +125,8 @@ static CGFloat CellMarginY = 10.0f;
 {
     static NSString* cellId = @"ZQVariableMenuCell";
     ZQVariableMenuCell* item = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
-    item.title = _currentMenus[indexPath.row];
-    item.imageName = _currentMenus[indexPath.row];
+    item.title = self.currentMenus[indexPath.row];
+    item.imageName = self.currentMenus[indexPath.row];
     item.backgroundColor = [UIColor whiteColor];
     
     item.isFixed = NO;

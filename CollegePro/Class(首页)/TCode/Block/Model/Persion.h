@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Persion : NSObject
-
+- (void)test;
 @end
 //__nullable表示对象可以是NULL或nil，而__nonnull表示对象不应该为空
 //复杂的指针类型(如id *)必须显示去指定是non null还是nullable。例如，指定一个指向nullable对象的nonnulla指针，可以使用”__nullable id * __nonnull”。
