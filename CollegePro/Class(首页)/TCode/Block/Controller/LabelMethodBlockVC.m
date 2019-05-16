@@ -11,7 +11,7 @@
 #import "LabelNilMethodBlockViewController.h"
 #import "ALiAlertView.h"
 //#import "RadioButton.h"
-#import <objc/runtime.h>
+//#import <objc/runtime.h>
 
 
 @interface LabelMethodBlockVC ()<UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource>{
@@ -27,16 +27,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.navigationItem.title = @"侧滑";
-	self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor whiteColor];
 //    [self.view addSubview:[self tableView]];
-	
+	/*
 	UIButton *buttonName = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	[buttonName setFrame:CGRectMake(120, 100, 60, 20)];
 //	if (!u) {
-		[buttonName setTitle:@"YY" forState:UIControlStateNormal];
+    [buttonName setTitle:@"YY" forState:UIControlStateNormal];
 
 //	}[buttonName setTitle:u forState:UIControlStateNormal];
-	
 	buttonName.backgroundColor = [UIColor clearColor];       //背景颜色
 	[buttonName addTarget:self action:@selector(choose) forControlEvents:(UIControlEventTouchUpInside)];
 	[self.view addSubview:buttonName];
@@ -140,9 +139,15 @@
 //	[yxStateView addSubview:label3];
 	
 //    [RadioButton addObserverForGroupId:@"first group" observer:self];
-	
-	
-
+*/
+    UIButton *pushButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [pushButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [pushButton setFrame:CGRectMake(10.0 ,100.0 ,120.0 ,20.0)];
+    [pushButton setTitle:@"带方法的Block" forState:(UIControlStateNormal)];
+//    pushButton.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.00];       //背景颜
+    [pushButton addTarget:self action:@selector(pushBlockMetnod:) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.view addSubview:pushButton];
+    
 }
 //-(void)radioButtonSelectedAtIndex:(NSUInteger)index inGroup:(NSString *)groupId{
 //    NSLog(@"changed to %lu in %@",(unsigned long)index,groupId);
@@ -231,7 +236,7 @@
 	[self tz_addPopGestureToView:self.view];
 }
  */
-- (void)pushBlockMetnod{
+- (void)pushBlockMetnod:(UIButton *)sender{
 	LabelMethodBlockSubVC *subVC = [[LabelMethodBlockSubVC alloc]init];
 	[subVC returnText:^(NSString *showText) {
 		NSLog(@"--传值--%@",showText);

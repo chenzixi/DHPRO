@@ -63,6 +63,8 @@
 #import "CustomCollectionViewController.h"//长按拖动collectioncell
 #import "TurntableViewController.h"//转盘
 #import "MenuViewController.h"//storyboard
+#import "LabelMethodBlockVC.h"
+#import "LabelMethodBlockSubVC.h"
 #import <AVFoundation/AVFoundation.h>
 
 #include <ifaddrs.h>
@@ -120,6 +122,9 @@
     //    applicationWillEnterForeground
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveHMethod:) name:@"applicationWillEnterForeground" object:nil];
     //    [self playVoiceBackground];
+    CGFloat c = sqrt( pow(2, 3));
+    NSLog(@"%.2f",c);
+
     
 }
 - (void)playVoiceBackground{
@@ -470,6 +475,8 @@
     [self addCell:@"托拽排序" class:@"CustomCollectionViewController"];
     [self addCell:@"storyboard" class:@"MenuViewController"];
     [self addCell:@"转盘" class:@"TurntableViewController"];
+    [self addCell:@"block" class:@"LabelMethodBlockSubVC"];
+
     [_collectionView reloadData];
     
     _lb_showinfo = [[UILabel alloc]init];

@@ -1063,6 +1063,165 @@ static UILabel *myLabel;
     NSLog(@"%f--%@",[DHTool autoSizeOfHeghtWithText:label.text font:[UIFont systemFontOfSize:16.0] width:self.view.frame.size.width-60.0].height,label.text);
 
     label.frame = CGRectMake(30.0, 200.0, self.view.frame.size.width-60.0, 20*num);
+    
+    //
+    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(30.0, 300.0, self.view.frame.size.width-60.0, 16*3+8*2)];
+    label1.font = [UIFont systemFontOfSize:16.0];
+    label1.layer.borderColor = [UIColor redColor].CGColor;
+    label1.layer.borderWidth = 1.0;
+    label1.numberOfLines = 1;
+    [self.view addSubview:label1];
+    
+    NSString * string = [NSString stringWithFormat:@"您的号码是%@号",@"3"];
+    label.attributedText = [self paramWithStr:string Range:NSMakeRange(5, 1)];
+}
+- (NSMutableAttributedString *)paramWithStr:(NSString *)name Range:(NSRange)ran{
+    NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:name];
+   /*
+    常见的属性及说明
+    NSFontAttributeName  字体
+    NSParagraphStyleAttributeName  段落格式
+    NSForegroundColorAttributeName  字体颜色
+    NSBackgroundColorAttributeName   背景颜色
+    NSStrikethroughStyleAttributeName 删除线格式
+    NSUnderlineStyleAttributeName      下划线格式
+    NSStrokeColorAttributeName        删除线颜色
+    NSStrokeWidthAttributeName 删除线宽度
+    NSShadowAttributeName  阴影
+    
+    属性及说明
+    
+    
+    
+    key
+    说明
+    
+
+    NSFontAttributeName
+    字体，value是UIFont对象
+    
+    
+    NSParagraphStyleAttributeName
+    绘图的风格（居中，换行模式，间距等诸多风格），value是NSParagraphStyle对象
+    
+    
+    NSForegroundColorAttributeName
+    文字颜色，value是UIFont对象
+    
+    
+    NSLigatureAttributeName
+    字符连体，value是NSNumber
+    
+    
+    NSKernAttributeName
+    字符间隔
+    
+    
+    NSStrikethroughStyleAttributeName
+    删除线，value是NSNumber
+    
+    
+    NSUnderlineStyleAttributeName
+    下划线，value是NSNumber
+    
+    
+    NSStrokeColorAttributeName
+    描绘边颜色，value是UIColor
+    
+    
+    NSStrokeWidthAttributeName
+    描边宽度，value是NSNumber
+    
+    
+    NSShadowAttributeName
+    阴影，value是NSShadow对象
+    
+    
+    NSTextEffectAttributeName
+    文字效果，value是NSString
+    
+    
+    NSAttachmentAttributeName
+    附属，value是NSTextAttachment 对象
+    
+    
+    NSLinkAttributeName
+    链接，value是NSURL or NSString
+    
+    
+    NSBaselineOffsetAttributeName
+    基础偏移量，value是NSNumber对象
+    
+    
+    NSStrikethroughColorAttributeName
+    删除线颜色，value是UIColor
+    
+    
+    NSObliquenessAttributeName
+    字体倾斜
+    
+    
+    NSExpansionAttributeName
+    字体扁平化
+    
+    
+    NSVerticalGlyphFormAttributeName
+    垂直或者水平，value是 NSNumber，0表示水平，1垂直
+    
+    富文本段落排版格式属性说明
+    
+    属性说明
+
+    lineSpacing
+    字体的行间距
+
+    firstLineHeadIndent
+    首行缩进
+ 
+    alignment
+    （两端对齐的）文本对齐方式：（左，中，右，两端对齐，自然）
+
+    lineBreakMode
+    结尾部分的内容以……方式省略 ( "...wxyz" ,"abcd..." ,"ab...yz")
+    
+    headIndent
+    整体缩进(首行除外)
+
+    minimumLineHeight
+    最低行高
+
+    maximumLineHeight
+    最大行高
+    
+    paragraphSpacing
+    段与段之间的间距
+    
+    paragraphSpacingBefore
+    段首行空白空间
+    
+    baseWritingDirection
+    书写方向（一共三种）
+    
+    hyphenationFactor
+    连字属性 在iOS，唯一支持的值分别为0和1
+    */
+    
+    //方法一：set方法单向设置和集合设置
+    //方法1、
+//    [attributeString setAttributes:[NSMutableDictionary dictionaryWithObjectsAndKeys:[UIColor redColor], NSForegroundColorAttributeName, nil] range:ran];
+    //方法2、
+//    [attributeString setAttributes:[NSMutableDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue" size:22], NSFontAttributeName,[UIColor redColor],NSForegroundColorAttributeName, nil] range:ran];
+    //方法3、
+    NSDictionary *attributedDict = @{
+                                     NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue" size:22],
+                                     NSForegroundColorAttributeName:[UIColor redColor],
+                                     NSUnderlineStyleAttributeName:@(NSUnderlinePatternSolid | NSUnderlineStyleDouble | NSUnderlineStyleThick)
+                                     };
+    [attributeString setAttributes:attributedDict];
+    //方法二：add方法设置key-value
+//    [attributeString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:ran];
+//    [attributeString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue" size:22] range:ran];
+    return  attributeString;
 }
 - (CGFloat)heightTextWithText:(UILabel *)text
 {
