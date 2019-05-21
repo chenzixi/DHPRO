@@ -42,7 +42,7 @@
     [self setupChildViewController:MyVC title:@"我的" imageName:@"SettingN" selectedImageName:@"SettingS"];
 	
 	PostTableViewController*PostVC = [[PostTableViewController alloc] init];
-	[self setupChildViewController:PostVC title:@"我的" imageName:@"SettingN" selectedImageName:@"SettingS"];
+	[self setupChildViewController:PostVC title:@"设置" imageName:@"SettingN" selectedImageName:@"SettingS"];
     
    
 }

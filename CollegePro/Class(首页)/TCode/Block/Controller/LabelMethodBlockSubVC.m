@@ -10,6 +10,7 @@
 
 #import "Persion.h"
 #import "KYDog.h"
+#import "SFTextView.h"
 
 //define this constant if you want to use Masonry without the 'mas_' prefix
 #define MAS_SHORTHAND
@@ -27,6 +28,7 @@
 // 属性声明的block都是全局的__NSGlobalBlock__
 @property (nonatomic, copy) void (^copyBlock)(void);
 @property (nonatomic, weak) void (^weakBlock)(void);
+@property(nonatomic, strong)SFTextView *textF;
 
 @property (nonatomic, strong) KYUser *user;
 
@@ -97,7 +99,7 @@
 //将要显示的时候
 -(void)viewWillAppear:(BOOL)animated{//4
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
+//    self.navigationController.navigationBarHidden = YES;
 }
 -(void)viewLayoutMarginsDidChange{//directionalLayoutMargins
     [super viewLayoutMarginsDidChange];//5
@@ -129,6 +131,8 @@
 //已经显示的时候  真实的frame会在这之后调用
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];//8
+    [self baseBlock];
+
     //    [UIView animateWithDuration:100.0 animations:^{
     //        ThreeViewController *three = [[ThreeViewController alloc]init];
     //        three.modalPresentationStyle = UIModalPresentationFormSheet;
@@ -153,7 +157,7 @@
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = NO;
+//    self.navigationController.navigationBarHidden = NO;
     if (self.returnTextBlock != nil) {
         self.returnTextBlock(@"backBlockNilMetnod");
     }
@@ -167,7 +171,8 @@
 	self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"侧滑";
     
-    [self baseBlock];
+    [self testDataP];//界面显示
+
     if (@available(iOS 11.0, *)) {
         NSString *edgeStr = NSStringFromUIEdgeInsets(self.view.safeAreaInsets);
         NSString *layoutFrmStr = NSStringFromCGRect(self.view.safeAreaLayoutGuide.layoutFrame);
@@ -183,8 +188,7 @@
 	[pushNillButton setTitle:@"回去" forState:(UIControlStateNormal)];
 	[pushNillButton addTarget:self action:@selector(backBlockNilMetnod) forControlEvents:(UIControlEventTouchUpInside)];
 //    [self.view addSubview:pushNillButton];
-    
-	
+
     // Do any additional setup after loading the view.
 }
 - (void)baseBlock{
@@ -199,7 +203,6 @@
     self.user.dog.name = @"大大";
     self.user.userId = @"35325";
     [self testDataD];
-    
     [self testDataE];//Operation
     [self testDataF];//GCD
     [self testDataG];//深、浅拷贝
@@ -208,7 +211,6 @@
     [self testDataM];
     //    [self testDataK];
     [self testDataN];//KVO进阶
-    [self testDataP];
 }
 - (void)testDataH{
     int a = 10;
@@ -271,7 +273,6 @@ static int numB = 100;
     };NSLog(@"S1、num的h值是 %d",numB);
     TestNumber(86);
     NSLog(@"S3、num的h值是 %d",numB);
-    
 }
 
 // 全局变量
@@ -288,7 +289,6 @@ void (^outFuncBlock)(void) = ^{
 };
 
 - (void)testDataD{
-    
     //    int multiplier = 6;
     //    int(^Block)(int) = ^int(int num)
     //    {
@@ -1043,14 +1043,16 @@ static UILabel *myLabel;
     NSData *ImageData =UIImagePNGRepresentation(selfPhoto);
     NSLog(@"ImageData %lu",(unsigned long)ImageData.length);
 }
+static  UILabel *label;
 - (void)testDataP
 {
     NSInteger num = 3;
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(30.0, 200.0, self.view.frame.size.width-60.0, 16*3+8*2)];
+    label = [[UILabel alloc] initWithFrame:CGRectMake(30.0, 200.0, self.view.frame.size.width-60.0, 16*3+8*2)];
     label.font = [UIFont systemFontOfSize:16.0];
     label.layer.borderColor = [UIColor redColor].CGColor;
     label.layer.borderWidth = 1.0;
     label.numberOfLines = num;
+    [label setTag:189];
     [self.view addSubview:label];
     
     NSString *text = @"明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间？转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。";
@@ -1064,19 +1066,48 @@ static UILabel *myLabel;
 
     label.frame = CGRectMake(30.0, 200.0, self.view.frame.size.width-60.0, 20*num);
     
-    //
+//    UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    btn.frame = label.frame;
+//    [btn setTitle:@"test" forState:UIControlStateNormal];
+//    [btn addTarget:self action:@selector(showAll:) forControlEvents:UIControlEventTouchUpInside];
+//    [label addSubview:btn];
+    
+    //富文本
     UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(30.0, 300.0, self.view.frame.size.width-60.0, 16*3+8*2)];
     label1.font = [UIFont systemFontOfSize:16.0];
     label1.layer.borderColor = [UIColor redColor].CGColor;
     label1.layer.borderWidth = 1.0;
     label1.numberOfLines = 1;
+    label1.backgroundColor = [UIColor yellowColor];
     [self.view addSubview:label1];
     
     NSString * string = [NSString stringWithFormat:@"您的号码是%@号",@"3"];
-    label.attributedText = [self paramWithStr:string Range:NSMakeRange(5, 1)];
+    label1.attributedText = [self paramWithStr:string Range:NSMakeRange(5, 1)];
+    
 }
+/*
+//发布信息textflied
+-(SFTextView *)textF
+{
+    if (!_textF) {
+        _textF = [[SFTextView alloc] init];
+        _textF.font = FONT_SIZE(13);
+        _textF.textColor = KColorC;
+        _textF.backgroundColor = [UIColor whiteColor];
+        //        _textF.backgroundColor = [UIColor clearColor];
+        //        _textF.delegate = self;
+        //设置placeholder属性
+        [_textF setPlaceHolderAttr:@"  写下你的观点/见解" textColor:KColorD font:FONT_SIZE(13)];
+        //设置字数限制属性
+        [_textF setCharCountAttr:150 right:SNRealValue(11) bottom:SNRealValue(9) textColor:KColorC font:KFontSizeG];
+        _textF.layer.cornerRadius = SNRealValue(5);
+    }
+    return _textF;
+}
+ */
 - (NSMutableAttributedString *)paramWithStr:(NSString *)name Range:(NSRange)ran{
     NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:name];
+
    /*
     常见的属性及说明
     NSFontAttributeName  字体
@@ -1212,16 +1243,19 @@ static UILabel *myLabel;
     //方法2、
 //    [attributeString setAttributes:[NSMutableDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue" size:22], NSFontAttributeName,[UIColor redColor],NSForegroundColorAttributeName, nil] range:ran];
     //方法3、
-    NSDictionary *attributedDict = @{
-                                     NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue" size:22],
-                                     NSForegroundColorAttributeName:[UIColor redColor],
-                                     NSUnderlineStyleAttributeName:@(NSUnderlinePatternSolid | NSUnderlineStyleDouble | NSUnderlineStyleThick)
-                                     };
-    [attributeString setAttributes:attributedDict];
+//    NSDictionary *attributedDict = @{
+//                                     NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue" size:22],
+//                                     NSForegroundColorAttributeName:[UIColor redColor]
+//                                     };
+    //,NSUnderlineStyleAttributeName:@(NSUnderlinePatternSolid | NSUnderlineStyleDouble | NSUnderlineStyleThick)
+//    [attributeString setAttributes:attributedDict];
     //方法二：add方法设置key-value
-//    [attributeString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:ran];
-//    [attributeString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue" size:22] range:ran];
+    [attributeString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:ran];
+    [attributeString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue" size:22] range:ran];
     return  attributeString;
+}
+- (void)showAll:(UIButton *)btn{
+
 }
 - (CGFloat)heightTextWithText:(UILabel *)text
 {

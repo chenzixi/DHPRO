@@ -48,7 +48,8 @@
 #define AfterOneceTimer(AfterTimerTime) static BOOL onece = NO; dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(AfterTimerTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{onece = NO;});if (onece) {    return;} onece = YES;
 
 - (void)mySendAction:(SEL)action to:(id)target forEvent:(UIEvent*)event{
-    if([NSStringFromClass(self.class) isEqualToString:@"UIButton"]) {
+    
+    if([NSStringFromClass(self.class) isEqualToString:@"NTButton"]) {
         self.timeInterval=self.timeInterval==0?defaultInterval:self.timeInterval;
         if(self.isIgnoreEvent){
             return;

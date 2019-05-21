@@ -489,6 +489,7 @@
 		38C84A72227827F200BCAD87 /* LabelMethodBlockSubVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C848CA227827F100BCAD87 /* LabelMethodBlockSubVC.m */; };
 		38C84A73227827F200BCAD87 /* LabelMethodBlockVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C848CB227827F100BCAD87 /* LabelMethodBlockVC.m */; };
 		38C84A74227827F200BCAD87 /* LabelNilMethodBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C848CC227827F100BCAD87 /* LabelNilMethodBlockViewController.m */; };
+		38EA8533228D57F300A28136 /* SFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EA8532228D57F300A28136 /* SFTextView.m */; };
 		73869E513ABCF28AE9B6C239 /* Pods_CollegePro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CBC72DE2C175A4CF5A210DB /* Pods_CollegePro.framework */; };
 /* End PBXBuildFile section */
 
@@ -1304,6 +1305,8 @@
 		38C848CC227827F100BCAD87 /* LabelNilMethodBlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelNilMethodBlockViewController.m; sourceTree = "<group>"; };
 		38C848CD227827F100BCAD87 /* LabelMethodBlockSubVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelMethodBlockSubVC.h; sourceTree = "<group>"; };
 		38C84A75227828AD00BCAD87 /* TestHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHeader.pch; sourceTree = "<group>"; };
+		38EA8531228D57F300A28136 /* SFTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTextView.h; sourceTree = "<group>"; };
+		38EA8532228D57F300A28136 /* SFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTextView.m; sourceTree = "<group>"; };
 		5CBC72DE2C175A4CF5A210DB /* Pods_CollegePro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CollegePro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B94442A678D5676362354ED8 /* Pods-CollegePro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollegePro.release.xcconfig"; path = "Pods/Target Support Files/Pods-CollegePro/Pods-CollegePro.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1567,17 +1570,16 @@
 		38C8454E227827EF00BCAD87 /* TLib */ = {
 			isa = PBXGroup;
 			children = (
-				384C3FE022888DBF00F01586 /* ZQVariableMenu */,
 				38C84589227827EF00BCAD87 /* ALiAlertView.h */,
 				38C845B5227827EF00BCAD87 /* ALiAlertView.m */,
-				384C3FD222887FE100F01586 /* HAMLogOutputWindow.h */,
-				384C3FD322887FE100F01586 /* HAMLogOutputWindow.m */,
 				38C84588227827EF00BCAD87 /* ChineseString.h */,
 				38C845B6227827EF00BCAD87 /* ChineseString.m */,
 				38C84552227827EF00BCAD87 /* DHGuidePageHUD */,
 				38C8458A227827EF00BCAD87 /* GragView.h */,
 				38C84551227827EF00BCAD87 /* GragView.m */,
 				38C845B2227827EF00BCAD87 /* GYChangeTextView */,
+				384C3FD222887FE100F01586 /* HAMLogOutputWindow.h */,
+				384C3FD322887FE100F01586 /* HAMLogOutputWindow.m */,
 				38C84593227827EF00BCAD87 /* iCarousel.h */,
 				38C8454F227827EF00BCAD87 /* iCarousel.m */,
 				38C845A0227827EF00BCAD87 /* InfiniteRollScrollView.h */,
@@ -1601,6 +1603,7 @@
 				38C8458B227827EF00BCAD87 /* webservice */,
 				38C845AD227827EF00BCAD87 /* WLMotionView */,
 				38C84559227827EF00BCAD87 /* YPTabBarController */,
+				384C3FE022888DBF00F01586 /* ZQVariableMenu */,
 			);
 			path = TLib;
 			sourceTree = "<group>";
@@ -1749,9 +1752,9 @@
 			isa = PBXGroup;
 			children = (
 				38C845B8227827EF00BCAD87 /* SGImageButton.h */,
+				38C845BB227827EF00BCAD87 /* SGImageButton.m */,
 				38C845B9227827EF00BCAD87 /* SGSegmentedControl.h */,
 				38C845BA227827EF00BCAD87 /* SGSegmentedControl.m */,
-				38C845BB227827EF00BCAD87 /* SGImageButton.m */,
 			);
 			path = SGSegmentedControl;
 			sourceTree = "<group>";
@@ -1882,14 +1885,14 @@
 		38C84613227827EF00BCAD87 /* UI快捷方法 */ = {
 			isa = PBXGroup;
 			children = (
-				38C84614227827EF00BCAD87 /* SDDrowNoticeView.h */,
-				38C84615227827EF00BCAD87 /* DHTool.m */,
-				38C84616227827EF00BCAD87 /* LHKeyChain.h */,
-				38C84617227827EF00BCAD87 /* KeyBoardView.m */,
 				38C84618227827EF00BCAD87 /* DHTool.h */,
-				38C84619227827EF00BCAD87 /* SDDrowNoticeView.m */,
+				38C84615227827EF00BCAD87 /* DHTool.m */,
 				38C8461A227827EF00BCAD87 /* KeyBoardView.h */,
+				38C84617227827EF00BCAD87 /* KeyBoardView.m */,
+				38C84616227827EF00BCAD87 /* LHKeyChain.h */,
 				38C8461B227827EF00BCAD87 /* LHKeyChain.m */,
+				38C84614227827EF00BCAD87 /* SDDrowNoticeView.h */,
+				38C84619227827EF00BCAD87 /* SDDrowNoticeView.m */,
 			);
 			path = "UI快捷方法";
 			sourceTree = "<group>";
@@ -1897,26 +1900,26 @@
 		38C8461C227827EF00BCAD87 /* 网络请求 */ = {
 			isa = PBXGroup;
 			children = (
+				38C8462A227827EF00BCAD87 /* AES.h */,
 				38C8461D227827EF00BCAD87 /* AES.m */,
-				38C8461E227827EF00BCAD87 /* LHMD5.h */,
-				38C8461F227827EF00BCAD87 /* NetWork.m */,
-				38C84620227827EF00BCAD87 /* SM3Tool.h */,
-				38C84621227827EF00BCAD87 /* RequestPostUploadHelper.h */,
-				38C84622227827EF00BCAD87 /* SM3.hpp */,
 				38C84623227827EF00BCAD87 /* LHCacheTool.h */,
-				38C84624227827EF00BCAD87 /* RSA.m */,
-				38C84625227827EF00BCAD87 /* SM3Tool.mm */,
-				38C84626227827EF00BCAD87 /* SFNetWorkManager.h */,
+				38C8462D227827EF00BCAD87 /* LHCacheTool.m */,
 				38C84627227827EF00BCAD87 /* LHHttpTool.h */,
+				38C8462E227827EF00BCAD87 /* LHHttpTool.m */,
+				38C8461E227827EF00BCAD87 /* LHMD5.h */,
 				38C84628227827EF00BCAD87 /* LHMD5.m */,
 				38C84629227827EF00BCAD87 /* NetWork.h */,
-				38C8462A227827EF00BCAD87 /* AES.h */,
+				38C8461F227827EF00BCAD87 /* NetWork.m */,
+				38C84621227827EF00BCAD87 /* RequestPostUploadHelper.h */,
 				38C8462B227827EF00BCAD87 /* RequestPostUploadHelper.m */,
 				38C8462C227827EF00BCAD87 /* RSA.h */,
-				38C8462D227827EF00BCAD87 /* LHCacheTool.m */,
-				38C8462E227827EF00BCAD87 /* LHHttpTool.m */,
+				38C84624227827EF00BCAD87 /* RSA.m */,
+				38C84626227827EF00BCAD87 /* SFNetWorkManager.h */,
 				38C8462F227827EF00BCAD87 /* SFNetWorkManager.m */,
 				38C84630227827EF00BCAD87 /* SM3.cpp */,
+				38C84622227827EF00BCAD87 /* SM3.hpp */,
+				38C84620227827EF00BCAD87 /* SM3Tool.h */,
+				38C84625227827EF00BCAD87 /* SM3Tool.mm */,
 			);
 			path = "网络请求";
 			sourceTree = "<group>";
@@ -2114,30 +2117,30 @@
 		38C8465E227827EF00BCAD87 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				38C8465F227827EF00BCAD87 /* NTButton.h */,
-				38C84660227827EF00BCAD87 /* AutoLayoutViewController.h */,
-				38C84661227827EF00BCAD87 /* TestOneVC.m */,
-				38C84662227827EF00BCAD87 /* DetailsDrawViewController.h */,
-				38C84663227827EF00BCAD87 /* LBTabBarTextController.m */,
-				38C84664227827EF00BCAD87 /* YSYPreviewViewController.m */,
-				38C84665227827EF00BCAD87 /* ReleaseViewController.h */,
-				38C84666227827EF00BCAD87 /* PostTableViewController.m */,
-				38C84667227827EF00BCAD87 /* TestThreeVC.h */,
 				38C84668227827EF00BCAD87 /* AddCellViewController.h */,
-				38C84669227827EF00BCAD87 /* LSTabBarViewController.m */,
-				38C8466A227827EF00BCAD87 /* TestTwoVC.h */,
-				38C8466B227827EF00BCAD87 /* NTButton.m */,
-				38C8466C227827EF00BCAD87 /* YSYPreviewViewController.h */,
-				38C8466D227827EF00BCAD87 /* LBTabBarTextController.h */,
-				38C8466E227827EF00BCAD87 /* DetailsDrawViewController.m */,
-				38C8466F227827EF00BCAD87 /* TestOneVC.h */,
-				38C84670227827EF00BCAD87 /* AutoLayoutViewController.m */,
-				38C84671227827EF00BCAD87 /* TestThreeVC.m */,
-				38C84672227827EF00BCAD87 /* PostTableViewController.h */,
-				38C84673227827EF00BCAD87 /* ReleaseViewController.m */,
-				38C84674227827EF00BCAD87 /* TestTwoVC.m */,
-				38C84675227827EF00BCAD87 /* LSTabBarViewController.h */,
 				38C84676227827EF00BCAD87 /* AddCellViewController.m */,
+				38C84660227827EF00BCAD87 /* AutoLayoutViewController.h */,
+				38C84670227827EF00BCAD87 /* AutoLayoutViewController.m */,
+				38C84662227827EF00BCAD87 /* DetailsDrawViewController.h */,
+				38C8466E227827EF00BCAD87 /* DetailsDrawViewController.m */,
+				38C8466D227827EF00BCAD87 /* LBTabBarTextController.h */,
+				38C84663227827EF00BCAD87 /* LBTabBarTextController.m */,
+				38C84675227827EF00BCAD87 /* LSTabBarViewController.h */,
+				38C84669227827EF00BCAD87 /* LSTabBarViewController.m */,
+				38C8465F227827EF00BCAD87 /* NTButton.h */,
+				38C8466B227827EF00BCAD87 /* NTButton.m */,
+				38C84672227827EF00BCAD87 /* PostTableViewController.h */,
+				38C84666227827EF00BCAD87 /* PostTableViewController.m */,
+				38C84665227827EF00BCAD87 /* ReleaseViewController.h */,
+				38C84673227827EF00BCAD87 /* ReleaseViewController.m */,
+				38C8466F227827EF00BCAD87 /* TestOneVC.h */,
+				38C84661227827EF00BCAD87 /* TestOneVC.m */,
+				38C84667227827EF00BCAD87 /* TestThreeVC.h */,
+				38C84671227827EF00BCAD87 /* TestThreeVC.m */,
+				38C8466A227827EF00BCAD87 /* TestTwoVC.h */,
+				38C84674227827EF00BCAD87 /* TestTwoVC.m */,
+				38C8466C227827EF00BCAD87 /* YSYPreviewViewController.h */,
+				38C84664227827EF00BCAD87 /* YSYPreviewViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3472,6 +3475,8 @@
 		38C848C7227827F100BCAD87 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				38EA8531228D57F300A28136 /* SFTextView.h */,
+				38EA8532228D57F300A28136 /* SFTextView.m */,
 				38C848CD227827F100BCAD87 /* LabelMethodBlockSubVC.h */,
 				38C848CA227827F100BCAD87 /* LabelMethodBlockSubVC.m */,
 				38C848C9227827F100BCAD87 /* LabelMethodBlockVC.h */,
@@ -4076,6 +4081,7 @@
 				38C84921227827F100BCAD87 /* UIImage+ImageEffects.m in Sources */,
 				38C84A35227827F200BCAD87 /* EditPicturesViewController.m in Sources */,
 				38C8490E227827F100BCAD87 /* HKHealthStore+AAPLExtensions.m in Sources */,
+				38EA8533228D57F300A28136 /* SFTextView.m in Sources */,
 				38C84961227827F100BCAD87 /* ESMMoneyViewController.m in Sources */,
 				38C849D0227827F200BCAD87 /* HealthViewController.m in Sources */,
 				38C84983227827F100BCAD87 /* DemoTableViewController.m in Sources */,

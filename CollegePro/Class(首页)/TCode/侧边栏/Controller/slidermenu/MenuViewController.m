@@ -41,31 +41,51 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    UILabel *label = [[UILabel alloc] init];
-    label.text = @"SafeArea";
-    label.textAlignment = NSTextAlignmentCenter;
-    label.backgroundColor = [UIColor greenColor];
-    [self.view addSubview:label];
-    self.testLabel = label;
+//    UILabel *label = [[UILabel alloc] init];
+//    label.text = @"SafeArea";
+//    label.textAlignment = NSTextAlignmentCenter;
+//    label.backgroundColor = [UIColor greenColor];
+//    [self.view addSubview:label];
+//    self.testLabel = label;
+//
+//    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+//        if (@available(iOS 11.0, *)) {
+//            make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
+//            make.left.equalTo(self.view.mas_safeAreaLayoutGuideLeft);
+//            make.right.equalTo(self.view.mas_safeAreaLayoutGuideRight);
+//            make.height.equalTo(@20);
+////            make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom);
+//        } else {
+//            make.top.equalTo(self.mas_topLayoutGuideBottom);
+//            make.bottom.equalTo(self.mas_bottomLayoutGuideTop);
+//            make.left.mas_equalTo(0);
+//            make.right.mas_equalTo(0);
+//        }
+//
+//    }];
     
-    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.tintColor = [UIColor lightGrayColor];
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    self.title = @"门店整改管理";
+    
+    UILabel *label1 = [[UILabel alloc] init];
+    label1.text = @"SafeArea";
+    label1.textAlignment = NSTextAlignmentCenter;
+    label1.backgroundColor = [UIColor greenColor];
+    [self.view addSubview:label1];
+    [label1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
         if (@available(iOS 11.0, *)) {
             make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
-            make.left.equalTo(self.view.mas_safeAreaLayoutGuideLeft);
-            make.right.equalTo(self.view.mas_safeAreaLayoutGuideRight);
-            make.height.equalTo(@20);
-//            make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom);
-        } else {
-            make.top.equalTo(self.mas_topLayoutGuideBottom);
-            make.bottom.equalTo(self.mas_bottomLayoutGuideTop);
-            make.left.mas_equalTo(0);
-            make.right.mas_equalTo(0);
         }
+        else{
+            make.top.equalTo(self.mas_topLayoutGuideBottom);
+        }
+        
 
     }];
-    
-    
-    
 //注意：safeAreaInsets的值在-viewDidLoad中获取不到真实的值，可以在-viewSafeAreaInsetsDidChange或则-viewDidAppear:方法中获取到真实的值。
     
 //    label.translatesAutoresizingMaskIntoConstraints = NO;

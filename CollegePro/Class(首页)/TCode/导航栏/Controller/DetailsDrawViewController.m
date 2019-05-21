@@ -131,7 +131,7 @@
 	[formatter setTimeZone:timeZone];
 	NSDate *datenow = [NSDate date];
 	// 设置一个字符串的时间
-	NSMutableString *datestring = [NSMutableString stringWithFormat:@"%lld",20141202052740];
+    NSMutableString *datestring = [NSMutableString stringWithFormat:@"%ld",20141202052740];
 	// 注意 如果20141202052740必须是数字，如果是UNIX时间，不需要下面的插入字符串。
 	[datestring insertString:@"-" atIndex:4];
 	[datestring insertString:@"-" atIndex:7];

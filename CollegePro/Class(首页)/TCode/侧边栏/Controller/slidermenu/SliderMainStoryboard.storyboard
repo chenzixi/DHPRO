@@ -32,7 +32,28 @@
                     <view key="view" contentMode="scaleToFill" id="ari-45-gFK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HbZ-S0-KTc">
+                                <rect key="frame" x="167" y="150" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GsF-Nw-0JY">
+                                <rect key="frame" x="249" y="150" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GsF-Nw-0JY" firstAttribute="leading" secondItem="HbZ-S0-KTc" secondAttribute="trailing" constant="40" id="L7a-kW-Ah4"/>
+                            <constraint firstItem="GsF-Nw-0JY" firstAttribute="centerY" secondItem="HbZ-S0-KTc" secondAttribute="centerY" id="akx-cY-SSz"/>
+                            <constraint firstItem="CUK-Cj-4TI" firstAttribute="bottom" secondItem="HbZ-S0-KTc" secondAttribute="bottom" constant="565" id="bNV-pr-Wk7"/>
+                            <constraint firstItem="HbZ-S0-KTc" firstAttribute="top" secondItem="CUK-Cj-4TI" secondAttribute="top" constant="130" id="dQl-Ju-t6j"/>
+                            <constraint firstItem="HbZ-S0-KTc" firstAttribute="leading" secondItem="CUK-Cj-4TI" secondAttribute="leading" constant="167" id="pfI-zj-NWw"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="CUK-Cj-4TI"/>
                     </view>
                 </viewController>

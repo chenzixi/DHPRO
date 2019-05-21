@@ -566,7 +566,7 @@
 {
 //    CGFloat width = ((self.view.frame.size.width-15)/5);//间隙
     
-    return CGSizeMake(LISTCELLWIDTH,LISTCELLWIDTH);
+    return CGSizeMake(LISTCELLWIDTH,LISTCELLWIDTH+10);
     
 }
 ////定义每个UICollectionView 的 margin
