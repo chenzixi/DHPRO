@@ -439,6 +439,40 @@ static UILabel *labelLay;
     _stateButton.layer.mask = maskLayer;
     _stateButton.clipsToBounds = YES;
     
+    
+    //当底部为两个按钮时
+    UIButton *buttonleft = [UIButton buttonWithType:UIButtonTypeCustom];
+    [buttonleft setFrame:CGRectMake(0.0 ,0.0 ,DH_DeviceWidth ,44.0)];
+    [buttonleft setTitle:@"重新整改" forState:(UIControlStateNormal)];
+    buttonleft.backgroundColor = [UIColor blueColor];
+    buttonleft.titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Bold" size: 18];
+    [self.view addSubview:buttonleft];
+    
+    UIButton *buttonright = [UIButton buttonWithType:UIButtonTypeCustom];
+    [buttonright setFrame:CGRectMake(0.0 ,0.0 ,DH_DeviceWidth ,44.0)];
+    [buttonright setTitle:@"通过" forState:(UIControlStateNormal)];
+    buttonright.backgroundColor = [UIColor greenColor];
+    buttonright.titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Bold" size: 18];
+    [self.view addSubview:buttonright];
+    [buttonleft mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view);
+        make.right.equalTo(buttonright.mas_left);
+        make.bottom.equalTo(self.view.mas_bottom);
+        /**
+         *  长宽相等 注意，这里不能用 make.height.equalTo(make.width);
+         */
+//        make.height.equalTo(buttonleft.mas_width); /// 约束长度等于宽度
+        make.width.equalTo(buttonright.mas_width);
+        make.height.offset(44);
+    }];
+    [buttonright mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.view);
+        make.height.equalTo(buttonleft.mas_height);
+        make.bottom.equalTo(self.view.mas_bottom);
+    }];
+    
+
+    
 }
 
 //- (void)startAnimation
