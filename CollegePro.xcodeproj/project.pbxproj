@@ -151,7 +151,6 @@
 		38C84911227827F100BCAD87 /* UILabel+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C845ED227827EF00BCAD87 /* UILabel+Extension.m */; };
 		38C84912227827F100BCAD87 /* UITabBar+XSDExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C845EE227827EF00BCAD87 /* UITabBar+XSDExt.m */; };
 		38C84913227827F100BCAD87 /* NSMutableArray+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C845F0227827EF00BCAD87 /* NSMutableArray+Util.m */; };
-		38C84914227827F100BCAD87 /* UIControl+UIControl_buttonCon.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C845F3227827EF00BCAD87 /* UIControl+UIControl_buttonCon.m */; };
 		38C84916227827F100BCAD87 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C845F6227827EF00BCAD87 /* UIViewExt.m */; };
 		38C84917227827F100BCAD87 /* UIView+SGExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C845F7227827EF00BCAD87 /* UIView+SGExtension.m */; };
 		38C84918227827F100BCAD87 /* UIButton+ImageTitleSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C845FC227827EF00BCAD87 /* UIButton+ImageTitleSpacing.m */; };
@@ -739,7 +738,6 @@
 		38C845F0227827EF00BCAD87 /* NSMutableArray+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Util.m"; sourceTree = "<group>"; };
 		38C845F1227827EF00BCAD87 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		38C845F2227827EF00BCAD87 /* UIButton+EnlargeTouchArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+EnlargeTouchArea.h"; sourceTree = "<group>"; };
-		38C845F3227827EF00BCAD87 /* UIControl+UIControl_buttonCon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+UIControl_buttonCon.m"; sourceTree = "<group>"; };
 		38C845F5227827EF00BCAD87 /* NSArray+Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Log.h"; sourceTree = "<group>"; };
 		38C845F6227827EF00BCAD87 /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
 		38C845F7227827EF00BCAD87 /* UIView+SGExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SGExtension.m"; sourceTree = "<group>"; };
@@ -754,7 +752,6 @@
 		38C84601227827EF00BCAD87 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		38C84602227827EF00BCAD87 /* UIColor+JFColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+JFColor.m"; sourceTree = "<group>"; };
 		38C84603227827EF00BCAD87 /* UIImage+compressIMG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+compressIMG.m"; sourceTree = "<group>"; };
-		38C84605227827EF00BCAD87 /* UIControl+UIControl_buttonCon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+UIControl_buttonCon.h"; sourceTree = "<group>"; };
 		38C84607227827EF00BCAD87 /* UIButton+Delay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Delay.m"; sourceTree = "<group>"; };
 		38C84608227827EF00BCAD87 /* UIButton+touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+touch.h"; sourceTree = "<group>"; };
 		38C84609227827EF00BCAD87 /* UIButton+touch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+touch.m"; sourceTree = "<group>"; };
@@ -1847,8 +1844,6 @@
 				38C84610227827EF00BCAD87 /* UIColor+expanded.m */,
 				38C845E8227827EF00BCAD87 /* UIColor+JFColor.h */,
 				38C84602227827EF00BCAD87 /* UIColor+JFColor.m */,
-				38C84605227827EF00BCAD87 /* UIControl+UIControl_buttonCon.h */,
-				38C845F3227827EF00BCAD87 /* UIControl+UIControl_buttonCon.m */,
 				38C845E9227827EF00BCAD87 /* UIImage+compressIMG.h */,
 				38C84603227827EF00BCAD87 /* UIImage+compressIMG.m */,
 				38C845EB227827EF00BCAD87 /* UIImage+Extend.h */,
@@ -3387,8 +3382,8 @@
 		38C848AC227827F000BCAD87 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				38C848AD227827F000BCAD87 /* TShopAnimationViewController.m */,
 				38C848AE227827F000BCAD87 /* TShopAnimationViewController.h */,
+				38C848AD227827F000BCAD87 /* TShopAnimationViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4148,7 +4143,6 @@
 				38C84974227827F100BCAD87 /* showView.m in Sources */,
 				38C848D0227827F100BCAD87 /* GragView.m in Sources */,
 				38C8495A227827F100BCAD87 /* ESMTwoViewController.m in Sources */,
-				38C84914227827F100BCAD87 /* UIControl+UIControl_buttonCon.m in Sources */,
 				38C84913227827F100BCAD87 /* NSMutableArray+Util.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
