@@ -16,6 +16,9 @@
 @interface LabelMethodBlockSubVC ()
 {
     int numC;//全局变量
+    // 全局变量
+    int global_var;
+    BOOL chooseState;
 }
 // 属性声明的block都是全局的__NSGlobalBlock__
 @property (nonatomic, copy) void (^copyBlock)(void);
@@ -260,8 +263,7 @@ static int numB = 100;
     };
     return result;
 }
-// 全局变量
-int global_var = 4;
+
 // 静态全局变量
 //static int static_global_var = 5;
 
@@ -293,6 +295,7 @@ void (^outFuncBlock)(void) = ^{
         NSLog(@"局部变量< __strong 对象类型> var %@",strong_obj);
         NSLog(@"静态变量 %d",static_var);
         NSLog(@"全局变量 %d",global_var);
+        chooseState = YES;
         NSLog(@"静态全局变量 %d",global_var);
     };
     NSLog(@"外部调用 %@",block);

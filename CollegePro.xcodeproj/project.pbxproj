@@ -4310,7 +4310,7 @@
 			baseConfigurationReference = 08E0AED3904D837217FE104D /* Pods-CollegePro.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5QGSA55AD3;
 				GCC_INPUT_FILETYPE = automatic;
@@ -4401,7 +4401,7 @@
 			baseConfigurationReference = B94442A678D5676362354ED8 /* Pods-CollegePro.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5QGSA55AD3;
 				GCC_INPUT_FILETYPE = automatic;
