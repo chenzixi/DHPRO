@@ -8,36 +8,23 @@
 
 #import "LabelMethodBlockSubVC.h"
 
-#import "Persion.h"
-#import "KYDog.h"
-#import "SFTextView.h"
-
 //define this constant if you want to use Masonry without the 'mas_' prefix
 #define MAS_SHORTHAND
 //define this constant if you want to enable auto-boxing for default syntax
 #define MAS_SHORTHAND_GLOBALS
 
-@interface LabelMethodBlockSubVC ()<UIScrollViewDelegate>
+@interface LabelMethodBlockSubVC ()
 {
     int numC;//全局变量
-    NSMutableArray *arrlist;
-    UILabel *label;
-    NSTimer *timer;
-    
 }
 // 属性声明的block都是全局的__NSGlobalBlock__
 @property (nonatomic, copy) void (^copyBlock)(void);
 @property (nonatomic, weak) void (^weakBlock)(void);
-@property(nonatomic, strong)SFTextView *textF;
 
-@property (nonatomic, strong) KYUser *user;
-
-@property(nonatomic,strong)Persion* p;
 //测试字符串⬇️⬇️⬇️
 @property(nonatomic,copy)NSString*str1;
 @property(nonatomic,strong)NSString*str2;
 //测试字符串⬆️⬆️⬆️
-@property (nonatomic ,strong) UIButton *_btn;
 
 @property (nonatomic,assign) float tmp;
 @end
@@ -171,8 +158,6 @@
 	self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"侧滑";
     
-    [self testDataP];//界面显示
-
     if (@available(iOS 11.0, *)) {
         NSString *edgeStr = NSStringFromUIEdgeInsets(self.view.safeAreaInsets);
         NSString *layoutFrmStr = NSStringFromCGRect(self.view.safeAreaLayoutGuide.layoutFrame);
@@ -196,28 +181,20 @@
     [self testDataA];
     [self testDataB];
     [self testDataC];
-    
-    self.user = [[KYUser alloc] init];
-    self.user.dog = [[KYDog alloc] init];
-    self.user.dog.age = 12;
-    self.user.dog.name = @"大大";
-    self.user.userId = @"35325";
     [self testDataD];
     [self testDataE];//Operation
     [self testDataF];//GCD
     [self testDataG];//深、浅拷贝
     [self testDataH];//交换
     [self testDataL];//排序方式
-    [self testDataM];
+    [self testDataM];//排序
     //    [self testDataK];
-    [self testDataN];//KVO进阶
 }
 - (void)testDataH{
     int a = 10;
     int b = 12;
     //    a = b + 0 * ( b = a);//a=12;b=10
     //    NSLog(@"%d",a);
-    
     a = b - a; //a=2;b=12
     b = b - a; //a=2;b=10
     a = a + b; //a=10;b=10
@@ -274,7 +251,15 @@ static int numB = 100;
     TestNumber(86);
     NSLog(@"S3、num的h值是 %d",numB);
 }
-
+- (void (^)(float))add
+{
+    __weak typeof(self) wself = self;
+    void (^result)(float) = ^(float value){
+        wself.tmp += value;
+        
+    };
+    return result;
+}
 // 全局变量
 int global_var = 4;
 // 静态全局变量
@@ -334,10 +319,7 @@ void (^outFuncBlock)(void) = ^{
     blockSave y = [x copy];
     y();
     NSLog(@"x():%@, y():%@ , (*ptr):%d", x, y, *ptr);
-    // MRC下
-    Persion *test = [[Persion alloc] init];
-    [test test];
-//    [test exampleB];
+    
     
     /**总结：
      ARC下：(++age):21   (*ptr):20    // blockSave在堆中，*ptr在栈中
@@ -383,8 +365,6 @@ void (^outFuncBlock)(void) = ^{
         
     };
     NSLog(@"6：%@", b);
-    
-    
     
 #pragma mark - 对栈中的block进行copy
     // 不引用外部变量，定义在全局区、表达式没有使用到外部变量时，生成的block都是__NSGlobalBlock__类型
@@ -783,7 +763,6 @@ void (^outFuncBlock)(void) = ^{
     
     
     NSInteger num1 = 10,num2 = 30;
-    
     NSInteger gcd = [self gcdWithNumber1:num1 Number2:num2];
     // 最小公倍数 = 两整数的乘积 ÷ 最大公约数
     NSLog(@"---%ld",num1 * num2 / gcd);
@@ -792,102 +771,22 @@ void (^outFuncBlock)(void) = ^{
     int c = ++a;
     NSLog(@"---%d--%d--%d",a ,b ,c);
 
-    
 //    __block UIImage *image;
 //    dispatch_sync_on_main_queue(^{
 //        image = [UIImage imageNamed:@"Resource/img"];
 //    });
     testPathForKey(@"123",@"789");
-        //定义显示图片的
-        NSArray *imageNameList = @[@"scanscanBg.png",@"scanscanBg.png",@"scanscanBg.png",@"scanscanBg.png"];
-        UIScrollView *scrollViewRoot = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 300, DH_DeviceWidth, self.view.frame.size.height-350)];
-        scrollViewRoot.delegate = self;
-        scrollViewRoot.backgroundColor = [UIColor redColor];
-        [self.view addSubview:scrollViewRoot];
-        
-        // 添加图片
-        for (NSInteger index = 0; index < imageNameList.count; index ++) {
-            // UIScrollView上的每一张图片
-            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(index * DH_DeviceWidth, 0, scrollViewRoot.frame.size.width, scrollViewRoot.frame.size.height)];
-            //加载图片方式一:一直在占用内存，并未释放，且自动识别@2x，@3x等不同分辨率的图片，会提供一个缓存，具体是在加载的时候缓存到系统内存，使用的时候从缓存中进行加载，但是过多的话会导致内存泄露等内存警告问题，imageNamed后面跟的不是图片名称，是图片集合的名称，所以关于image@2x，image@3x等，只需要写上前面的image，他们属于一个image下的图片集合，内部会根据屏幕分辨率自动识别，并进行展示
-            imageView.image = [UIImage imageNamed:imageNameList[index]];
-            //加载图片方式二:数据形式加载，不会一直加载在内存里，也就是说没有做图片缓存处理，且自动识别@2x，@3x等不同分辨率的图片
-            imageView.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:imageNameList[index] ofType:nil]];
-            //NSString *filePaht1 = [[[NSBundle mainBundle]resourcePath] stringByAppendingPathComponent:@"test.bundle/hotBagImage.png"];
-            
-            //加载图片方式三:数据形式加载，不会一直加载在内存里
-            NSData *imageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:imageNameList[index] ofType:nil]];
-            imageView.image = [UIImage imageWithData:imageData];
-            /*
-             Assets.xcassets 在使用大量图片时，不推荐这种方式，我们的一些小的icon或者图片可以放置进来，我们的启动图等在这里面管理还是比较方便；
-             NSBundle或者ContentsOfFile方式虽然加载图片不占用内存资源，起到了性能优化，但是占的APP储存空间相对比较大，会增加包的体积。其中ContentsOfFile不同于NSBundle的是可以创建文件夹来管理图片，但是这样在多人开发中容易丢失图片文件。
-             */
-            [scrollViewRoot addSubview:imageView];
-            //contentSize 为什么不从0开始，因为0*kScreenWidth等于0，就相当于没有大小，挤掉了第一张(备注：因为图片资源是从0开始的，在这里乘以0就相当于把第一张的大小变为0)
-            scrollViewRoot.contentSize = CGSizeMake((index+1) * DH_DeviceWidth, 0);
-        
-        
+}
+- (NSInteger)gcdWithNumber1:(NSInteger)num1 Number2:(NSInteger)num2{
+    
+    while(num1 != num2){
+        if(num1 > num2){
+            num1 = num1-num2;
+        } else {
+            num2 = num2-num1;
+        }
     }
-    //    void (^num)(int)=^(int x){
-    //        NSLog(@"1、执行");
-    //        dispatch_sync(dispatch_get_main_queue(), ^{//有可能引入死锁的问题
-    //            NSLog(@"2、执行");
-    //        });
-    //        NSLog(@"3、执行");
-    //    };
-    //    num(1);
-    
-    UIView *orangeView = [[UIView alloc] init];
-    
-    orangeView.frame = CGRectMake(0, 0, 200,200);
-    
-    orangeView.backgroundColor = [UIColor orangeColor];
-    
-    orangeView.center = self.view.center;
-    
-    [self.view addSubview:orangeView];
-    
-    
-    UIView *blueView = [[UIView alloc] init];
-    
-    blueView.frame = CGRectMake(0, 0, 150,150);
-    
-    blueView.backgroundColor = [UIColor blueColor];
-    
-    //    blueView.layer.anchorPoint = CGPointMake(0.0, 1.0);
-    //
-    //    blueView.center = self.view.center;
-    
-    [self.view addSubview:blueView];
-    /**
-     - (void)updateConstraintsIfNeeded  调用此方法，如果有标记为需要重新布局的约束，则立即进行重新布局，内部会调用updateConstraints方法
-     - (void)updateConstraints          重写此方法，内部实现自定义布局过程
-     - (BOOL)needsUpdateConstraints     当前是否需要重新布局，内部会判断当前有没有被标记的约束
-     - (void)setNeedsUpdateConstraints  标记需要进行重新布局
-     */
-    //and,with,这两个方法内部实际上什么都没干，只是在内部将self直接返回，功能就是为了更加方便阅读，对代码执行没有实际作用
-
-    [blueView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.and.left.equalTo(self.view).with.offset(10);
-        make.size.mas_equalTo(CGSizeMake(300, 300));
-        
-    }];
-    // 下面的方法和上面例子等价，区别在于使用insets()方法。
-    [orangeView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(blueView.bottom).with.offset(10);
-        make.size.mas_equalTo(CGSizeMake(300, 300));
-        // 下、右不需要写负号，insets方法中已经为我们做了取反的操作了
-        make.edges.equalTo(blueView).with.insets(UIEdgeInsetsMake(10, 10, 10, 10));
-    }];
-    
-    NSLog(@"orangeView center = %@",NSStringFromCGPoint(orangeView.center));
-    
-    NSLog(@"blueView center = %@",NSStringFromCGPoint(blueView.center));
-    
-    NSLog(@"orangeView bounds = %@",NSStringFromCGRect(orangeView.bounds));
-    
-    NSLog(@"blueView bounds = %@",NSStringFromCGRect(blueView.bounds));
-    
+    return num1;
 }
 static inline NSString* testPathForKey(NSString* directory, NSString* key) {
     //  stringByAppendingString 字符串拼接
@@ -908,507 +807,6 @@ static inline NSString* testPathForKey(NSString* directory, NSString* key) {
 //    //    NSLog(@"3、执行");
 //};
 
-static UILabel *myLabel;
-- (void)testDataN{
-    
-    /**KVO 高级用法
-     doubleValue.intValue double转Int类型
-     uppercaseString 小写变大写
-     length 求各个元素的长度
-     数学元素 @sum.self  @avg.self @max.self @min.self  @distinctUnionOfObjects.self(过滤)
-     
-     >>KVC setter方法
-     通过setValue:forKeyPath:设置UI控件的属性：
-     
-     [self.label setValue:[UIColor greenColor] forKeyPath:@"textColor"];
-     [self.button setValue:[UIColor orangeColor] forKeyPath:@"backgroundColor"];
-     [self.textField setValue:[UIColor redColor] forKeyPath:@"_placeholderLabel.textColor"];
-     
-     */
-    
-    NSDictionary *dataSource = @[@{@"name":@"mike", @"sex":@"man", @"age":@"12"},
-                                 @{@"name":@"jine", @"sex":@"women", @"age":@"10"},
-                                 @{@"name":@"marry", @"sex":@"women", @"age":@"12"},
-                                 @{@"name":@"mike", @"sex":@"man", @"age":@"11"},
-                                 @{@"name":@"selly", @"sex":@"women", @"age":@"12"}];
-    //KVC keyPath的getter方法：
-    NSLog(@"name = %@",[dataSource valueForKeyPath:@"name"]);
-    NSArray *array1 = @[@"apple",@"banana",@"pineapple",@"orange"];
-    NSLog(@"%@",[array1 valueForKeyPath:@"uppercaseString"]);
-    
-    NSLog(@"filterName = %@",[dataSource valueForKeyPath:@"@distinctUnionOfObjects.sex"]);
-    
-    
-    // 1、添加KVO监听
-    //NSKeyValueObservingOptionInitial 观察最初的值 在注册观察服务时会调用一次
-    //NSKeyValueObservingOptionPrior 分别在被观察值的前后触发一次 一次修改两次触发
-    [self.user addObserver:self forKeyPath:@"dog.name" options:NSKeyValueObservingOptionNew context:nil];
-    
-    myLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 150, 100, 30 )];
-    myLabel.textColor = [UIColor redColor];
-    myLabel.text = self.user.dog.name;
-    //    myLabel.text = [self.user.dog valueForKeyPath:@"name"];
-    [self.view addSubview:myLabel];
-    
-}
-////  3秒钟后改变当前button的enabled状态
-//dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//    self.button.enabled = YES;
-//});
-
-// 返回一个容器，里面放字符串类型，监听容器中的属性
-+ (NSSet<NSString *> *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
-    NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-    if ([key isEqualToString:@"dog"]) {
-        NSArray *arr = @[@"_dog.name", @"_dog.age"];
-        keyPaths = [keyPaths setByAddingObjectsFromArray:arr];
-    }
-    return keyPaths;
-}
-
-// 2、接收监听
-/**
- KVO 必须实现
- 
- @param keyPath 被观察的属性
- @param object 被观察对象
- @param change 添加监听时传过来的上下文信息
- @param context 字典，keys有以下五种：
- */
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    NSLog(@"--------------%@",change);
-    NSLog(@"%@", keyPath);
-    NSLog(@"%@", object);
-    /*
-     NSKeyValueChangeNewKey;新值
-     NSKeyValueChangeOldKey;旧值
-     NSKeyValueChangeIndexesKey;观察容器属性时会返回的索引值
-     NSKeyValueChangeKindKey;
-     
-     NSKeyValueChangeSetting = 1 赋值 SET
-     NSKeyValueChangeInsertion = 2 插入 insert
-     NSKeyValueChangeRemoval = 3 移除 remove
-     NSKeyValueChangeReplacement = 4 替换 replace
-     
-     */
-    //    NSKeyValueChangeNotificationIsPriorKey
-    NSLog(@"%@", change[NSKeyValueChangeNewKey]);
-    NSLog(@"%@", (__bridge id)(context));
-    myLabel.text = [self.user.dog valueForKeyPath:@"name"];
-    
-    //else   若当前类无法捕捉到这个KVO，那很有可能是在他的superClass，或者super-superClass...中
-    //    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-    
-}
-// 3、触发修改属性值
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    self.user.userId = @"123456789";
-    //    self.user.dog.name = @"肖";
-    self.user.dog.age = 15;
-    [self.user.dog setValue:@"20.0" forKey:@"name"];
-    
-}
-
--(NSString *)inputValue:(NSString *)str{
-    
-    NSMutableString *string=[[NSMutableString alloc] init];
-    
-    for(int i=0;i<str.length;i++){
-        
-        [string appendString:[str substringWithRange:NSMakeRange(str.length-i-1, 1)]];
-        
-    }
-    
-    return string;
-    
-}
-- (void)testDataO{
-    UIImage *image = [UIImage imageNamed:@"_MG_5586.JPG"];//8M
-
-    BOOL success;
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSError *error;
-    NSArray *paths =NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *imageName = [NSString stringWithFormat:@"%@.jpg", [[NSUUID UUID] UUIDString]];
-    NSString *imageFilePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@", imageName]];
-    success = [fileManager fileExistsAtPath:imageFilePath];
-    if(success) {
-        [fileManager removeItemAtPath:imageFilePath error:&error];
-    }
-    UIImage *smallImage = [self thumbnailWithImageWithoutScale:image size:CGSizeMake(93,93)];// 图片进行尺寸压缩
-    
-    [UIImageJPEGRepresentation(smallImage,0.3) writeToFile:imageFilePath atomically:YES];// 图片进行质量压缩
-    UIImage *selfPhoto = [UIImage imageWithContentsOfFile:imageFilePath];//读取图片文件
-    NSData *ImageData =UIImagePNGRepresentation(selfPhoto);
-    NSLog(@"ImageData %lu",(unsigned long)ImageData.length);
-}
-static  UILabel *label;
-- (void)testDataP
-{
-    NSInteger num = 3;
-    label = [[UILabel alloc] initWithFrame:CGRectMake(30.0, 200.0, self.view.frame.size.width-60.0, 16*3+8*2)];
-    label.font = [UIFont systemFontOfSize:16.0];
-    label.layer.borderColor = [UIColor redColor].CGColor;
-    label.layer.borderWidth = 1.0;
-    label.numberOfLines = num;
-    [label setTag:189];
-    [self.view addSubview:label];
-    
-    NSString *text = @"明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间？转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。";
-//    NSString *text = @"明月几时有";
-    label.text = text;
-    NSDictionary *dictName = @{NSFontAttributeName:[UIFont systemFontOfSize:16.0], NSForegroundColorAttributeName:[UIColor blackColor]};
-    NSDictionary *dictMore = @{NSFontAttributeName:[UIFont systemFontOfSize:16.0], NSForegroundColorAttributeName:[UIColor blueColor]};
-    NSMutableAttributedString *attStr = [DHTool addWithName:label more:@"全文" nameDict:dictName moreDict:dictMore numberOfLines:num];
-    label.attributedText = attStr;
-    NSLog(@"%f--%@",[DHTool autoSizeOfHeghtWithText:label.text font:[UIFont systemFontOfSize:16.0] width:self.view.frame.size.width-60.0].height,label.text);
-
-    label.frame = CGRectMake(30.0, 200.0, self.view.frame.size.width-60.0, 20*num);
-    
-//    UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    btn.frame = label.frame;
-//    [btn setTitle:@"test" forState:UIControlStateNormal];
-//    [btn addTarget:self action:@selector(showAll:) forControlEvents:UIControlEventTouchUpInside];
-//    [label addSubview:btn];
-    
-    //富文本
-    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(30.0, 300.0, self.view.frame.size.width-60.0, 16*3+8*2)];
-    label1.font = [UIFont systemFontOfSize:16.0];
-    label1.layer.borderColor = [UIColor redColor].CGColor;
-    label1.layer.borderWidth = 1.0;
-    label1.numberOfLines = 1;
-    label1.backgroundColor = [UIColor yellowColor];
-    [self.view addSubview:label1];
-    
-    NSString * string = [NSString stringWithFormat:@"您的号码是%@号",@"3"];
-    label1.attributedText = [self paramWithStr:string Range:NSMakeRange(5, 1)];
-    
-}
-/*
-//发布信息textflied
--(SFTextView *)textF
-{
-    if (!_textF) {
-        _textF = [[SFTextView alloc] init];
-        _textF.font = FONT_SIZE(13);
-        _textF.textColor = KColorC;
-        _textF.backgroundColor = [UIColor whiteColor];
-        //        _textF.backgroundColor = [UIColor clearColor];
-        //        _textF.delegate = self;
-        //设置placeholder属性
-        [_textF setPlaceHolderAttr:@"  写下你的观点/见解" textColor:KColorD font:FONT_SIZE(13)];
-        //设置字数限制属性
-        [_textF setCharCountAttr:150 right:SNRealValue(11) bottom:SNRealValue(9) textColor:KColorC font:KFontSizeG];
-        _textF.layer.cornerRadius = SNRealValue(5);
-    }
-    return _textF;
-}
- */
-- (NSMutableAttributedString *)paramWithStr:(NSString *)name Range:(NSRange)ran{
-    NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:name];
-
-   /*
-    常见的属性及说明
-    NSFontAttributeName  字体
-    NSParagraphStyleAttributeName  段落格式
-    NSForegroundColorAttributeName  字体颜色
-    NSBackgroundColorAttributeName   背景颜色
-    NSStrikethroughStyleAttributeName 删除线格式
-    NSUnderlineStyleAttributeName      下划线格式
-    NSStrokeColorAttributeName        删除线颜色
-    NSStrokeWidthAttributeName 删除线宽度
-    NSShadowAttributeName  阴影
-    
-    属性及说明
-    
-    
-    
-    key
-    说明
-    
-
-    NSFontAttributeName
-    字体，value是UIFont对象
-    
-    
-    NSParagraphStyleAttributeName
-    绘图的风格（居中，换行模式，间距等诸多风格），value是NSParagraphStyle对象
-    
-    
-    NSForegroundColorAttributeName
-    文字颜色，value是UIFont对象
-    
-    
-    NSLigatureAttributeName
-    字符连体，value是NSNumber
-    
-    
-    NSKernAttributeName
-    字符间隔
-    
-    
-    NSStrikethroughStyleAttributeName
-    删除线，value是NSNumber
-    
-    
-    NSUnderlineStyleAttributeName
-    下划线，value是NSNumber
-    
-    
-    NSStrokeColorAttributeName
-    描绘边颜色，value是UIColor
-    
-    
-    NSStrokeWidthAttributeName
-    描边宽度，value是NSNumber
-    
-    
-    NSShadowAttributeName
-    阴影，value是NSShadow对象
-    
-    
-    NSTextEffectAttributeName
-    文字效果，value是NSString
-    
-    
-    NSAttachmentAttributeName
-    附属，value是NSTextAttachment 对象
-    
-    
-    NSLinkAttributeName
-    链接，value是NSURL or NSString
-    
-    
-    NSBaselineOffsetAttributeName
-    基础偏移量，value是NSNumber对象
-    
-    
-    NSStrikethroughColorAttributeName
-    删除线颜色，value是UIColor
-    
-    
-    NSObliquenessAttributeName
-    字体倾斜
-    
-    
-    NSExpansionAttributeName
-    字体扁平化
-    
-    
-    NSVerticalGlyphFormAttributeName
-    垂直或者水平，value是 NSNumber，0表示水平，1垂直
-    
-    富文本段落排版格式属性说明
-    
-    属性说明
-
-    lineSpacing
-    字体的行间距
-
-    firstLineHeadIndent
-    首行缩进
- 
-    alignment
-    （两端对齐的）文本对齐方式：（左，中，右，两端对齐，自然）
-
-    lineBreakMode
-    结尾部分的内容以……方式省略 ( "...wxyz" ,"abcd..." ,"ab...yz")
-    
-    headIndent
-    整体缩进(首行除外)
-
-    minimumLineHeight
-    最低行高
-
-    maximumLineHeight
-    最大行高
-    
-    paragraphSpacing
-    段与段之间的间距
-    
-    paragraphSpacingBefore
-    段首行空白空间
-    
-    baseWritingDirection
-    书写方向（一共三种）
-    
-    hyphenationFactor
-    连字属性 在iOS，唯一支持的值分别为0和1
-    */
-    
-    //方法一：set方法单向设置和集合设置
-    //方法1、
-//    [attributeString setAttributes:[NSMutableDictionary dictionaryWithObjectsAndKeys:[UIColor redColor], NSForegroundColorAttributeName, nil] range:ran];
-    //方法2、
-//    [attributeString setAttributes:[NSMutableDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue" size:22], NSFontAttributeName,[UIColor redColor],NSForegroundColorAttributeName, nil] range:ran];
-    //方法3、
-//    NSDictionary *attributedDict = @{
-//                                     NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue" size:22],
-//                                     NSForegroundColorAttributeName:[UIColor redColor]
-//                                     };
-    //,NSUnderlineStyleAttributeName:@(NSUnderlinePatternSolid | NSUnderlineStyleDouble | NSUnderlineStyleThick)
-//    [attributeString setAttributes:attributedDict];
-    //方法二：add方法设置key-value
-    [attributeString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:ran];
-    [attributeString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue" size:22] range:ran];
-    return  attributeString;
-}
-- (void)showAll:(UIButton *)btn{
-
-}
-- (CGFloat)heightTextWithText:(UILabel *)text
-{
-    //    //1.1最大允许绘制的文本范围
-    CGSize size = CGSizeMake((text.frame.size.width), MAXFLOAT);
-    //    //1.2配置计算时的行截取方法,和contentLabel对应
-    //    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-    //    [style setLineSpacing:0];
-    //    //    //1.3配置计算时的字体的大小
-    //    //    //1.4配置属性字典
-    //    NSDictionary *dic = @{NSFontAttributeName:text.font, NSParagraphStyleAttributeName:style};
-    //    //    NSAttributedString *attributeStr = [[NSAttributedString alloc] initWithString:string attributes:dic];
-    //    //    lb.attributedText = attributeStr;
-    //    //2.计算
-    //    //如果想保留多个枚举值,则枚举值中间加按位或|即可,并不是所有的枚举类型都可以按位或,只有枚举值的赋值中有左移运算符时才可以
-    //    CGFloat heightText = [text.text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:dic context:nil].size.height;
-    //
-    // 计算高度
-    //    CGSize size = [text boundingRectWithSize:CGSizeMake(SNRealValue(ScreenWidth - 38 - 26), MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:kFont_Regular(15)} context:nil].size;
-    //    CGFloat heightText = size.height;
-    size = [text.text sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:text.font,NSFontAttributeName, nil]];
-    
-    return size.height;
-}
-- (void (^)(float))add
-{
-    __weak typeof(self) wself = self;
-    void (^result)(float) = ^(float value){
-        wself.tmp += value;
-        
-    };
-    return result;
-}
-- (NSInteger)gcdWithNumber1:(NSInteger)num1 Number2:(NSInteger)num2{
-    
-    while(num1 != num2){
-        if(num1 > num2){
-            num1 = num1-num2;
-        } else {
-            num2 = num2-num1;
-        }
-    }
-    return num1;
-}
-// 改变图片尺寸
--(UIImage *)thumbnailWithImageWithoutScale:(UIImage *)image size:(CGSize)asize{
-    UIImage *newimage;
-    if (nil == image) {
-        newimage = nil;
-    }
-    else{
-        CGSize oldsize = image.size;
-        CGRect rect;
-        if (asize.width/asize.height > oldsize.width/oldsize.height) {
-            rect.size.width = asize.height*oldsize.width/oldsize.height;
-            rect.size.height = asize.height;
-            rect.origin.x = (asize.width - rect.size.width)/2;
-            rect.origin.y =0;
-        }
-        else{
-            rect.size.width = asize.width;
-            rect.size.height = asize.width*oldsize.height/oldsize.width;
-            rect.origin.x =0;
-            rect.origin.y = (asize.height - rect.size.height)/2;
-        }
-        UIGraphicsBeginImageContext(asize);
-        CGContextRef context =UIGraphicsGetCurrentContext();
-        CGContextSetFillColorWithColor(context, [[UIColor clearColor] CGColor]);
-        UIRectFill(CGRectMake(0,0, asize.width, asize.height));//clear background
-        [image drawInRect:rect];//压缩图片h指定尺寸
-        newimage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
-    }
-    return newimage;
-}
-////这样循环次数多，效率低，耗时长。
-//- (NSData *)compressQualityWithMaxLength:(NSInteger)maxLength WithoutImage:(UIImage *)image{
-//    CGFloat compression = 1;
-//    NSData *data = UIImageJPEGRepresentation(image, compression);
-//    while (data.length > maxLength && compression > 0) {
-//        compression -= 0.02;
-//        data = UIImageJPEGRepresentation(image, compression); // When compression less than a value, this code dose not work
-//    }
-//    return data;
-//}
-////二分法来优化
-/*
- 当图片大小小于 maxLength，大于 maxLength * 0.9 时，不再继续压缩。最多压缩 6 次，1/(2^6) = 0.015625 < 0.02，也能达到每次循环 compression减小 0.02 的效果。这样的压缩次数比循环减小 compression少，耗时短。需要注意的是，当图片质量低于一定程度时，继续压缩没有效果。也就是说，compression继续减小，data 也不再继续减小。
- */
-- (NSData *)compressQualityWithMaxLength:(NSInteger)maxLength WithoutImage:(UIImage *)image{
-    CGFloat compression = 1;
-    NSData *data = UIImageJPEGRepresentation(image, compression);
-    if (data.length < maxLength) return data;
-    CGFloat max = 1;
-    CGFloat min = 0;
-    for (int i = 0; i < 6; ++i) {
-        compression = (max + min) / 2;
-        data = UIImageJPEGRepresentation(image, compression);
-        if (data.length < maxLength * 0.9) {
-            min = compression;
-        } else if (data.length > maxLength) {
-            max = compression;
-        } else {
-            break;
-        }
-    }
-    return data;
-    /*
-     //方法结合计算
-     // Compress by quality
-     CGFloat compression = 1;
-     NSData *data = UIImageJPEGRepresentation(self, compression);
-     //NSLog(@"Before compressing quality, image size = %ld KB",data.length/1024);
-     if (data.length < maxLength) return data;
-     
-     CGFloat max = 1;
-     CGFloat min = 0;
-     for (int i = 0; i < 6; ++i) {
-     compression = (max + min) / 2;
-     data = UIImageJPEGRepresentation(self, compression);
-     //NSLog(@"Compression = %.1f", compression);
-     //NSLog(@"In compressing quality loop, image size = %ld KB", data.length / 1024);
-     if (data.length < maxLength * 0.9) {
-     min = compression;
-     } else if (data.length > maxLength) {
-     max = compression;
-     } else {
-     break;
-     }
-     }
-     //NSLog(@"After compressing quality, image size = %ld KB", data.length / 1024);
-     if (data.length < maxLength) return data;
-     UIImage *resultImage = [UIImage imageWithData:data];
-     // Compress by size
-     NSUInteger lastDataLength = 0;
-     while (data.length > maxLength && data.length != lastDataLength) {
-     lastDataLength = data.length;
-     CGFloat ratio = (CGFloat)maxLength / data.length;
-     //NSLog(@"Ratio = %.1f", ratio);
-     CGSize size = CGSizeMake((NSUInteger)(resultImage.size.width * sqrtf(ratio)),
-     (NSUInteger)(resultImage.size.height * sqrtf(ratio))); // Use NSUInteger to prevent white blank
-     UIGraphicsBeginImageContext(size);
-     [resultImage drawInRect:CGRectMake(0, 0, size.width, size.height)];
-     resultImage = UIGraphicsGetImageFromCurrentImageContext();
-     UIGraphicsEndImageContext();
-     data = UIImageJPEGRepresentation(resultImage, compression);
-     //NSLog(@"In compressing size loop, image size = %ld KB", data.length / 1024);
-     }
-     //NSLog(@"After compressing size loop, image size = %ld KB", data.length / 1024);
-     return data;
-     */
-}
 
 - (void)backBlockNilMetnod{
 	self.returnTextBlock(@"backBlockNilMetnod");
