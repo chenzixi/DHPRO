@@ -229,7 +229,7 @@ static CGFloat const indicatorViewTimeOfAnimation = 0.4;
         // 指示器默认在第一个选中位置
         // 计算TitleLabel内容的Size
         CGSize buttonSize = [self sizeWithText:firstButton.titleLabel.text font:[UIFont systemFontOfSize:btn_fondOfSize] maxSize:CGSizeMake(MAXFLOAT, self.frame.size.height)];
-        _indicatorView.SG_width = 75;
+        _indicatorView.SG_width = _indicatorView.width = buttonSize.width;//75;
         _indicatorView.SG_centerX = firstButton.SG_centerX;
     }
 }

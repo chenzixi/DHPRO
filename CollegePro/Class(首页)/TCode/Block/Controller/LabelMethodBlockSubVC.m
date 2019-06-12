@@ -8,6 +8,9 @@
 
 #import "LabelMethodBlockSubVC.h"
 
+#import "Persion.h"
+#import "KYDog.h"
+#import "SFTextView.h"
 //define this constant if you want to use Masonry without the 'mas_' prefix
 #define MAS_SHORTHAND
 //define this constant if you want to enable auto-boxing for default syntax
@@ -30,6 +33,12 @@
 //测试字符串⬆️⬆️⬆️
 
 @property (nonatomic,assign) float tmp;
+
+@property(nonatomic, strong)SFTextView *textF;
+
+@property (nonatomic, strong) KYUser *user;
+
+@property(nonatomic,strong)Persion* p;
 @end
 
 @implementation LabelMethodBlockSubVC
@@ -192,6 +201,15 @@
     [self testDataL];//排序方式
     [self testDataM];//排序
     //    [self testDataK];
+    [self testDataN];//KVO进阶
+    self.user = [[KYUser alloc] init];
+    self.user.dog = [[KYDog alloc] init];
+    self.user.dog.age = 12;
+    self.user.dog.name = @"大大";
+    self.user.userId = @"35325";
+    // MRC下
+    Persion *test = [[Persion alloc] init];
+    [test test];
 }
 - (void)testDataH{
     int a = 10;
@@ -207,7 +225,7 @@
 }
 //全局变量
 - (void)testDataA{
-    
+
     void (^TestNumberC)(int)=^(int x){
         numC = 1000;
         NSLog(@"C2、num的h值是 %d",numC);
@@ -285,6 +303,7 @@ void (^outFuncBlock)(void) = ^{
     //    NSLog(@"result is %d", Block(2));
     
     int var = 1;
+    global_var = 5;
     __unsafe_unretained id unsafe_obj = nil;
     __strong id strong_obj = nil;
     static int static_var = 3 ;
@@ -294,9 +313,9 @@ void (^outFuncBlock)(void) = ^{
         NSLog(@"局部变量<__unsafe_unretained 对象类型> var %@",unsafe_obj);
         NSLog(@"局部变量< __strong 对象类型> var %@",strong_obj);
         NSLog(@"静态变量 %d",static_var);
-        NSLog(@"全局变量 %d",global_var);
-        chooseState = YES;
-        NSLog(@"静态全局变量 %d",global_var);
+        NSLog(@"全局变量 %d",self->global_var);
+        self->chooseState = YES;
+        NSLog(@"静态全局变量 %d",self->global_var);
     };
     NSLog(@"外部调用 %@",block);
     
@@ -796,6 +815,109 @@ static inline NSString* testPathForKey(NSString* directory, NSString* key) {
     //    stringByAppendingPathComponent 路径拼接
     return [directory stringByAppendingString:key];
 }
+
+static UILabel *myLabel;
+- (void)testDataN{
+    
+    /**KVO 高级用法
+     doubleValue.intValue double转Int类型
+     uppercaseString 小写变大写
+     length 求各个元素的长度
+     数学元素 @sum.self  @avg.self @max.self @min.self  @distinctUnionOfObjects.self(过滤)
+     
+     >>KVC setter方法
+     通过setValue:forKeyPath:设置UI控件的属性：
+     
+     [self.label setValue:[UIColor greenColor] forKeyPath:@"textColor"];
+     [self.button setValue:[UIColor orangeColor] forKeyPath:@"backgroundColor"];
+     [self.textField setValue:[UIColor redColor] forKeyPath:@"_placeholderLabel.textColor"];
+     
+     */
+    
+    NSDictionary *dataSource = @[@{@"name":@"mike", @"sex":@"man", @"age":@"12"},
+                                 @{@"name":@"jine", @"sex":@"women", @"age":@"10"},
+                                 @{@"name":@"marry", @"sex":@"women", @"age":@"12"},
+                                 @{@"name":@"mike", @"sex":@"man", @"age":@"11"},
+                                 @{@"name":@"selly", @"sex":@"women", @"age":@"12"}];
+    //KVC keyPath的getter方法：
+    NSLog(@"name = %@",[dataSource valueForKeyPath:@"name"]);
+    NSArray *array1 = @[@"apple",@"banana",@"pineapple",@"orange"];
+    NSLog(@"%@",[array1 valueForKeyPath:@"uppercaseString"]);
+    
+    NSLog(@"filterName = %@",[dataSource valueForKeyPath:@"@distinctUnionOfObjects.sex"]);
+    
+    
+    // 1、添加KVO监听
+    //NSKeyValueObservingOptionInitial 观察最初的值 在注册观察服务时会调用一次
+    //NSKeyValueObservingOptionPrior 分别在被观察值的前后触发一次 一次修改两次触发
+    [self.user addObserver:self forKeyPath:@"dog.name" options:NSKeyValueObservingOptionNew context:nil];
+    
+    myLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 150, 100, 30 )];
+    myLabel.textColor = [UIColor redColor];
+    myLabel.text = self.user.dog.name;
+    //    myLabel.text = [self.user.dog valueForKeyPath:@"name"];
+    [self.view addSubview:myLabel];
+    
+}
+////  3秒钟后改变当前button的enabled状态
+//dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//    self.button.enabled = YES;
+//});
+
+// 返回一个容器，里面放字符串类型，监听容器中的属性
++ (NSSet<NSString *> *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
+    NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
+    if ([key isEqualToString:@"dog"]) {
+        NSArray *arr = @[@"_dog.name", @"_dog.age"];
+        keyPaths = [keyPaths setByAddingObjectsFromArray:arr];
+    }
+    return keyPaths;
+}
+
+// 2、接收监听
+/**
+ KVO 必须实现
+ 
+ @param keyPath 被观察的属性
+ @param object 被观察对象
+ @param change 添加监听时传过来的上下文信息
+ @param context 字典，keys有以下五种：
+ */
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    NSLog(@"--------------%@",change);
+    NSLog(@"%@", keyPath);
+    NSLog(@"%@", object);
+    /*
+     NSKeyValueChangeNewKey;新值
+     NSKeyValueChangeOldKey;旧值
+     NSKeyValueChangeIndexesKey;观察容器属性时会返回的索引值
+     NSKeyValueChangeKindKey;
+     
+     NSKeyValueChangeSetting = 1 赋值 SET
+     NSKeyValueChangeInsertion = 2 插入 insert
+     NSKeyValueChangeRemoval = 3 移除 remove
+     NSKeyValueChangeReplacement = 4 替换 replace
+     
+     */
+    //    NSKeyValueChangeNotificationIsPriorKey
+    NSLog(@"%@", change[NSKeyValueChangeNewKey]);
+    NSLog(@"%@", (__bridge id)(context));
+    myLabel.text = [self.user.dog valueForKeyPath:@"name"];
+    
+    //else   若当前类无法捕捉到这个KVO，那很有可能是在他的superClass，或者super-superClass...中
+    //    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    
+}
+// 3、触发修改属性值
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    self.user.userId = @"123456789";
+    //    self.user.dog.name = @"肖";
+    self.user.dog.age = 15;
+    [self.user.dog setValue:@"20.0" forKey:@"name"];
+    
+}
+
+
 //YYKit中提供了一个同步扔任务到主线程的安全方法：
 //static inline void dispatch_sync_on_main_queue(void (^block)(void)) {
 //    NSLog(@"1、执行");

@@ -51,16 +51,40 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ff-cW-16z">
+                                <rect key="frame" x="12" y="322.66666666666669" width="390" height="91"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YwU-YJ-er1">
+                                        <rect key="frame" x="315" y="38" width="55" height="15"/>
+                                        <color key="backgroundColor" red="0.94901960780000005" green="0.74509803919999995" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="55" id="7Kd-bz-7zO"/>
+                                            <constraint firstAttribute="height" constant="15" id="okh-mr-Ybx"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailingMargin" secondItem="YwU-YJ-er1" secondAttribute="trailing" constant="12" id="gFf-tI-JZj"/>
+                                    <constraint firstItem="YwU-YJ-er1" firstAttribute="top" secondItem="1ff-cW-16z" secondAttribute="topMargin" constant="30" id="ltl-Zb-0c7"/>
+                                    <constraint firstItem="YwU-YJ-er1" firstAttribute="centerY" secondItem="1ff-cW-16z" secondAttribute="centerY" id="mHQ-w7-nvE"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="1ff-cW-16z" firstAttribute="leading" secondItem="CUK-Cj-4TI" secondAttribute="leading" constant="12" id="4B8-cx-LiR"/>
                             <constraint firstItem="GsF-Nw-0JY" firstAttribute="leading" secondItem="HbZ-S0-KTc" secondAttribute="trailing" constant="40" id="L7a-kW-Ah4"/>
                             <constraint firstItem="GsF-Nw-0JY" firstAttribute="centerY" secondItem="HbZ-S0-KTc" secondAttribute="centerY" id="akx-cY-SSz"/>
                             <constraint firstItem="CUK-Cj-4TI" firstAttribute="bottom" secondItem="HbZ-S0-KTc" secondAttribute="bottom" constant="565" id="bNV-pr-Wk7"/>
                             <constraint firstItem="HbZ-S0-KTc" firstAttribute="top" secondItem="CUK-Cj-4TI" secondAttribute="top" constant="130" id="dQl-Ju-t6j"/>
                             <constraint firstItem="hwa-Nj-JEM" firstAttribute="centerX" secondItem="HbZ-S0-KTc" secondAttribute="centerX" id="dh2-zY-MSn"/>
+                            <constraint firstItem="1ff-cW-16z" firstAttribute="centerY" secondItem="ari-45-gFK" secondAttribute="centerY" id="fdW-QZ-0Kd"/>
                             <constraint firstItem="HbZ-S0-KTc" firstAttribute="leading" secondItem="CUK-Cj-4TI" secondAttribute="leading" constant="167" id="pfI-zj-NWw"/>
+                            <constraint firstItem="1ff-cW-16z" firstAttribute="centerX" secondItem="ari-45-gFK" secondAttribute="centerX" id="tzd-yp-Ywz"/>
                             <constraint firstItem="hwa-Nj-JEM" firstAttribute="top" secondItem="HbZ-S0-KTc" secondAttribute="bottom" constant="34" id="x2R-Sy-T2b"/>
+                            <constraint firstItem="CUK-Cj-4TI" firstAttribute="trailing" secondItem="1ff-cW-16z" secondAttribute="trailing" constant="12" id="yBr-4R-Yfa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CUK-Cj-4TI"/>
                     </view>

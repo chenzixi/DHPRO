@@ -1,0 +1,2 @@
+/Users/Student/Documents/Air Hockey/Classes/Air_HockeyAppDelegate.m: In function '-[Air_HockeyAppDelegate application:didFinishLaunchingWithOptions:]':
+/Users/Student/Documents/Air Hockey/Classes/Air_HockeyAppDelegate.m:26: error: request for member 'view' in something not a structure or union

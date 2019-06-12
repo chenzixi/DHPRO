@@ -2,7 +2,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SectionsViewController : UIViewController
+@interface SectionsViewController : BaseViewController
 <UITableViewDataSource, UITableViewDelegate>
 {
     NSDictionary *names;

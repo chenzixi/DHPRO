@@ -55,6 +55,8 @@
 #import "CustomKeyBoardViewController.h"//键盘
 #import "TRViewController.h"//闹铃
 #import "SmoothLineViewController.h"//画画板
+#import "Menu.h"//联网游戏XIB
+#import "PictureSelectionController.h"//识别相机
 #import "IndexViewController.h"//苏宁小出、
 #import "AdaptionListViewController.h"//自适应列表
 #import "SectionsViewController.h"//铃声
@@ -62,6 +64,7 @@
 #import "MVVMViewController.h"
 #import "CustomCollectionViewController.h"//长按拖动collectioncell
 #import "TurntableViewController.h"//转盘
+#import "AliRTCViewController.h"//阿里音视频通话
 #import "MenuViewController.h"//storyboard
 #import "LabelMethodBlockVC.h"
 #import "LabelMethodBlockSubVC.h"
@@ -106,6 +109,23 @@
     [super viewDidLoad];
     
     [self setUPUI];
+    
+    //    applicationWillEnterForeground
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveHMethod:) name:@"applicationWillEnterForeground" object:nil];
+    //    [self playVoiceBackground];
+    CGFloat c = sqrt( pow(2, 3));
+    NSLog(@"%.2f",c);
+
+    // 监听有物品靠近还是离开
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(proximityStateDidChange) name:UIDeviceProximityStateDidChangeNotification object:nil];
+    [UIDevice currentDevice].proximityMonitoringEnabled = YES;
+    
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(getinternet) userInfo:nil repeats:YES];
+    [timer fireDate];
+}
+
+- (void)setUPUI{
+    //网速显示
     displayLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, DH_DeviceHeight-50, DH_DeviceWidth, 40)];
     displayLabel.backgroundColor = [UIColor colorWithRed:0.962 green:0.971 blue:1.000 alpha:1.000];
     displayLabel.layer.shadowColor = [UIColor lightGrayColor].CGColor;
@@ -119,14 +139,96 @@
     [DHTool setBorderWithView:displayLabel top:NO left:NO bottom:NO right:YES borderColor:[UIColor clearColor] borderWidth:0 otherBorderWidth:1 topColor:[UIColor redColor] leftColor:[UIColor orangeColor] bottomColor:[UIColor grayColor] rightColor:[UIColor blueColor]];
     [self.view addSubview:displayLabel];
     [[UIApplication sharedApplication].keyWindow addSubview:displayLabel];
-    //    applicationWillEnterForeground
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveHMethod:) name:@"applicationWillEnterForeground" object:nil];
-    //    [self playVoiceBackground];
-    CGFloat c = sqrt( pow(2, 3));
-    NSLog(@"%.2f",c);
-
     
+    //    self.navigationController.navigationBar.barTintColor = IWColor(255,155,0);
+    //    //设置导航条的背景色
+    //    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
+    UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    //    flowLayout.minimumLineSpacing = 0.0;//minimumLineSpacing cell上下之间的距离
+    //    flowLayout.minimumInteritemSpacing = 5.0;//cell左右之间的距离
+    //    flowLayout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, 20);
+    _collectionView=[[UICollectionView alloc] initWithFrame:CGRectMake(15, 0, DH_DeviceWidth-30, DH_DeviceHeight-75) collectionViewLayout:flowLayout];
+    //    _collectionView=[[UICollectionView alloc] init];
+    //    _collectionView.collectionViewLayout = flowLayout;
+    
+    //注册Cell，必须要有
+    [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"GradientCell"];
+    [_collectionView registerClass:[THomeCollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([THomeCollectionViewCell class])];
+    _collectionView.dataSource=self;
+    _collectionView.delegate=self;
+    [_collectionView setBackgroundColor:[UIColor whiteColor]];
+    [self.view addSubview:_collectionView];
+    
+    self.titles = @[].mutableCopy;
+    self.classNames = @[].mutableCopy;
+    
+    [self addCell:@"上下滑动" class:@"ContentOffSetVC"];
+    [self addCell:@"RTC" class:@"AliRTCViewController"];
+    [self addCell:@"3DTouch" class:@"T3DTouchViewController"];
+    [self addCell:@"二维码" class:@"GKHScanQCodeViewController"];
+    [self addCell:@"凸起菜单栏" class:@"LBTabBarTextController"];
+    [self addCell:@"导航栏" class:@"LSTabBarViewController"];
+    [self addCell:@"签名" class:@"SignatureViewController"];
+    [self addCell:@"动画" class:@"ZLDashboardViewController"];
+    [self addCell:@"咖啡机" class:@"ActionViewController"];
+    [self addCell:@"碰撞球" class:@"TMotionViewController"];
+    [self addCell:@"侧边栏" class:@"TSidebarViewController"];
+    [self addCell:@"购物车" class:@"TShopAnimationViewController"];
+    [self addCell:@"图片滚动" class:@"ScrollImageViewViewController"];
+    [self addCell:@"添加图片" class:@"DHImagePickerViewController"];
+    [self addCell:@"文档" class:@"DocumentViewController"];
+    [self addCell:@"支付密码框" class:@"PayViewController"];
+    [self addCell:@"网络测试" class:@"NetTestViewController"];
+    [self addCell:@"倒计时" class:@"CountdownViewController"];
+    [self addCell:@"菜单栏" class:@"SubparagraphRootViewController"];
+    [self addCell:@"键盘" class:@"CustomKeyBoardViewController"];
+    [self addCell:@"拖拽" class:@"DropViewController"];
+    [self addCell:@"滚动视图" class:@"ScrollViewController"];
+    [self addCell:@"微信气泡聊天" class:@"WXPaoPaoViewController"];
+    [self addCell:@"通讯录" class:@"BaseAdressBookViewController"];
+    [self addCell:@"弹出框" class:@"ShowViewController"];
+    [self addCell:@"QQ联系人" class:@"QQListViewController"];
+    //    [self addCell:@"身份证" class:@"IDCardViewController"];
+    //    [self addCell:@"信用卡识别" class:@"BankCardViewController"];
+    //    [self addCell:@"银行卡识别" class:@"BankCartViewController"];
+    //    [self addCell:@"身份证识别" class:@"XLIDScanViewController"];
+    [self addCell:@"手势解锁" class:@"DisassemblyViewController"];
+    [self addCell:@"CEll自适应高度" class:@"ACEViewController"];
+    [self addCell:@"记事本" class:@"DHNoteJoyViewController"];
+    [self addCell:@"水波动画" class:@"WaveProgressViewController"];
+    [self addCell:@"画板" class:@"SmoothLineViewController"];
+    [self addCell:@"游戏" class:@"IndexViewController"];
+    [self addCell:@"自适应列表" class:@"AdaptionListViewController"];
+    [self addCell:@"铃声" class:@"SectionsViewController"];
+    [self addCell:@"iCloud文件" class:@"iCloudViewController"];
+    [self addCell:@"获取健康信息" class:@"HealthViewController"];
+    [self addCell:@"闹铃" class:@"TRViewController"];
+    [self addCell:@"托拽排序" class:@"CustomCollectionViewController"];
+    [self addCell:@"storyboard" class:@"MenuViewController"];
+    [self addCell:@"转盘" class:@"TurntableViewController"];
+    [self addCell:@"block" class:@"LabelMethodBlockSubVC"];
+    [self addCell:@"联网游戏" class:@"Menu"];
+    [self addCell:@"识别相机" class:@"PictureSelectionController"];
+
+    [_collectionView reloadData];
+    
+    _lb_showinfo = [[UILabel alloc]init];
+    _lb_showinfo.backgroundColor = [UIColor brownColor];
+    _lb_showinfo.textColor = [UIColor redColor];
+    _lb_showinfo.font = DH_FontSize(12);
+    _lb_showinfo.layer.borderColor = [UIColor redColor].CGColor;
+    _lb_showinfo.layer.borderWidth = 1.0;
+    _lb_showinfo.frame = CGRectMake(0, DH_DeviceHeight-44-30, DH_DeviceWidth, 25);
+    [self.view addSubview:_lb_showinfo];
+    //    [self scrollerLabel];
 }
+- (void)addCell:(NSString *)title class:(NSString *)className {
+    [self.titles addObject:title];
+    [self.classNames addObject:className];
+}
+
 - (void)playVoiceBackground{
     
     dispatch_queue_t dispatchQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -232,8 +334,30 @@
 //       return [NSString stringWithFormat:@"%4.2f %@",convertedValue, [tokens objectAtIndex:multiplyFactor]];﻿
 //
 //}
-
+- (void)getinternet{
+    MeasurNetTools * meaurNet = [[MeasurNetTools alloc] initWithblock:^(float speed) {
+        NSString* speedStr = [NSString stringWithFormat:@"%@/S", [QBTools formattedFileSize:speed]];
+        NSLog(@"即时速度:speed:%@",speedStr);
+        _lb_showinfo.text = [NSString stringWithFormat:@"即时速度:speed:%@",[DHMainViewController getByteRate]];
+        
+    } finishMeasureBlock:^(float speed) {
+        NSString* speedStr = [NSString stringWithFormat:@"%@/S", [QBTools formattedFileSize:speed]];
+        NSLog(@"平均速度为：%@",speedStr);
+        NSLog(@"相当于带宽：%@",[QBTools formatBandWidth:speed]);
+        _lb_showinfo.text = [NSString stringWithFormat:@"平均速度为： %@---相当于带宽：%@",speedStr,[QBTools formatBandWidth:speed]];
+        
+    } failedBlock:^(NSError *error) {
+        
+    }];
+    [meaurNet startMeasur];
+    
+}
 /*获取网络流量信息*/
++ (NSString *)getByteRate {
+    long long intcurrentBytes = [DHMainViewController getInterfaceBytes];
+    NSString *rateStr = [DHMainViewController formatNetWork:intcurrentBytes];
+    return rateStr;
+}
 + (long long) getInterfaceBytes
 {
     struct ifaddrs *ifa_list = 0, *ifa;
@@ -283,11 +407,7 @@
 }
 
 
-+ (NSString *)getByteRate {
-    long long intcurrentBytes = [DHMainViewController getInterfaceBytes];
-    NSString *rateStr = [DHMainViewController formatNetWork:intcurrentBytes];
-    return rateStr;
-}
+
 
 - (void)developer{
     
@@ -339,23 +459,6 @@
         NSLog(@"获取采样数据 = %@", pedometerData.numberOfSteps);
     }];
     
-    
-    MeasurNetTools * meaurNet = [[MeasurNetTools alloc] initWithblock:^(float speed) {
-        NSString* speedStr = [NSString stringWithFormat:@"%@/S", [QBTools formattedFileSize:speed]];
-        NSLog(@"即时速度:speed:%@",speedStr);
-        _lb_showinfo.text = [NSString stringWithFormat:@"即时速度:speed:%@",speedStr];
-        
-    } finishMeasureBlock:^(float speed) {
-        NSString* speedStr = [NSString stringWithFormat:@"%@/S", [QBTools formattedFileSize:speed]];
-        NSLog(@"平均速度为：%@",speedStr);
-        NSLog(@"相当于带宽：%@",[QBTools formatBandWidth:speed]);
-        _lb_showinfo.text = [NSString stringWithFormat:@"平均速度为： %@---相当于带宽：%@",speedStr,[QBTools formatBandWidth:speed]];
-        
-    } failedBlock:^(NSError *error) {
-        
-    }];
-    [meaurNet startMeasur];
-    
     //    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     //    [button setFrame:CGRectMake(100.0 ,100.0 ,100.0 ,40.0)];
     //    button.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.00];       //背景颜色
@@ -403,97 +506,7 @@
 {
     NSLog(@"- (void)didRuninCurrModelNoArgument");
 }
-- (void)setUPUI{
-    //    self.navigationController.navigationBar.barTintColor = IWColor(255,155,0);
-    //    //设置导航条的背景色
-    //    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    // 监听有物品靠近还是离开
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(proximityStateDidChange) name:UIDeviceProximityStateDidChangeNotification object:nil];
-    [UIDevice currentDevice].proximityMonitoringEnabled = YES;
-    
-    UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
-    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    //    flowLayout.minimumLineSpacing = 0.0;//minimumLineSpacing cell上下之间的距离
-    //    flowLayout.minimumInteritemSpacing = 5.0;//cell左右之间的距离
-    //    flowLayout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, 20);
-    
-    _collectionView=[[UICollectionView alloc] initWithFrame:CGRectMake(15, 0, DH_DeviceWidth-30, DH_DeviceHeight-75) collectionViewLayout:flowLayout];
-    //    _collectionView=[[UICollectionView alloc] init];
-    //    _collectionView.collectionViewLayout = flowLayout;
-    
-    //注册Cell，必须要有
-    [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"GradientCell"];
-    [_collectionView registerClass:[THomeCollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([THomeCollectionViewCell class])];
-    _collectionView.dataSource=self;
-    _collectionView.delegate=self;
-    [_collectionView setBackgroundColor:[UIColor whiteColor]];
-    [self.view addSubview:_collectionView];
-    
-    self.titles = @[].mutableCopy;
-    self.classNames = @[].mutableCopy;
-    
-    [self addCell:@"上下滑动" class:@"ContentOffSetVC"];
-    [self addCell:@"3DTouch" class:@"T3DTouchViewController"];
-    [self addCell:@"二维码" class:@"GKHScanQCodeViewController"];
-    [self addCell:@"凸起菜单栏" class:@"LBTabBarTextController"];
-    [self addCell:@"导航栏" class:@"LSTabBarViewController"];
-    [self addCell:@"签名" class:@"SignatureViewController"];
-    [self addCell:@"动画" class:@"ZLDashboardViewController"];
-    [self addCell:@"咖啡机" class:@"ActionViewController"];
-    [self addCell:@"碰撞球" class:@"TMotionViewController"];
-    [self addCell:@"侧边栏" class:@"TSidebarViewController"];
-    [self addCell:@"购物车" class:@"TShopAnimationViewController"];
-    [self addCell:@"图片滚动" class:@"ScrollImageViewViewController"];
-    [self addCell:@"添加图片" class:@"DHImagePickerViewController"];
-    [self addCell:@"文档" class:@"DocumentViewController"];
-    [self addCell:@"支付密码框" class:@"PayViewController"];
-    [self addCell:@"网络测试" class:@"NetTestViewController"];
-    [self addCell:@"倒计时" class:@"CountdownViewController"];
-    [self addCell:@"菜单栏" class:@"SubparagraphRootViewController"];
-    [self addCell:@"键盘" class:@"CustomKeyBoardViewController"];
-    [self addCell:@"拖拽" class:@"DropViewController"];
-    [self addCell:@"滚动视图" class:@"ScrollViewController"];
-    [self addCell:@"微信气泡聊天" class:@"WXPaoPaoViewController"];
-    [self addCell:@"通讯录" class:@"BaseAdressBookViewController"];
-    [self addCell:@"弹出框" class:@"ShowViewController"];
-    [self addCell:@"QQ联系人" class:@"QQListViewController"];
-    //    [self addCell:@"身份证" class:@"IDCardViewController"];
-    //    [self addCell:@"信用卡识别" class:@"BankCardViewController"];
-    //    [self addCell:@"银行卡识别" class:@"BankCartViewController"];
-    //    [self addCell:@"身份证识别" class:@"XLIDScanViewController"];
-    [self addCell:@"手势解锁" class:@"DisassemblyViewController"];
-    [self addCell:@"CEll自适应高度" class:@"ACEViewController"];
-    [self addCell:@"记事本" class:@"DHNoteJoyViewController"];
-    [self addCell:@"水波动画" class:@"WaveProgressViewController"];
-    [self addCell:@"画板" class:@"SmoothLineViewController"];
-    [self addCell:@"游戏" class:@"IndexViewController"];
-    [self addCell:@"自适应列表" class:@"AdaptionListViewController"];
-    [self addCell:@"铃声" class:@"SectionsViewController"];
-    [self addCell:@"iCloud文件" class:@"iCloudViewController"];
-    [self addCell:@"获取健康信息" class:@"HealthViewController"];
-    [self addCell:@"闹铃" class:@"TRViewController"];
-    [self addCell:@"托拽排序" class:@"CustomCollectionViewController"];
-    [self addCell:@"storyboard" class:@"MenuViewController"];
-    [self addCell:@"转盘" class:@"TurntableViewController"];
-    [self addCell:@"block" class:@"LabelMethodBlockSubVC"];
 
-    [_collectionView reloadData];
-    
-    _lb_showinfo = [[UILabel alloc]init];
-    _lb_showinfo.backgroundColor = [UIColor brownColor];
-    _lb_showinfo.textColor = [UIColor redColor];
-    _lb_showinfo.font = DH_FontSize(12);
-    _lb_showinfo.layer.borderColor = [UIColor redColor].CGColor;
-    _lb_showinfo.layer.borderWidth = 1.0;
-    _lb_showinfo.frame = CGRectMake(0, DH_DeviceHeight-44-30, DH_DeviceWidth, 25);
-    [self.view addSubview:_lb_showinfo];
-    
-    //    [self scrollerLabel];
-}
-- (void)addCell:(NSString *)title class:(NSString *)className {
-    [self.titles addObject:title];
-    [self.classNames addObject:className];
-}
 
 #pragma mark -- UICollectionViewDataSource
 //定义展示的Section的个数

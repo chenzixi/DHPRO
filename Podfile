@@ -1,7 +1,10 @@
 platform :ios, "8.0"
 target "CollegePro" do
 	use_frameworks!
-
+    ## 未来技术发展前沿：
+    ## REACT开发-> https://www.runoob.com/react/react-tutorial.html
+    ## Vue.js
+    ## flutter实战 -> https://flutterchina.club
   pod 'AFNetworking'
   #自动布局界面库
   pod 'Masonry'

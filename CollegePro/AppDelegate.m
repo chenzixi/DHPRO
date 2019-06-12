@@ -53,7 +53,7 @@
     [overlayClass performSelector:NSSelectorFromString(@"prepareDebuggingOverlay")];
     
 #endif
-    
+
     
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
     [SVProgressHUD setMinimumDismissTimeInterval:1.0];
@@ -93,8 +93,6 @@
         [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound   categories:nil]];
     }
     
-    
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Alarm:) name:@"Alarm" object:nil];
     //关闭程序后再通过点击通知打开应用获取userInfo
     //接收通知参数
@@ -103,12 +101,22 @@
     
     NSLog(@"didFinishLaunchingWithOptions:The userInfo is %@.",userInfo);
     
-    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[DHGuidepageViewController alloc] init]];
     
     [self.window makeKeyWindow];
     // Override point for customization after application launch.
+    return YES;
+}
+// 宿主应用
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    // 处理跳转逻辑
+    NSString *absStr = url.absoluteString;
+    if ([absStr hasPrefix:@"TodayExtension"]) {
+        NSArray *titleArr = @[@"帮助",@"反馈",@"个人信息",@"客服",@"设置"];
+        NSInteger index = [[absStr substringFromIndex:absStr.length -1] integerValue];
+        NSLog(@"用户点击了----%@",titleArr[index]);
+    }
     return YES;
 }
 #pragma mark -激活状态
@@ -558,8 +566,9 @@
         [self addLocalNotification];
     }
 }
-//获取当前屏幕显示的viewcontroller
 
+
+//获取当前屏幕显示的viewcontroller
 - (UIViewController *)getCurrentVC
 {
     UIViewController *result = nil;

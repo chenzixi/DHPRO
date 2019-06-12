@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 typedef void (^ReturnTextBlock)(NSString *showText);
 
-@interface LabelMethodBlockVC : UIViewController
+@interface LabelMethodBlockVC : BaseViewController
 @property (nonatomic, copy) ReturnTextBlock returnTextBlock;
 
 @end

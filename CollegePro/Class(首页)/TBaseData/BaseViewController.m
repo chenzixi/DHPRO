@@ -17,7 +17,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.view.backgroundColor = [UIColor whiteColor];
-    // Do any additional setup after loading the view.
+//    [[NSNotificationCenter defaultCenter]addObserver:selfselector:@selector(goDengLu:)name:@"ActionD"object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(goDengLu:) name:@"ActionD" object:nil];
+}
+- (void)goDengLu:(NSNotification *)notification {
+    NSLog(@"通知事件 %@",[notification object]);
 }
 - (void)setBackItem {
 	[self setBackItemAction:nil];
@@ -84,10 +88,30 @@
 	UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
 	return backItem;
 }
-
+//关闭页面
+- (void)closeCurruntPage
+{
+    if (self.navigationController) {
+        if (self.navigationController.viewControllers.count == 1) {
+            [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+        }else{
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }else{
+        [self dismissViewControllerAnimated:NO completion:nil];
+    }
+}
 -(void)popBack{
 	
 	[self.navigationController popViewControllerAnimated:YES];
+}
+#pragma mark - system watches
+
+- (void)dealloc
+{
+#ifdef DEBUG
+    NSLog(@"%@  dealloc",NSStringFromClass(self.class));
+#endif
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

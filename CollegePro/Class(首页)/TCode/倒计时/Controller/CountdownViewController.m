@@ -10,7 +10,7 @@
 
 @interface CountdownViewController ()
 {
-	__block dispatch_source_t _timer;
+	 __block dispatch_source_t _timer;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
@@ -39,7 +39,7 @@
 	NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
 	[dateFormatter setDateFormat:@"yyyy-MM-dd"];
 	
-	NSDate *endDate = [dateFormatter dateFromString:@"2019-02-04"];
+	NSDate *endDate = [dateFormatter dateFromString:@"2020-01-24"];
 	NSDate *endDate_tomorrow = [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:([endDate timeIntervalSinceReferenceDate] + 24*3600)];
 	NSDate *startDate = [NSDate date];
 	NSTimeInterval timeInterval =[endDate_tomorrow timeIntervalSinceDate:startDate];

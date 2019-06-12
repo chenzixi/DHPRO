@@ -16,9 +16,7 @@
 
 #import "JHDownButton.h"
 
-#import "Persion.h"
-#import "KYDog.h"
-#import "SFTextView.h"
+
 
 #define UIColorRGB(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0]
 
@@ -32,12 +30,6 @@
 }
 @property (nonatomic ,strong)MaskView *maskView;
 @property(nonatomic,strong) JHDownButton *button;
-
-@property(nonatomic, strong)SFTextView *textF;
-
-@property (nonatomic, strong) KYUser *user;
-
-@property(nonatomic,strong)Persion* p;
 
 @property (nonatomic ,strong) UIButton *_btn;
 
@@ -89,22 +81,232 @@
 	
 	self.view.backgroundColor = [UIColor whiteColor];
 
-//    [self setUPUI];
-//    [self creatAutoLayout];
-    [self alert];
-    [self testDataN];//KVO进阶
-
-    self.user = [[KYUser alloc] init];
-    self.user.dog = [[KYDog alloc] init];
-    self.user.dog.age = 12;
-    self.user.dog.name = @"大大";
-    self.user.userId = @"35325";
-    // MRC下
-    Persion *test = [[Persion alloc] init];
-    [test test];
+//    [self createAnimation];
+    [self creatAutoLayout];
+//遍历
+//    [self getSub:self.view andLevel:1];
+//    [self testDataP];
+//    [self alert];
     //    [test exampleB];
 //    [self controil];//定制按钮
-    [self cres];
+//    [self cres];
+}
+static UILabel *labelLay;
+- (void)creatAutoLayout{
+    UIView *customerView = [[UIView alloc]init];
+    customerView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:customerView];
+    UILabel *labelLay = [[UILabel alloc]init];
+    labelLay.backgroundColor = [UIColor blueColor];
+    labelLay.textColor = [UIColor blackColor];
+    [customerView addSubview:labelLay];
+    
+    [customerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        //        make.top.mas_equalTo(100);
+        //        make.height.mas_equalTo(20);
+        //        make.size.mas_equalTo(CGSizeMake(50, 100));
+        //        make.edges.mas_equalTo(UIEdgeInsetsMake(10, 0, 10, 0));
+        //        make.left.mas_equalTo(self.view).mas_offset(UIEdgeInsetsMake(10, 0, 10, 0));
+        if (@available(iOS 11.0, *)) {
+            make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop).offset(1);;
+            make.left.equalTo(self.view.mas_safeAreaLayoutGuideLeft).offset(30);;
+            make.right.equalTo(self.view.mas_safeAreaLayoutGuideRight).offset(-30);;
+            make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom).offset(-45);;
+            
+        } else {
+            // Fallback on earlier versions
+        }
+        
+    }];
+    [labelLay mas_makeConstraints:^(MASConstraintMaker *make) {
+        if (@available(iOS 11.0, *)) {
+            //            make.top.equalTo(customerView.mas_top).offset(30);// 和父视图顶部间距30
+            //            make.left.equalTo(customerView.mas_left).offset(30);// 和父视图左边间距30
+            //            make.bottom.equalTo(customerView.mas_bottom).offset(-30);// 和父视图底部间距30
+            //            make.right.equalTo(customerView.mas_right).offset(-30);// 和父视图右边间距30
+            
+            
+            //        make.edges.equalTo(customerView).with.insets(UIEdgeInsetsMake(0, 30, 30, 30));//edges边缘的意思
+            //            make.size.mas_equalTo(CGSizeMake(300, 300));
+            //            make.center.equalTo(customerView);
+            //            make.size.mas_equalTo(customerView).offset(-20);
+            //            make.left.top.mas_equalTo(customerView).offset(20);
+            //            make.right.bottom.mas_equalTo(customerView).offset(-20);
+            
+            make.centerY.mas_equalTo(customerView.mas_centerY);
+            //            make.top.equalTo(customerView.mas_top).offset(-15);
+            make.left.equalTo(customerView.mas_left).offset(10);
+            make.right.equalTo(customerView.mas_right).offset(-10);
+            make.height.mas_equalTo(150);
+            //            make.width.equalTo(customerView);
+            
+            
+            
+            //            make.size.equalTo(customerView).offset(-20);
+            //            make.left.bottom.and.right.equalTo(self.view).with.insets(UIEdgeInsetsMake(0, 30, 30, 30));
+            //            make.size.mas_equalTo(CGSizeMake(300, 300));
+            //            make.center.equalTo(self.view);
+            //            make.size.mas_equalTo(self.view).offset(-20);
+            //            make.size.equalTo(self.view).offset(-20);
+            //            make.centerX.equalTo(self.view.mas_centerX);
+            //            make.centerY.equalTo(self.view.mas_centerY);
+        }
+    }];
+    [labelLay layoutIfNeeded];
+    NSLog(@"labelLay <%.2f>-<%.2f>\n\t-<%.2f>-<%.2f>",labelLay.frame.origin.x,labelLay.frame.origin.y,labelLay.frame.size.width,labelLay.frame.size.height);
+    
+    NSString *detailText = @"审核时间创建一个可变属性字符串";
+    // 创建一个可变属性字符串
+    NSMutableAttributedString *finalStr = [[NSMutableAttributedString alloc] init];
+    NSAttributedString *nameTitle = [[NSAttributedString alloc] initWithString:[detailText substringToIndex:4] attributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:16], NSForegroundColorAttributeName: UIColorRGB(47, 56, 86)}];
+    NSAttributedString *nameDetail = [[NSAttributedString alloc] initWithString:[detailText substringFromIndex:4] attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:16], NSForegroundColorAttributeName: UIColorRGB(94, 99, 123)}];
+    // 拼接上两个字符串
+    [finalStr appendAttributedString:nameTitle];
+    [finalStr appendAttributedString:nameDetail];
+    
+    NSAttributedString *space = [[NSAttributedString alloc] initWithString:@"  " attributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:16], NSForegroundColorAttributeName: UIColorRGB(47, 56, 86)}];
+    
+    [finalStr insertAttributedString:space atIndex:4];
+    labelLay.attributedText = finalStr;
+    
+    //    UIView *light = [UIView new];
+    //    light.backgroundColor = [UIColor lightGrayColor];
+    //    [customerView  addSubview:light];
+    //    [light mas_makeConstraints:^(MASConstraintMaker *make) {
+    //        // 顶部距离父视图centerY为10
+    //        make.top.equalTo(labelLay.mas_centerY).mas_equalTo(-10);
+    //        // 左右和高度与w相同
+    //        make.right.and.height.equalTo(labelLay);
+    //        make.left.equalTo(labelLay.mas_left).offset(10);
+    //
+    //    }];
+    //    [light layoutIfNeeded];
+    //    NSLog(@"light <%.2f>-<%.2f>\n\t-<%.2f>-<%.2f>",light.frame.origin.x,light.frame.origin.y,light.frame.size.width,light.frame.size.height);
+    /*
+     
+     
+     UIView *container = [UIView new];
+     [customerView addSubview:container];
+     [container mas_makeConstraints:^(MASConstraintMaker *make) {
+     make.edges.equalTo(customerView);
+     make.width.equalTo(customerView);
+     }];
+     
+     int count = 20;
+     UIView *lastView = nil;
+     
+     for (int i = 0; i <= count; i++) {
+     UIView *subView = [UIView new];
+     [container addSubview:subView];
+     subView.backgroundColor = [UIColor colorWithHue:( arc4random() % 256 / 256.0 )saturation:( arc4random() % 128 / 256.0 ) + 0.5 brightness:( arc4random() % 128 / 256.0 ) + 0.5 alpha:1];
+     [subView mas_makeConstraints:^(MASConstraintMaker *make) {
+     make.left.and.right.equalTo(container);
+     make.height.mas_equalTo(@(20 * i));
+     if (lastView) {
+     // lastView存在时 以其底部为下一个view的顶部
+     make.top.mas_equalTo(lastView.mas_bottom);
+     } else {
+     // lastView不存在时 以父视图的顶部为基准
+     make.top.mas_equalTo(container.mas_top);
+     }
+     }];
+     lastView = subView;
+     }
+     
+     [container mas_makeConstraints:^(MASConstraintMaker *make) {
+     make.bottom.equalTo(lastView.mas_bottom);
+     }];
+     
+     
+     
+     UIButton *_stateButton;
+     _stateButton = [UIButton buttonWithType:UIButtonTypeCustom];
+     //    _stateButton.frame = CGRectMake(30, 70, 100, 40);
+     _stateButton.titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:14];
+     _stateButton.backgroundColor = [UIColor yellowColor];
+     
+     //        _stateButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+     //    _stateButton.layer.cornerRadius = 12.0;
+     _stateButton.layer.borderColor = [UIColor redColor].CGColor;
+     _stateButton.layer.borderWidth = 1.0;
+     [_stateButton setTitle:@"待复查" forState:UIControlStateNormal];
+     [_stateButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+     [self.view addSubview:_stateButton];
+     
+     [_stateButton mas_makeConstraints:^(MASConstraintMaker *make) {
+     make.left.mas_offset(15);
+     make.top.mas_offset(100);
+     make.height.mas_offset(20);
+     
+     }];
+     //    [_stateButton layoutIfNeeded];ic_fast_order
+     //切指定方向圆角(左上和左下)
+     UIBezierPath * maskPath = [UIBezierPath bezierPathWithRoundedRect:_stateButton.bounds byRoundingCorners:UIRectCornerBottomLeft|UIRectCornerTopLeft cornerRadii:CGSizeMake(10, 10)];
+     CAShapeLayer * maskLayer = [[CAShapeLayer alloc]init];
+     maskLayer.frame = _stateButton.bounds;
+     maskLayer.path = maskPath.CGPath;
+     _stateButton.layer.mask = maskLayer;
+     _stateButton.clipsToBounds = YES;
+     
+     */
+    //当底部为两个按钮时
+    UIButton *buttonleft = [UIButton buttonWithType:UIButtonTypeCustom];
+    [buttonleft setFrame:CGRectMake(0.0 ,0.0 ,DH_DeviceWidth ,44.0)];
+    [buttonleft setTitle:@"重新整改" forState:(UIControlStateNormal)];
+    buttonleft.backgroundColor = [UIColor blueColor];
+    buttonleft.titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Bold" size: 18];
+    [self.view addSubview:buttonleft];
+    
+    UIButton *buttonright = [UIButton buttonWithType:UIButtonTypeCustom];
+    [buttonright setFrame:CGRectMake(0.0 ,0.0 ,DH_DeviceWidth ,44.0)];
+    [buttonright setTitle:@"通过" forState:(UIControlStateNormal)];
+    buttonright.backgroundColor = [UIColor greenColor];
+    buttonright.titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Bold" size: 18];
+    [self.view addSubview:buttonright];
+    [buttonleft mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view);
+        make.right.equalTo(buttonright.mas_left);
+        make.bottom.equalTo(self.view.mas_bottom);
+        /**
+         *  长宽相等 注意，这里不能用 make.height.equalTo(make.width);
+         */
+        //        make.height.equalTo(buttonleft.mas_width); /// 约束长度等于宽度
+        make.width.equalTo(buttonright.mas_width);
+        make.height.offset(44);
+    }];
+    [buttonright mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.view);
+        make.height.equalTo(buttonleft.mas_height);
+        make.bottom.equalTo(self.view.mas_bottom);
+    }];
+    
+    //    [self cres];
+    /*
+     //前面三个
+     [string substringToIndex:3]
+     //从第三个之后的四个
+     [string substringWithRange:NSMakeRange(3,4)]
+     //第七个之后的所有
+     [string substringFromIndex:7]
+     */
+    
+    //    [self clickBtn];
+    //    [self setupUI2];
+    //    [self initTopView];
+    //横排的时候要相应设置控件数组的垂直约束，竖排的时候要相应设置控件数字的水平约束。
+    //    [self test_masonry_vertical_fixItemWidth];
+    //    [self test_masonry_vertical_fixSpace];
+    //    [self test_masonry_horizontal_fixItemWidth];
+    //    [self test_masonry_horizontal_fixSpace];
+    //    宽度不够时
+    //    [label setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+    //    宽度足够时
+    //    [label setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+    
+    //    backgroundView *vire = [backgroundView sureGuideView];
+    //
+    //    [self.view addSubview:vire];
+    
 }
 static BOOL btnSelected;
 - (void)controil{
@@ -126,7 +328,7 @@ static BOOL btnSelected;
 
     }
 }
-- (void)setUPUI{
+- (void)createAnimation{
 	//http://blog.csdn.net/iosevanhuang/article/details/14488239
 	mainImageView = [[UIImageView alloc]init];
 //	mainImageView.animationImages =[NSArray arrayWithObjects:[UIImage imageNamed:@"超级球"],[UIImage imageNamed:@"大师球"],[UIImage imageNamed:@"高级球"],nil];
@@ -181,28 +383,6 @@ static BOOL btnSelected;
 //		}
 //		animation.values = array;
 //		[mainImageView.layer addAnimation:animation forKey:nil];
-	
-	
-//	UILabel *labelName1 = [[UILabel alloc] initWithFrame:CGRectMake(100, 100, 10, 10)];
-//	labelName1.backgroundColor = [UIColor redColor];       //背景颜色
-//	[self.view addSubview:labelName1];
-//	
-
-//	UILabel *labelName2 = [[UILabel alloc] initWithFrame:CGRectMake(300, 200, 10, 10)];
-//	labelName2.backgroundColor = [UIColor redColor];       //背景颜色
-//	[self.view addSubview:labelName2];
-//
-//	
-//	UILabel *labelName3 = [[UILabel alloc] initWithFrame:CGRectMake(250, self.view.frame.size.height-80, 10, 10)];
-//	labelName3.backgroundColor = [UIColor redColor];       //背景颜色
-//	[self.view addSubview:labelName3];
-//	
-//	UILabel *labelName4 = [[UILabel alloc] initWithFrame:CGRectMake(50, 300, 10, 10)];
-//	labelName4.backgroundColor = [UIColor redColor];       //背景颜色
-//	[self.view addSubview:labelName4];
-	
-	
-	
 //	CALayer *layer = [mainImageView layer];
 //	layer.position = CGPointMake(100,100); //a 点
 //	mainImageView.layer.position = CGPointMake(100,100);
@@ -396,206 +576,28 @@ static BOOL btnSelected;
 //    CGFloat offsetY = scrollView.contentOffset.y;
 
 }
-static UILabel *labelLay;
-- (void)creatAutoLayout{
-    UIView *customerView = [[UIView alloc]init];
-    customerView.backgroundColor = [UIColor redColor];
-    [self.view addSubview:customerView];
-    UILabel *labelLay = [[UILabel alloc]init];
-    labelLay.backgroundColor = [UIColor blueColor];
-    [customerView addSubview:labelLay];
+// 递归获取子视图
+- (void)getSub:(UIView *)view andLevel:(int)level {
+    NSArray *subviews = [view subviews];
     
-    [customerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        //        make.top.mas_equalTo(100);
-        //        make.height.mas_equalTo(20);
-        //        make.size.mas_equalTo(CGSizeMake(50, 100));
-        //        make.edges.mas_equalTo(UIEdgeInsetsMake(10, 0, 10, 0));
-        //        make.left.mas_equalTo(self.view).mas_offset(UIEdgeInsetsMake(10, 0, 10, 0));
-        if (@available(iOS 11.0, *)) {
-            make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop).offset(30);;
-            make.left.equalTo(self.view.mas_safeAreaLayoutGuideLeft).offset(30);;
-            make.right.equalTo(self.view.mas_safeAreaLayoutGuideRight).offset(-30);;
-            make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom).offset(-30);;
-            
-        } else {
-            // Fallback on earlier versions
-        }
- 
-    }];
-    [labelLay mas_makeConstraints:^(MASConstraintMaker *make) {
-        if (@available(iOS 11.0, *)) {
-//            make.top.equalTo(customerView.mas_top).offset(30);// 和父视图顶部间距30
-//            make.left.equalTo(customerView.mas_left).offset(30);// 和父视图左边间距30
-//            make.bottom.equalTo(customerView.mas_bottom).offset(-30);// 和父视图底部间距30
-//            make.right.equalTo(customerView.mas_right).offset(-30);// 和父视图右边间距30
-            
-            
-//        make.edges.equalTo(customerView).with.insets(UIEdgeInsetsMake(0, 30, 30, 30));//edges边缘的意思
-//            make.size.mas_equalTo(CGSizeMake(300, 300));
-//            make.center.equalTo(customerView);
-//            make.size.mas_equalTo(customerView).offset(-20);
-//            make.left.top.mas_equalTo(customerView).offset(20);
-//            make.right.bottom.mas_equalTo(customerView).offset(-20);
-
-            make.centerY.mas_equalTo(customerView.mas_centerY);
-            make.left.equalTo(customerView.mas_left).offset(10);
-            make.right.equalTo(customerView).offset(-10);
-            make.height.mas_equalTo(150);
-            make.width.equalTo(customerView);
-
-            
-            
-//            make.size.equalTo(customerView).offset(-20);
-            //            make.left.bottom.and.right.equalTo(self.view).with.insets(UIEdgeInsetsMake(0, 30, 30, 30));
-            //            make.size.mas_equalTo(CGSizeMake(300, 300));
-            //            make.center.equalTo(self.view);
-            //            make.size.mas_equalTo(self.view).offset(-20);
-            //            make.size.equalTo(self.view).offset(-20);
-            //            make.centerX.equalTo(self.view.mas_centerX);
-            //            make.centerY.equalTo(self.view.mas_centerY);
-        }
-    }];
-    [labelLay layoutIfNeeded];
-    NSLog(@"labelLay <%.2f>-<%.2f>\n\t-<%.2f>-<%.2f>",labelLay.frame.origin.x,labelLay.frame.origin.y,labelLay.frame.size.width,labelLay.frame.size.height);
+    // 如果没有子视图就直接返回
+    if ([subviews count] == 0) return;
     
-    UIView *light = [UIView new];
-    light.backgroundColor = [UIColor lightGrayColor];
-    [customerView  addSubview:light];
-    [light mas_makeConstraints:^(MASConstraintMaker *make) {
-        // 顶部距离父视图centerY为10
-        make.top.equalTo(labelLay.mas_centerY).mas_equalTo(-10);
-        // 左右和高度与w相同
-        make.right.and.height.equalTo(labelLay);
-        make.left.equalTo(labelLay.mas_left).offset(10);
-
-    }];
-    [light layoutIfNeeded];
-    NSLog(@"light <%.2f>-<%.2f>\n\t-<%.2f>-<%.2f>",light.frame.origin.x,light.frame.origin.y,light.frame.size.width,light.frame.size.height);
-    
-    
-    
-    UIView *container = [UIView new];
-    [customerView addSubview:container];
-    [container mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(customerView);
-        make.width.equalTo(customerView);
-    }];
-    
-    int count = 20;
-    UIView *lastView = nil;
-    
-    for (int i = 0; i <= count; i++) {
-        UIView *subView = [UIView new];
-        [container addSubview:subView];
-        subView.backgroundColor = [UIColor colorWithHue:( arc4random() % 256 / 256.0 )saturation:( arc4random() % 128 / 256.0 ) + 0.5 brightness:( arc4random() % 128 / 256.0 ) + 0.5 alpha:1];
-        [subView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.and.right.equalTo(container);
-            make.height.mas_equalTo(@(20 * i));
-            if (lastView) {
-                // lastView存在时 以其底部为下一个view的顶部
-                make.top.mas_equalTo(lastView.mas_bottom);
-            } else {
-                // lastView不存在时 以父视图的顶部为基准
-                make.top.mas_equalTo(container.mas_top);
-            }
-        }];
-        lastView = subView;
-    }
-    
-    [container mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(lastView.mas_bottom);
-    }];
-    
-    
-    
-    UIButton *_stateButton;
-    _stateButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    _stateButton.frame = CGRectMake(30, 70, 100, 40);
-    _stateButton.titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:14];
-    _stateButton.backgroundColor = [UIColor yellowColor];
-    
-    //        _stateButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-//    _stateButton.layer.cornerRadius = 12.0;
-    _stateButton.layer.borderColor = [UIColor redColor].CGColor;
-    _stateButton.layer.borderWidth = 1.0;
-    [_stateButton setTitle:@"待复查" forState:UIControlStateNormal];
-    [_stateButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [self.view addSubview:_stateButton];
-
-    [_stateButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_offset(15);
-        make.top.mas_offset(100);
-        make.height.mas_offset(20);
+    for (UIView *subview in subviews) {
         
-    }];
-//    [_stateButton layoutIfNeeded];ic_fast_order
-    //切指定方向圆角(左上和左下)
-    UIBezierPath * maskPath = [UIBezierPath bezierPathWithRoundedRect:_stateButton.bounds byRoundingCorners:UIRectCornerBottomLeft|UIRectCornerTopLeft cornerRadii:CGSizeMake(10, 10)];
-    CAShapeLayer * maskLayer = [[CAShapeLayer alloc]init];
-    maskLayer.frame = _stateButton.bounds;
-    maskLayer.path = maskPath.CGPath;
-    _stateButton.layer.mask = maskLayer;
-    _stateButton.clipsToBounds = YES;
-    
-    
-    //当底部为两个按钮时
-    UIButton *buttonleft = [UIButton buttonWithType:UIButtonTypeCustom];
-    [buttonleft setFrame:CGRectMake(0.0 ,0.0 ,DH_DeviceWidth ,44.0)];
-    [buttonleft setTitle:@"重新整改" forState:(UIControlStateNormal)];
-    buttonleft.backgroundColor = [UIColor blueColor];
-    buttonleft.titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Bold" size: 18];
-    [self.view addSubview:buttonleft];
-    
-    UIButton *buttonright = [UIButton buttonWithType:UIButtonTypeCustom];
-    [buttonright setFrame:CGRectMake(0.0 ,0.0 ,DH_DeviceWidth ,44.0)];
-    [buttonright setTitle:@"通过" forState:(UIControlStateNormal)];
-    buttonright.backgroundColor = [UIColor greenColor];
-    buttonright.titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Bold" size: 18];
-    [self.view addSubview:buttonright];
-    [buttonleft mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view);
-        make.right.equalTo(buttonright.mas_left);
-        make.bottom.equalTo(self.view.mas_bottom);
-        /**
-         *  长宽相等 注意，这里不能用 make.height.equalTo(make.width);
-         */
-//        make.height.equalTo(buttonleft.mas_width); /// 约束长度等于宽度
-        make.width.equalTo(buttonright.mas_width);
-        make.height.offset(44);
-    }];
-    [buttonright mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.view);
-        make.height.equalTo(buttonleft.mas_height);
-        make.bottom.equalTo(self.view.mas_bottom);
-    }];
-
-//    [self cres];
-    /*
-     //前面三个
-     [string substringToIndex:3]
-     //从第三个之后的四个
-     [string substringWithRange:NSMakeRange(3,4)]
-     //第七个之后的所有
-     [string substringFromIndex:7]
-     */
-    
-//    [self clickBtn];
-//    [self setupUI2];
-//    [self initTopView];
-//横排的时候要相应设置控件数组的垂直约束，竖排的时候要相应设置控件数字的水平约束。
-//    [self test_masonry_vertical_fixItemWidth];
-//    [self test_masonry_vertical_fixSpace];
-//    [self test_masonry_horizontal_fixItemWidth];
-//    [self test_masonry_horizontal_fixSpace];
-//    宽度不够时
-//    [label setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
-//    宽度足够时
-//    [label setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
-
-//    backgroundView *vire = [backgroundView sureGuideView];
-//
-//    [self.view addSubview:vire];
-
+        // 根据层级决定前面空格个数，来缩进显示
+        NSString *blank = @"";
+        for (int i = 1; i < level; i++) {
+            blank = [NSString stringWithFormat:@"  %@", blank];
+        }
+        
+        // 打印子视图类名
+        NSLog(@"打印子视图类名-%@%d: %@", blank, level, subview.class);
+        
+        // 递归获取此视图的子视图
+        [self getSub:subview andLevel:(level+1)];
+        
+    }
 }
 static UIView *maskView;
 - (void)alert{
@@ -607,10 +609,10 @@ static UIView *maskView;
 //    [button addTarget:self action:@selector(submit:) forControlEvents:(UIControlEventTouchUpInside)];
 //    button.backgroundColor = [UIColor whiteColor];
 //    [self.view addSubview:button];
-    ShowAnimationView *vire = [[ShowAnimationView alloc]init];
-    vire.backgroundColor = [UIColor blackColor];
-    vire.frame = CGRectMake(0, 100, DH_DeviceWidth, DH_DeviceHeight);
-    [vire showView];
+//    ShowAnimationView *vire = [[ShowAnimationView alloc]init];
+//    vire.backgroundColor = [UIColor blackColor];
+//    vire.frame = CGRectMake(0, 100, DH_DeviceWidth, DH_DeviceHeight);
+//    [vire showView];
 //    [self.view addSubview:vire];
 //    maskView=[[UIView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, DH_DeviceHeight)];
 //    maskView.hidden = YES;
@@ -812,106 +814,7 @@ static UIView *maskView;
     }];
     
 }
-static UILabel *myLabel;
-- (void)testDataN{
-    
-    /**KVO 高级用法
-     doubleValue.intValue double转Int类型
-     uppercaseString 小写变大写
-     length 求各个元素的长度
-     数学元素 @sum.self  @avg.self @max.self @min.self  @distinctUnionOfObjects.self(过滤)
-     
-     >>KVC setter方法
-     通过setValue:forKeyPath:设置UI控件的属性：
-     
-     [self.label setValue:[UIColor greenColor] forKeyPath:@"textColor"];
-     [self.button setValue:[UIColor orangeColor] forKeyPath:@"backgroundColor"];
-     [self.textField setValue:[UIColor redColor] forKeyPath:@"_placeholderLabel.textColor"];
-     
-     */
-    
-    NSDictionary *dataSource = @[@{@"name":@"mike", @"sex":@"man", @"age":@"12"},
-                                 @{@"name":@"jine", @"sex":@"women", @"age":@"10"},
-                                 @{@"name":@"marry", @"sex":@"women", @"age":@"12"},
-                                 @{@"name":@"mike", @"sex":@"man", @"age":@"11"},
-                                 @{@"name":@"selly", @"sex":@"women", @"age":@"12"}];
-    //KVC keyPath的getter方法：
-    NSLog(@"name = %@",[dataSource valueForKeyPath:@"name"]);
-    NSArray *array1 = @[@"apple",@"banana",@"pineapple",@"orange"];
-    NSLog(@"%@",[array1 valueForKeyPath:@"uppercaseString"]);
-    
-    NSLog(@"filterName = %@",[dataSource valueForKeyPath:@"@distinctUnionOfObjects.sex"]);
-    
-    
-    // 1、添加KVO监听
-    //NSKeyValueObservingOptionInitial 观察最初的值 在注册观察服务时会调用一次
-    //NSKeyValueObservingOptionPrior 分别在被观察值的前后触发一次 一次修改两次触发
-    [self.user addObserver:self forKeyPath:@"dog.name" options:NSKeyValueObservingOptionNew context:nil];
-    
-    myLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 150, 100, 30 )];
-    myLabel.textColor = [UIColor redColor];
-    myLabel.text = self.user.dog.name;
-    //    myLabel.text = [self.user.dog valueForKeyPath:@"name"];
-    [self.view addSubview:myLabel];
-    
-}
-////  3秒钟后改变当前button的enabled状态
-//dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//    self.button.enabled = YES;
-//});
 
-// 返回一个容器，里面放字符串类型，监听容器中的属性
-+ (NSSet<NSString *> *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
-    NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-    if ([key isEqualToString:@"dog"]) {
-        NSArray *arr = @[@"_dog.name", @"_dog.age"];
-        keyPaths = [keyPaths setByAddingObjectsFromArray:arr];
-    }
-    return keyPaths;
-}
-
-// 2、接收监听
-/**
- KVO 必须实现
- 
- @param keyPath 被观察的属性
- @param object 被观察对象
- @param change 添加监听时传过来的上下文信息
- @param context 字典，keys有以下五种：
- */
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    NSLog(@"--------------%@",change);
-    NSLog(@"%@", keyPath);
-    NSLog(@"%@", object);
-    /*
-     NSKeyValueChangeNewKey;新值
-     NSKeyValueChangeOldKey;旧值
-     NSKeyValueChangeIndexesKey;观察容器属性时会返回的索引值
-     NSKeyValueChangeKindKey;
-     
-     NSKeyValueChangeSetting = 1 赋值 SET
-     NSKeyValueChangeInsertion = 2 插入 insert
-     NSKeyValueChangeRemoval = 3 移除 remove
-     NSKeyValueChangeReplacement = 4 替换 replace
-     
-     */
-    //    NSKeyValueChangeNotificationIsPriorKey
-    NSLog(@"%@", change[NSKeyValueChangeNewKey]);
-    NSLog(@"%@", (__bridge id)(context));
-    myLabel.text = [self.user.dog valueForKeyPath:@"name"];
-    
-    //else   若当前类无法捕捉到这个KVO，那很有可能是在他的superClass，或者super-superClass...中
-    //    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-    
-}
-// 3、触发修改属性值
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    self.user.userId = @"123456789";
-    //    self.user.dog.name = @"肖";
-    self.user.dog.age = 15;
-    [self.user.dog setValue:@"20.0" forKey:@"name"];
-    
-}
 
 -(NSString *)inputValue:(NSString *)str{
     
@@ -985,8 +888,12 @@ static  UILabel *label;
     label1.backgroundColor = [UIColor yellowColor];
     [self.view addSubview:label1];
     
-    NSString * string = [NSString stringWithFormat:@"您的号码是%@号",@"3"];
-    label1.attributedText = [self paramWithStr:string Range:NSMakeRange(5, 1)];
+    NSString * string = [NSString stringWithFormat:@"您的号码是%@号",@"43"];
+//    label1.attributedText = [self paramWithStr:string Range:NSMakeRange(5, 1)];
+    //整改项数量 显示配置
+
+    NSCharacterSet *nonDigitCharacterSet = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+    label1.attributedText = [self paramWithStr:string Range:NSMakeRange(5, [[string componentsSeparatedByCharactersInSet:nonDigitCharacterSet] componentsJoinedByString:@""].length)];
     
 }
 /*
