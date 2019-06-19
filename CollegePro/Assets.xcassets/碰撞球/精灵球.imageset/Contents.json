@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "精灵球.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "精灵球.png",
       "scale" : "2x"
     },
     {

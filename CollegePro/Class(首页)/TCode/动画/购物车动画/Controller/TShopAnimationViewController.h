@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TShopAnimationViewController : UIViewController
+@interface TShopAnimationViewController : BaseViewController
 
 @end

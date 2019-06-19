@@ -125,7 +125,7 @@
 - (UIButton *)getButtonWithMenu:(XHMenu *)menu {
     CGSize buttonSize = [menu.title sizeWithFont:menu.titleFont constrainedToSize:CGSizeMake(MAXFLOAT, CGRectGetHeight(self.bounds) - 10) lineBreakMode:NSLineBreakByCharWrapping];
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, buttonSize.width, buttonSize.height)];
-    button.titleLabel.textAlignment = UITextAlignmentCenter;
+    button.titleLabel.textAlignment = NSTextAlignmentCenter;
     button.titleLabel.font = menu.titleFont;
     [button setTitle:menu.title forState:UIControlStateNormal];
     [button setTitle:menu.title forState:UIControlStateHighlighted];

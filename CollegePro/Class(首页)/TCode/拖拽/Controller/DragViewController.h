@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DragViewController : UIViewController
+@interface DragViewController : BaseViewController
 
 @end

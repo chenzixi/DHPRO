@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZLDashboardViewController : UIViewController
+@interface ZLDashboardViewController : BaseViewController
 
 @end

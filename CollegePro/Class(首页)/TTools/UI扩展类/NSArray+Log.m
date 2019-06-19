@@ -28,7 +28,7 @@
     }];
     
     [strM appendString:@"}\n"];
-    
+    //[[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:self options:NSJSONWritingPrettyPrinted error:nil] encoding:NSUTF8StringEncoding]
     return strM;
 }
 

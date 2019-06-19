@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TGuideMViewController : UIViewController
+@interface TGuideMViewController : BaseViewController
 
 @end

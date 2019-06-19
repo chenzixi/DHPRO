@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SmoothLineViewController : UIViewController
+@interface SmoothLineViewController : BaseViewController
 
 @end

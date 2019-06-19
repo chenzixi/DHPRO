@@ -24,7 +24,7 @@
 {
 	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 	UISegmentedControl * bgS = (UISegmentedControl *) sender;
-	int selectedSegment = bgS.selectedSegmentIndex;
+	int selectedSegment = (int)bgS.selectedSegmentIndex;
 	
 	[defaults setInteger: selectedSegment forKey: @"BG Control"];
 	[defaults synchronize];

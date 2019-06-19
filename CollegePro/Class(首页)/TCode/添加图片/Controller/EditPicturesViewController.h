@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EditPicturesViewController : UIViewController
+@interface EditPicturesViewController : BaseViewController
 @property (nonatomic ,strong)NSMutableArray * imageArray;
 @property (assign ,nonatomic)NSInteger integer;
 @property (nonatomic ,strong)NSMutableArray * selectedAssets;

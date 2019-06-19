@@ -20,7 +20,7 @@ static CGFloat CellMarginY = 10.0f;
 {
     UICollectionView *_collectionView;
     //被拖拽的item
-    ZQVariableMenuCell *_dragingItem;
+    __block ZQVariableMenuCell *_dragingItem;
     //正在拖拽的indexpath
     NSIndexPath *_dragingIndexPath;
     //目标位置

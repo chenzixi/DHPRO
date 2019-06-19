@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QQListViewController : UIViewController
+@interface QQListViewController : BaseViewController
 
 @end

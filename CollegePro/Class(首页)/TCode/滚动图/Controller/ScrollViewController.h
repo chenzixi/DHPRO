@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ScrollViewController : UIViewController
+@interface ScrollViewController : BaseViewController
 
 @end

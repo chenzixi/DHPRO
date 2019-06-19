@@ -16,4 +16,7 @@
 - (BOOL)isUpdate;
 //截屏
 - (void)screenshot;
+//touch功能展示
+- (void)touch3D;
+
 @end

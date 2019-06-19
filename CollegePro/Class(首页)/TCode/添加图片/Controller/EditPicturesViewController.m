@@ -34,7 +34,7 @@
     [self.view addSubview:scroll];
     [self imageView];
     
-	self.title =[NSString stringWithFormat:@"%d/%lu",self.integer+1,(unsigned long)self.imageArray.count];
+    self.title =[NSString stringWithFormat:@"%ld/%lu",self.integer+1,(unsigned long)self.imageArray.count];
 
     
     
@@ -70,7 +70,7 @@
         [self.imageArray removeObjectAtIndex:self.integer];
         [self.selectedAssets removeObjectAtIndex:self.integer];
         self.integer-=1;
-		self.title =[NSString stringWithFormat:@"%d/%lu",self.integer+1,(unsigned long)self.imageArray.count];
+        self.title =[NSString stringWithFormat:@"%ld/%lu",self.integer+1,(unsigned long)self.imageArray.count];
         if (self.imageArray.count!=0){
             [self imageView];
         }else{
@@ -85,7 +85,7 @@
     
     NSInteger i=scrollView.contentSize.width/self.view.frame.size.width;
     self.integer=scrollView.contentOffset.x/self.view.frame.size.width;
-	self.title = [NSString stringWithFormat:@"%ld/%d",self.integer+1,(long)i];
+    self.title = [NSString stringWithFormat:@"%ld/%ld",self.integer+1,(long)i];
 }
 - (void)tapZX:(UITapGestureRecognizer *)sender{
     

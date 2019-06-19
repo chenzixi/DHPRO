@@ -8,22 +8,33 @@
 
 #import "AppDelegate.h"
 
-#import <UserNotifications/UserNotifications.h>
-#import "showView.h"
-#import "BaseTabBarViewController.h"
 #import "IQKeyboardManager.h"
 #import "AppDelegate+DHCategory.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import "DHGuidepageViewController.h"
+#import "ScreenBlurry.h"
+#import "AliRTCViewController.h"//阿里云音视频
+//极光推送
+// 引入 JPush 功能所需头文件
+#import "JPUSHService.h"
+// iOS10 注册 APNs 所需头文件
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <UserNotifications/UserNotifications.h>
+#endif
+
+#import "showView.h"
 #import "DHGuidePageHUD.h"
 #import "TRViewController.h"
-#import "ScreenBlurry.h"
+#import "ViewController.h"
+#import "BaseTabBarViewController.h"
+#import "BaseNavigationController.h"
+
 #define kUseScreenShotGesture 1
 
-@interface AppDelegate ()
+@interface AppDelegate ()<JPUSHRegisterDelegate>
 {
-    BMKMapManager* _mapManager;
-    int num;
+    BMKMapManager* _mapManager;//实例变量
+   __block int num;//成员变量
     
 }
 @property(nonatomic,strong) UIMutableUserNotificationCategory* categorys;
@@ -42,8 +53,10 @@
 }
 
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+#if DEBUG && SHOW_STATISTICS_DEBUG
+    [[HAMLogOutputWindow sharedInstance] setHidden:NO];
+#endif
     
 #if DEBUG
     
@@ -54,7 +67,6 @@
     
 #endif
 
-    
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
     [SVProgressHUD setMinimumDismissTimeInterval:1.0];
     
@@ -70,7 +82,42 @@
     [self saveCurrentTime];
     //截屏
     [self screenshot];
-    
+    //3DTouch
+    [self touch3D];
+    /*! 写入数据  */
+    [self writeFile];
+#pragma mark -极光推送⬇️
+    //Required
+    //notice: 3.0.0 及以后版本注册可以这样写，也可以继续用之前的注册方式
+    JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
+    if (@available(iOS 12.0, *)) {
+        entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound|UNAuthorizationOptionProvidesAppNotificationSettings;
+    } else {
+        entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound;
+    }
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+        // 可以添加自定义 categories
+        // NSSet<UNNotificationCategory *> *categories for iOS10 or later
+        // NSSet<UIUserNotificationCategory *> *categories for iOS8 and iOS9
+    }
+    [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
+    // init Push
+    // notice: 2.1.5 版本的 SDK 新增的注册方法，改成可上报 IDFA，如果没有使用 IDFA 直接传 nil
+    /**
+     appKey
+     选择 Web Portal 上 的应用 ，点击“设置”获取其 appkey 值。请确保应用内配置的 appkey 与 Portal 上创建应用后生成的 appkey 一致。
+     channel
+     指明应用程序包的下载渠道，为方便分渠道统计，具体值由你自行定义，如：App Store。
+     apsForProduction
+     1.3.1 版本新增，用于标识当前应用所使用的 APNs 证书环境。
+     0（默认值）表示采用的是开发证书，1 表示采用生产证书发布应用。
+     注：此字段的值要与 Build Settings的Code Signing 配置的证书环境一致。
+     */
+    [JPUSHService setupWithOption:launchOptions appKey:@""
+                              channel:@"App Store"
+                     apsForProduction:YES
+                advertisingIdentifier:nil];
+#pragma mark -极光推送⬆️
     _mapManager = [[BMKMapManager alloc]init];
     // 如果要关注网络及授权验证事件，请设定     generalDelegate参数
     BOOL ret = [_mapManager start:@"GqPBelcjdgnnusGN3QjEQ45vjE7YkyE1"  generalDelegate:nil];
@@ -84,8 +131,7 @@
     //            UIUserNotificationSettings* newSetting= [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:[NSSet setWithObjects:self.categorys, nil]];
     //        }
     //    }
-    /*! 写入数据  */
-    [self writeFile];
+
     //如果已经获得发送通知哦的授权则创建本地通知，否则请求授权（注意：如果不请求授权在设置中是没有对应的通知设置项的，也就是说如果从来没有发送过请求，即使通过设置也打不开消息允许设置）
     if ([[UIApplication sharedApplication] currentUserNotificationSettings].types != UIUserNotificationTypeNone) {
         //        [self addLocationForAlert];
@@ -108,17 +154,7 @@
     // Override point for customization after application launch.
     return YES;
 }
-// 宿主应用
-- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-    // 处理跳转逻辑
-    NSString *absStr = url.absoluteString;
-    if ([absStr hasPrefix:@"TodayExtension"]) {
-        NSArray *titleArr = @[@"帮助",@"反馈",@"个人信息",@"客服",@"设置"];
-        NSInteger index = [[absStr substringFromIndex:absStr.length -1] integerValue];
-        NSLog(@"用户点击了----%@",titleArr[index]);
-    }
-    return YES;
-}
+
 #pragma mark -激活状态
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     //去除模糊效果
@@ -173,7 +209,7 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     
     [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];//进入前台取消应用消息图标
-    
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
     //进入前台
     //    [self startEnterForground];
     //方法四
@@ -201,20 +237,29 @@
     token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSLog(@"\n>>>[DeviceToken Success]:%@\n\n", token);
     
+#pragma mark -Required - 极光推送注册 DeviceToken
+    [JPUSHService registerDeviceToken:deviceToken];
+    
 }
 /** 统计APNs通知(个推)的点击数 */
 /** APP已经接收到“远程”通知(推送) - 透传推送消息  */
 #pragma mark -收到消息调用此方法
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    
+#pragma mark -极光推送
+    [JPUSHService handleRemoteNotification:userInfo];
+    completionHandler(UIBackgroundFetchResultNewData);
+}
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+#pragma mark -极光推送
+    [JPUSHService handleRemoteNotification:userInfo];
 }
 #pragma mark -iOS 10: App在前台获取到通知
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler  API_AVAILABLE(ios(10.0)){
     
 }
 #pragma mark 调用过用户注册通知方法之后执行（也就是调用完registerUserNotificationSettings:方法之后执行）
 -(void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings{
-    NSLog(@"33333");
+    NSLog(@"调用过用户注册通知方法之后执行");
     
 }
 #pragma mark -程序即将退出
@@ -222,19 +267,30 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 #pragma mark  -iOS 10: 点击通知进入App时触发，在该方法内统计有效用户点击数
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler  API_AVAILABLE(ios(10.0)){
     //    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     //    NSString *payloadMsg = [response.notification.request.content.userInfo objectForKey:@"payload"];
     //    [[NSNotificationCenter defaultCenter] postNotificationName:@"didReceiveNotificationResponse" object:nil userInfo:@{@"dict" : payloadMsg}];
-    
 }
 #pragma mark -远程通知注册失败委托
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
     NSLog(@"\n>>>[DeviceToken Error]:%@\n\n", error.description);
 }
+#pragma mark -3DTouch 接收点击事件
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void(^)(BOOL succeeded))completionHandler API_AVAILABLE(ios(9.0)){
+    NSLog(@"shortcutItem %@",shortcutItem.type);
+    if ([shortcutItem.type  isEqualToString:@"Scan"]){
+        BaseTabBarViewController *tab = (BaseTabBarViewController *)self.window.rootViewController;
+        //跳转首页的第二个控制器
+        UINavigationController *nav = (UINavigationController *)tab.viewControllers[0];
+        AliRTCViewController *proCtl = [[AliRTCViewController alloc]init];
+        [nav pushViewController:proCtl animated:YES];
+    }
+    
+}
 //在非本App界面时收到本地消息，下拉消息会有快捷回复的按钮，点击按钮后调用的方法，根据identifier来判断点击的哪个按钮，notification为消息内容
-
-- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)(void))completionHandler NS_AVAILABLE_IOS(8_0) __TVOS_PROHIBITED{
+//void (^ _Nonnull __strong)()' vs '
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^ _Nonnull __strong)(void))completionHandler NS_AVAILABLE_IOS(8_0) __TVOS_PROHIBITED{
     NSLog(@"+++++++++++++++++++++++");
     if ([identifier isEqualToString:KNotificationActionIdentifileStar]) {
         [application cancelAllLocalNotifications];
@@ -257,6 +313,80 @@
     
     completionHandler();
 }
+// 宿主应用
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    //  先加载菜单栏
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    delegate.window.rootViewController = [BaseTabBarViewController new];
+    [delegate.window makeKeyWindow];
+    
+    // 处理跳转逻辑
+    // 可以先回到应用首页，在跳转
+    if ([url.absoluteString hasPrefix:@"CollegeProTodayExtensionDemo"]) {
+        if ([url.host isEqualToString:@"enterApp"]) {
+            //进入APP
+        }else if ([url.host hasSuffix:@"message"]) {
+            [self jumpSubVCWithNameTitle:@"消息"];
+        }else if ([url.host containsString:@"adress"]){
+            [self jumpSubVCWithNameTitle:@"地址管理"];
+        }
+        else if ([url.host containsString:@"work"]){
+            [self jumpSubVCWithNameTitle:@"工作"];
+        }
+        else if ([url.host containsString:@"my"]){
+            [self jumpSubVCWithNameTitle:@"我的"];
+        }
+        else if ([url.host containsString:@"set"]){
+            
+        }
+    }
+    return YES;
+}
+
+-(void)jumpSubVCWithNameTitle:(NSString *)nameTitle{
+    if ([nameTitle isEqualToString:@"消息"]) {
+        BaseTabBarViewController *tab = (BaseTabBarViewController *)self.window.rootViewController;
+        //跳转首页的第二个控制器
+        UINavigationController *nav = (UINavigationController *)tab.viewControllers[0];
+        AliRTCViewController *proCtl = [[AliRTCViewController alloc]init];
+        [nav pushViewController:proCtl animated:YES];
+    }
+    if ([nameTitle isEqualToString:@"地址管理"]) {
+        BaseTabBarViewController *tab = (BaseTabBarViewController *)self.window.rootViewController;
+        tab.selectedIndex = 1;
+        [self.window.rootViewController.navigationController pushViewController:tab animated:YES];
+    }
+}
+#pragma mark -极光推送⬇️
+// iOS 12 Support
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center openSettingsForNotification:(UNNotification *)notification API_AVAILABLE(ios(10.0)){
+    if (notification && [notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        //从通知界面直接进入应用
+    }else{
+        //从通知设置界面进入应用
+    }
+}
+
+// iOS 10 Support
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
+    // Required
+    NSDictionary * userInfo = notification.request.content.userInfo;
+    if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        [JPUSHService handleRemoteNotification:userInfo];
+    }
+    completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有 Badge、Sound、Alert 三种类型可以选择设置
+}
+
+// iOS 10 Support
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
+    // Required
+    NSDictionary * userInfo = response.notification.request.content.userInfo;
+    if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        [JPUSHService handleRemoteNotification:userInfo];
+    }
+    completionHandler();  // 系统要求执行这个方法
+}
+#pragma mark -极光推送⬆️
 #pragma mark 移除本地通知，在不需要此通知时记得移除
 -(void)removeNotification{
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
@@ -287,6 +417,8 @@
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
     
 }
+
+
 - (void)Alarm:(NSNotification *)noti{
     NSDictionary *dict = noti.object;
     //    NSLog(@"%@",dict[@"Alarm"]) ;
@@ -294,11 +426,12 @@
 }
 - (void)newMethod{
     NSLog(@"### -->backgroundinghandler");
+    __weak typeof(self) weakSelf = self;
     UIApplication *app = [UIApplication sharedApplication];
     _backgroundTaskIdentifier = [app beginBackgroundTaskWithExpirationHandler:^{
         dispatch_async(dispatch_get_main_queue(),^{
-            if( _backgroundTaskIdentifier != UIBackgroundTaskInvalid){
-                _backgroundTaskIdentifier = UIBackgroundTaskInvalid;
+            if( weakSelf.backgroundTaskIdentifier != UIBackgroundTaskInvalid){
+                weakSelf.backgroundTaskIdentifier = UIBackgroundTaskInvalid;
             }
         });
         NSLog(@"====任务完成了。。。。。。。。。。。。。。。===>");
@@ -310,11 +443,11 @@
     // Start the long-running task
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         while (true) {
-            _count++;
+            weakSelf.count++;
             //            dispatch_async(dispatch_get_main_queue(),^{
             //                [UIApplication sharedApplication].applicationIconBadgeNumber = _count;
             //            });
-            if (_count >= 5*60) {
+            if (weakSelf.count >= 5*60) {
                 NSLog(@"任务执行完毕，主动调用该方法结束任务");
                 break;
                 //                [self endBackgroundTask]; // 任务执行完毕，主动调用该方法结束任务
@@ -431,7 +564,7 @@
     notification.alertBody = @"后台执行时间已到";//通知主体
     notification.applicationIconBadgeNumber = num;//应用程序右上角显示的未读消息数
     notification.alertAction = @"滑动打开";//待机界面的滑动动作提示
-    notification.alertTitle = @"xxxxApp名称";
+    [notification setAlertTitle:@"xxxxApp名称"];
     notification.alertLaunchImage = @"Default";//通过点击通知打开应用时的启动图片，这里使用程序启动图片
     notification.soundName= UILocalNotificationDefaultSoundName;//收到通知时播放的声音，默认消息声音
     notification.soundName=@"msg.caf";//通知声音（需要真机才能听到声音）
@@ -465,11 +598,12 @@
 
 - (void)keepRunning {
     [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil];
+    __weak typeof(self) weakSelf = self;
     self.timer_alarm = [NSTimer timerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
         NSLog(@"后台运行时间 %d",num);
-        _number_alarm++;
+        weakSelf.number_alarm++;
         dispatch_async(dispatch_get_main_queue(), ^{
-            [UIApplication sharedApplication].applicationIconBadgeNumber = _number_alarm;
+            [UIApplication sharedApplication].applicationIconBadgeNumber = weakSelf.number_alarm;
         });
     }];
     [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];

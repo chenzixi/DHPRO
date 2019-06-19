@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SignatureViewController : UIViewController
+@interface SignatureViewController : BaseViewController
 
 @end

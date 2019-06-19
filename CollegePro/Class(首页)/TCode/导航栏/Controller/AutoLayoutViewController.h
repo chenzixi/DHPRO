@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AutoLayoutViewController : UIViewController
+@interface AutoLayoutViewController : BaseViewController
 
 @end

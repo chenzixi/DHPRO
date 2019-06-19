@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(instancetype)makeViewWithMask:(CGRect)frame andView:(UIView*)view;
 
--(void)block:(void(^)())block;
+-(void)block:(void(^)(void))block;
 
 @end
 

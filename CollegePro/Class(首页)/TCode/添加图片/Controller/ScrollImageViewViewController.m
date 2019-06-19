@@ -32,7 +32,7 @@
 	[self.view addSubview:self.scrollImageView];
 
 	
-	NSArray *images = @[@"icc1",@"icc2",@"icc3",@"icc4",@"icc5"];
+	NSArray *images = @[@"icc1.jpg",@"icc1.jpg",@"icc1.jpg",@"icc1.jpg",@"icc1.jpg"];
 	CollectionImageView *view = [[CollectionImageView alloc]initWithFrame:CGRectMake(0, 200, ScreenSize.width, 100) imageArray:images selectImageBlock:^(NSInteger index) {
 		NSLog(@"点击的是第%ld个",(long)index);
 	}];
@@ -48,7 +48,7 @@
 	if (!_scrollImageView) {
 		// 定义好宽高即可，这里用的屏幕宽高
 		NSArray * dataUrls = @[@"http://",@"http://",@"http://",@"http://"];
-		NSArray * dataPics = @[@"icc1",@"icc2",@"icc3",@"icc4",@"icc5"];
+		NSArray * dataPics = @[@"icc2.jpg",@"icc2.jpg",@"icc2.jpg",@"icc2.jpg",@"icc2.jpg"];
 		_scrollImageView = [[ScrollImageView alloc] initWithFrame:CGRectMake(0, 64, ScrollWidth, ScrollHeight)andPictureUrls:dataUrls andPlaceHolderImages:dataPics];
 		_scrollImageView.delegate = self;
 	}

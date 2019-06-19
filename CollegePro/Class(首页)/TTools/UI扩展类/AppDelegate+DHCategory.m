@@ -266,4 +266,18 @@
     return result;
     
 }
+- (void)touch3D{
+    if (@available(iOS 9.0, *)) {
+        if ([UIApplication sharedApplication].shortcutItems.count == 0) {
+            
+            UIMutableApplicationShortcutItem *itemScan = [[UIMutableApplicationShortcutItem alloc]initWithType:@"Scan"  localizedTitle:@"扫一扫" localizedSubtitle:nil icon:[UIApplicationShortcutIcon iconWithTemplateImageName:@"hpdianzan"] userInfo:nil];
+            UIMutableApplicationShortcutItem *itemWrite = [[UIMutableApplicationShortcutItem alloc]initWithType:@"listen" localizedTitle:@"去写作" localizedSubtitle:nil icon:[UIApplicationShortcutIcon iconWithTemplateImageName:@"SettingS"] userInfo:nil];
+            
+            [UIApplication sharedApplication].shortcutItems = @[itemScan,itemWrite];
+        }
+    } else {
+        // Fallback on earlier versions
+    }
+}
+
 @end

@@ -157,25 +157,26 @@
     
     _paymentForm.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
     _paymentForm.alpha = 0;
-    
+    __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:0.3f animations:^{
-        _paymentForm.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
-        _paymentForm.alpha = 1.0;
+        weakSelf.paymentForm.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+        weakSelf.paymentForm.alpha = 1.0;
     }completion:^(BOOL finished) {
-        [self resetAlertFrame];
-        [_paymentForm fieldBecomeFirstResponder];
+        [weakSelf resetAlertFrame];
+        [weakSelf.paymentForm fieldBecomeFirstResponder];
     }];
 }
 
 -(void)dismiss
 {
+    __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:0.3f animations:^{
-        _paymentForm.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
-        _paymentForm.alpha = 0;
+        weakSelf.paymentForm.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
+        weakSelf.paymentForm.alpha = 0;
     }completion:^(BOOL finished) {
         if(finished)
         {
-            [self removeFromSuperview];
+            [weakSelf removeFromSuperview];
         }
     }];
 }

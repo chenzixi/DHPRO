@@ -18,8 +18,8 @@
 
 @interface LabelMethodBlockSubVC ()
 {
-    int numC;//全局变量
-    // 全局变量
+    //成员变量
+    int numC;
     int global_var;
     BOOL chooseState;
 }
@@ -79,8 +79,21 @@
  5. 调用 B 的 - (void)viewDidAppear:(BOOL)animated；
  
  总结来说，ViewController 的切换是先调用 隐藏的方法，再调用显示的方法；先调用Will，再调用Did。
+ //加载A界面
+ 1、调用 A 的 viewDidLoad
+ 2、调用 A 的 viewWillAppear
+ 3、调用 A 的 viewDidAppear
+ A -> B
+ 4、调用 B 的 viewDidLoad
+ 5、调用 A 的 viewWillDisappear
+ 6、调用 B 的 viewWillAppear
+ 7、调用 B 的 viewDidAppear
+ 8、调用 A 的 viewDidDisappear
+ B -> A
+ 9、 调用 A 的 viewWillAppear
+ 10、调用 A 的 viewDidAppear
+ 11、调用 B 的 dealloc
  
-
  三、重新布局View的子View
  
  - (void)viewWillLayoutSubviews
@@ -120,7 +133,6 @@
     [super viewDidLayoutSubviews];//7
 //    [btn mas_updateConstraints:^(MASConstraintMaker *make) {
 //        make.center.mas_equalTo(self.view);
-//
 //        // 初始宽、高为100，优先级最低
 //        make.width.height.mas_equalTo(100 * self.scacle).priorityLow();
 //        // 最大放大到整个view
@@ -157,6 +169,8 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
 //    self.navigationController.navigationBarHidden = NO;
+    [DHTool writeLocalCacheDataToCachesFolderWithKey:[NSString stringWithFormat:@"Block_%@.log",[DHTool getCurrectTimeWithPar:@"yyyy-MM-dd-HH-mm-ss-SSS"]] fileName:@"Block"];
+
     if (self.returnTextBlock != nil) {
         self.returnTextBlock(@"backBlockNilMetnod");
     }
@@ -168,8 +182,11 @@
 - (void)viewDidLoad {//3//将要加载视图
     [super viewDidLoad];
 	self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.title = @"侧滑";
+    self.navigationItem.title = @"Block知识";
     
+    //返回按钮
+//    self.navigationItem.leftBarButtonItem = [self dh_tbarBackButtonWhiteAndPopView];
+
     if (@available(iOS 11.0, *)) {
         NSString *edgeStr = NSStringFromUIEdgeInsets(self.view.safeAreaInsets);
         NSString *layoutFrmStr = NSStringFromCGRect(self.view.safeAreaLayoutGuide.layoutFrame);
@@ -185,31 +202,33 @@
 	[pushNillButton setTitle:@"回去" forState:(UIControlStateNormal)];
 	[pushNillButton addTarget:self action:@selector(backBlockNilMetnod) forControlEvents:(UIControlEventTouchUpInside)];
 //    [self.view addSubview:pushNillButton];
-
     // Do any additional setup after loading the view.
+}
+- (void)pop{
+    popVC;
 }
 - (void)baseBlock{
     numC = 100;
     [self testDataA];
-    [self testDataB];
-    [self testDataC];
-    [self testDataD];
-    [self testDataE];//Operation
-    [self testDataF];//GCD
-    [self testDataG];//深、浅拷贝
-    [self testDataH];//交换
-    [self testDataL];//排序方式
-    [self testDataM];//排序
-    //    [self testDataK];
-    [self testDataN];//KVO进阶
-    self.user = [[KYUser alloc] init];
-    self.user.dog = [[KYDog alloc] init];
-    self.user.dog.age = 12;
-    self.user.dog.name = @"大大";
-    self.user.userId = @"35325";
-    // MRC下
-    Persion *test = [[Persion alloc] init];
-    [test test];
+//    [self testDataB];
+//    [self testDataC];
+//    [self testDataD];
+//    [self testDataE];
+//    [self testDataF];
+//    [self testDataG];//深、浅拷贝
+//    [self testDataH];//交换
+//    [self testDataL];//排序方式
+//    [self testDataM];//排序
+//    //    [self testDataK];
+//    [self testDataN];//KVO进阶
+//    self.user = [[KYUser alloc] init];
+//    self.user.dog = [[KYDog alloc] init];
+//    self.user.dog.age = 12;
+//    self.user.dog.name = @"大大";
+//    self.user.userId = @"35325";
+//    // MRC下
+//    Persion *test = [[Persion alloc] init];
+//    [test test];
 }
 - (void)testDataH{
     int a = 10;
@@ -223,12 +242,45 @@
     //    UITableView *_tableView = [];
     //    [_tableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
 }
+/*
+ 内存管理语义
+ 
+ 1.关键词
+ strong：表示指向并拥有该对象。其修饰的对象引用计数会 +1 ，该对象只要引用计数不为 0 就不会销毁，强行置空可以销毁它。一般用于修饰对象类型、字符串和集合类的可变版本。
+ copy：与strong类似，设置方法会拷贝一份副本。一般用于修饰字符串和集合类的不可变版， block用copy修饰。
+ weak：表示指向但不拥有该对象。其修饰的对象引用计数不会增加，属性所指的对象遭到摧毁时属性值会清空。ARC环境下一般用于修饰可能会引起循环引用的对象，delegate用weak修饰，xib控件也用weak修饰。
+ assign：主要用于修饰基本数据类型，如NSIteger、CGFloat等，这些数值主要存在于栈中。
+ unsafe_unretained：与weak类似，但是销毁时不自动清空，容易形成野指针。
+ 
+ 2.比较 copy 与 strong
+ copy与strong：相同之处是用于修饰表示拥有关系的对象。不同之处是strong复制是多个指针指向同一个地址，而copy的复制是每次会在内存中复制一份对象，指针指向不同的地址。NSString、NSArray、NSDictionary等不可变对象用copy修饰，因为有可能传入一个可变的版本，此时能保证属性值不会受外界影响。
+ 注意：若用strong修饰NSArray，当数组接收一个可变数组，可变数组若发生变化，被修饰的属性数组也会发生变化，也就是说属性值容易被篡改；若用copy修饰NSMutableArray，当试图修改属性数组里的值时，程序会崩溃，因为数组被复制成了一个不可变的版本。
+ 
+ 3.比较 assign、weak、unsafe_unretain
+ 
+ 相同点：都不是强引用。
+ 不同点：weak引用的 OC 对象被销毁时, 指针会被自动清空，不再指向销毁的对象，不会产生野指针错误；unsafe_unretain引用的 OC 对象被销毁时, 指针并不会被自动清空, 依然指向销毁的对象，很容易产生野指针错误:EXC_BAD_ACCESS；assign修饰基本数据类型，内存在栈上由系统自动回收。
+ 
+ Property的默认设置
+ 
+ 基本数据类型：atomic, readwrite, assign
+ 对象类型：atomic, readwrite, strong
+ 注意：考虑到代码可读性以及日常代码修改频率，规范的编码风格中关键词的顺序是：原子性、读写权限、内存管理语义、getter/getter。
+ 
+ 延伸
+ 
+ 我们已经知道 @property 会使编译器自动编写访问这些属性所需的方法，此过程在编译期完成，称为 自动合成 (autosynthesis)。与此相关的还有两个关键词：@dynamic 和 @synthesize。
+ 
+ @dynamic：告诉编译器不要自动创建实现属性所用的实例变量，也不要为其创建存取方法。即使编译器发现没有定义存取方法也不会报错，运行期会导致崩溃。
+ @synthesize：在类的实现文件里可以通过 @synthesize 指定实例变量的名称。
+ 注意：在Xcode4.4之前，@property 配合 @synthesize使用，@property 负责声明属性，@synthesize 负责让编译器生成 带下划线的实例变量并且自动生成setter、getter方法。Xcode4.4 之后 @property 得到增强，直接一并替代了 @synthesize 的工作。
+ */
 //全局变量
 - (void)testDataA{
 
     void (^TestNumberC)(int)=^(int x){
-        numC = 1000;
-        NSLog(@"C2、num的h值是 %d",numC);
+        self->numC = 1000;
+        NSLog(@"C2、num的h值是 %d",self->numC);
         
     };
     NSLog(@"C1、num的h值是 %d",numC);
@@ -267,7 +319,6 @@ static int numB = 100;
     void (^TestNumber)(int)=^(int x){
         numB = 1000;
         NSLog(@"S2、num的h值是 %d",numB);
-        
     };NSLog(@"S1、num的h值是 %d",numB);
     TestNumber(86);
     NSLog(@"S3、num的h值是 %d",numB);
@@ -277,7 +328,6 @@ static int numB = 100;
     __weak typeof(self) wself = self;
     void (^result)(float) = ^(float value){
         wself.tmp += value;
-        
     };
     return result;
 }
@@ -312,7 +362,7 @@ void (^outFuncBlock)(void) = ^{
         NSLog(@"局部变量<基本数据类型> var %d",var);
         NSLog(@"局部变量<__unsafe_unretained 对象类型> var %@",unsafe_obj);
         NSLog(@"局部变量< __strong 对象类型> var %@",strong_obj);
-        NSLog(@"静态变量 %d",static_var);
+        NSLog(@"静态局部变量 %d",static_var);
         NSLog(@"全局变量 %d",self->global_var);
         self->chooseState = YES;
         NSLog(@"静态全局变量 %d",self->global_var);
@@ -443,193 +493,11 @@ void (^outFuncBlock)(void) = ^{
 }
 
 - (void)testDataE{
-    NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
-        NSLog(@"task0---%@", [NSThread currentThread]);
-    }];
     
-    [op addExecutionBlock:^{
-        NSLog(@"task1----%@", [NSThread currentThread]);
-    }];
-    
-    [op addExecutionBlock:^{
-        NSLog(@"task2----%@", [NSThread currentThread]);
-    }];
-    
-    // 开始必须在添加其他操作之后
-    [op start];
 }
 
 - (void)testDataF{
-    /*
-     通常我们会用for循环遍历，但是GCD给我们提供了快速迭代的方法dispatch_apply，使我们可以同时遍历。比如说遍历0~5这6个数字，for循环的做法是每次取出一个元素，逐个遍历。dispatch_apply可以同时遍历多个数字。
-     */
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    
-    dispatch_apply(6, queue, ^(size_t index) {
-        NSLog(@"GCD快速迭代 //%zd------%@",index, [NSThread currentThread]);
-    });
-    
-    
-    //创建一个调度组
-    dispatch_group_t group1 = dispatch_group_create();
-    
-    //进入调度组
-    dispatch_group_enter(group1);
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        //模拟请求耗时
-        sleep(2);
-        NSLog(@"A");
-        //事件完成 离开调度组
-        dispatch_group_leave(group1);
-    });
-    
-    dispatch_group_enter(group1);
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        sleep(2);
-        NSLog(@"B");
-        dispatch_group_leave(group1);
-    });
-    
-    dispatch_group_enter(group1);
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        sleep(2);
-        NSLog(@"C");
-        dispatch_group_leave(group1);
-    });
-    
-    //所有任务从调度组里面拿出来 调用通知
-    dispatch_group_notify(group1, dispatch_get_main_queue(), ^{
-        NSLog(@"完成");
-    });
-    
-    
-    
-    //调度组
-    dispatch_group_t group = dispatch_group_create();
-    
-    /*
-     参数1:调度组
-     参数2:队列
-     参数3:任务
-     */
-    dispatch_group_async(group, dispatch_get_global_queue(0, 0), ^{
-        sleep(1);
-        NSLog(@"下载第1首歌曲");
-    });
-    dispatch_group_async(group, dispatch_get_global_queue(0, 0), ^{
-        sleep(1);
-        NSLog(@"下载第2首歌曲");
-    });
-    dispatch_group_async(group, dispatch_get_global_queue(0, 0), ^{
-        sleep(1);
-        NSLog(@"下载第3首歌曲");
-    });
-    //通知
-    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        NSLog(@"歌曲下载完成");
-    });
-    
-    
-    
-    
-    //创建一个串行队列  通过串行队列进行线程依赖
-    dispatch_queue_t serial_queue = dispatch_queue_create("cn.jimmypeng", DISPATCH_QUEUE_SERIAL);
-    
-    //异步把任务 放入 串行队列
-    dispatch_async(serial_queue, ^{
-        NSLog(@"A开始 %@",[NSThread currentThread]);
-        //模拟请求耗时
-        sleep(1);
-        NSLog(@"A完成 %@",[NSThread currentThread]);
-    });
-    
-    dispatch_async(serial_queue, ^{
-        NSLog(@"B开始 %@",[NSThread currentThread]);
-        sleep(1);
-        NSLog(@"B完成 %@",[NSThread currentThread]);
-    });
-    
-    dispatch_async(serial_queue, ^{
-        NSLog(@"C开始 %@",[NSThread currentThread]);
-        sleep(1);
-        NSLog(@"C完成 %@",[NSThread currentThread]);
-    });
-    
-    NSLog(@"完成");
-    
-    
-    NSArray*moviesArray = [NSArray arrayWithObjects:
-                           @"第1集", @"第2集",@"第3集",@"第4集",@"第5集",
-                           @"第6集",@"第7集",@"第8集",@"第9集",@"第10集",
-                           @"第11集", @"第12集",@"第13集",@"第14集",@"第15集",
-                           @"第16集",@"第17集",@"第18集",@"第19集",@"第20集",
-                           nil];
-    
-    dispatch_queue_t queueMovies = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_semaphore_t semaphoreMovies = dispatch_semaphore_create(5);//创建信号量
-    
-    for (int i = 0 ; i<moviesArray.count; i++) {
-        dispatch_semaphore_wait(semaphoreMovies, DISPATCH_TIME_FOREVER);//等待信号量 有闲置的信号量就让新的任务进来，如果没有就按照顺序等待闲置的信号量 可以设置等待时间
-        dispatch_async(queueMovies, ^{
-            //模拟下载任务
-            NSLog(@"%@开始下载",moviesArray[i]);
-            sleep(10+i*2);//假设下载一集需要10+i*2秒
-            NSLog(@"%@下载完成",moviesArray[i]);
-            
-            dispatch_semaphore_signal(semaphoreMovies);//发送信号量 发送完成进度
-        });
-    }
-    dispatch_queue_t queueshili = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_semaphore_t semaphoreshili = dispatch_semaphore_create(5);
-    
-    for (int i = 0 ; i<20; i++) {
-        dispatch_semaphore_wait(semaphoreshili, DISPATCH_TIME_FOREVER);
-        dispatch_async(queueshili, ^{
-            NSLog(@"任务%d开始",i);
-            sleep(i);
-            NSLog(@"任务%d结束",i);
-            
-            dispatch_semaphore_signal(semaphoreshili);
-        });
-    }
-    
-    /**
-     栅栏函数
-     <一>什么是dispatch_barrier_async函数
-     毫无疑问,dispatch_barrier_async函数的作用与barrier的意思相同,在进程管理中起到一个栅栏的作用,它等待所有位于barrier函数之前的操作执行完毕后执行,并且在barrier函数执行之后,barrier函数之后的操作才会得到执行,该函数需要同dispatch_queue_create函数生成的concurrent Dispatch Queue队列一起使用
-     
-     <二>dispatch_barrier_async函数的作用
-     
-     1.实现高效率的数据库访问和文件访问
-     
-     2.避免数据竞争
-     */
-    //同dispatch_queue_create函数生成的concurrent Dispatch Queue队列一起使用
-    dispatch_queue_t queuezhalan = dispatch_queue_create("zhalanqueue", DISPATCH_QUEUE_CONCURRENT);
-    
-    dispatch_async(queuezhalan, ^{
-        NSLog(@"栅栏函数----1-----%@", [NSThread currentThread]);
-    });
-    dispatch_async(queuezhalan, ^{
-        NSLog(@"栅栏函数----2-----%@", [NSThread currentThread]);
-    });
-    dispatch_async(queuezhalan, ^{
-        NSLog(@"栅栏函数----3-----%@", [NSThread currentThread]);
-    });
-    dispatch_async(queuezhalan, ^{
-        NSLog(@"栅栏函数----4-----%@", [NSThread currentThread]);
-    });
-    
-    dispatch_barrier_async(queuezhalan, ^{
-        NSLog(@"栅栏函数----barrier-----%@", [NSThread currentThread]);
-    });
-    
-    dispatch_async(queuezhalan, ^{
-        NSLog(@"栅栏函数----5-----%@", [NSThread currentThread]);
-    });
-    dispatch_async(queuezhalan, ^{
-        NSLog(@"栅栏函数----6-----%@", [NSThread currentThread]);
-    });
+
     
 }
 
@@ -834,7 +702,7 @@ static UILabel *myLabel;
      
      */
     
-    NSDictionary *dataSource = @[@{@"name":@"mike", @"sex":@"man", @"age":@"12"},
+    NSArray *dataSource = @[@{@"name":@"mike", @"sex":@"man", @"age":@"12"},
                                  @{@"name":@"jine", @"sex":@"women", @"age":@"10"},
                                  @{@"name":@"marry", @"sex":@"women", @"age":@"12"},
                                  @{@"name":@"mike", @"sex":@"man", @"age":@"11"},

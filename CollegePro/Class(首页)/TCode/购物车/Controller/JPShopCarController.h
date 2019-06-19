@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JPShopCarController : UIViewController
+@interface JPShopCarController : BaseViewController
 
 @end

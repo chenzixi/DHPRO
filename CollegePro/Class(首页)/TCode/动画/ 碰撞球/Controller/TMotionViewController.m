@@ -20,7 +20,7 @@
     [super viewDidLoad];
 	self.view.backgroundColor = [UIColor whiteColor];
 	self.array = @[@"大师球",@"高级球",@"超级球",@"精灵球"];
-    // Do any additional setup after loading the view.
+
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
 	CGPoint point = [[touches anyObject] locationInView:self.view];

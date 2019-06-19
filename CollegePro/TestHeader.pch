@@ -5,19 +5,18 @@
 //  Created by Rillakkuma on 16/7/21.
 //  Copyright © 2016年 Rillakkuma. All rights reserved.
 //
-
 #ifdef __OBJC__
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 //导航push
-#define push(vc)\
+#define pushVC(vc)\
 \
 [self.navigationController pushViewController:vc animated:YES]
 //导航pop
-//#define pop [self.navigationController popViewControllerAnimated:YES];
+#define popVC [self.navigationController popViewControllerAnimated:YES];
 //dis
-#define dis [self dismissViewControllerAnimated:YES completion:nil];
+#define disVC [self dismissViewControllerAnimated:YES completion:nil];
 //pre
 #define present(vc)\
 \
@@ -53,7 +52,16 @@
 //获取图片资源
 #define DH_GetImage(imageName) [UIImage imageNamed:[NSString stringWithFormat:@"%@",imageName]]
 
+#define DH_ImageNameWithBundle(bundleName,imgName) [UIImage imageNamed:[NSString stringWithFormat:@"%@.bundle/%@.png",bundleName,imgName]]
+
+//颜色管理
 #define DHColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+#define RGBCOLORV(rgbValue) [UIColor \
+colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0x00FF00) >> 8))/255.0 \
+blue:((float)(rgbValue & 0x0000FF))/255.0 \
+alpha:1.0]
+#define DHColorHex(value) [UIColor colorWithHexString:value]
 
 #define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 
@@ -85,6 +93,7 @@
 #if kUseScreenShotGesture
 #import "ScreenShotView.h"
 #endif
+
 #import "UIView+Layout.h"
 #import "Masonry.h"
 #import "YYKit.h"

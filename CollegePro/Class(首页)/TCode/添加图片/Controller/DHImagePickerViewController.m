@@ -71,7 +71,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
-	self.navigationController.navigationBarHidden = YES;
+//    self.navigationController.navigationBarHidden = YES;
 	[[UIApplication sharedApplication] setStatusBarHidden: YES];
 	
 	
@@ -79,7 +79,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
 	[super viewWillDisappear:animated];
-	self.navigationController.navigationBarHidden = NO;
+//    self.navigationController.navigationBarHidden = NO;
 
 }
 - (void)viewDidLoad {
@@ -87,6 +87,7 @@
 	self.view.backgroundColor = [UIColor whiteColor];
 	_selectedPhotos = [NSMutableArray array];
 	_selectedAssets = [NSMutableArray array];
+    
 	[self configCollectionView];
 }
 
@@ -98,12 +99,13 @@
 	// 如不需要长按排序效果，将LxGridViewFlowLayout类改成UICollectionViewFlowLayout即可
 	LxGridViewFlowLayout *layout = [[LxGridViewFlowLayout alloc] init];
 	_margin = 4;
-	_itemWH = (self.view.tz_width - 2 * _margin - 4) / 3 - _margin;
+    _itemWH = (DH_DeviceWidth - (4 + 1) * 10)/4;
+//    _itemWH = (self.view.tz_width - 2 * _margin - 4) / 3 - _margin;
 	layout.itemSize = CGSizeMake(_itemWH, _itemWH);
 	layout.minimumInteritemSpacing = _margin;
 	layout.minimumLineSpacing = _margin;
-	_collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 409, self.view.tz_width, 320) collectionViewLayout:layout];
-	CGFloat rgb = 244 / 255.0;
+	_collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 480, self.view.tz_width, 320) collectionViewLayout:layout];
+    CGFloat rgb = 244 / 255.0;
 	_collectionView.layer.borderColor = [UIColor redColor].CGColor;
 	_collectionView.layer.borderWidth = 1.0;
 	_collectionView.alwaysBounceVertical = YES;
@@ -114,6 +116,13 @@
 	_collectionView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
 	[self.view addSubview:_collectionView];
 	[_collectionView registerClass:[TZTestCell class] forCellWithReuseIdentifier:@"TZTestCell"];
+    [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.offset(480);
+        make.bottom.equalTo(self.view);
+        make.left.with.right.equalTo(self.view);
+        //或者等同于
+//        make.edges.mas_equalTo(UIEdgeInsetsMake(480 , 0, 0, 0));
+    }];
 }
 
 #pragma mark UICollectionView
@@ -176,12 +185,16 @@
 			imagePickerVc.maxImagesCount = self.maxCountTF.text.integerValue;
 			imagePickerVc.allowPickingOriginalPhoto = self.allowPickingOriginalPhotoSwitch.isOn;
 			imagePickerVc.isSelectOriginalPhoto = _isSelectOriginalPhoto;
+            __weak typeof(self) weakSelf = self;
 			[imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
-				_selectedPhotos = [NSMutableArray arrayWithArray:photos];
-				_selectedAssets = [NSMutableArray arrayWithArray:assets];
-				_isSelectOriginalPhoto = isSelectOriginalPhoto;
-				[_collectionView reloadData];
-				_collectionView.contentSize = CGSizeMake(0, ((_selectedPhotos.count + 2) / 3 ) * (_margin + _itemWH));
+                __strong typeof(weakSelf) strongSelf = weakSelf;
+                strongSelf->_selectedPhotos = [NSMutableArray arrayWithArray:photos];
+				strongSelf->_selectedAssets = [NSMutableArray arrayWithArray:assets];
+				strongSelf->_isSelectOriginalPhoto = isSelectOriginalPhoto;
+                dispatch_async(dispatch_get_global_queue(0,0), ^{
+                    [weakSelf.collectionView reloadData];
+                    weakSelf.collectionView.contentSize = CGSizeMake(0, ((strongSelf->_selectedPhotos.count + 2) / 3 ) * (strongSelf->_margin + strongSelf->_itemWH));
+                });
 			}];
 			[self presentViewController:imagePickerVc animated:YES completion:nil];
 		}
@@ -550,12 +563,14 @@
 - (void)deleteBtnClik:(UIButton *)sender {
 	[_selectedPhotos removeObjectAtIndex:sender.tag];
 	[_selectedAssets removeObjectAtIndex:sender.tag];
-	
+    __weak typeof(self) weakSelf = self;
 	[_collectionView performBatchUpdates:^{
+        __strong typeof(weakSelf) strongSelf = self;
 		NSIndexPath *indexPath = [NSIndexPath indexPathForItem:sender.tag inSection:0];
-		[_collectionView deleteItemsAtIndexPaths:@[indexPath]];
+		[strongSelf.collectionView deleteItemsAtIndexPaths:@[indexPath]];
 	} completion:^(BOOL finished) {
-		[_collectionView reloadData];
+        __strong typeof(weakSelf) strongSelf = self;
+		[strongSelf.collectionView reloadData];
 	}];
 }
 

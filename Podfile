@@ -23,12 +23,13 @@ target "CollegePro" do
   #JSON数据与Model模型之间的转化
   pod 'MJExtension'
   #极光推送
-  pod 'JPush'
+  pod 'JPush', '3.1.0'
   #MD5加密
   pod 'CocoaSecurity'
 
   pod 'YYKit'
   pod 'BaiduMapKit'#百度地图SDK
+  
   
 #pod 'FDFullscreenPopGesture'
 #pod 'WechatOpenSDK'
@@ -43,5 +44,15 @@ target "CollegePro" do
 #pod 'Realm'
 #pod 'QMUIKit', '~>1.1.4'
 #pod 'CardIO'
-
+#pod 'TesseractOCRiOS'
+#pod 'OpenCV', '~>3.4.1'
 end
+#target 'CollegeProExtension' do
+#    
+#    pod 'MJExtension'
+#    pod 'AFNetworking'
+#    #自动布局界面库
+#    pod 'Masonry'
+#    pod 'SDWebImage'
+#    
+#end

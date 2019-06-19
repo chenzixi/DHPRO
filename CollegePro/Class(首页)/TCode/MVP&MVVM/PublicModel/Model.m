@@ -10,4 +10,8 @@
 
 @implementation Model
 
+- (nonnull id)copyWithZone:(nullable NSZone *)zone {
+    return nil;
+}
+
 @end

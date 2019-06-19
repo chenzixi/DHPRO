@@ -18,10 +18,10 @@
         
         NSLog(@"%@",NSStringFromCGRect(self.contentView.frame));
 //        self.backgroundColor = [UIColor clearColor];
-//        self.m_TileL = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height)];
-//        self.m_TileL.textAlignment = NSTextAlignmentRight;
-//        self.m_TileL.backgroundColor = [UIColor redColor];
-//        [self.contentView addSubview:self.m_TileL];
+        self.m_TileL = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height)];
+        self.m_TileL.textAlignment = NSTextAlignmentRight;
+        self.m_TileL.backgroundColor = [UIColor redColor];
+        [self.contentView addSubview:self.m_TileL];
     }
     return self;
 }

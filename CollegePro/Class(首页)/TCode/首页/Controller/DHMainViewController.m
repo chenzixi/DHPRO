@@ -31,12 +31,9 @@
 #import "DHZanViewController.h"//点赞
 #import "ScrollImageViewViewController.h"
 #import "DHImagePickerViewController.h"//高级定制添加图片
-//#import "DocumentViewController.h"//文档
 #import "HealthViewController.h"//获取健康步数
 #import "PayViewController.h"//支付密码
 #import "NetTestViewController.h"//网络测试
-//#import "CardViewController.h"
-//#import "IDCardViewController.h"
 #import "CountdownViewController.h"//倒计时
 #import "SubparagraphRootViewController.h"//菜单栏
 #import "DropViewController.h"//拖拽
@@ -45,8 +42,6 @@
 #import "BaseAdressBookViewController.h"//通讯刘
 #import "ShowViewController.h"//弹出框
 #import "QQListViewController.h"//仿照QQ列表
-//#import "BankCardViewController.h"//信用卡识别
-//#import "BankCartViewController.h"//银行卡扫描
 #import "DisassemblyViewController.h"//手势解锁
 #import "ACEViewController.h"//textView自适应高度变化
 #import "DHNoteJoyViewController.h"//记事本
@@ -66,8 +61,15 @@
 #import "TurntableViewController.h"//转盘
 #import "AliRTCViewController.h"//阿里音视频通话
 #import "MenuViewController.h"//storyboard
+#import "ExpandTableVC.h"//点击按钮出现下拉列表
 #import "LabelMethodBlockVC.h"
 #import "LabelMethodBlockSubVC.h"
+//#import "CardViewController.h"
+//#import "IDCardViewController.h"
+//#import "BankCardViewController.h"//信用卡识别
+//#import "BankCartViewController.h"//银行卡扫描
+//#import "DocumentViewController.h"//文档
+
 #import <AVFoundation/AVFoundation.h>
 
 #include <ifaddrs.h>
@@ -103,13 +105,13 @@
 @implementation DHMainViewController
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self developer];
+//    [self developer];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self setUPUI];
-    
+    self.isShowleftBtn = YES;
     //    applicationWillEnterForeground
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveHMethod:) name:@"applicationWillEnterForeground" object:nil];
     //    [self playVoiceBackground];
@@ -140,6 +142,7 @@
     [self.view addSubview:displayLabel];
     [[UIApplication sharedApplication].keyWindow addSubview:displayLabel];
     
+    
     //    self.navigationController.navigationBar.barTintColor = IWColor(255,155,0);
     //    //设置导航条的背景色
     //    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
@@ -149,7 +152,7 @@
     //    flowLayout.minimumLineSpacing = 0.0;//minimumLineSpacing cell上下之间的距离
     //    flowLayout.minimumInteritemSpacing = 5.0;//cell左右之间的距离
     //    flowLayout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, 20);
-    _collectionView=[[UICollectionView alloc] initWithFrame:CGRectMake(15, 0, DH_DeviceWidth-30, DH_DeviceHeight-75) collectionViewLayout:flowLayout];
+    _collectionView=[[UICollectionView alloc] initWithFrame:CGRectMake(15, 0, DH_DeviceWidth-30, DH_DeviceHeight-44-25) collectionViewLayout:flowLayout];
     //    _collectionView=[[UICollectionView alloc] init];
     //    _collectionView.collectionViewLayout = flowLayout;
     
@@ -165,22 +168,20 @@
     self.classNames = @[].mutableCopy;
     
     [self addCell:@"上下滑动" class:@"ContentOffSetVC"];
-    [self addCell:@"RTC" class:@"AliRTCViewController"];
-    [self addCell:@"3DTouch" class:@"T3DTouchViewController"];
+//    [self addCell:@"RTC" class:@"AliRTCViewController"];
+    [self addCell:@"识别相机" class:@"PictureSelectionController"];
     [self addCell:@"二维码" class:@"GKHScanQCodeViewController"];
     [self addCell:@"凸起菜单栏" class:@"LBTabBarTextController"];
     [self addCell:@"导航栏" class:@"LSTabBarViewController"];
     [self addCell:@"签名" class:@"SignatureViewController"];
+    [self addCell:@"画板" class:@"SmoothLineViewController"];
     [self addCell:@"动画" class:@"ZLDashboardViewController"];
     [self addCell:@"咖啡机" class:@"ActionViewController"];
     [self addCell:@"碰撞球" class:@"TMotionViewController"];
     [self addCell:@"侧边栏" class:@"TSidebarViewController"];
-    [self addCell:@"购物车" class:@"TShopAnimationViewController"];
     [self addCell:@"图片滚动" class:@"ScrollImageViewViewController"];
     [self addCell:@"添加图片" class:@"DHImagePickerViewController"];
-    [self addCell:@"文档" class:@"DocumentViewController"];
     [self addCell:@"支付密码框" class:@"PayViewController"];
-    [self addCell:@"网络测试" class:@"NetTestViewController"];
     [self addCell:@"倒计时" class:@"CountdownViewController"];
     [self addCell:@"菜单栏" class:@"SubparagraphRootViewController"];
     [self addCell:@"键盘" class:@"CustomKeyBoardViewController"];
@@ -190,6 +191,7 @@
     [self addCell:@"通讯录" class:@"BaseAdressBookViewController"];
     [self addCell:@"弹出框" class:@"ShowViewController"];
     [self addCell:@"QQ联系人" class:@"QQListViewController"];
+    [self addCell:@"3DTouch" class:@"T3DTouchViewController"];
     //    [self addCell:@"身份证" class:@"IDCardViewController"];
     //    [self addCell:@"信用卡识别" class:@"BankCardViewController"];
     //    [self addCell:@"银行卡识别" class:@"BankCartViewController"];
@@ -198,22 +200,25 @@
     [self addCell:@"CEll自适应高度" class:@"ACEViewController"];
     [self addCell:@"记事本" class:@"DHNoteJoyViewController"];
     [self addCell:@"水波动画" class:@"WaveProgressViewController"];
-    [self addCell:@"画板" class:@"SmoothLineViewController"];
     [self addCell:@"游戏" class:@"IndexViewController"];
     [self addCell:@"自适应列表" class:@"AdaptionListViewController"];
     [self addCell:@"铃声" class:@"SectionsViewController"];
-    [self addCell:@"iCloud文件" class:@"iCloudViewController"];
-    [self addCell:@"获取健康信息" class:@"HealthViewController"];
     [self addCell:@"闹铃" class:@"TRViewController"];
     [self addCell:@"托拽排序" class:@"CustomCollectionViewController"];
     [self addCell:@"storyboard" class:@"MenuViewController"];
     [self addCell:@"转盘" class:@"TurntableViewController"];
-    [self addCell:@"block" class:@"LabelMethodBlockSubVC"];
     [self addCell:@"联网游戏" class:@"Menu"];
-    [self addCell:@"识别相机" class:@"PictureSelectionController"];
+    [self addCell:@"下拉列表" class:@"ExpandTableVC"];
+    [self addCell:@"网络测试" class:@"NetTestViewController"];
+    [self addCell:@"block" class:@"LabelMethodBlockSubVC"];
+//    [self addCell:@"购物车" class:@"TShopAnimationViewController"];
+    [self addCell:@"文档" class:@"DocumentViewController"];
+    [self addCell:@"iCloud文件" class:@"iCloudViewController"];
+    [self addCell:@"获取健康信息" class:@"HealthViewController"];
 
     [_collectionView reloadData];
     
+#pragma mark- 底部网络状态显示
     _lb_showinfo = [[UILabel alloc]init];
     _lb_showinfo.backgroundColor = [UIColor brownColor];
     _lb_showinfo.textColor = [UIColor redColor];
@@ -222,6 +227,11 @@
     _lb_showinfo.layer.borderWidth = 1.0;
     _lb_showinfo.frame = CGRectMake(0, DH_DeviceHeight-44-30, DH_DeviceWidth, 25);
     [self.view addSubview:_lb_showinfo];
+    [_lb_showinfo mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view).offset(-44);
+        make.left.with.right.equalTo(self.view);
+        make.height.offset(25);
+    }];
     //    [self scrollerLabel];
 }
 - (void)addCell:(NSString *)title class:(NSString *)className {
@@ -306,39 +316,23 @@
     }
     return _mgr;
 }
+
 //- (id)transformedValue:(id)value﻿
 //{﻿
-//
-//    ﻿
-//
 //       double convertedValue = [value doubleValue];﻿
-//
 //       int multiplyFactor = 0;﻿
-//
-//    ﻿
-//
 //       NSArray *tokens = [NSArray arrayWithObjects:@"bytes",@"KB",@"MB",@"GB",@"TB",@“PB”, @“EB”, @“ZB”, @“YB”,nil];﻿
-//
-//    ﻿
-//
 //       while (convertedValue > 1024) {﻿
-//
 //               convertedValue /= 1024;﻿
-//
 //               multiplyFactor++;﻿
-//
 //           }﻿
-//
-//    ﻿
-//
 //       return [NSString stringWithFormat:@"%4.2f %@",convertedValue, [tokens objectAtIndex:multiplyFactor]];﻿
 //
 //}
 - (void)getinternet{
     MeasurNetTools * meaurNet = [[MeasurNetTools alloc] initWithblock:^(float speed) {
-        NSString* speedStr = [NSString stringWithFormat:@"%@/S", [QBTools formattedFileSize:speed]];
-        NSLog(@"即时速度:speed:%@",speedStr);
-        _lb_showinfo.text = [NSString stringWithFormat:@"即时速度:speed:%@",[DHMainViewController getByteRate]];
+//        NSString* speedStr = [NSString stringWithFormat:@"%@/S", [QBTools formattedFileSize:speed]];
+        _lb_showinfo.text = @"";
         
     } finishMeasureBlock:^(float speed) {
         NSString* speedStr = [NSString stringWithFormat:@"%@/S", [QBTools formattedFileSize:speed]];
@@ -352,61 +346,6 @@
     [meaurNet startMeasur];
     
 }
-/*获取网络流量信息*/
-+ (NSString *)getByteRate {
-    long long intcurrentBytes = [DHMainViewController getInterfaceBytes];
-    NSString *rateStr = [DHMainViewController formatNetWork:intcurrentBytes];
-    return rateStr;
-}
-+ (long long) getInterfaceBytes
-{
-    struct ifaddrs *ifa_list = 0, *ifa;
-    if (getifaddrs(&ifa_list) == -1)
-    {
-        return 0;
-    }
-    
-    uint32_t iBytes = 0;
-    uint32_t oBytes = 0;
-    
-    for (ifa = ifa_list; ifa; ifa = ifa->ifa_next)
-    {
-        if (AF_LINK != ifa->ifa_addr->sa_family)
-            continue;
-        
-        if (!(ifa->ifa_flags & IFF_UP) && !(ifa->ifa_flags & IFF_RUNNING))
-            continue;
-        
-        if (ifa->ifa_data == 0)
-            continue;
-        
-        /* Not a loopback device. */
-        if (strncmp(ifa->ifa_name, "lo", 2))
-        {
-            struct if_data *if_data = (struct if_data *)ifa->ifa_data;
-            
-            iBytes += if_data->ifi_ibytes;
-            oBytes += if_data->ifi_obytes;
-        }
-    }
-    freeifaddrs(ifa_list);
-    
-    NSLog(@"\n[getInterfaceBytes-Total]%d,%d",iBytes,oBytes);
-    return iBytes + oBytes;
-}
-+ (NSString *)formatNetWork:(long long int)rate {
-    if (rate <1024) {
-        return [NSString stringWithFormat:@"%lldB/秒", rate];
-    } else if (rate >=1024&& rate <1024*1024) {
-        return [NSString stringWithFormat:@"%.1fKB/秒", (double)rate /1024];
-    } else if (rate >=1024*1024&& rate <1024*1024*1024) {
-        return [NSString stringWithFormat:@"%.2fMB/秒", (double)rate / (1024*1024)];
-    } else {
-        return@"10Kb/秒";
-    };
-}
-
-
 
 
 - (void)developer{
@@ -529,8 +468,7 @@
     //    _cell.layer.shouldRasterize = YES;
     //    _cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
     _cell.title = indexPath.row>9?[NSString stringWithFormat:@"%ld_%@",(long)indexPath.row,_titles[indexPath.row]]:[NSString stringWithFormat:@"0%ld_%@",(long)indexPath.row,_titles[indexPath.row]];
-    //    _cell.labelName.text = indexPath.row>9?[NSString stringWithFormat:@"%ld_%@",(long)indexPath.row,_titles[indexPath.row]]:[NSString stringWithFormat:@"0%ld_%@",(long)indexPath.row,_titles[indexPath.row]];
-    _cell.layer.borderColor = [UIColor colorWithHexString:@"#cde6fe"].CGColor;
+    _cell.layer.borderColor = DHColorHex(@"#cde6fe").CGColor;
     _cell.layer.borderWidth = 1.0;
     _cell.layer.cornerRadius = 5.0;
     
@@ -552,7 +490,7 @@
     if ([className isEqualToString:@"MenuViewController"]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SliderMainStoryboard" bundle:[NSBundle mainBundle]];
         MenuViewController *detailVC = [storyboard instantiateViewControllerWithIdentifier:@"MenuViewController"];
-        [self.navigationController pushViewController:detailVC animated:YES];
+        pushVC(detailVC);
         return;
     }
     
@@ -561,7 +499,7 @@
     if (class) {
         UIViewController *ctrl = class.new;
         ctrl.title = _titles[indexPath.row];
-        push(ctrl);
+        pushVC(ctrl);
     }
     
     
@@ -574,7 +512,7 @@
 #define LISTCELLWIDTH (DH_DeviceWidth - (BRANDSECTION + 1) * BRANDDEV)/BRANDSECTION
 
 #pragma mark --UICollectionViewDelegateFlowLayout
-//////定义每个Item 的大小(cell的宽高)
+//定义每个Item 的大小(cell的宽高)
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
 //    CGFloat width = ((self.view.frame.size.width-15)/5);//间隙

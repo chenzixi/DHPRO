@@ -1,351 +1,0 @@
-TAir Hockey
-v7
-r0
-t332889731.104040
-cCheck dependencies
-cProcessInfoPlistFile "/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/Info.plist" Air_Hockey-Info.plist
-cCompileXIB "/Users/Student/Documents/Air Hockey/MainWindow.xib"
-cCompileXIB "/Users/Student/Documents/Air Hockey/Air_HockeyViewController.xib"
-cCpResource "build/Debug-iphonesimulator/Air Hockey.app/air hokey.png" "air hokey.png"
-cCpResource "build/Debug-iphonesimulator/Air Hockey.app/blue paddle.png" "blue paddle.png"
-cCpResource "build/Debug-iphonesimulator/Air Hockey.app/green paddle.png" "green paddle.png"
-cCpResource "build/Debug-iphonesimulator/Air Hockey.app/purple paddle.png" "purple paddle.png"
-cCpResource "build/Debug-iphonesimulator/Air Hockey.app/red paddle.png" "red paddle.png"
-cProcessPCH /var/folders/bv/bvp9wWuBHNqoZ7nhynoI-E+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/Air_Hockey_Prefix-gofslbfstcaukagvyivdqkhsnnrr/Air_Hockey_Prefix.pch.gch Air_Hockey_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC "build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Objects-normal/i386/main.o" "/Users/Student/Documents/Air Hockey/main.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC "build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Objects-normal/i386/Air_HockeyAppDelegate.o" "/Users/Student/Documents/Air Hockey/Classes/Air_HockeyAppDelegate.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC "build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Objects-normal/i386/Air_HockeyViewController.o" "/Users/Student/Documents/Air Hockey/Classes/Air_HockeyViewController.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-cLd "/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/Air Hockey" normal i386
-cGenerateDSYMFile "/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app.dSYM" "/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/Air Hockey"
-cTouch "/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app"
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk
-c000000004CC128950000000000000110
-t1287727253
-s272
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
-c000000004CC12246000000000029B310
-t1287725638
-s2732816
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Foundation
-c000000004CC1226D000000000029D5D0
-t1287725677
-s2741712
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
-c000000004CC1225F0000000000001466
-t1287725663
-s5222
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
-c000000004CC1281F0000000000000AA1
-t1287727135
-s2721
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/UIKit
-c000000004CC12883000000000074D7B0
-t1287727235
-s7657392
-
-N/Users/Student/Documents/Air Hockey/Air_HockeyViewController.xib
-c000000004E27379A0000000000001A51
-t1311192986
-s6737
-
-N/Users/Student/Documents/Air Hockey/Air_Hockey_Prefix.pch
-c000000004E27379A00000000000000BD
-t1311192986
-s189
-i<Foundation/Foundation.h>
-i<UIKit/UIKit.h>
-
-N/Users/Student/Documents/Air Hockey/Classes/Air_HockeyAppDelegate.h
-c000000004E27379A00000000000001F7
-t1311192986
-s503
-i<UIKit/UIKit.h>
-
-N/Users/Student/Documents/Air Hockey/Classes/Air_HockeyAppDelegate.m
-c000000004E27379A0000000000000AAA
-t1311192986
-s2730
-i"Air_HockeyAppDelegate.h"
-i"Air_HockeyViewController.h"
-
-N/Users/Student/Documents/Air Hockey/Classes/Air_HockeyViewController.h
-c000000004E2745470000000000000118
-t1311196487
-s280
-i<UIKit/UIKit.h>
-
-N/Users/Student/Documents/Air Hockey/Classes/Air_HockeyViewController.m
-c000000004E2747000000000000000808
-t1311196928
-s2056
-i"Air_HockeyViewController.h"
-
-N/Users/Student/Documents/Air Hockey/MainWindow.xib
-c000000004E27379A0000000000004E4D
-t1311192986
-s20045
-
-N/Users/Student/Documents/Air Hockey/air hokey.png
-c000000004E273784000000000002102B
-t1311192964
-s135211
-
-N/Users/Student/Documents/Air Hockey/blue paddle.png
-c000000004E2777E40000000000038C02
-t1311209444
-s232450
-
-N/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Objects-normal/i386/Air Hockey.LinkFileList
-c000000004E274700000000000000019C
-t1311196928
-s412
-
-N/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Objects-normal/i386/Air_HockeyAppDelegate.o
-t1311196930
-s51112
-
-N/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Objects-normal/i386/Air_HockeyViewController.o
-t1311196930
-s45332
-
-N/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Objects-normal/i386/main.o
-t1311196930
-s6296
-
-N/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app
-t1311196931
-s408
-
-N/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app.dSYM
-t1311196931
-s102
-
-N/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/Air Hockey
-t1311196931
-s18292
-
-N/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/Air_HockeyViewController.nib
-t1311196929
-s795
-
-N/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/Info.plist
-t1311196928
-s603
-
-N/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/MainWindow.nib
-t1311196929
-s1129
-
-N/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/PkgInfo
-t1311196928
-s8
-
-N/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/air hokey.png
-t1311196929
-s135211
-
-N/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/blue paddle.png
-t1311196929
-s232450
-
-N/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/green paddle.png
-t1311196929
-s231168
-
-N/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/purple paddle.png
-t1311196929
-s230482
-
-N/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/red paddle.png
-t1311196929
-s221798
-
-N/Users/Student/Documents/Air Hockey/green paddle.png
-c000000004E2777F20000000000038700
-t1311209458
-s231168
-
-N/Users/Student/Documents/Air Hockey/main.m
-c000000004E27379A0000000000000172
-t1311192986
-s370
-i<UIKit/UIKit.h>
-
-N/Users/Student/Documents/Air Hockey/purple paddle.png
-c000000004E2778400000000000038452
-t1311209536
-s230482
-
-N/Users/Student/Documents/Air Hockey/red paddle.png
-c000000004E2778240000000000036266
-t1311209508
-s221798
-
-N/var/folders/bv/bvp9wWuBHNqoZ7nhynoI-E+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/Air_Hockey_Prefix-gofslbfstcaukagvyivdqkhsnnrr/Air_Hockey_Prefix.pch.gch
-t1311196930
-s15453392
-
-NAir_Hockey-Info.plist
-c000000004E27379A000000000000038D
-t1311192986
-s909
-
-CCheck dependencies
-r0
-lSLF07#2@18"Check dependencies332889728#332889728#0(0"0(0#1#0"3343187568374212096#0"0#
-
-CCompileC "build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Objects-normal/i386/Air_HockeyAppDelegate.o" "/Users/Student/Documents/Air Hockey/Classes/Air_HockeyAppDelegate.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-s332889730.801090
-e332889730.882072
-r1
-xCompileC
-xbuild/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Objects-normal/i386/Air_HockeyAppDelegate.o
-x/Users/Student/Documents/Air Hockey/Classes/Air_HockeyAppDelegate.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@75"Compile /Users/Student/Documents/Air Hockey/Classes/Air_HockeyAppDelegate.m332889730#332889730#0(0"0(0#0#67"/Users/Student/Documents/Air Hockey/Classes/Air_HockeyAppDelegate.m8606621504#2005"    cd "/Users/Student/Documents/Air Hockey"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote "/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Air Hockey-generated-files.hmap" "-I/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Air Hockey-own-target-headers.hmap" "-I/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Air Hockey-all-target-headers.hmap" -iquote "/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Air Hockey-project-headers.hmap" "-F/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator" "-I/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/include" "-I/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/DerivedSources/i386" "-I/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/DerivedSources" -include /var/folders/bv/bvp9wWuBHNqoZ7nhynoI-E+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/Air_Hockey_Prefix-gofslbfstcaukagvyivdqkhsnnrr/Air_Hockey_Prefix.pch -c "/Users/Student/Documents/Air Hockey/Classes/Air_HockeyAppDelegate.m" -o "/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Objects-normal/i386/Air_HockeyAppDelegate.o"0#
-
-CCompileC "build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Objects-normal/i386/Air_HockeyViewController.o" "/Users/Student/Documents/Air Hockey/Classes/Air_HockeyViewController.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-s332889730.859172
-e332889730.938800
-r1
-xCompileC
-xbuild/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Objects-normal/i386/Air_HockeyViewController.o
-x/Users/Student/Documents/Air Hockey/Classes/Air_HockeyViewController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@78"Compile /Users/Student/Documents/Air Hockey/Classes/Air_HockeyViewController.m332889730#332889730#0(0"0(0#0#70"/Users/Student/Documents/Air Hockey/Classes/Air_HockeyViewController.m8603224672#2011"    cd "/Users/Student/Documents/Air Hockey"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote "/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Air Hockey-generated-files.hmap" "-I/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Air Hockey-own-target-headers.hmap" "-I/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Air Hockey-all-target-headers.hmap" -iquote "/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Air Hockey-project-headers.hmap" "-F/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator" "-I/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/include" "-I/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/DerivedSources/i386" "-I/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/DerivedSources" -include /var/folders/bv/bvp9wWuBHNqoZ7nhynoI-E+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/Air_Hockey_Prefix-gofslbfstcaukagvyivdqkhsnnrr/Air_Hockey_Prefix.pch -c "/Users/Student/Documents/Air Hockey/Classes/Air_HockeyViewController.m" -o "/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Objects-normal/i386/Air_HockeyViewController.o"0#
-
-CCompileC "build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Objects-normal/i386/main.o" "/Users/Student/Documents/Air Hockey/main.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-s332889730.799997
-e332889730.859073
-r1
-xCompileC
-xbuild/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Objects-normal/i386/main.o
-x/Users/Student/Documents/Air Hockey/main.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@50"Compile /Users/Student/Documents/Air Hockey/main.m332889730#332889730#0(0"0(0#0#42"/Users/Student/Documents/Air Hockey/main.m8615648448#1963"    cd "/Users/Student/Documents/Air Hockey"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote "/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Air Hockey-generated-files.hmap" "-I/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Air Hockey-own-target-headers.hmap" "-I/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Air Hockey-all-target-headers.hmap" -iquote "/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Air Hockey-project-headers.hmap" "-F/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator" "-I/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/include" "-I/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/DerivedSources/i386" "-I/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/DerivedSources" -include /var/folders/bv/bvp9wWuBHNqoZ7nhynoI-E+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/Air_Hockey_Prefix-gofslbfstcaukagvyivdqkhsnnrr/Air_Hockey_Prefix.pch -c "/Users/Student/Documents/Air Hockey/main.m" -o "/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Objects-normal/i386/main.o"0#
-
-CCompileXIB "/Users/Student/Documents/Air Hockey/Air_HockeyViewController.xib"
-s332889728.361798
-e332889729.141376
-r1
-xCompileXIB
-x/Users/Student/Documents/Air Hockey/Air_HockeyViewController.xib
-lSLF07#2@39"CompileXIB Air_HockeyViewController.xib332889728#332889729#0(0"0(0#0#64"/Users/Student/Documents/Air Hockey/Air_HockeyViewController.xib8617725184#598"    cd "/Users/Student/Documents/Air Hockey"    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile "/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/Air_HockeyViewController.nib" "/Users/Student/Documents/Air Hockey/Air_HockeyViewController.xib" --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk0#
-
-CCompileXIB "/Users/Student/Documents/Air Hockey/MainWindow.xib"
-s332889728.361198
-e332889729.118375
-r1
-xCompileXIB
-x/Users/Student/Documents/Air Hockey/MainWindow.xib
-lSLF07#2@25"CompileXIB MainWindow.xib332889728#332889729#0(0"0(0#0#50"/Users/Student/Documents/Air Hockey/MainWindow.xib8605170240#570"    cd "/Users/Student/Documents/Air Hockey"    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile "/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/MainWindow.nib" "/Users/Student/Documents/Air Hockey/MainWindow.xib" --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk0#
-
-CCpResource "build/Debug-iphonesimulator/Air Hockey.app/air hokey.png" "air hokey.png"
-s332889729.118455
-e332889729.749772
-r1
-xCpResource
-xbuild/Debug-iphonesimulator/Air Hockey.app/air hokey.png
-xair hokey.png
-lSLF07#2@18"Copy air hokey.png332889729#332889729#0(0"0(0#0#49"/Users/Student/Documents/Air Hockey/air hokey.png8633494688#471"    cd "/Users/Student/Documents/Air Hockey"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks "/Users/Student/Documents/Air Hockey/air hokey.png" "/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app"0#
-
-CCpResource "build/Debug-iphonesimulator/Air Hockey.app/blue paddle.png" "blue paddle.png"
-s332889729.139070
-e332889729.745158
-r1
-xCpResource
-xbuild/Debug-iphonesimulator/Air Hockey.app/blue paddle.png
-xblue paddle.png
-lSLF07#2@20"Copy blue paddle.png332889729#332889729#0(0"0(0#0#51"/Users/Student/Documents/Air Hockey/blue paddle.png8661714560#473"    cd "/Users/Student/Documents/Air Hockey"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks "/Users/Student/Documents/Air Hockey/blue paddle.png" "/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app"0#
-
-CCpResource "build/Debug-iphonesimulator/Air Hockey.app/green paddle.png" "green paddle.png"
-s332889729.139698
-e332889729.749883
-r1
-xCpResource
-xbuild/Debug-iphonesimulator/Air Hockey.app/green paddle.png
-xgreen paddle.png
-lSLF07#2@21"Copy green paddle.png332889729#332889729#0(0"0(0#0#52"/Users/Student/Documents/Air Hockey/green paddle.png8602705952#474"    cd "/Users/Student/Documents/Air Hockey"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks "/Users/Student/Documents/Air Hockey/green paddle.png" "/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app"0#
-
-CCpResource "build/Debug-iphonesimulator/Air Hockey.app/purple paddle.png" "purple paddle.png"
-s332889729.140208
-e332889729.750324
-r1
-xCpResource
-xbuild/Debug-iphonesimulator/Air Hockey.app/purple paddle.png
-xpurple paddle.png
-lSLF07#2@22"Copy purple paddle.png332889729#332889729#0(0"0(0#0#53"/Users/Student/Documents/Air Hockey/purple paddle.png8667152608#475"    cd "/Users/Student/Documents/Air Hockey"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks "/Users/Student/Documents/Air Hockey/purple paddle.png" "/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app"0#
-
-CCpResource "build/Debug-iphonesimulator/Air Hockey.app/red paddle.png" "red paddle.png"
-s332889729.140715
-e332889729.742416
-r1
-xCpResource
-xbuild/Debug-iphonesimulator/Air Hockey.app/red paddle.png
-xred paddle.png
-lSLF07#2@19"Copy red paddle.png332889729#332889729#0(0"0(0#0#50"/Users/Student/Documents/Air Hockey/red paddle.png8623559776#472"    cd "/Users/Student/Documents/Air Hockey"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks "/Users/Student/Documents/Air Hockey/red paddle.png" "/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app"0#
-
-CGenerateDSYMFile "/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app.dSYM" "/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/Air Hockey"
-s332889731.017652
-e332889731.092631
-r1
-xGenerateDSYMFile
-x/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app.dSYM
-x/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/Air Hockey
-lSLF07#2@122"GenerateDSYMFile "build/Debug-iphonesimulator/Air Hockey.app.dSYM" "build/Debug-iphonesimulator/Air Hockey.app/Air Hockey"332889731#332889731#0(0"0(0#0#89"/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/Air Hockey8643072192#389"    cd "/Users/Student/Documents/Air Hockey"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil "/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/Air Hockey" -o "/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app.dSYM"0#
-
-CLd "/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/Air Hockey" normal i386
-s332889730.938868
-e332889731.017569
-r1
-xLd
-x/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/Air Hockey
-xnormal
-xi386
-lSLF07#2@94"Link /Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/Air Hockey332889730#332889731#0(0"0(0#0#0"8658420864#910"    cd "/Users/Student/Documents/Air Hockey"    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk "-L/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator" "-F/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator" -filelist "/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Objects-normal/i386/Air Hockey.LinkFileList" -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -o "/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/Air Hockey"0#
-
-CProcessInfoPlistFile "/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/Info.plist" Air_Hockey-Info.plist
-s332889728.358317
-e332889728.361132
-r1
-xProcessInfoPlistFile
-x/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/Info.plist
-xAir_Hockey-Info.plist
-lSLF07#2@29"Process Air_Hockey-Info.plist332889728#332889728#0(0"0(0#0#57"/Users/Student/Documents/Air Hockey/Air_Hockey-Info.plist7578827501794051072#485"    cd "/Users/Student/Documents/Air Hockey"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility Air_Hockey-Info.plist -genpkginfo "/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/PkgInfo" -expandbuildsettings -format binary -platform iphonesimulator -o "/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app/Info.plist"0#
-
-CProcessPCH /var/folders/bv/bvp9wWuBHNqoZ7nhynoI-E+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/Air_Hockey_Prefix-gofslbfstcaukagvyivdqkhsnnrr/Air_Hockey_Prefix.pch.gch Air_Hockey_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
-s332889729.750409
-e332889730.799759
-r1
-xProcessPCH
-x/var/folders/bv/bvp9wWuBHNqoZ7nhynoI-E+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/Air_Hockey_Prefix-gofslbfstcaukagvyivdqkhsnnrr/Air_Hockey_Prefix.pch.gch
-xAir_Hockey_Prefix.pch
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@32"Precompile Air_Hockey_Prefix.pch332889729#332889730#0(0"0(0#0#57"/Users/Student/Documents/Air Hockey/Air_Hockey_Prefix.pch8607032480#1853"    cd "/Users/Student/Documents/Air Hockey"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote "/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Air Hockey-generated-files.hmap" "-I/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Air Hockey-own-target-headers.hmap" "-I/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Air Hockey-all-target-headers.hmap" -iquote "/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/Air Hockey-project-headers.hmap" "-F/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator" "-I/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/include" "-I/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/DerivedSources/i386" "-I/Users/Student/Documents/Air Hockey/build/Air Hockey.build/Debug-iphonesimulator/Air Hockey.build/DerivedSources" -c "/Users/Student/Documents/Air Hockey/Air_Hockey_Prefix.pch" -o /var/folders/bv/bvp9wWuBHNqoZ7nhynoI-E+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/Air_Hockey_Prefix-gofslbfstcaukagvyivdqkhsnnrr/Air_Hockey_Prefix.pch.gch0#
-
-CTouch "/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app"
-s332889731.092710
-e332889731.103972
-r1
-xTouch
-x/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app
-lSLF07#2@84"Touch /Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app332889731#332889731#0(0"0(0#0#0"8666894016#279"    cd "/Users/Student/Documents/Air Hockey"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c "/Users/Student/Documents/Air Hockey/build/Debug-iphonesimulator/Air Hockey.app"0#
-

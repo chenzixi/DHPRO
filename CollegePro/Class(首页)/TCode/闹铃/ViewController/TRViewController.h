@@ -17,7 +17,7 @@
 //@end
 
 
-@interface TRViewController : UIViewController
+@interface TRViewController : BaseViewController
 @property(nonatomic,strong) AVAudioPlayer * player;
 @property(nonatomic,assign) NSUInteger num;
 //@property(nonatomic,assign)id<ViewControllerDelegate>delegate;

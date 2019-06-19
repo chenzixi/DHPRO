@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface T3DTouchViewController : UIViewController
+@interface T3DTouchViewController : BaseViewController
 
 @end

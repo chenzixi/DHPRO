@@ -12,7 +12,7 @@
 -(void)selectPersonWithUserId:(NSString *)userId userName:(NSString *)userName photo:(NSString *)photo HX_UserID:(NSString *)hxID;
 
 @end
-@interface SearchResultViewController : UIViewController<UISearchResultsUpdating>
+@interface SearchResultViewController : BaseViewController<UISearchResultsUpdating>
 @property(nonatomic,weak)id<LBSearchResultSelectedDelegate>delegate;
 -(void)updateAddressBookData:(NSArray *)AddressBookDataArray;//得到数据
 @end

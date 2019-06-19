@@ -10,9 +10,10 @@
 
 #import "ExpandTableVC.h"
 #import "ExpandCell.h"
-
+#import "TodayItemModel.h"
 
 @interface ExpandTableVC ()
+@property (nonatomic, strong) NSMutableArray * dataArray;
 
 @end
 
@@ -31,7 +32,11 @@
 {
     [super viewDidLoad];
     self.m_ContentArr = [NSArray array];
-    
+    /*
+     设置哭鏖战
+     */
+    UIBarButtonItem * rightItem = [[UIBarButtonItem alloc] initWithTitle:@"切换标题" style:UIBarButtonItemStylePlain target:self action:@selector(clickSwitchTitleEvent)];
+    self.navigationItem.rightBarButtonItem = rightItem;
 
 	 self.view.backgroundColor = [UIColor colorWithRed:167.0f / 255.0f green:255.0f/ 255.0f blue:253.0f/ 255.0f alpha:0.3f];
     // Uncomment the following line to preserve selection between presentations.
@@ -42,7 +47,35 @@
 
 
 }
-
+//切换通知栏标题
+-(void)clickSwitchTitleEvent{
+    NSArray * arr = @[@"生活有度，人生添寿。 —— 书摘",@"理想是人生的太阳。 —— 德莱赛",@"不是老人变坏了，而是坏人变老了",@"人生苦短，必须性感"];
+    NSInteger index = arc4random() % 4;
+    // 存储数据
+    [[[NSUserDefaults alloc] initWithSuiteName:@"group.com.dhtest.CollegePro.CollegeProExtension"] setValue:arr[index] forKey:@"myShareData"];
+}
+#pragma mark- lazy
+-(NSMutableArray *)dataArray{
+    if (!_dataArray) {
+        NSArray * array = @[
+                            @{@"icon":@"bangzhu",@"handerUrl":@"CollegeProExtension://message",@"title":@"消息"},
+                            @{@"icon":@"fankui",@"handerUrl":@"CollegeProExtension://adress",@"title":@"地址管理"},
+                            @{@"icon":@"gerenxinxi",@"handerUrl":@"CollegeProExtension://work",@"title":@"工作"},
+                            @{@"icon":@"kefu",@"handerUrl":@"CollegeProExtension://my",@"title":@"我的"},
+                            @{@"icon":@"shezhi",@"handerUrl":@"CollegeProExtension://set",@"title":@"设置"},
+                            ];
+        _dataArray = [NSMutableArray arrayWithCapacity:array.count];
+        for (NSDictionary * dic in  array) {
+            TodayItemModel*manageModel = [TodayItemModel new];
+            manageModel.icon =dic[@"icon"];
+            manageModel.handerUrl = dic[@"handerUrl"];
+            manageModel.titlename = dic[@"title"];
+            [self.dataArray addObject:manageModel];
+        }
+        [self.tableView reloadData];
+    }
+    return _dataArray;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -53,30 +86,35 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return self.m_ContentArr.count;
+    return self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    ExpandCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    static NSString *CellIdentifier = @"Cell";
+//    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+//    }
+    TodayItemModel * model = self.dataArray[indexPath.row];
+//    cell.textLabel.text = @"素数";
+    
+    ExpandCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ExpandCell class])];
     if (nil == cell) {
-        cell = [[ExpandCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[ExpandCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([ExpandCell class])];
     }
     
-    //[cell setCellContentData:[self.m_ContentArr objectAtIndex:indexPath.row]];
-	cell.textLabel.text = [self.m_ContentArr objectAtIndex:indexPath.row];
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
-	cell.textLabel.backgroundColor = [UIColor clearColor];
+    [cell setCellContentData:model.titlename];
+//    cell.textLabel.text = [self.m_ContentArr objectAtIndex:indexPath.row];
+//    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+//    cell.textLabel.backgroundColor = [UIColor clearColor];
 	
     return cell;
 }

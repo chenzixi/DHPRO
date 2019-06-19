@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface BaseViewController : UIViewController
+
+/**
+ 是否显示返回按钮
+ */
+@property(nonatomic,assign) BOOL isShowleftBtn;
+
 - (void)dh_setupUI;
 #pragma mark - ***** 网络类型判断
 /**设置返回按钮

@@ -20,7 +20,7 @@
 @end
 
 
-@interface GZBaseViewController : UIViewController
+@interface GZBaseViewController : BaseViewController
 
 
 @property (nonatomic,copy)NSString *navTitle;

@@ -106,8 +106,7 @@
         _tableView.estimatedRowHeight = 0;
         _tableView.estimatedSectionHeaderHeight = 0;
         _tableView.estimatedSectionFooterHeight = 0;
-        
-        
+
 		[self.view addSubview:_tableView];
 	}
 	[_tableView setTableHeaderView:[self headImageView]];

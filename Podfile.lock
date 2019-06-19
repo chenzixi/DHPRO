@@ -16,22 +16,22 @@ PODS:
     - AFNetworking/NSURLSession
   - BaiduMapKit (4.3.2)
   - CocoaSecurity (1.2.4)
-  - IQKeyboardManager (6.2.1)
-  - JCore (2.0.0)
-  - JPush (3.2.0):
-    - JCore (< 3.0.0, >= 2.0.0)
+  - IQKeyboardManager (6.4.0)
+  - JCore (1.2.6)
+  - JPush (3.1.0):
+    - JCore (~> 1.2.0)
   - Masonry (1.1.0)
   - MBProgressHUD (0.9.2)
   - "MBProgressHUD+JDragon (0.0.4)":
     - MBProgressHUD (~> 0.9.2)
   - MJExtension (3.0.17)
-  - MJRefresh (3.1.16)
+  - MJRefresh (3.2.0)
   - SDAutoLayout (2.2.1)
-  - SDWebImage (5.0.2):
-    - SDWebImage/Core (= 5.0.2)
-  - SDWebImage/Core (5.0.2)
+  - SDWebImage (5.0.6):
+    - SDWebImage/Core (= 5.0.6)
+  - SDWebImage/Core (5.0.6)
   - SVProgressHUD (2.2.5)
-  - TZImagePickerController (3.2.0)
+  - TZImagePickerController (3.2.1)
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
@@ -41,7 +41,7 @@ DEPENDENCIES:
   - BaiduMapKit
   - CocoaSecurity
   - IQKeyboardManager
-  - JPush
+  - JPush (= 3.1.0)
   - Masonry
   - "MBProgressHUD+JDragon"
   - MJExtension
@@ -75,20 +75,20 @@ SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   BaiduMapKit: a5d9580553355d39a91b24c5eb91ebf298c64038
   CocoaSecurity: d288a6f87e0f363823d2cb83e753814a6944f71a
-  IQKeyboardManager: 964638372b4a61892cc74fdfa6fd26de8c9464a2
-  JCore: b962a2a1a61dc911ce5e79ba3ff21a95edaf5d23
-  JPush: 8459e7a709ad86f95884fcb49cbd57a6da24744e
+  IQKeyboardManager: fcef267266379c003181fc3592f6bdb8bf4db839
+  JCore: cae516dd2bf1a73b578ce6e1065abd49e709e0f7
+  JPush: 5921e25ad13e0386351079217b009f2039084eac
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   "MBProgressHUD+JDragon": 51958736b3a9f97adc176371544ffa257a0ba058
   MJExtension: 74ec83124a68891619fb7ba9c5c811bbf1691076
-  MJRefresh: 7798e16e53a5ef7f332dd05b27664db4e29530fd
+  MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
   SDAutoLayout: 8bf6b3bbc8b01f775d4defbb4fda2ace805461be
-  SDWebImage: 6764b5fa0f73c203728052955dbefa2bf1f33282
+  SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  TZImagePickerController: 7850b158d025065b162a1a963d445040b828abc9
+  TZImagePickerController: bf4c57b98d8707fce41ea6be872414a71c7a8c9d
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: df4b92b07034d79b984e6931778e71d23cb805b2
+PODFILE CHECKSUM: 14477bbcfdf460501226763781eb1304d927d96a
 
 COCOAPODS: 1.5.3

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DisassemblyViewController : UIViewController
+@interface DisassemblyViewController : BaseViewController
 
 @end

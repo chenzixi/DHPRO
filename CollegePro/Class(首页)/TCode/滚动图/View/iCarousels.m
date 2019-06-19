@@ -445,7 +445,7 @@ NSInteger compareViewDepths(id obj1, id obj2, void *context)
         CGFloat x1 = t1.m11 + t1.m21 + t1.m31 + t1.m41;
         CGFloat x2 = t2.m11 + t2.m21 + t2.m31 + t2.m41;
         CGFloat x3 = t3.m11 + t3.m21 + t3.m31 + t3.m41;
-		difference = fabs(x2 - x3) - fabsf(x1 - x3);
+        difference = fabs(x2 - x3) - fabs(x1 - x3);
     }
     return (difference < 0.0f)? NSOrderedAscending: NSOrderedDescending;
 }
@@ -1380,7 +1380,7 @@ NSInteger compareViewDepths(id obj1, id obj2, void *context)
 		//ignore vertical swipes
 		UIPanGestureRecognizer *panGesture = (UIPanGestureRecognizer *)gesture;
 		CGPoint translation = [panGesture translationInView:self];
-		return fabsf(translation.x) >= fabsf(translation.y);
+        return fabs(translation.x) >= fabs(translation.y);
 	}
 	return YES;
 }
@@ -1432,7 +1432,7 @@ NSInteger compareViewDepths(id obj1, id obj2, void *context)
 				}
 				if (!decelerating && (scrollToItemBoundary || (scrollOffset - [self clampedOffset:scrollOffset]) != 0.0f))
 				{
-                    if (fabsf(scrollOffset/itemWidth - self.currentItemIndex) < 0.01f)
+                    if (fabs(scrollOffset/itemWidth - self.currentItemIndex) < 0.01f)
                     {
                         //call scroll to trigger events for legacy support reasons
                         //even though technically we don't need to scroll at all
@@ -1440,7 +1440,7 @@ NSInteger compareViewDepths(id obj1, id obj2, void *context)
                     }
                     else if ([self shouldScroll])
                     {
-                        NSInteger direction = (int)(startVelocity / fabsf(startVelocity));
+                        NSInteger direction = (int)(startVelocity / fabs(startVelocity));
                         [self scrollToItemAtIndex:self.currentItemIndex + direction animated:YES];
                     }
                     else
@@ -1460,7 +1460,7 @@ NSInteger compareViewDepths(id obj1, id obj2, void *context)
 				CGFloat factor = 1.0f;
 				if (!shouldWrap && bounces)
 				{
-					factor = 1.0f - fminf(fabsf(scrollOffset - [self clampedOffset:scrollOffset]) / itemWidth, bounceDistance) / bounceDistance;
+					factor = 1.0f - fminf(fabs(scrollOffset - [self clampedOffset:scrollOffset]) / itemWidth, bounceDistance) / bounceDistance;
 				}
 				
                 previousTranslation = [panGesture translationInView:self].x;

@@ -41,7 +41,7 @@
  *
  *  @param text  内容
  *  @param font  字体大小
- *  @param width 高度
+ *  @param height 高度
  *
  *  @return label的宽度
  */
@@ -69,6 +69,18 @@
 + (BOOL)validatePassword:(NSString *)passWord;
 //获得当前时间
 + (NSString *)getCurrectTimeWithPar:(NSString *)par;
+// 将NSlog打印信息保存到Document目录下的文件中
++ (void)redirectNSlogToDocumentFolder;
+// 将NSlog打印信息保存到Caches目录下的文件中 写入缓存数据
++ (void)writeLocalCacheDataToCachesFolderWithKey:(NSString *)key fileName:(NSString *)file;
+/**
+ Preferences：NSLibraryDirectory
+ Caches：NSCachesDirectory
+ */
+// 读缓存
++ (NSData *)readLocalCacheDataWithKey:(NSString *)key;
+// 删缓存
++ (void)deleteLocalCacheDataWithKey:(NSString *)key;
 
 + (NSString *)getIPAddress;
 /**

@@ -6,6 +6,6 @@
 //  Copyright © 2017年 思 彭. All rights reserved.
 //
 
-@interface ShowViewController : UIViewController
+@interface ShowViewController : BaseViewController
 
 @end

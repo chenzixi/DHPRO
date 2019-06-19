@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DropViewController : UIViewController
+@interface DropViewController : BaseViewController
 
 @end

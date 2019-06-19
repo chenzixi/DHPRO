@@ -30,7 +30,13 @@
     [self.view addSubview:self.progressView];
     
 }
+#pragma mark - system watches
 
-
+- (void)dealloc
+{
+#ifdef DEBUG
+    NSLog(@"%@  dealloc",NSStringFromClass(self.class));
+#endif
+}
 
 @end

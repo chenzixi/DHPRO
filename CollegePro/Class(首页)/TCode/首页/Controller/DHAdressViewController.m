@@ -16,6 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.isShowleftBtn = YES;
+
     // Do any additional setup after loading the view.
 }
 

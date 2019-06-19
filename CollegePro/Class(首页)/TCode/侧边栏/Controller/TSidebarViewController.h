@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TSidebarViewController : UIViewController
+@interface TSidebarViewController : BaseViewController
 
 @end

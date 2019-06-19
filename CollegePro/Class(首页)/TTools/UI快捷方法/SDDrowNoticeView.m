@@ -131,7 +131,7 @@
         center.y -= selfHeight;
         self.center = center;
     } completion:^(BOOL finished) {
-        wd.windowLevel = UIWindowLevelNormal;
+        self->wd.windowLevel = UIWindowLevelNormal;
         [self removeFromSuperview];
     }];
 }

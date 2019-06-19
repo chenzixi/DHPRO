@@ -22,6 +22,6 @@
 //选则完成后回调
 @property (nonatomic, copy) void (^DoneBlock)(NSArray<ZLSelectPhotoModel *> *selPhotoModels, BOOL isSelectOriginalPhoto);
 //取消选择后回调
-@property (nonatomic, copy) void (^CancelBlock)();
+@property (nonatomic, copy) void (^CancelBlock)(void);
 
 @end

@@ -26,15 +26,28 @@
     return self;
 }
 - (void)mas_layoutSubviews{
-    self.imageView.frame = CGRectMake(15, 15, 70, 70);
-    self.label.frame = CGRectMake(self.imageView.frame.origin.x+self.imageView.frame.size.width + 10 , self.imageView.center.y, 100, 20);
+    self.imageView.frame = CGRectMake(15, 10, 50, 50);
+    self.label.frame = CGRectMake(self.imageView.frame.origin.x+self.imageView.frame.size.width + 10 , self.imageView.center.y-10, 100, 20);
+//    [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.left.mas_offset(15.0);
+//        make.bottom.mas_offset(-15.0);
+//        make.height.mas_equalTo(80.0);
+//        make.width.mas_equalTo(70.0);
+//    }];
+//
+//    [self.label mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerY.equalTo(self.imageView);
+//        make.left.equalTo(self.imageView.mas_right).mas_offset(10.0);
+//    }];
 }
 #pragma mark - lazy load
 - (UIImageView *)imageView {
     if (!_imageView) {
         _imageView = [[UIImageView alloc]init];
-        _imageView.image = [UIImage imageNamed:@"ic_fast_order"];
+        _imageView.image = [UIImage imageNamed:@"精灵球"];
         _imageView.layer.cornerRadius = 8.0;
+        _imageView.layer.borderColor = [UIColor redColor].CGColor;
+        _imageView.layer.borderWidth = 1.0;
         _imageView.layer.masksToBounds = YES;
     }
     return _imageView;
@@ -43,7 +56,7 @@
 - (UILabel *)label {
     if (!_label) {
         _label = [[UILabel alloc]init];
-        _label.text = @"Hello World";
+        _label.text = @"我是标题";
     }
     return _label;
 }

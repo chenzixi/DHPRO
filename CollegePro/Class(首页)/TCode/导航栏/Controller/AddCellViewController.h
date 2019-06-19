@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddCellViewController : UIViewController
+@interface AddCellViewController : BaseViewController
 
 @end

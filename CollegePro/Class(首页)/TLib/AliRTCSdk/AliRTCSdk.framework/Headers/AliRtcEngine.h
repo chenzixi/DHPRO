@@ -148,6 +148,8 @@ typedef NS_ENUM(NSInteger, AliRtcErrorCode) {
 
 
 @interface AliRenderView : AliRTCRenderView
+@property (nonatomic, copy) NSString *uid;
+@property (nonatomic, copy) NSString *name;
 
 @end
 

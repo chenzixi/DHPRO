@@ -122,10 +122,13 @@
 
 - (void)clearHeightCacheOfIndexPaths:(NSArray *)indexPaths
 {
+    __weak typeof(self) weakSelf = self;
+
     [indexPaths enumerateObjectsUsingBlock:^(NSIndexPath *indexPath, NSUInteger idx, BOOL *stop) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
         NSString *cacheKey = [self cacheKeyForIndexPath:indexPath];
-        [_cacheDictionary removeObjectForKey:cacheKey];
-        [_subviewFrameCacheDict removeObjectForKey:cacheKey];
+        [strongSelf->_cacheDictionary removeObjectForKey:cacheKey];
+        [strongSelf->_subviewFrameCacheDict removeObjectForKey:cacheKey];
     }];
 }
 
@@ -226,13 +229,17 @@
             [objsToInsert addObject:[NSNull null]];
             [indexSet addIndex:obj.row];
         }];
+        __weak typeof(self) weakSelf = self;
+
         [tempHeightCaches insertObjects:objsToInsert atIndexes:indexSet];
         [tempFrameCaches insertObjects:objsToInsert atIndexes:indexSet];
         [tempHeightCaches enumerateObjectsUsingBlock:^(NSNumber *heightCache, NSUInteger idx, BOOL *stop) {
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+
             if (![heightCache isKindOfClass:[NSNull class]]) {
                 NSString *key = [NSString stringWithFormat:@"%zd-%zd", section, idx];
-                [_cacheDictionary setValue:heightCache forKey:key];
-                [_subviewFrameCacheDict setValue:[tempFrameCaches objectAtIndex:idx] forKey:key];
+                [strongSelf->_cacheDictionary setValue:heightCache forKey:key];
+                [strongSelf->_subviewFrameCacheDict setValue:[tempFrameCaches objectAtIndex:idx] forKey:key];
             }
         }];
     }

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NaView.h"
 #import "UserCell.h"
-@interface ContentOffSetVC : UIViewController<NaViewDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface ContentOffSetVC : BaseViewController<NaViewDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     UIImageView *_headerImg;
     UILabel *_nameLabel;

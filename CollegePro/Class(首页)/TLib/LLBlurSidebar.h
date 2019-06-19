@@ -12,7 +12,7 @@
 #define kSidebarWidth 160.0 // 侧栏宽度，设屏宽为320，右侧留一条空白可以看到背后页面内容
 #endif
 
-@interface LLBlurSidebar : UIViewController
+@interface LLBlurSidebar : BaseViewController
 
 @property (nonatomic, retain) UIView* contentView; // 所有要显示的子控件全添加到这里
 @property (nonatomic, assign) BOOL isSidebarShown;

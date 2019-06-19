@@ -9,11 +9,21 @@
 #import "BaseViewController.h"
 
 @interface BaseViewController ()
+//导航栏左边按钮
+@property(nonatomic,strong) UIButton *buttonBack;
 
 @end
 
 @implementation BaseViewController
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    //是否显示左按钮
+    if (self.isShowleftBtn==NO)
+    {
+        [self dh_setBackItem];
+    }
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.view.backgroundColor = [UIColor whiteColor];
@@ -40,7 +50,7 @@
 }
 -(void)dh_setBackItem
 {
-	
+    [self buttonBack];
 }
 -(void)dh_setNavbarBackgroundHidden:(BOOL)hidden{
 	
@@ -60,12 +70,12 @@
 
 -(UIBarButtonItem *)dh_tbarBackButtonWhiteAndPopView
 {
-	UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-	leftBtn.frame = CGRectMake(0, 0, 20, 22);
-	[leftBtn setImage:[UIImage imageNamed:@"title_back"] forState:UIControlStateNormal];
-	[leftBtn setImageEdgeInsets:UIEdgeInsetsMake(4,17,5,19)];
-	[leftBtn addTarget:self action:@selector(popBack) forControlEvents:UIControlEventTouchUpInside];
-	UIBarButtonItem *leftBarBtnItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
+	UIButton *buttonBack = [UIButton buttonWithType:UIButtonTypeCustom];
+	buttonBack.frame = CGRectMake(0, 0, 20, 22);
+	[buttonBack setImage:[UIImage imageNamed:@"title_back"] forState:UIControlStateNormal];
+	[buttonBack setImageEdgeInsets:UIEdgeInsetsMake(4,17,5,19)];
+	[buttonBack addTarget:self action:@selector(popBack) forControlEvents:UIControlEventTouchUpInside];
+	UIBarButtonItem *leftBarBtnItem = [[UIBarButtonItem alloc]initWithCustomView:buttonBack];
 	return leftBarBtnItem;
 }
 -(UIBarButtonItem *)dh_tBarIconButtonItem:(NSString *)text action:(SEL)selctor
@@ -87,6 +97,50 @@
 	[backBtn addTarget:self action:selctor forControlEvents:UIControlEventTouchUpInside];
 	UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
 	return backItem;
+}
+//左右按钮
+- (void)setupNaviBtnWithTitle:(NSString *)rightStr rightImgStr:(NSString *)rightImgStr rightTextColor:(UIColor *)rightTextColor rightBlock:(void(^)(UIButton * _Nonnull btn))rightBlock
+{
+    //左按钮
+    [self dh_tbarBackButtonWhiteAndPopView];
+    //右按钮
+    UIButton *btnSX = [UIButton buttonWithType:UIButtonTypeSystem];
+    btnSX.frame = CGRectMake(0, 0, 35, 35);
+    //回调
+//    if (rightBlock)
+//    {
+//        [btnSX addAction:rightBlock];
+//    }
+    if (![DHTool IsNSStringNULL: rightStr])
+    {//右按钮是文字
+        [btnSX setTitle:rightStr forState:UIControlStateNormal];
+        [btnSX setTitleColor:rightTextColor forState:UIControlStateNormal];
+        UIBarButtonItem *btnSXItem = [[UIBarButtonItem alloc] initWithCustomView:btnSX];
+        self.navigationItem.rightBarButtonItem = btnSXItem;
+    }else
+    {//右按钮是图片
+        [btnSX setImage:[UIImage imageNamed:@"title_back"] forState:UIControlStateNormal];
+        btnSX.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5);
+        UIView *viewUSX = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+        [viewUSX addSubview:btnSX];
+        UIBarButtonItem *btnSXItem = [[UIBarButtonItem alloc] initWithCustomView:viewUSX];
+        self.navigationItem.rightBarButtonItem = btnSXItem;
+    }
+}
+- (UIButton *)buttonBack{
+    if (!_buttonBack) {
+        _buttonBack = [UIButton buttonWithType:UIButtonTypeSystem];
+        _buttonBack.frame = CGRectMake(0, 0, 55, 44);
+        [_buttonBack setImage:[[DH_ImageNameWithBundle(@"TabbarBundle", @"whiteBack") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+        _buttonBack.imageEdgeInsets = UIEdgeInsetsMake(10, 0, 10, 30);
+        [_buttonBack setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [_buttonBack addTarget:self action:@selector(popBack) forControlEvents:UIControlEventTouchUpInside];
+        UIView *viewU = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 55, 44)];
+        [viewU addSubview:_buttonBack];
+        UIBarButtonItem *btnItem = [[UIBarButtonItem alloc] initWithCustomView:viewU];
+        self.navigationItem.leftBarButtonItem = btnItem;
+    }
+    return _buttonBack;
 }
 //关闭页面
 - (void)closeCurruntPage

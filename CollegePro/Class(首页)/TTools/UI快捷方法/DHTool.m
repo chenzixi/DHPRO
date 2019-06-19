@@ -309,7 +309,70 @@
 	NSLog(@"dateString:%@",dateString);
 	return dateString;
 }
+// 将NSlog打印信息保存到Document目录下的文件中
++ (void)redirectNSlogToDocumentFolder
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = [paths objectAtIndex:0];
+    NSString *fileName = [NSString stringWithFormat:@"dr.log"];
+    // 注意不是NSData!
+    NSString *logFilePath = [documentDirectory stringByAppendingPathComponent:fileName];
+    // 先删除已经存在的文件
+    NSFileManager *defaultManager = [NSFileManager defaultManager];
+    [defaultManager removeItemAtPath:logFilePath error:nil]; // 将log输入到文件
+    freopen([logFilePath cStringUsingEncoding:NSASCIIStringEncoding], "a+", stdout);
+    freopen([logFilePath cStringUsingEncoding:NSASCIIStringEncoding], "a+", stderr);
+    
+}
+/*******************************************************************************/
+
+// 将NSlog打印信息保存到Caches目录下的文件中 写入缓存数据
++ (void)writeLocalCacheDataToCachesFolderWithKey:(NSString *)key fileName:(NSString *)file{
+    // 设置存储路径
+    NSString * path = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString * path1 = [path stringByAppendingPathComponent:file];
+    //    // 判读缓存数据是否存在
+    //    if ([[NSFileManager defaultManager] fileExistsAtPath:cachesPath]) {
+    //        // 删除旧的缓存数据
+    //        [[NSFileManager defaultManager] removeItemAtPath:cachesPath error:nil];
+    //    }
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path1]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:path1 withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    NSString * cachesPath = [path1 stringByAppendingPathComponent:key];
+
+    freopen([cachesPath cStringUsingEncoding:NSASCIIStringEncoding], "a+", stdout);
+    freopen([cachesPath cStringUsingEncoding:NSASCIIStringEncoding], "a+", stderr);
+}
+
+// 读缓存
++ (NSData *)readLocalCacheDataWithKey:(NSString *)key {
+    NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0]
+                            stringByAppendingPathComponent:key];
+    // 判读缓存数据是否存在
+    if ([[NSFileManager defaultManager] fileExistsAtPath:cachesPath]) {
+        // 读取缓存数据
+        return [NSData dataWithContentsOfFile:cachesPath];
+    }
+    return nil;
+}
+
+// 删缓存
++ (void)deleteLocalCacheDataWithKey:(NSString *)key {
+    NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0]
+                            stringByAppendingPathComponent:key];
+    // 判读缓存数据是否存在
+    if ([[NSFileManager defaultManager] fileExistsAtPath:cachesPath]) {
+        // 删除缓存数据
+        [[NSFileManager defaultManager] removeItemAtPath:cachesPath error:nil];
+    }
+}
 /*获取网络流量信息*/
++ (NSString *)getByteRate {
+    long long intcurrentBytes = [DHTool getInterfaceBytes];
+    NSString *rateStr = [DHTool formatNetWork:intcurrentBytes];
+    return rateStr;
+}
 + (long long) getInterfaceBytes
 {
 	struct ifaddrs *ifa_list = 0, *ifa;
@@ -342,11 +405,19 @@
 		}
 	}
 	freeifaddrs(ifa_list);
-	
-	NSLog(@"\n[getInterfaceBytes-Total]%d,%d",iBytes,oBytes);
 	return iBytes + oBytes;
 }
-
++ (NSString *)formatNetWork:(long long int)rate {
+    if (rate <1024) {
+        return [NSString stringWithFormat:@"%lldB/秒", rate];
+    } else if (rate >=1024&& rate <1024*1024) {
+        return [NSString stringWithFormat:@"%.1fKB/秒", (double)rate /1024];
+    } else if (rate >=1024*1024&& rate <1024*1024*1024) {
+        return [NSString stringWithFormat:@"%.2fMB/秒", (double)rate / (1024*1024)];
+    } else {
+        return@"10Kb/秒";
+    };
+}
 //获取手机的网络的ip地址
 + (NSString *)getIPAddress
 {

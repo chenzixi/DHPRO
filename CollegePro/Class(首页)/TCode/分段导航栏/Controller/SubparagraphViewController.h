@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SubparagraphViewController : UIViewController
+@interface SubparagraphViewController : BaseViewController
 
 @end

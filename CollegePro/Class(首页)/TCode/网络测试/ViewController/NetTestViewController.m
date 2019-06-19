@@ -46,30 +46,71 @@
 	timer7 = nil;
 	timer8 = nil;
 }
+static  BOOL y;
+- (void)test{
+
+    dispatch_queue_t queueMovies = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_semaphore_t semaphoreMovies = dispatch_semaphore_create(5);//创建信号量
+    
+        dispatch_semaphore_wait(semaphoreMovies, DISPATCH_TIME_FOREVER);//等待信号量 有闲置的信号量就让新的任务进来，如果没有就按照顺序等待闲置的信号量 可以设置等待时间
+        dispatch_async(queueMovies, ^{
+            //模拟下载任务
+            sleep(3);//假设下载一集需要10+i*2秒
+            y = NO;
+            if (y == YES) {
+              return ;
+            }
+            else{
+                [self testtest];
+            }
+            NSLog(@"A完成");
+            dispatch_semaphore_signal(semaphoreMovies);//发送信号量 发送完成进度
+        });
+}
+- (void)testtest{
+    //创建一个调度组
+    dispatch_group_t group = dispatch_group_create();
+    
+    //进入调度组
+    dispatch_group_enter(group);
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        //模拟请求耗时
+        sleep(2);
+        y = NO;
+        if (y == YES) {
+            return ;
+        }
+        else{
+            [self test];
+        }
+        NSLog(@"B完成");
+        //事件完成 离开调度组
+        dispatch_group_leave(group);
+    });
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//	[self getdata];
-	[self timer];
-	_queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-	[self asyncGlobalQueue];//异步
+//    [self getdata];
+//    [self timer];
+//    _queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    [self asyncGlobalQueue];//异步
 //	[self asyncSerialQueue];//同步
 }
 -(void)getdata{
-	NSString *URL = @"https://app.qipai.com/sevenv2/index.php?controller=life";
-	NSString *method = @"requestLifeList";
-	NSString *page_id = @"";
-	NSString *sort_id = @"1";
-	NSString *user_id = @"26";
+	NSString *URL = @"https://testapi.iuoooo.com/jrtc.api/Jinher.AMP.JRTC.RealTime.svc/GetChannelToken";
+	NSArray *UserId = @[@"f2622c2b-80fb-4e66-9280-66d4eb6053e4"];
+	NSString *PassWord = @"59254df4adb4f537906cb9c436641dd95d276a202960cab55aa546873c12e9c0";
 
 
-	NSDictionary *param = NSDictionaryOfVariableBindings(method,page_id,sort_id,user_id);
-	[SFNetWorkManager requestWithType:HttpRequestTypeGet withUrlString:URL withParaments:param withSuccessBlock:^(NSDictionary *object) {
+	NSDictionary *param = NSDictionaryOfVariableBindings(UserId,PassWord);
+	[SFNetWorkManager requestWithType:HttpRequestTypePost withUrlString:URL withParaments:param withSuccessBlock:^(NSDictionary *object) {
 		
 		_dataSource = [DataModel mj_objectArrayWithKeyValuesArray:object[@"data"]];
 			
 	} withFailureBlock:^(NSError *error) {
-		
+        NSLog(@"error %@",error.description);
 	} progress:^(float progress) {
 		
 	}];
@@ -179,53 +220,18 @@
 //	NSTimer *timeTest = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerRequest) userInfo:nil repeats:YES];
 //	[self performSelector:@selector(simulateBusy:) withObject:@"ojbcet" afterDelay:3];
 
-#pragma mark- 线程
-	/*
-	atomic 与 nonatomic
-	
-	问题：什么是原子性？ 说明并比较atomic和nonatomic。 atomic是百分之百安全的吗？
-	
-	原子性：并发编程中确保其操作具备整体性，系统其它部分无法观察到中间步骤，只能看到操作前后的结果。
-	atomic：原子性的，编译器会通过锁定机制确保setter和getter的完整性。
-	nonatomic：非原子性的，不保证setter和getter的完整性。
-	区别：由于要保证操作完整，atomic速度比较慢，线程相对安全；nonatomic速度比较快，但是线程不安全。atomic也不是绝对的线程安全，当多个线程同时调用set和get时，就会导致获取的值不一样。由于锁定机制开销较大，一般iOS开发中会使用nonatomic，而macOS中使用atomic通常不会有性能瓶颈。
-	拓展：要想线程绝对安全，就要使用 @synchronized同步锁。但是由于同步锁有等待操作，会降低代码效率。为了兼顾线程安全和提升效率，可采用GCD并发队列进行优化改进。get使用同步派发，set使用异步栅栏。
-	*/
-	/*
-	 内存管理语义
-	 
-	 1.关键词
-	 strong：表示指向并拥有该对象。其修饰的对象引用计数会 +1 ，该对象只要引用计数不为 0 就不会销毁，强行置空可以销毁它。一般用于修饰对象类型、字符串和集合类的可变版本。
-	 copy：与strong类似，设置方法会拷贝一份副本。一般用于修饰字符串和集合类的不可变版， block用copy修饰。
-	 weak：表示指向但不拥有该对象。其修饰的对象引用计数不会增加，属性所指的对象遭到摧毁时属性值会清空。ARC环境下一般用于修饰可能会引起循环引用的对象，delegate用weak修饰，xib控件也用weak修饰。
-	 assign：主要用于修饰基本数据类型，如NSIteger、CGFloat等，这些数值主要存在于栈中。
-	 unsafe_unretained：与weak类似，但是销毁时不自动清空，容易形成野指针。
-	 
-	 2.比较 copy 与 strong
-	 
-	 copy与strong：相同之处是用于修饰表示拥有关系的对象。不同之处是strong复制是多个指针指向同一个地址，而copy的复制是每次会在内存中复制一份对象，指针指向不同的地址。NSString、NSArray、NSDictionary等不可变对象用copy修饰，因为有可能传入一个可变的版本，此时能保证属性值不会受外界影响。
-	 注意：若用strong修饰NSArray，当数组接收一个可变数组，可变数组若发生变化，被修饰的属性数组也会发生变化，也就是说属性值容易被篡改；若用copy修饰NSMutableArray，当试图修改属性数组里的值时，程序会崩溃，因为数组被复制成了一个不可变的版本。
-	 
-	 3.比较 assign、weak、unsafe_unretain
-	 
-	 相同点：都不是强引用。
-	 不同点：weak引用的 OC 对象被销毁时, 指针会被自动清空，不再指向销毁的对象，不会产生野指针错误；unsafe_unretain引用的 OC 对象被销毁时, 指针并不会被自动清空, 依然指向销毁的对象，很容易产生野指针错误:EXC_BAD_ACCESS；assign修饰基本数据类型，内存在栈上由系统自动回收。
-	 
-	 Property的默认设置
-	 
-	 基本数据类型：atomic, readwrite, assign
-	 对象类型：atomic, readwrite, strong
-	 注意：考虑到代码可读性以及日常代码修改频率，规范的编码风格中关键词的顺序是：原子性、读写权限、内存管理语义、getter/getter。
-	 
-	 延伸
-	 
-	 我们已经知道 @property 会使编译器自动编写访问这些属性所需的方法，此过程在编译期完成，称为 自动合成 (autosynthesis)。与此相关的还有两个关键词：@dynamic 和 @synthesize。
-	 
-	 @dynamic：告诉编译器不要自动创建实现属性所用的实例变量，也不要为其创建存取方法。即使编译器发现没有定义存取方法也不会报错，运行期会导致崩溃。
-	 @synthesize：在类的实现文件里可以通过 @synthesize 指定实例变量的名称。
-	 注意：在Xcode4.4之前，@property 配合 @synthesize使用，@property 负责声明属性，@synthesize 负责让编译器生成 带下划线的实例变量并且自动生成setter、getter方法。Xcode4.4 之后 @property 得到增强，直接一并替代了 @synthesize 的工作。
-	 */
 #pragma mark- 队列
+    /*
+    atomic 与 nonatomic
+    
+    问题：什么是原子性？ 说明并比较atomic和nonatomic。 atomic是百分之百安全的吗？
+    
+    原子性：并发编程中确保其操作具备整体性，系统其它部分无法观察到中间步骤，只能看到操作前后的结果。
+    atomic：原子性的，编译器会通过锁定机制确保setter和getter的完整性。
+    nonatomic：非原子性的，不保证setter和getter的完整性。
+    区别：由于要保证操作完整，atomic速度比较慢，线程相对安全；nonatomic速度比较快，但是线程不安全。atomic也不是绝对的线程安全，当多个线程同时调用set和get时，就会导致获取的值不一样。由于锁定机制开销较大，一般iOS开发中会使用nonatomic，而macOS中使用atomic通常不会有性能瓶颈。
+    拓展：要想线程绝对安全，就要使用 @synchronized同步锁。但是由于同步锁有等待操作，会降低代码效率。为了兼顾线程安全和提升效率，可采用GCD并发队列进行优化改进。get使用同步派发，set使用异步栅栏。
+     */
 	/*
 	 
 	 全局队列与并发队列的区别：
@@ -328,6 +334,12 @@
 	dispatch_async(queue, ^{
 		NSLog(@"-----下载图片5---%@", [NSThread currentThread]);
 	});
+/*通常我们会用for循环遍历，但是GCD给我们提供了快速迭代的方法dispatch_apply，使我们可以同时遍历。比如说遍历0~5这6个数字，for循环的做法是每次取出一个元素，逐个遍历。dispatch_apply可以同时遍历多个数字。
+     */
+    dispatch_apply(6, queue, ^(size_t index) {
+        NSLog(@"GCD快速迭代 //%zd------%@",index, [NSThread currentThread]);
+    });
+ 
 }
 /**
  *  async -- 串行队列（有时候用）
@@ -355,8 +367,63 @@
 	dispatch_async(queue, ^{
 		NSLog(@"-----下载图片50---%@", [NSThread currentThread]);
 	});
+    
 }
 
+/**
+ 调度组异步执行
+ */
+- (void)asyncGroup{
+    //创建一个调度组
+    dispatch_group_t group = dispatch_group_create();
+    
+    //进入调度组
+    dispatch_group_enter(group);
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        //模拟请求耗时
+        sleep(2);
+        NSLog(@"A");
+        //事件完成 离开调度组
+        dispatch_group_leave(group);
+    });
+    
+    dispatch_group_enter(group);
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        sleep(2);
+        NSLog(@"B");
+        dispatch_group_leave(group);
+    });
+    
+    dispatch_group_enter(group);
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        sleep(2);
+        NSLog(@"C");
+        dispatch_group_leave(group);
+    });
+    /*
+     参数1:调度组
+     参数2:队列
+     参数3:任务
+     */
+    dispatch_group_async(group, dispatch_get_global_queue(0, 0), ^{
+        sleep(1);
+        NSLog(@"下载第1首歌曲");
+    });
+    dispatch_group_async(group, dispatch_get_global_queue(0, 0), ^{
+        sleep(1);
+        NSLog(@"下载第2首歌曲");
+    });
+    dispatch_group_async(group, dispatch_get_global_queue(0, 0), ^{
+        sleep(1);
+        NSLog(@"下载第3首歌曲");
+    });
+    //所有任务从调度组里面拿出来 调用通知
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        NSLog(@"完成");
+    });
+    dispatch_group_enter(group);
+
+}
 
 // 核心概念：
 // 任务：Block  即将任务保存到一个Block中去。
@@ -418,9 +485,12 @@
 	dispatch_queue_t queue = dispatch_queue_create("cz", DISPATCH_QUEUE_CONCURRENT);
 	
 	// 异步执行任务
-	for (int i=0 ; i<10 ; i++) {
+	for (int i=0 ; i<5 ; i++) {
 		dispatch_async(queue, ^{
-			NSLog(@"%@  %d", [NSThread currentThread], i);
+            NSLog(@"A开始 %@",[NSThread currentThread]);
+            //模拟请求耗时
+            sleep(1);
+            NSLog(@"-%d-完成:%@",i, [NSThread currentThread]);
 		});
 	}
 }
@@ -547,6 +617,13 @@
 
 /***************************************************************************************/
 #pragma mark- GCD全局队列
+/**
+ 全局队列与并发队列的区别：
+ 1. 全局队列没有名称，并发队列有名称。
+ 2. 全局队列，是供所有的应用程序共享。
+ 3. 在MRC开发中，全局队列不需要释放，但并发队列需要释放。
+ 对比：调度任务的方式相同。
+ */
 -(void)gcdTest8
 {
 	// 获得全局队列
@@ -575,14 +652,85 @@
 		});
 	}
 }
-
+#pragma mark- GCD信号量
+- (void)asyncSemaphore{
+    
+    NSArray*moviesArray = [NSArray arrayWithObjects:
+                           @"第1集", @"第2集",@"第3集",@"第4集",@"第5集",
+                           @"第6集",@"第7集",@"第8集",@"第9集",@"第10集",
+                           @"第11集", @"第12集",@"第13集",@"第14集",@"第15集",
+                           @"第16集",@"第17集",@"第18集",@"第19集",@"第20集",
+                           nil];
+    
+    dispatch_queue_t queueMovies = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_semaphore_t semaphoreMovies = dispatch_semaphore_create(5);//创建信号量
+    
+    for (int i = 0 ; i<moviesArray.count; i++) {
+        dispatch_semaphore_wait(semaphoreMovies, DISPATCH_TIME_FOREVER);//等待信号量 有闲置的信号量就让新的任务进来，如果没有就按照顺序等待闲置的信号量 可以设置等待时间
+        dispatch_async(queueMovies, ^{
+            //模拟下载任务
+            NSLog(@"%@开始下载",moviesArray[i]);
+            sleep(10+i*2);//假设下载一集需要10+i*2秒
+            NSLog(@"%@下载完成",moviesArray[i]);
+            dispatch_semaphore_signal(semaphoreMovies);//发送信号量 发送完成进度
+        });
+    }
+    dispatch_queue_t queueshili = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_semaphore_t semaphoreshili = dispatch_semaphore_create(5);
+    
+    for (int i = 0 ; i<20; i++) {
+        dispatch_semaphore_wait(semaphoreshili, DISPATCH_TIME_FOREVER);
+        dispatch_async(queueshili, ^{
+            NSLog(@"任务%d开始",i);
+            sleep(i);
+            NSLog(@"任务%d结束",i);
+            dispatch_semaphore_signal(semaphoreshili);
+        });
+    }
+}
+#pragma mark- asyncBarrier栅栏函数
 /**
- 全局队列与并发队列的区别：
- 1. 全局队列没有名称，并发队列有名称。
- 2. 全局队列，是供所有的应用程序共享。
- 3. 在MRC开发中，全局队列不需要释放，但并发队列需要释放。
- 对比：调度任务的方式相同。
+ 栅栏函数
+ <一>什么是dispatch_barrier_async函数
+ 毫无疑问,dispatch_barrier_async函数的作用与barrier的意思相同,在进程管理中起到一个栅栏的作用,它等待所有位于barrier函数之前的操作执行完毕后执行,并且在barrier函数执行之后,barrier函数之后的操作才会得到执行,该函数需要同dispatch_queue_create函数生成的concurrent Dispatch Queue队列一起使用
+ 
+ <二>dispatch_barrier_async函数的作用
+ 
+ 1.实现高效率的数据库访问和文件访问
+ 
+ 2.避免数据竞争
  */
+- (void)asyncBarrier{
+    //同dispatch_queue_create函数生成的concurrent Dispatch Queue队列一起使用
+    dispatch_queue_t queuezhalan = dispatch_queue_create("zhalanqueue", DISPATCH_QUEUE_CONCURRENT);
+    
+    dispatch_async(queuezhalan, ^{
+        NSLog(@"栅栏函数----1-----%@", [NSThread currentThread]);
+    });
+    
+    dispatch_async(queuezhalan, ^{
+        NSLog(@"栅栏函数----2-----%@", [NSThread currentThread]);
+    });
+    
+    dispatch_async(queuezhalan, ^{
+        NSLog(@"栅栏函数----3-----%@", [NSThread currentThread]);
+    });
+    
+    dispatch_async(queuezhalan, ^{
+        NSLog(@"栅栏函数----4-----%@", [NSThread currentThread]);
+    });
+    
+    dispatch_barrier_async(queuezhalan, ^{
+        NSLog(@"栅栏函数----barrier-----%@", [NSThread currentThread]);
+    });
+    
+    dispatch_async(queuezhalan, ^{
+        NSLog(@"栅栏函数----5-----%@", [NSThread currentThread]);
+    });
+    dispatch_async(queuezhalan, ^{
+        NSLog(@"栅栏函数----6-----%@", [NSThread currentThread]);
+    });
+}
 
 // 模拟当前线程正好繁忙的情况
 - (void)simulateBusy:(NSString *)str{
@@ -625,6 +773,23 @@
 	count1 ++;
 	labelName.text = [NSString stringWithFormat:@"计时器当前计数:%d",count1];
 	NSLog(@"定时器开始。。。");
+}
+#pragma mark- BlockOperation
+- (void)gcdTest{
+    NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
+        NSLog(@"task0---%@", [NSThread currentThread]);
+    }];
+    
+    [op addExecutionBlock:^{
+        NSLog(@"task1----%@", [NSThread currentThread]);
+    }];
+    
+    [op addExecutionBlock:^{
+        NSLog(@"task2----%@", [NSThread currentThread]);
+    }];
+    
+    // 开始必须在添加其他操作之后
+    [op start];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
