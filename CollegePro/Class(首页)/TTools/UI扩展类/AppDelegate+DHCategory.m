@@ -140,6 +140,7 @@
 													   queue:nil
 												  usingBlock:^(NSNotification *note) {
 													  // executes after screenshot
+
 													  NSLog(@"截屏咯");
 													  [self userDidTakeScreenshot];
 												  }];

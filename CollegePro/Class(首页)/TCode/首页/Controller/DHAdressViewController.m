@@ -17,10 +17,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isShowleftBtn = YES;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(jieshou) name:UIApplicationUserDidTakeScreenshotNotification object:nil];
+
 
     // Do any additional setup after loading the view.
 }
-
+- (void)jieshou{
+    NSLog(@"接收");
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

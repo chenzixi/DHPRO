@@ -59,7 +59,6 @@
 #import "MVVMViewController.h"
 #import "CustomCollectionViewController.h"//长按拖动collectioncell
 #import "TurntableViewController.h"//转盘
-#import "AliRTCViewController.h"//阿里音视频通话
 #import "MenuViewController.h"//storyboard
 #import "ExpandTableVC.h"//点击按钮出现下拉列表
 #import "LabelMethodBlockVC.h"
@@ -69,7 +68,6 @@
 //#import "BankCardViewController.h"//信用卡识别
 //#import "BankCartViewController.h"//银行卡扫描
 //#import "DocumentViewController.h"//文档
-
 #import <AVFoundation/AVFoundation.h>
 
 #include <ifaddrs.h>
@@ -99,17 +97,22 @@
 @property (nonatomic, strong) NSMutableArray *titles;
 @property (nonatomic, strong) NSMutableArray *classNames;
 
+@property (nonatomic, copy) NSString *test;
 
 @end
 
 @implementation DHMainViewController
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-//    [self developer];
+
+}
+- (void)receiveMessage:(NSNotification *)nof{
+    NSDictionary *dict = nof.userInfo;
+    self.test = dict[@"content"];
+   
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self setUPUI];
     self.isShowleftBtn = YES;
     //    applicationWillEnterForeground
@@ -166,9 +169,8 @@
     
     self.titles = @[].mutableCopy;
     self.classNames = @[].mutableCopy;
-    
+#pragma mark -跳转页面
     [self addCell:@"上下滑动" class:@"ContentOffSetVC"];
-//    [self addCell:@"RTC" class:@"AliRTCViewController"];
     [self addCell:@"识别相机" class:@"PictureSelectionController"];
     [self addCell:@"二维码" class:@"GKHScanQCodeViewController"];
     [self addCell:@"凸起菜单栏" class:@"LBTabBarTextController"];
@@ -538,57 +540,7 @@
 }
 
 
-/**
- *  截取当前屏幕
- *
- *  @return NSData *
- */
-- (NSData *)dataWithScreenshotInPNGFormat
-{
-    CGSize imageSize = CGSizeZero;
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    if (UIInterfaceOrientationIsPortrait(orientation))
-        imageSize = [UIScreen mainScreen].bounds.size;
-    else
-        imageSize = CGSizeMake([UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
-    
-    UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    for (UIWindow *window in [[UIApplication sharedApplication] windows])
-    {
-        CGContextSaveGState(context);
-        CGContextTranslateCTM(context, window.center.x, window.center.y);
-        CGContextConcatCTM(context, window.transform);
-        CGContextTranslateCTM(context, -window.bounds.size.width * window.layer.anchorPoint.x, -window.bounds.size.height * window.layer.anchorPoint.y);
-        if (orientation == UIInterfaceOrientationLandscapeLeft)
-        {
-            CGContextRotateCTM(context, M_PI_2);
-            CGContextTranslateCTM(context, 0, -imageSize.width);
-        }
-        else if (orientation == UIInterfaceOrientationLandscapeRight)
-        {
-            CGContextRotateCTM(context, -M_PI_2);
-            CGContextTranslateCTM(context, -imageSize.height, 0);
-        } else if (orientation == UIInterfaceOrientationPortraitUpsideDown) {
-            CGContextRotateCTM(context, M_PI);
-            CGContextTranslateCTM(context, -imageSize.width, -imageSize.height);
-        }
-        if ([window respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)])
-        {
-            [window drawViewHierarchyInRect:window.bounds afterScreenUpdates:YES];
-        }
-        else
-        {
-            [window.layer renderInContext:context];
-        }
-        CGContextRestoreGState(context);
-    }
-    
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return UIImagePNGRepresentation(image);
-}
+
 //测试
 - (void)showPromptlanguage:(NSString *)string
 {

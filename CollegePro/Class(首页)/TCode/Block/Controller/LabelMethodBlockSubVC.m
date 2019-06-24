@@ -36,7 +36,7 @@
 
 @property(nonatomic, strong)SFTextView *textF;
 
-@property (nonatomic, strong) KYUser *user;
+@property (nonatomic, strong)KYUser *user;
 
 @property(nonatomic,strong)Persion* p;
 @end
@@ -104,8 +104,8 @@
 - (void)loadViewIfNeeded{//1
     [super loadViewIfNeeded];
 }
-- (void)loadView{
-    [super loadView];//2
+- (void)loadView{//2
+    [super loadView];
 }
 
 //将要显示的时候
@@ -142,7 +142,6 @@
 //已经显示的时候  真实的frame会在这之后调用
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];//8
-    [self baseBlock];
 
     //    [UIView animateWithDuration:100.0 animations:^{
     //        ThreeViewController *three = [[ThreeViewController alloc]init];
@@ -169,6 +168,7 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
 //    self.navigationController.navigationBarHidden = NO;
+    //本地日志打印
     [DHTool writeLocalCacheDataToCachesFolderWithKey:[NSString stringWithFormat:@"Block_%@.log",[DHTool getCurrectTimeWithPar:@"yyyy-MM-dd-HH-mm-ss-SSS"]] fileName:@"Block"];
 
     if (self.returnTextBlock != nil) {
@@ -183,9 +183,7 @@
     [super viewDidLoad];
 	self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"Block知识";
-    
-    //返回按钮
-//    self.navigationItem.leftBarButtonItem = [self dh_tbarBackButtonWhiteAndPopView];
+    [self baseBlock];
 
     if (@available(iOS 11.0, *)) {
         NSString *edgeStr = NSStringFromUIEdgeInsets(self.view.safeAreaInsets);
@@ -204,12 +202,10 @@
 //    [self.view addSubview:pushNillButton];
     // Do any additional setup after loading the view.
 }
-- (void)pop{
-    popVC;
-}
+
 - (void)baseBlock{
     numC = 100;
-    [self testDataA];
+//    [self testDataA];
 //    [self testDataB];
 //    [self testDataC];
 //    [self testDataD];
@@ -275,11 +271,12 @@
  @synthesize：在类的实现文件里可以通过 @synthesize 指定实例变量的名称。
  注意：在Xcode4.4之前，@property 配合 @synthesize使用，@property 负责声明属性，@synthesize 负责让编译器生成 带下划线的实例变量并且自动生成setter、getter方法。Xcode4.4 之后 @property 得到增强，直接一并替代了 @synthesize 的工作。
  */
-//全局变量
-- (void)testDataA{
 
+- (void)testDataA{
+    __weak typeof(self) ws = self;
     void (^TestNumberC)(int)=^(int x){
-        self->numC = 1000;
+        __strong typeof(ws) ss = ws;
+        ss -> numC = 1000;
         NSLog(@"C2、num的h值是 %d",self->numC);
         
     };

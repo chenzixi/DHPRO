@@ -13,7 +13,8 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "DHGuidepageViewController.h"
 #import "ScreenBlurry.h"
-#import "AliRTCViewController.h"//阿里云音视频
+#import "DropViewController.h"//拖拽
+#import "TMotionViewController.h"//碰撞
 //极光推送
 // 引入 JPush 功能所需头文件
 #import "JPUSHService.h"
@@ -54,6 +55,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
 #if DEBUG && SHOW_STATISTICS_DEBUG
     [[HAMLogOutputWindow sharedInstance] setHidden:NO];
 #endif
@@ -207,7 +209,7 @@
 }
 #pragma mark -程序从后台回到前台
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    
+
     [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];//进入前台取消应用消息图标
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     //进入前台
@@ -283,7 +285,7 @@
         BaseTabBarViewController *tab = (BaseTabBarViewController *)self.window.rootViewController;
         //跳转首页的第二个控制器
         UINavigationController *nav = (UINavigationController *)tab.viewControllers[0];
-        AliRTCViewController *proCtl = [[AliRTCViewController alloc]init];
+        DropViewController *proCtl = [[DropViewController alloc]init];
         [nav pushViewController:proCtl animated:YES];
     }
     
@@ -348,7 +350,7 @@
         BaseTabBarViewController *tab = (BaseTabBarViewController *)self.window.rootViewController;
         //跳转首页的第二个控制器
         UINavigationController *nav = (UINavigationController *)tab.viewControllers[0];
-        AliRTCViewController *proCtl = [[AliRTCViewController alloc]init];
+        TMotionViewController *proCtl = [[TMotionViewController alloc]init];
         [nav pushViewController:proCtl animated:YES];
     }
     if ([nameTitle isEqualToString:@"地址管理"]) {
@@ -702,36 +704,7 @@
 }
 
 
-//获取当前屏幕显示的viewcontroller
-- (UIViewController *)getCurrentVC
-{
-    UIViewController *result = nil;
-    
-    
-    if (self.window.windowLevel != UIWindowLevelNormal)
-    {
-        NSArray *windows = [[UIApplication sharedApplication] windows];
-        for(UIWindow * tmpWin in windows)
-        {
-            if (tmpWin.windowLevel == UIWindowLevelNormal)
-            {
-                self.window = tmpWin;
-                break;
-            }
-        }
-    }
-    
-    UIView *frontView = [[self.window subviews] lastObject];
-    id nextResponder = [frontView nextResponder];
-    
-    if ([nextResponder isKindOfClass:[UIViewController class]]){
-        result = nextResponder;
-    }
-    //    else{
-    //        result = self.window.rootViewController;
-    //    }
-    return result;
-}
+
 
 
 //截取当前视图为图片

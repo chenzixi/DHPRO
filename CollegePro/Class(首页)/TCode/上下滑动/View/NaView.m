@@ -44,6 +44,9 @@
         
         self.leftBt=[UIButton buttonWithType:UIButtonTypeCustom];
         self.leftBt.backgroundColor=[UIColor clearColor];
+        self.leftBt.layer.borderColor = [UIColor orangeColor].CGColor;
+        self.leftBt.layer.borderWidth = 1.0;
+        self.leftBt.layer.cornerRadius = 22;
         self.leftBt.frame=CGRectMake(5, 20, 44, 44);
         [self.leftBt addTarget:self action:@selector(leftClick) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.leftBt];

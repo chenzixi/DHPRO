@@ -29,17 +29,16 @@
 	self.title = @"轮播图（无限循环）";
 	self.automaticallyAdjustsScrollViewInsets = NO;
 	
-	[self.view addSubview:self.scrollImageView];
-
 	
 	NSArray *images = @[@"icc1.jpg",@"icc1.jpg",@"icc1.jpg",@"icc1.jpg",@"icc1.jpg"];
-	CollectionImageView *view = [[CollectionImageView alloc]initWithFrame:CGRectMake(0, 200, ScreenSize.width, 100) imageArray:images selectImageBlock:^(NSInteger index) {
+	CollectionImageView *view = [[CollectionImageView alloc]initWithFrame:CGRectMake(0, 64, ScreenSize.width, 100) imageArray:images selectImageBlock:^(NSInteger index) {
 		NSLog(@"点击的是第%ld个",(long)index);
 	}];
 	[self.view addSubview:view];
 
 	
-	
+    [self.view addSubview:self.scrollImageView];
+
     // Do any additional setup after loading the view.
 }
 
@@ -49,7 +48,7 @@
 		// 定义好宽高即可，这里用的屏幕宽高
 		NSArray * dataUrls = @[@"http://",@"http://",@"http://",@"http://"];
 		NSArray * dataPics = @[@"icc2.jpg",@"icc2.jpg",@"icc2.jpg",@"icc2.jpg",@"icc2.jpg"];
-		_scrollImageView = [[ScrollImageView alloc] initWithFrame:CGRectMake(0, 64, ScrollWidth, ScrollHeight)andPictureUrls:dataUrls andPlaceHolderImages:dataPics];
+		_scrollImageView = [[ScrollImageView alloc] initWithFrame:CGRectMake(0, 164, ScrollWidth, ScrollHeight)andPictureUrls:dataUrls andPlaceHolderImages:dataPics];
 		_scrollImageView.delegate = self;
 	}
 	return _scrollImageView;
