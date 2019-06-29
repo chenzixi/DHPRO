@@ -30,15 +30,22 @@
 	self.automaticallyAdjustsScrollViewInsets = NO;
 	
 	
-	NSArray *images = @[@"icc1.jpg",@"icc1.jpg",@"icc1.jpg",@"icc1.jpg",@"icc1.jpg"];
-	CollectionImageView *view = [[CollectionImageView alloc]initWithFrame:CGRectMake(0, 64, ScreenSize.width, 100) imageArray:images selectImageBlock:^(NSInteger index) {
-		NSLog(@"点击的是第%ld个",(long)index);
-	}];
-	[self.view addSubview:view];
+//    NSArray *images = @[@"icc1.jpg",@"icc1.jpg",@"icc1.jpg",@"icc1.jpg",@"icc1.jpg"];
+//    CollectionImageView *view = [[CollectionImageView alloc]initWithFrame:CGRectMake(0, 64, ScreenSize.width, 100) imageArray:images selectImageBlock:^(NSInteger index) {
+//        NSLog(@"点击的是第%ld个",(long)index);
+//    }];
+//    [self.view addSubview:view];
+//
+//    [self.view addSubview:self.scrollImageView];
+    
+    _imgVAnimation = [[UIImageView alloc]init];
+    _imgVAnimation.frame = CGRectMake(14, [UIApplication sharedApplication].statusBarFrame.size.height+44, 60, 60);
+    _imgVAnimation.layer.borderColor = [UIColor redColor].CGColor;
+    _imgVAnimation.layer.borderWidth = 1.0;
+    [_imgVAnimation setImage:[UIImage imageNamed:@"大师球"]];
+    [self.view addSubview:_imgVAnimation];
 
-	
-    [self.view addSubview:self.scrollImageView];
-
+    [self demo1];
     // Do any additional setup after loading the view.
 }
 
@@ -187,6 +194,7 @@
     
     //移到右下角；使用关键帧动画，移动路径为预定的贝塞尔曲线路径
     CGPoint fromPoint= _imgVAnimation.center;
+    //移动的点
     CGFloat toPointX = self.view.frame.size.width - 10;
     CGFloat toPointY = self.view.frame.size.height - 10;
     CGPoint toPoint  = CGPointMake(toPointX, toPointY);
@@ -194,8 +202,10 @@
     
     UIBezierPath *path = [UIBezierPath bezierPath];
     [path moveToPoint:fromPoint];
+    //C(t) = (1 - t)^2 * P(0) + 2 * t * (1 - t) * P(1) + t^2 * P(2)
+    //ToPoint：终点   controlPoint：控制曲线的弯曲程度
     [path addQuadCurveToPoint:toPoint controlPoint:controlPoint];
-    
+    ////创建动画对象
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     positionAnimation.path = path.CGPath;
     positionAnimation.removedOnCompletion = YES;
@@ -213,9 +223,17 @@
     opacityAnimation.toValue = [NSNumber numberWithFloat:0.1];
     opacityAnimation.removedOnCompletion = YES;
     
+    //    旋转动画
+    CABasicAnimation* rotationAnimation;
+    rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0 ];
+    rotationAnimation.duration = 0.1;
+    rotationAnimation.cumulative = YES;
+    rotationAnimation.repeatCount = 50;
+    
     //组合效果；使用动画组
     CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
-    animationGroup.animations = @[ positionAnimation, transformAnimation, opacityAnimation ];
+    animationGroup.animations = @[ positionAnimation, transformAnimation, rotationAnimation, opacityAnimation ];
     animationGroup.duration = 1.0; //设置动画执行时间；这里设置为1.0秒
     animationGroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     

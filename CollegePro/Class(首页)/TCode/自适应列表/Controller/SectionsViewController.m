@@ -15,8 +15,9 @@
                                                      ofType:@"plist"];
     NSDictionary *dict = [[NSDictionary alloc]
                           initWithContentsOfFile:path];
+    
     self.names = dict;
-	
+    
     NSArray *array = [[names allKeys] sortedArrayUsingSelector:
                       @selector(compare:)];
     self.keys = array;

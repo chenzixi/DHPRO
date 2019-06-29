@@ -43,6 +43,7 @@
 
 	
 }
+
 - (void)aaaa{
 	UIImageView *i = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.centerX-50, self.view.frame.size.height-180, 100, 100)];
 	i.image =[signatureView getSignatureImage];

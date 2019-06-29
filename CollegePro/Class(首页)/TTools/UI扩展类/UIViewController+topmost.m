@@ -45,6 +45,21 @@
         return rootVc;
     }
 }
++ (UIViewController *)topViewControllerWithRootViewController:(UIViewController*)rootViewController
+{
+    if (rootViewController.presentedViewController) {
+        UIViewController* presentedViewController = rootViewController.presentedViewController;
+        return [self topViewControllerWithRootViewController:presentedViewController];
+    }else if ([rootViewController isKindOfClass:[UITabBarController class]]) {
+        UITabBarController *tabBarController = (UITabBarController *)rootViewController;
+        return [self topViewControllerWithRootViewController:tabBarController.selectedViewController];
+    } else if ([rootViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController* navigationController = (UINavigationController*)rootViewController;
+        return [self topViewControllerWithRootViewController:navigationController.visibleViewController];
+    } else {
+        return rootViewController;
+    }
+}
 
 + (void)backToHostController:(UIView *)view
 {

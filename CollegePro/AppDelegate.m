@@ -19,9 +19,9 @@
 // 引入 JPush 功能所需头文件
 #import "JPUSHService.h"
 // iOS10 注册 APNs 所需头文件
-#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+//#ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
-#endif
+//#endif
 
 #import "showView.h"
 #import "DHGuidePageHUD.h"
@@ -32,7 +32,7 @@
 
 #define kUseScreenShotGesture 1
 
-@interface AppDelegate ()<JPUSHRegisterDelegate>
+@interface AppDelegate ()<JPUSHRegisterDelegate,UNUserNotificationCenterDelegate>
 {
     BMKMapManager* _mapManager;//实例变量
    __block int num;//成员变量
@@ -352,6 +352,7 @@
         UINavigationController *nav = (UINavigationController *)tab.viewControllers[0];
         TMotionViewController *proCtl = [[TMotionViewController alloc]init];
         [nav pushViewController:proCtl animated:YES];
+        
     }
     if ([nameTitle isEqualToString:@"地址管理"]) {
         BaseTabBarViewController *tab = (BaseTabBarViewController *)self.window.rootViewController;
@@ -380,7 +381,7 @@
 }
 
 // iOS 10 Support
-- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
     // Required
     NSDictionary * userInfo = response.notification.request.content.userInfo;
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
@@ -391,7 +392,7 @@
 #pragma mark -极光推送⬆️
 #pragma mark 移除本地通知，在不需要此通知时记得移除
 -(void)removeNotification{
-    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    [[UIApplication sharedApplication]cancelAllLocalNotifications];
 }
 #pragma mark - 私有方法
 #pragma mark 添加本地通知
@@ -399,6 +400,7 @@
     
     //    NSLog(@"22222");
     [UIApplication sharedApplication].delegate = self;
+
     UILocalNotification * notification=[[UILocalNotification alloc] init];
     
     notification.fireDate=[NSDate dateWithTimeIntervalSinceNow:0];
@@ -415,7 +417,7 @@
     
     
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
-    ////调用通知
+    //调用通知
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
     
 }

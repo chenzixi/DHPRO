@@ -7,6 +7,7 @@
 //
 
 #import "CountdownViewController.h"
+#import "UIButton+ImageTitleSpacing.h"
 
 @interface CountdownViewController ()
 {
@@ -17,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *hourLabel;
 @property (weak, nonatomic) IBOutlet UILabel *minuteLabel;
 @property (weak, nonatomic) IBOutlet UILabel *secondLabel;
+//
+@property (strong,nonatomic)dispatch_source_t sourceTimer;
+@property (strong,nonatomic)NSTimer *timerrr;
 @end
 
 @implementation CountdownViewController
@@ -34,9 +38,27 @@
 	return dayStr;
 	
 }
-
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    dispatch_source_cancel(self.sourceTimer);
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    CGFloat buttonH  = 62.0 + 14.0 + 12.0;//按钮高+间距+字体高度
+    CGFloat buttonW  = 62.0;
+    //安装子控制视图
+    UIButton *buttonHangup = [UIButton buttonWithType:UIButtonTypeCustom];
+    [buttonHangup setFrame:CGRectMake(36.0 ,[UIScreen mainScreen].bounds.size.height-buttonH-40 ,buttonW ,buttonH)];
+    [buttonHangup setImage:[UIImage imageNamed:@"kefu"] forState:UIControlStateNormal];
+    [buttonHangup setTitle:@"挂断" forState:UIControlStateNormal];
+    [buttonHangup setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    buttonHangup.titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Regular" size: 12];
+    [buttonHangup layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleTop imageTitleSpace:14.0];
+    [self.view addSubview:buttonHangup];
+    
     
 	NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
 	[dateFormatter setDateFormat:@"yyyy-MM-dd"];
@@ -100,9 +122,87 @@
 			dispatch_resume(_timer);
 		}
 	}
+    //创建时间计时器
+    [self createTime];
+    [self createTimer];
     // Do any additional setup after loading the view from its nib.
 }
+- (void)createTime{
+    //创建全局队列
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    //使用全局队列创建计时器
+    _sourceTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    
+    //定时器延迟时间
+    __block NSTimeInterval delayTime = 00.00f;
+    
+    //定时器间隔时间
+    NSTimeInterval timeInterval = 1.0f;
+    
+    //设置开始时间
+    dispatch_time_t startDelayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayTime * NSEC_PER_SEC));
+    
+    //设置计时器
+    dispatch_source_set_timer(_sourceTimer,startDelayTime,timeInterval*NSEC_PER_SEC,0.01*NSEC_PER_SEC);
+//    dispatch_source_set_timer(_sourceTimer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
 
+    DH_WEAKSELF;
+    //执行事件
+    dispatch_source_set_event_handler(_sourceTimer,^{
+        delayTime ++;
+        int days = (int)(delayTime/(3600*24));
+        int hours = (int)((delayTime-days*24*3600)/3600);
+        int minute = (int)(delayTime-days*24*3600-hours*3600)/60;
+        int second = delayTime-days*24*3600-hours*3600-minute*60;
+        NSLog(@"定时器 --- %@--%.2f--天-%d天:%d小时:%.2d分:%.2d秒",weakSelf.sourceTimer,delayTime,days,hours,minute,second);
+
+//        if (days==0) {
+//            NSLog(@"定时器 --- %@--%.2f--天-%d天:%d小时:%.2d分:%.2d秒",weakSelf.sourceTimer,delayTime,days,hours,minute,second);
+//        }
+//        else if (hours>24) {
+//            NSLog(@"定时器 --- %@--%.2f--天-%d天:%d小时:%.2d分:%.2d秒",weakSelf.sourceTimer,delayTime,days,hours,minute,second);
+//        }
+//        else if (minute<60) {
+//            NSLog(@"定时器 --- %@--%.2f--天-%d天:%d小时:%.2d分:%.2d秒",weakSelf.sourceTimer,delayTime,days,hours,minute,second);
+//        }
+//        else if (second<3600) {
+//            NSLog(@"定时器 --- %@--%.2f--天-%d天:%d小时:%.2d分:%.2d秒",weakSelf.sourceTimer,delayTime,days,hours,minute,second);
+//        }else{
+//            NSLog(@"定时器 --- %@--%.2f--天-%d天:%d小时:%.2d分:%.2d秒",weakSelf.sourceTimer,delayTime,days,hours,minute,second);
+//        }
+        //销毁定时器
+        //dispatch_source_cancel(_myTimer);
+    });
+    
+    //启动计时器
+    dispatch_resume(_sourceTimer);
+}
+//NSTimer
+-(void)createTimer{
+    
+    //初始化
+    //_timer = [NSTimer scheduledTimerWithTimeInterval:1.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
+    //执行操作
+    //}];
+    
+//    self.timerrr = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerStart:) userInfo:nil repeats:YES];
+//    [[NSRunLoop mainRunLoop] addTimer:self.timerrr forMode:NSDefaultRunLoopMode];
+
+    self.timerrr = [NSTimer timerWithTimeInterval:5 target:self selector:@selector(timerStart:) userInfo:nil repeats:YES];
+    //加入runloop循环池
+    [[NSRunLoop mainRunLoop] addTimer:self.timerrr forMode:NSDefaultRunLoopMode];
+    
+    //开启定时器
+    [self.timerrr fire];
+}
+-(void)timerStart:(NSTimer *)timer{
+    NSLog(@"%s--NSTimer---%.2lf",__func__,self.timerrr.timeInterval);
+    
+    //销毁定时器
+    //[_timer invalidate];
+    //_timer = nil;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

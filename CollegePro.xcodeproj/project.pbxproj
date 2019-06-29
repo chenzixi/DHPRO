@@ -16,6 +16,30 @@
 		380F9F8C227839EC00D515E3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380F9F8B227839EC00D515E3 /* Security.framework */; };
 		380F9F8E227839F200D515E3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380F9F8D227839F200D515E3 /* SystemConfiguration.framework */; };
 		380F9F902278475200D515E3 /* TabbarBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 380F9F8F2278475200D515E3 /* TabbarBundle.bundle */; };
+		381B6B9F22C0EE110018C0C2 /* AliBaseHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6B9C22C0EE100018C0C2 /* AliBaseHttpClient.m */; };
+		381B6BA022C0EE110018C0C2 /* RTCSampleUserAuthrization.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6B9D22C0EE100018C0C2 /* RTCSampleUserAuthrization.m */; };
+		381B6BA122C0EE110018C0C2 /* AliRequestList.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6B9E22C0EE100018C0C2 /* AliRequestList.m */; };
+		381B6BA522C0EE410018C0C2 /* AliRTCSdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 381B6BA322C0EE400018C0C2 /* AliRTCSdk.framework */; };
+		381B6BA622C0EE410018C0C2 /* UTDID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 381B6BA422C0EE410018C0C2 /* UTDID.framework */; };
+		381B6BAF22C0EE890018C0C2 /* JHMessageEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BA722C0EE850018C0C2 /* JHMessageEntity.m */; };
+		381B6BB022C0EE890018C0C2 /* DataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BAB22C0EE870018C0C2 /* DataItem.m */; };
+		381B6BB222C0EE890018C0C2 /* DataCreatHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BAE22C0EE890018C0C2 /* DataCreatHomeModel.m */; };
+		381B6BB522C0EE910018C0C2 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BB422C0EE900018C0C2 /* MessageTableViewCell.m */; };
+		381B6BBA22C0EE9B0018C0C2 /* AliRTCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BB622C0EE990018C0C2 /* AliRTCViewController.m */; };
+		381B6BBB22C0EE9B0018C0C2 /* AliRTCLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BB722C0EE990018C0C2 /* AliRTCLiveViewController.m */; };
+		381B6BD122C0EF3F0018C0C2 /* NSArray+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BBE22C0EF3E0018C0C2 /* NSArray+JSONModel.m */; };
+		381B6BD222C0EF3F0018C0C2 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BC122C0EF3E0018C0C2 /* JSONValueTransformer.m */; };
+		381B6BD322C0EF3F0018C0C2 /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BC422C0EF3E0018C0C2 /* JSONKeyMapper.m */; };
+		381B6BD422C0EF3F0018C0C2 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BC622C0EF3E0018C0C2 /* JSONModel.m */; };
+		381B6BD522C0EF3F0018C0C2 /* JSONModelError.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BC822C0EF3E0018C0C2 /* JSONModelError.m */; };
+		381B6BD622C0EF3F0018C0C2 /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BCB22C0EF3E0018C0C2 /* JSONModelArray.m */; };
+		381B6BD722C0EF3F0018C0C2 /* JSONModelClassProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BCC22C0EF3E0018C0C2 /* JSONModelClassProperty.m */; };
+		381B6BD822C0EF3F0018C0C2 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BCF22C0EF3E0018C0C2 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		381B6BDB22C0EF9E0018C0C2 /* NSURL+changProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BD922C0EF9E0018C0C2 /* NSURL+changProtocol.m */; };
+		381B6BE422C0F06A0018C0C2 /* RTCSampleRemoteUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BDC22C0F0670018C0C2 /* RTCSampleRemoteUserModel.m */; };
+		381B6BE522C0F06A0018C0C2 /* RTCSampleRemoteUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BDD22C0F0680018C0C2 /* RTCSampleRemoteUserManager.m */; };
+		381B6BE822C0F2B10018C0C2 /* AliRTCSdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 381B6BA322C0EE400018C0C2 /* AliRTCSdk.framework */; };
+		381B6BE922C0F2B10018C0C2 /* AliRTCSdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 381B6BA322C0EE400018C0C2 /* AliRTCSdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		38274D53229EB00F00185C09 /* DHSendRunObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 38274D52229EB00F00185C09 /* DHSendRunObject.m */; };
 		38274D56229EB80000185C09 /* DHTimeoutAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38274D55229EB80000185C09 /* DHTimeoutAppDelegate.m */; };
 		38345BA322B0BD4300FBE78B /* PictureSelectionController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 38345BA222B0BD4300FBE78B /* PictureSelectionController.mm */; };
@@ -596,6 +620,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				381B6BE922C0F2B10018C0C2 /* AliRTCSdk.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -626,6 +651,48 @@
 		380F9F8F2278475200D515E3 /* TabbarBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TabbarBundle.bundle; sourceTree = "<group>"; };
 		380FDC2A22B24D29009E9D24 /* CollegePro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CollegePro.entitlements; sourceTree = "<group>"; };
 		380FDC2B22B24D44009E9D24 /* CollegeProExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CollegeProExtension.entitlements; sourceTree = "<group>"; };
+		381B6B9922C0EE100018C0C2 /* AliBaseHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliBaseHttpClient.h; sourceTree = "<group>"; };
+		381B6B9A22C0EE100018C0C2 /* AliRequestList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliRequestList.h; sourceTree = "<group>"; };
+		381B6B9B22C0EE100018C0C2 /* RTCSampleUserAuthrization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCSampleUserAuthrization.h; sourceTree = "<group>"; };
+		381B6B9C22C0EE100018C0C2 /* AliBaseHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliBaseHttpClient.m; sourceTree = "<group>"; };
+		381B6B9D22C0EE100018C0C2 /* RTCSampleUserAuthrization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTCSampleUserAuthrization.m; sourceTree = "<group>"; };
+		381B6B9E22C0EE100018C0C2 /* AliRequestList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliRequestList.m; sourceTree = "<group>"; };
+		381B6BA322C0EE400018C0C2 /* AliRTCSdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AliRTCSdk.framework; sourceTree = "<group>"; };
+		381B6BA422C0EE410018C0C2 /* UTDID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UTDID.framework; sourceTree = "<group>"; };
+		381B6BA722C0EE850018C0C2 /* JHMessageEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHMessageEntity.m; sourceTree = "<group>"; };
+		381B6BA922C0EE860018C0C2 /* DataCreatHomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCreatHomeModel.h; sourceTree = "<group>"; };
+		381B6BAA22C0EE870018C0C2 /* DataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataItem.h; sourceTree = "<group>"; };
+		381B6BAB22C0EE870018C0C2 /* DataItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataItem.m; sourceTree = "<group>"; };
+		381B6BAD22C0EE880018C0C2 /* JHMessageEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHMessageEntity.h; sourceTree = "<group>"; };
+		381B6BAE22C0EE890018C0C2 /* DataCreatHomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCreatHomeModel.m; sourceTree = "<group>"; };
+		381B6BB322C0EE900018C0C2 /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
+		381B6BB422C0EE900018C0C2 /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
+		381B6BB622C0EE990018C0C2 /* AliRTCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliRTCViewController.m; sourceTree = "<group>"; };
+		381B6BB722C0EE990018C0C2 /* AliRTCLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliRTCLiveViewController.m; sourceTree = "<group>"; };
+		381B6BB822C0EE9A0018C0C2 /* AliRTCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliRTCViewController.h; sourceTree = "<group>"; };
+		381B6BB922C0EE9B0018C0C2 /* AliRTCLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliRTCLiveViewController.h; sourceTree = "<group>"; };
+		381B6BBE22C0EF3E0018C0C2 /* NSArray+JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JSONModel.m"; sourceTree = "<group>"; };
+		381B6BBF22C0EF3E0018C0C2 /* NSArray+JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+JSONModel.h"; sourceTree = "<group>"; };
+		381B6BC122C0EF3E0018C0C2 /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
+		381B6BC222C0EF3E0018C0C2 /* JSONKeyMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKeyMapper.h; sourceTree = "<group>"; };
+		381B6BC322C0EF3E0018C0C2 /* JSONValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONValueTransformer.h; sourceTree = "<group>"; };
+		381B6BC422C0EF3E0018C0C2 /* JSONKeyMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKeyMapper.m; sourceTree = "<group>"; };
+		381B6BC622C0EF3E0018C0C2 /* JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModel.m; sourceTree = "<group>"; };
+		381B6BC722C0EF3E0018C0C2 /* JSONModelArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelArray.h; sourceTree = "<group>"; };
+		381B6BC822C0EF3E0018C0C2 /* JSONModelError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelError.m; sourceTree = "<group>"; };
+		381B6BC922C0EF3E0018C0C2 /* JSONModelClassProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelClassProperty.h; sourceTree = "<group>"; };
+		381B6BCA22C0EF3E0018C0C2 /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
+		381B6BCB22C0EF3E0018C0C2 /* JSONModelArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelArray.m; sourceTree = "<group>"; };
+		381B6BCC22C0EF3E0018C0C2 /* JSONModelClassProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelClassProperty.m; sourceTree = "<group>"; };
+		381B6BCD22C0EF3E0018C0C2 /* JSONModelError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelError.h; sourceTree = "<group>"; };
+		381B6BCF22C0EF3E0018C0C2 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		381B6BD022C0EF3E0018C0C2 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		381B6BD922C0EF9E0018C0C2 /* NSURL+changProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+changProtocol.m"; sourceTree = "<group>"; };
+		381B6BDA22C0EF9E0018C0C2 /* NSURL+changProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+changProtocol.h"; sourceTree = "<group>"; };
+		381B6BDC22C0F0670018C0C2 /* RTCSampleRemoteUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTCSampleRemoteUserModel.m; sourceTree = "<group>"; };
+		381B6BDD22C0F0680018C0C2 /* RTCSampleRemoteUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTCSampleRemoteUserManager.m; sourceTree = "<group>"; };
+		381B6BDE22C0F0680018C0C2 /* RTCSampleRemoteUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCSampleRemoteUserManager.h; sourceTree = "<group>"; };
+		381B6BE122C0F0690018C0C2 /* RTCSampleRemoteUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCSampleRemoteUserModel.h; sourceTree = "<group>"; };
 		38274D51229EB00F00185C09 /* DHSendRunObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHSendRunObject.h; sourceTree = "<group>"; };
 		38274D52229EB00F00185C09 /* DHSendRunObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DHSendRunObject.m; sourceTree = "<group>"; };
 		38274D54229EB80000185C09 /* DHTimeoutAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHTimeoutAppDelegate.h; sourceTree = "<group>"; };
@@ -1556,6 +1623,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				381B6BE822C0F2B10018C0C2 /* AliRTCSdk.framework in Frameworks */,
 				38862C4922BA009900231140 /* UserNotifications.framework in Frameworks */,
 				38862C4722BA007000231140 /* CoreTelephony.framework in Frameworks */,
 				38862C4522BA006A00231140 /* CoreFoundation.framework in Frameworks */,
@@ -1569,6 +1637,7 @@
 				38560ACA22AF7C7300A68F5D /* AssetsLibrary.framework in Frameworks */,
 				380F9F8E227839F200D515E3 /* SystemConfiguration.framework in Frameworks */,
 				380F9F8C227839EC00D515E3 /* Security.framework in Frameworks */,
+				381B6BA622C0EE410018C0C2 /* UTDID.framework in Frameworks */,
 				380F9F8A227839E700D515E3 /* QuartzCore.framework in Frameworks */,
 				380F9F88227839E000D515E3 /* OpenGLES.framework in Frameworks */,
 				38862C5722BA257700231140 /* opencv2.framework in Frameworks */,
@@ -1576,6 +1645,7 @@
 				380F9F84227839C700D515E3 /* CoreLocation.framework in Frameworks */,
 				380F9F82227839BD00D515E3 /* CoreGraphics.framework in Frameworks */,
 				380F9F80227835CD00D515E3 /* libc++.tbd in Frameworks */,
+				381B6BA522C0EE410018C0C2 /* AliRTCSdk.framework in Frameworks */,
 				73869E513ABCF28AE9B6C239 /* Pods_CollegePro.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1583,6 +1653,100 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		381B6B9822C0EE100018C0C2 /* 阿里音视频通话 */ = {
+			isa = PBXGroup;
+			children = (
+				381B6B9922C0EE100018C0C2 /* AliBaseHttpClient.h */,
+				381B6B9C22C0EE100018C0C2 /* AliBaseHttpClient.m */,
+				381B6B9A22C0EE100018C0C2 /* AliRequestList.h */,
+				381B6B9E22C0EE100018C0C2 /* AliRequestList.m */,
+				381B6BB922C0EE9B0018C0C2 /* AliRTCLiveViewController.h */,
+				381B6BB722C0EE990018C0C2 /* AliRTCLiveViewController.m */,
+				381B6BA222C0EE400018C0C2 /* AliRTCSdk */,
+				381B6BB822C0EE9A0018C0C2 /* AliRTCViewController.h */,
+				381B6BB622C0EE990018C0C2 /* AliRTCViewController.m */,
+				381B6BA922C0EE860018C0C2 /* DataCreatHomeModel.h */,
+				381B6BAE22C0EE890018C0C2 /* DataCreatHomeModel.m */,
+				381B6BAA22C0EE870018C0C2 /* DataItem.h */,
+				381B6BAB22C0EE870018C0C2 /* DataItem.m */,
+				381B6BAD22C0EE880018C0C2 /* JHMessageEntity.h */,
+				381B6BA722C0EE850018C0C2 /* JHMessageEntity.m */,
+				381B6BB322C0EE900018C0C2 /* MessageTableViewCell.h */,
+				381B6BB422C0EE900018C0C2 /* MessageTableViewCell.m */,
+				381B6BDE22C0F0680018C0C2 /* RTCSampleRemoteUserManager.h */,
+				381B6BDD22C0F0680018C0C2 /* RTCSampleRemoteUserManager.m */,
+				381B6BE122C0F0690018C0C2 /* RTCSampleRemoteUserModel.h */,
+				381B6BDC22C0F0670018C0C2 /* RTCSampleRemoteUserModel.m */,
+				381B6B9B22C0EE100018C0C2 /* RTCSampleUserAuthrization.h */,
+				381B6B9D22C0EE100018C0C2 /* RTCSampleUserAuthrization.m */,
+			);
+			path = "阿里音视频通话";
+			sourceTree = "<group>";
+		};
+		381B6BA222C0EE400018C0C2 /* AliRTCSdk */ = {
+			isa = PBXGroup;
+			children = (
+				381B6BA322C0EE400018C0C2 /* AliRTCSdk.framework */,
+				381B6BA422C0EE410018C0C2 /* UTDID.framework */,
+			);
+			path = AliRTCSdk;
+			sourceTree = "<group>";
+		};
+		381B6BBC22C0EF3E0018C0C2 /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				381B6BBD22C0EF3E0018C0C2 /* JSONModelCategories */,
+				381B6BC022C0EF3E0018C0C2 /* JSONModelTransformations */,
+				381B6BC522C0EF3E0018C0C2 /* JSONModel */,
+			);
+			name = JSONModel;
+			path = ../../../../../../we/we/JSONModel;
+			sourceTree = "<group>";
+		};
+		381B6BBD22C0EF3E0018C0C2 /* JSONModelCategories */ = {
+			isa = PBXGroup;
+			children = (
+				381B6BBE22C0EF3E0018C0C2 /* NSArray+JSONModel.m */,
+				381B6BBF22C0EF3E0018C0C2 /* NSArray+JSONModel.h */,
+			);
+			path = JSONModelCategories;
+			sourceTree = "<group>";
+		};
+		381B6BC022C0EF3E0018C0C2 /* JSONModelTransformations */ = {
+			isa = PBXGroup;
+			children = (
+				381B6BC122C0EF3E0018C0C2 /* JSONValueTransformer.m */,
+				381B6BC222C0EF3E0018C0C2 /* JSONKeyMapper.h */,
+				381B6BC322C0EF3E0018C0C2 /* JSONValueTransformer.h */,
+				381B6BC422C0EF3E0018C0C2 /* JSONKeyMapper.m */,
+			);
+			path = JSONModelTransformations;
+			sourceTree = "<group>";
+		};
+		381B6BC522C0EF3E0018C0C2 /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				381B6BC622C0EF3E0018C0C2 /* JSONModel.m */,
+				381B6BC722C0EF3E0018C0C2 /* JSONModelArray.h */,
+				381B6BC822C0EF3E0018C0C2 /* JSONModelError.m */,
+				381B6BC922C0EF3E0018C0C2 /* JSONModelClassProperty.h */,
+				381B6BCA22C0EF3E0018C0C2 /* JSONModel.h */,
+				381B6BCB22C0EF3E0018C0C2 /* JSONModelArray.m */,
+				381B6BCC22C0EF3E0018C0C2 /* JSONModelClassProperty.m */,
+				381B6BCD22C0EF3E0018C0C2 /* JSONModelError.h */,
+			);
+			path = JSONModel;
+			sourceTree = "<group>";
+		};
+		381B6BCE22C0EF3E0018C0C2 /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				381B6BCF22C0EF3E0018C0C2 /* JSONKit.m */,
+				381B6BD022C0EF3E0018C0C2 /* JSONKit.h */,
+			);
+			path = JSONKit;
+			sourceTree = "<group>";
+		};
 		384C3F9E22887D7800F01586 /* 长按移动 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1919,6 +2083,8 @@
 		38C8454E227827EF00BCAD87 /* TLib */ = {
 			isa = PBXGroup;
 			children = (
+				381B6BCE22C0EF3E0018C0C2 /* JSONKit */,
+				381B6BBC22C0EF3E0018C0C2 /* JSONModel */,
 				38862C6522BA5BFB00231140 /* DHLeak */,
 				38862C5522BA257600231140 /* opencv */,
 				389D42EA22B375C600232777 /* GLActionSheet */,
@@ -2190,6 +2356,8 @@
 				38862C7522BB1A0400231140 /* UIViewController+RTCSampleAlert.m */,
 				38C845F5227827EF00BCAD87 /* NSArray+Log.h */,
 				38C84612227827EF00BCAD87 /* NSArray+Log.m */,
+				381B6BDA22C0EF9E0018C0C2 /* NSURL+changProtocol.h */,
+				381B6BD922C0EF9E0018C0C2 /* NSURL+changProtocol.m */,
 				38C8460D227827EF00BCAD87 /* NSMutableArray+Util.h */,
 				38C845F0227827EF00BCAD87 /* NSMutableArray+Util.m */,
 				38C845EA227827EF00BCAD87 /* NSString+Extension.h */,
@@ -2283,6 +2451,7 @@
 		38C84631227827EF00BCAD87 /* TCode */ = {
 			isa = PBXGroup;
 			children = (
+				381B6B9822C0EE100018C0C2 /* 阿里音视频通话 */,
 				38560AB922AF5B0700A68F5D /* 识别相机 */,
 				38C9773422AE02D200F978C1 /* 联网游戏 */,
 				384C3F9E22887D7800F01586 /* 长按移动 */,
@@ -4396,8 +4565,10 @@
 				38C84A50227827F200BCAD87 /* QRCodeVC.m in Sources */,
 				38C8490C227827F100BCAD87 /* BaseViewController.m in Sources */,
 				384C3FCC22887D7A00F01586 /* Model.m in Sources */,
+				381B6BD722C0EF3F0018C0C2 /* JSONModelClassProperty.m in Sources */,
 				38C84A32227827F200BCAD87 /* DHImagePickerViewController.m in Sources */,
 				38C84973227827F100BCAD87 /* ScreenBlurry.m in Sources */,
+				381B6BD622C0EF3F0018C0C2 /* JSONModelArray.m in Sources */,
 				38C849E7227827F200BCAD87 /* SmoothLineView.m in Sources */,
 				38C84940227827F100BCAD87 /* WMDragView.m in Sources */,
 				38C84A4E227827F200BCAD87 /* MLSelectPhotoPickerCollectionView.m in Sources */,
@@ -4427,6 +4598,7 @@
 				38C84932227827F100BCAD87 /* SM3.cpp in Sources */,
 				38C84A42227827F200BCAD87 /* MLSelectPhotoPickerGroupViewController.m in Sources */,
 				38C848E0227827F100BCAD87 /* TZAssetModel.m in Sources */,
+				381B6BE522C0F06A0018C0C2 /* RTCSampleRemoteUserManager.m in Sources */,
 				38C84948227827F100BCAD87 /* DetailsDrawViewController.m in Sources */,
 				38C8496D227827F100BCAD87 /* DHAdressViewController.m in Sources */,
 				38C84942227827F100BCAD87 /* TestOneVC.m in Sources */,
@@ -4437,6 +4609,7 @@
 				38C8491B227827F100BCAD87 /* NSString+Extension.m in Sources */,
 				38C8453B2278249900BCAD87 /* ViewController.mm in Sources */,
 				38C848F6227827F100BCAD87 /* GYChangeTextView.m in Sources */,
+				381B6BE422C0F06A0018C0C2 /* RTCSampleRemoteUserModel.m in Sources */,
 				38C84A6E227827F200BCAD87 /* SectionsViewController.m in Sources */,
 				38C977E522AE02D300F978C1 /* Options.m in Sources */,
 				38C8492C227827F100BCAD87 /* SM3Tool.mm in Sources */,
@@ -4458,7 +4631,9 @@
 				38C84A41227827F200BCAD87 /* MLSelectPhotoPickerGroup.m in Sources */,
 				38C8496F227827F100BCAD87 /* DHWorkViewController.m in Sources */,
 				384C3FCA22887D7A00F01586 /* Present.m in Sources */,
+				381B6BAF22C0EE890018C0C2 /* JHMessageEntity.m in Sources */,
 				38C977E422AE02D300F978C1 /* Themes.m in Sources */,
+				381B6BA122C0EE110018C0C2 /* AliRequestList.m in Sources */,
 				38C84936227827F100BCAD87 /* HYBHeaderView.m in Sources */,
 				38C849AD227827F100BCAD87 /* ZLProgressHUD.m in Sources */,
 				38C848DA227827F100BCAD87 /* JSTextView.m in Sources */,
@@ -4487,6 +4662,7 @@
 				38C84922227827F100BCAD87 /* UIView+Extension.m in Sources */,
 				38C84930227827F100BCAD87 /* LHHttpTool.m in Sources */,
 				38C84925227827F100BCAD87 /* DHTool.m in Sources */,
+				381B6BD422C0EF3F0018C0C2 /* JSONModel.m in Sources */,
 				38C848E2227827F100BCAD87 /* UIView+Layout.m in Sources */,
 				38C84A4C227827F200BCAD87 /* MLSelectPhotoPickerGroupTableViewCell.m in Sources */,
 				383AEB4222970F03002F3A22 /* MaskView.m in Sources */,
@@ -4514,6 +4690,7 @@
 				38C84A5D227827F200BCAD87 /* qrinput.c in Sources */,
 				38C84A44227827F200BCAD87 /* MLSelectPhotoPickerViewController.m in Sources */,
 				38C8491C227827F100BCAD87 /* UIColor+JFColor.m in Sources */,
+				381B6BDB22C0EF9E0018C0C2 /* NSURL+changProtocol.m in Sources */,
 				384C3FDE228881F800F01586 /* Persion.m in Sources */,
 				38862C6C22BA5BFB00231140 /* SwizzManager.m in Sources */,
 				38C84A23227827F200BCAD87 /* ZSDPaymentForm.m in Sources */,
@@ -4521,6 +4698,7 @@
 				38C8492E227827F100BCAD87 /* RequestPostUploadHelper.m in Sources */,
 				38C8493A227827F100BCAD87 /* SidebarViewController.m in Sources */,
 				38C84A21227827F200BCAD87 /* ZSDSetPasswordView.m in Sources */,
+				381B6BA022C0EE110018C0C2 /* RTCSampleUserAuthrization.m in Sources */,
 				38C84A3D227827F200BCAD87 /* UIImage+MLTint.m in Sources */,
 				38C849F0227827F200BCAD87 /* MyView.m in Sources */,
 				38C849C8227827F200BCAD87 /* ZLShowBigImgViewController.m in Sources */,
@@ -4530,6 +4708,7 @@
 				38C848D8227827F100BCAD87 /* LLBlurSidebar.m in Sources */,
 				38C848E1227827F100BCAD87 /* NSBundle+TZImagePicker.m in Sources */,
 				38C9779722AE02D200F978C1 /* Menu.m in Sources */,
+				381B6BB522C0EE910018C0C2 /* MessageTableViewCell.m in Sources */,
 				38C8491F227827F100BCAD87 /* UIButton+touch.m in Sources */,
 				38C84A4A227827F200BCAD87 /* MLSelectPhotoPickerBrowserPhotoScrollView.m in Sources */,
 				38C84A5B227827F200BCAD87 /* qrencode.c in Sources */,
@@ -4541,6 +4720,7 @@
 				38C84A07227827F200BCAD87 /* DisplayNoteViewController.m in Sources */,
 				38C849D2227827F200BCAD87 /* DHNoteViewController.m in Sources */,
 				384C3FEB22888DBF00F01586 /* ZQVariableMenuControl.m in Sources */,
+				381B6BD122C0EF3F0018C0C2 /* NSArray+JSONModel.m in Sources */,
 				38C9779B22AE02D200F978C1 /* Air_HockeyViewController.m in Sources */,
 				38C84A74227827F200BCAD87 /* LabelNilMethodBlockViewController.m in Sources */,
 				38C84A26227827F200BCAD87 /* CodeView.m in Sources */,
@@ -4574,6 +4754,7 @@
 				38C84970227827F100BCAD87 /* DHMainViewController.m in Sources */,
 				38C8498E227827F100BCAD87 /* HXTagCollectionViewFlowLayout.m in Sources */,
 				38C849C7227827F200BCAD87 /* ZLShowBigImage.m in Sources */,
+				381B6BD322C0EF3F0018C0C2 /* JSONKeyMapper.m in Sources */,
 				38560AC222AF5B2500A68F5D /* PictureSelectionComponentInitModel.m in Sources */,
 				38C848F0227827F100BCAD87 /* pinyin.c in Sources */,
 				38C8491D227827F100BCAD87 /* UIImage+compressIMG.m in Sources */,
@@ -4585,6 +4766,7 @@
 				384C3FD122887D7A00F01586 /* MVVMViewController.m in Sources */,
 				38C849E1227827F200BCAD87 /* iCarousels.m in Sources */,
 				38C84931227827F100BCAD87 /* SFNetWorkManager.m in Sources */,
+				381B6BD522C0EF3F0018C0C2 /* JSONModelError.m in Sources */,
 				38C84A54227827F200BCAD87 /* QRCodeViewController.m in Sources */,
 				38C849E2227827F200BCAD87 /* ZJBLTimerButton.m in Sources */,
 				38C84907227827F100BCAD87 /* CustomDateView.m in Sources */,
@@ -4617,15 +4799,18 @@
 				38C849CE227827F200BCAD87 /* UserCell.m in Sources */,
 				38C84A3F227827F200BCAD87 /* MLSelectPhotoPickerDatas.m in Sources */,
 				38C84A45227827F200BCAD87 /* MLSelectPhotoPickerAssetsViewController.m in Sources */,
+				381B6BBA22C0EE9B0018C0C2 /* AliRTCViewController.m in Sources */,
 				38C84A2C227827F200BCAD87 /* DynamicItemWidthTabController.m in Sources */,
 				38D5CEF222965C6000323648 /* backgroundView.m in Sources */,
 				38C8493C227827F100BCAD87 /* DisassemblyViewController.m in Sources */,
 				384C3FC622887D7900F01586 /* CustomCollectionViewController.m in Sources */,
 				38C848F4227827F100BCAD87 /* WLBallTool.m in Sources */,
 				38C84A70227827F200BCAD87 /* CustomerTitleModel.m in Sources */,
+				381B6BB222C0EE890018C0C2 /* DataCreatHomeModel.m in Sources */,
 				38C84939227827F100BCAD87 /* TSidebarViewController.m in Sources */,
 				38C849D8227827F200BCAD87 /* HanyuPinyinOutputFormat.m in Sources */,
 				38C848E3227827F100BCAD87 /* TZPhotoPreviewController.m in Sources */,
+				381B6BB022C0EE890018C0C2 /* DataItem.m in Sources */,
 				38C84A65227827F200BCAD87 /* TMotionViewController.m in Sources */,
 				38C84A06227827F200BCAD87 /* EditNoteViewController.m in Sources */,
 				38C84975227827F100BCAD87 /* THomeCollectionViewCell.m in Sources */,
@@ -4673,6 +4858,7 @@
 				38C848FD227827F100BCAD87 /* NobodyNibTableTableViewCell.m in Sources */,
 				38C8494B227827F100BCAD87 /* ReleaseViewController.m in Sources */,
 				38C84933227827F100BCAD87 /* IndexViewController.m in Sources */,
+				381B6BD222C0EF3F0018C0C2 /* JSONValueTransformer.m in Sources */,
 				38C849CB227827F200BCAD87 /* ContentOffSetVC.m in Sources */,
 				38862D3A22BB522300231140 /* UIViewController+topmost.m in Sources */,
 				38C84901227827F100BCAD87 /* IncludeNibTableViewController.m in Sources */,
@@ -4691,8 +4877,10 @@
 				38C84A46227827F200BCAD87 /* MLSelectPhotoBrowserViewController.m in Sources */,
 				38C848DD227827F100BCAD87 /* TZImageCropManager.m in Sources */,
 				38C8495B227827F100BCAD87 /* ESMTabBarVC.m in Sources */,
+				381B6B9F22C0EE110018C0C2 /* AliBaseHttpClient.m in Sources */,
 				38C84987227827F100BCAD87 /* ShowViewController.m in Sources */,
 				38C8496E227827F100BCAD87 /* DHMyInfoViewController.m in Sources */,
+				381B6BBB22C0EE9B0018C0C2 /* AliRTCLiveViewController.m in Sources */,
 				38C84A47227827F200BCAD87 /* MLSelectPhotoPickerBrowserPhotoImageView.m in Sources */,
 				38C84A3A227827F200BCAD87 /* LxGridViewFlowLayout.m in Sources */,
 				38C84918227827F100BCAD87 /* UIButton+ImageTitleSpacing.m in Sources */,
@@ -4716,6 +4904,7 @@
 				38C84A6D227827F200BCAD87 /* AdaptionListViewController.m in Sources */,
 				384C3FEC22888DBF00F01586 /* ZQVariableMenuHeader.m in Sources */,
 				38C848FA227827F100BCAD87 /* SGImageButton.m in Sources */,
+				381B6BD822C0EF3F0018C0C2 /* JSONKit.m in Sources */,
 				38C845382278249900BCAD87 /* AppDelegate.m in Sources */,
 				38C84974227827F100BCAD87 /* showView.m in Sources */,
 				38C848D0227827F100BCAD87 /* GragView.m in Sources */,
@@ -4767,6 +4956,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CollegeProExtension/CollegeProExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 74W795UZRB;
 				ENABLE_BITCODE = NO;
@@ -4780,6 +4970,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dhtest.CollegePro.CollegeProExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -4789,6 +4980,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CollegeProExtension/CollegeProExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 74W795UZRB;
 				ENABLE_BITCODE = NO;
@@ -4802,6 +4994,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dhtest.CollegePro.CollegeProExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -4858,7 +5051,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -4911,7 +5104,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -4927,6 +5120,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_ENTITLEMENTS = CollegePro/CollegePro.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 74W795UZRB;
 				ENABLE_BITCODE = NO;
@@ -4936,6 +5130,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/CollegePro/Class(首页)/TLib/AliRTCSdk",
 					"$(PROJECT_DIR)/CollegePro/Class(首页)/TLib",
+					"$(PROJECT_DIR)/CollegePro/Class(首页)/TCode/阿里音视频通话/AliRTCSdk",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_INPUT_FILETYPE = automatic;
@@ -5019,6 +5214,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dhtest.CollegePro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -5031,6 +5227,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_ENTITLEMENTS = CollegePro/CollegePro.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 74W795UZRB;
 				ENABLE_BITCODE = NO;
@@ -5040,6 +5237,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/CollegePro/Class(首页)/TLib/AliRTCSdk",
 					"$(PROJECT_DIR)/CollegePro/Class(首页)/TLib",
+					"$(PROJECT_DIR)/CollegePro/Class(首页)/TCode/阿里音视频通话/AliRTCSdk",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_INPUT_FILETYPE = automatic;
@@ -5123,6 +5321,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dhtest.CollegePro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

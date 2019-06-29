@@ -68,6 +68,7 @@
 //#import "BankCardViewController.h"//信用卡识别
 //#import "BankCartViewController.h"//银行卡扫描
 //#import "DocumentViewController.h"//文档
+//#import "AliRTCViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
 #include <ifaddrs.h>
@@ -183,6 +184,7 @@
     [self addCell:@"侧边栏" class:@"TSidebarViewController"];
     [self addCell:@"图片滚动" class:@"ScrollImageViewViewController"];
     [self addCell:@"添加图片" class:@"DHImagePickerViewController"];
+    [self addCell:@"贝塞尔曲线" class:@"ScrollImageViewViewController"];
     [self addCell:@"支付密码框" class:@"PayViewController"];
     [self addCell:@"倒计时" class:@"CountdownViewController"];
     [self addCell:@"菜单栏" class:@"SubparagraphRootViewController"];
@@ -217,6 +219,7 @@
     [self addCell:@"文档" class:@"DocumentViewController"];
     [self addCell:@"iCloud文件" class:@"iCloudViewController"];
     [self addCell:@"获取健康信息" class:@"HealthViewController"];
+//    [self addCell:@"aliPhone" class:@"AliRTCViewController"];
 
     [_collectionView reloadData];
     
