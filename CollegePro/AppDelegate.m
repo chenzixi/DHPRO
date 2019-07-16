@@ -360,6 +360,15 @@
         [self.window.rootViewController.navigationController pushViewController:tab animated:YES];
     }
 }
+#pragma mark -旋转屏幕
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+    
+    if (self.allowRotate) {
+        return UIInterfaceOrientationMaskAll;
+    }else{
+        return UIInterfaceOrientationMaskPortrait;
+    }
+}
 #pragma mark -极光推送⬇️
 // iOS 12 Support
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center openSettingsForNotification:(UNNotification *)notification API_AVAILABLE(ios(10.0)){

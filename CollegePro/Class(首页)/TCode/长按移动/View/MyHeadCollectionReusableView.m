@@ -7,6 +7,7 @@
 //
 
 #import "MyHeadCollectionReusableView.h"
+#import "UIColor+JFColor.h"
 
 @implementation MyHeadCollectionReusableView
 - (id)initWithFrame:(CGRect)frame

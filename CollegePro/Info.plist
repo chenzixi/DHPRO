@@ -60,6 +60,8 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCalendarsUsageDescription</key>
+	<string>App需要您的同意,才能访问日历</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Camera Usage Description</string>
 	<key>NSContactsUsageDescription</key>
@@ -77,7 +79,7 @@
 	<key>NSMotionUsageDescription - 2</key>
 	<string>访问运动与健身</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>允许</string>
+	<string>动画工具"需要访问您的相册</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Photo Library Usage Description</string>
 	<key>NSPhotoLibraryUsageDescription - 2</key>

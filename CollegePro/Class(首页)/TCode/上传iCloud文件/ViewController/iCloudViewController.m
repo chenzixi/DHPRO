@@ -12,7 +12,7 @@
 
 @interface iCloudViewController ()<UIDocumentPickerDelegate, UIDocumentMenuDelegate>
 {
-	NSString *currentFileName;
+	__block NSString *currentFileName;
 	UIDocumentPickerMode documentPickerMode;
 	
 	NSURL *lastURL;
@@ -231,11 +231,12 @@
 - (void)importFile:(NSURL *)url
 {
 	[activityView startAnimating];
-	
-	//1.通过文件协调工具来得到新的文件地址，以此得到文件保护功能
+    __weak typeof(self) ws = self;
+    //1.通过文件协调工具来得到新的文件地址，以此得到文件保护功能
 	NSFileCoordinator *fileCoordinator = [[NSFileCoordinator alloc] initWithFilePresenter:nil];
 	[fileCoordinator coordinateReadingItemAtURL:url options:NSFileCoordinatorReadingWithoutChanges error:nil byAccessor:^(NSURL * _Nonnull newURL) {
-		[activityView stopAnimating];
+        __strong typeof(ws) ss = ws;
+		[ss ->activityView stopAnimating];
 		
 		//2.直接读取文件
 		NSString *fileName = [newURL lastPathComponent];
@@ -245,9 +246,9 @@
 		[self saveLocalCachesCont:contStr fileName:fileName];
 		
 		//4.显示数据
-		currentFileName = fileName;
-		titleTextField.text = fileName;
-		contTextView.text = contStr;
+		ss ->currentFileName = fileName;
+		ss ->titleTextField.text = fileName;
+		ss ->contTextView.text = contStr;
 		
 	}];
 }
@@ -267,7 +268,7 @@
 											  error:nil
 										 byAccessor:^(NSURL * _Nonnull newURL) {
 											 
-											 [activityView stopAnimating];
+											 [self ->activityView stopAnimating];
 											 
 											 //3.读取文件协调器提供的新地址里的数据
 											 NSString *fileName = [newURL lastPathComponent];
@@ -277,9 +278,9 @@
 											 [self saveLocalCachesCont:contStr fileName:fileName];
 											 
 											 //5.显示数据
-											 currentFileName = fileName;
-											 titleTextField.text = fileName;
-											 contTextView.text = contStr;
+											 self ->currentFileName = fileName;
+											 self ->titleTextField.text = fileName;
+											 self ->contTextView.text = contStr;
 										 }];
 		
 	}

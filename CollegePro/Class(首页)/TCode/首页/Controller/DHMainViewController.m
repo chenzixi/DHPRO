@@ -61,6 +61,21 @@
 #import "TurntableViewController.h"//转盘
 #import "MenuViewController.h"//storyboard
 #import "ExpandTableVC.h"//点击按钮出现下拉列表
+#import "CornerViewController.h"//圆角设置
+#import "DHMonthListlinkViewController.h"//日历
+#import "SlideMenuViewController.h"//侧边栏
+#import "JPShopCarController.h"//购物车
+#import "FFKPViewController.h"//图片找不同
+#import "IndexViewController.h"//消消乐
+#import "LuckyMainViewController.h"//抽奖
+#import "PhotoClipViewController.h"//图片裁剪
+#import "ScrollChangeViewController.h"//滑动切换控制器
+#import "LHCameraViewController.h"//水印相机
+#import "ShowcaseFilterListController.h"//图片滤镜处理
+#import "ActivityIndicator.h"//指示器
+#import "CodeViewController.h"//卡片
+#import "CardAnimateViewController.h"//卡片
+#import "DivisionCircleViewController.h"//表盘
 #import "LabelMethodBlockVC.h"
 #import "LabelMethodBlockSubVC.h"
 //#import "CardViewController.h"
@@ -88,6 +103,12 @@
     
 }
 @property(nonatomic,strong)AVAudioPlayer * audioPlayer;
+//指针imageView
+@property (nonatomic,strong) UIImageView * pointImageView;
+//信号强度
+@property (nonatomic,assign) float signalStrength;
+//上行速度
+@property (nonatomic,assign) float upstreamSpeed;
 
 @property (nonatomic, strong) CMMotionManager *mgr; // 保证不死
 @property (nonatomic, strong) UIButton *button1;
@@ -123,7 +144,7 @@
     NSLog(@"%.2f",c);
 
     // 监听有物品靠近还是离开
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(proximityStateDidChange) name:UIDeviceProximityStateDidChangeNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(proximityStateDidChange) name:UIDeviceProximityStateDidChangeNotification object:nil];
     [UIDevice currentDevice].proximityMonitoringEnabled = YES;
     
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(getinternet) userInfo:nil repeats:YES];
@@ -219,8 +240,24 @@
     [self addCell:@"文档" class:@"DocumentViewController"];
     [self addCell:@"iCloud文件" class:@"iCloudViewController"];
     [self addCell:@"获取健康信息" class:@"HealthViewController"];
+    [self addCell:@"圆角设置" class:@"CornerViewController"];
+    [self addCell:@"日历" class:@"DHMonthListlinkViewController"];
+    [self addCell:@"美食菜单" class:@"FoodListViewController"];
 //    [self addCell:@"aliPhone" class:@"AliRTCViewController"];
-
+    [self addCell:@"侧边栏" class:@"SlideMenuViewController"];
+    [self addCell:@"购物车" class:@"JPShopCarController"];
+    [self addCell:@"图片找不同" class:@"FFKPViewController"];
+    [self addCell:@"消消乐" class:@"IndexViewController"];
+    [self addCell:@"抽奖" class:@"LuckyMainViewController"];
+    [self addCell:@"图片裁剪" class:@"PhotoClipViewController"];
+    [self addCell:@"滚动控制器" class:@"ScrollChangeViewController"];
+    [self addCell:@"水印相机" class:@"LHCameraViewController"];
+    [self addCell:@"图片滤镜处理" class:@"ShowcaseFilterListController"];
+    [self addCell:@"指示器转载" class:@"ActivityIndicator"];
+    [self addCell:@"卡片" class:@"CodeViewController"];
+    [self addCell:@"卡片" class:@"CardAnimateViewController"];
+    [self addCell:@"表盘" class:@"DivisionCircleViewController"];
+    
     [_collectionView reloadData];
     
 #pragma mark- 底部网络状态显示
@@ -334,19 +371,21 @@
 //       return [NSString stringWithFormat:@"%4.2f %@",convertedValue, [tokens objectAtIndex:multiplyFactor]];﻿
 //
 //}
+
+
 - (void)getinternet{
     MeasurNetTools * meaurNet = [[MeasurNetTools alloc] initWithblock:^(float speed) {
 //        NSString* speedStr = [NSString stringWithFormat:@"%@/S", [QBTools formattedFileSize:speed]];
         _lb_showinfo.text = @"";
-        
+
     } finishMeasureBlock:^(float speed) {
         NSString* speedStr = [NSString stringWithFormat:@"%@/S", [QBTools formattedFileSize:speed]];
         NSLog(@"平均速度为：%@",speedStr);
         NSLog(@"相当于带宽：%@",[QBTools formatBandWidth:speed]);
         _lb_showinfo.text = [NSString stringWithFormat:@"平均速度为： %@---相当于带宽：%@",speedStr,[QBTools formatBandWidth:speed]];
-        
+
     } failedBlock:^(NSError *error) {
-        
+
     }];
     [meaurNet startMeasur];
     
@@ -499,7 +538,16 @@
         return;
     }
     
-    
+    /*
+     NSURL *appBUrl = [NSURL URLWithString:@"mqqOpensdkSSoLogin://"];
+     // 2.判断手机中是否安装了对应程序 参考 http://www.cnblogs.com/isItOk/p/4869499.html
+     if ([[UIApplication sharedApplication] canOpenURL:appBUrl]) {
+     // 3. 打开应用程序App-B
+     [[UIApplication sharedApplication] openURL:appBUrl];
+     } else {
+     NSLog(@"没有安装");
+     }
+     */
     Class class = NSClassFromString(className);
     if (class) {
         UIViewController *ctrl = class.new;
@@ -647,7 +695,16 @@
 - (void)updateFocusIfNeeded {
     
 }
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    //移除距离感应通知
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceProximityStateDidChangeNotification object:nil];
+    
+}
 -(void)dealloc{
+    //移除距离感应通知
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceProximityStateDidChangeNotification object:nil];
+
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 @end

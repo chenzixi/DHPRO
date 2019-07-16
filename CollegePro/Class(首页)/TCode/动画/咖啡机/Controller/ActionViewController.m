@@ -24,9 +24,7 @@
 @end
 
 @implementation ActionViewController
-//+ (instancetype)bezierPathWithRoundedRect:(CGRect)rect cornerRadius:(CGFloat)cornerRadius{
-//	
-//}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.

@@ -119,7 +119,7 @@
 //获取当前屏幕显示的viewcontroller
 +(UIViewController*)getCurrentWindowVC
 {
-    UIViewController *result = nil;
+
     UIWindow * window = [[UIApplication sharedApplication] keyWindow];
     //app默认windowLevel是UIWindowLevelNormal，如果不是，找到它
     if (window.windowLevel != UIWindowLevelNormal) {

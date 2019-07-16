@@ -30,6 +30,7 @@
 //测试字符串⬇️⬇️⬇️
 @property(nonatomic,copy)NSString*str1;
 @property(nonatomic,strong)NSString*str2;
+@property(nonatomic,strong) NSString *rtcMessageID;
 //测试字符串⬆️⬆️⬆️
 
 @property (nonatomic,assign) float tmp;
@@ -177,6 +178,7 @@
 }
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
+
 }
 
 - (void)viewDidLoad {//3//将要加载视图
@@ -200,9 +202,8 @@
 	[pushNillButton setTitle:@"回去" forState:(UIControlStateNormal)];
 	[pushNillButton addTarget:self action:@selector(backBlockNilMetnod) forControlEvents:(UIControlEventTouchUpInside)];
 //    [self.view addSubview:pushNillButton];
-    // Do any additional setup after loading the view.
+    
 }
-
 - (void)baseBlock{
     numC = 100;
 //    [self testDataA];
@@ -522,6 +523,18 @@ void (^outFuncBlock)(void) = ^{
     
     NSLog(@"strong_str:%p--%p",_str2,&_str2);
     
+    [self getEqualStr:@"dczewfwef"];
+    [self getEqualStr:@"dczewfwef"];
+    // Do any additional setup after loading the view.
+}
+//多次调用只加载一次
+- (void)getEqualStr:(NSString *)str{
+    if ([self.rtcMessageID isEqualToString:str] ) {
+        NSLog(@"只加载一次");
+    }else{
+        self.rtcMessageID = str;
+    }
+
 }
 
 - (void)testDataL{

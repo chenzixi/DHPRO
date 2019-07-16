@@ -54,7 +54,7 @@
                               @{@"name":@"一日游",@"imageUrl":@"http://James",@"num":@"1"}];
         [self.dataArray removeAllObjects];
         for (int i = 0; i<temArray.count; i++) {
-            Model *m = [Model modelWithDictionary:temArray[i]];
+            Model *m = [Model mj_objectWithKeyValues:temArray[i]];
             [self.dataArray addObject:m];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -91,7 +91,7 @@
           @{@"name":@"一日游",@"imageUrl":@"http://James",@"num":@"6"}];
         [self.dataArray removeAllObjects];
         for (int i = 0; i<temArray.count; i++) {
-            Model *m = [Model modelWithDictionary:temArray[i]];
+            Model *m = [Model mj_objectWithKeyValues:temArray[i]];
             [self.dataArray addObject:m];
         }
         

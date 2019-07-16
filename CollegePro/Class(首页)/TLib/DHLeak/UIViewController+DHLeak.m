@@ -50,8 +50,8 @@ const char* deallocKey = "isDeallocDisAppear";
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         __strong typeof(self) strongSelf = weakSelf;
         if (strongSelf) {
-            NSString* msg = [NSString stringWithFormat:@"%@__存在内存泄漏",[weakSelf class]];
-            [strongSelf showMsg:msg];
+//            NSString* msg = [NSString stringWithFormat:@"%@__存在内存泄漏",[weakSelf class]];
+//            [strongSelf showMsg:msg];
         }
     });
 }

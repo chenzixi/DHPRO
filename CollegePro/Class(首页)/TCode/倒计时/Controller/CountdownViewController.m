@@ -67,8 +67,9 @@
 	NSDate *endDate_tomorrow = [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:([endDate timeIntervalSinceReferenceDate] + 24*3600)];
 	NSDate *startDate = [NSDate date];
 	NSTimeInterval timeInterval =[endDate_tomorrow timeIntervalSinceDate:startDate];
-	
-	if (_timer==nil) {
+    
+
+    if (_timer==nil) {
 		__block int timeout = timeInterval; //倒计时时间
 		
 		if (timeout!=0) {
@@ -156,7 +157,10 @@
         int minute = (int)(delayTime-days*24*3600-hours*3600)/60;
         int second = delayTime-days*24*3600-hours*3600-minute*60;
         NSLog(@"定时器 --- %@--%.2f--天-%d天:%d小时:%.2d分:%.2d秒",weakSelf.sourceTimer,delayTime,days,hours,minute,second);
-
+        if (delayTime == 22) {
+            //销毁定时器
+            dispatch_source_cancel(weakSelf.sourceTimer);
+        }
 //        if (days==0) {
 //            NSLog(@"定时器 --- %@--%.2f--天-%d天:%d小时:%.2d分:%.2d秒",weakSelf.sourceTimer,delayTime,days,hours,minute,second);
 //        }
@@ -171,8 +175,7 @@
 //        }else{
 //            NSLog(@"定时器 --- %@--%.2f--天-%d天:%d小时:%.2d分:%.2d秒",weakSelf.sourceTimer,delayTime,days,hours,minute,second);
 //        }
-        //销毁定时器
-        //dispatch_source_cancel(_myTimer);
+
     });
     
     //启动计时器
@@ -198,10 +201,13 @@
 }
 -(void)timerStart:(NSTimer *)timer{
     NSLog(@"%s--NSTimer---%.2lf",__func__,self.timerrr.timeInterval);
-    
-    //销毁定时器
-    //[_timer invalidate];
-    //_timer = nil;
+    if (self.timerrr.timeInterval>20)
+    {
+        //销毁定时器
+        [self.timerrr invalidate];
+        self.timerrr = nil;
+    }
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

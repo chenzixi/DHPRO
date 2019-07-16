@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ActionViewController : BaseViewController
-// 创建圆角矩形
-+ (instancetype)bezierPathWithRoundedRect:(CGRect)rect cornerRadius:(CGFloat)cornerRadius; // rounds all corners with the same horizontal and vertical radius
+
 @end

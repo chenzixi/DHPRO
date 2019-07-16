@@ -27,7 +27,7 @@
 	self.view.backgroundColor = [UIColor whiteColor];
 	self.tableViews.backgroundColor = [UIColor orangeColor];
 	//1.该页面必需遵循UIViewControllerPreviewingDelegate代理
-	// 重要
+	// 重要 注册3dtouch功能
 	[self registerForPreviewingWithDelegate:self sourceView:self.view];
 }
 #pragma mark - UIViewControllerPreviewingDelegate（实现代理的方法）

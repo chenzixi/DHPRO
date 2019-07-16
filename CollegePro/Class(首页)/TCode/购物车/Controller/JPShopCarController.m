@@ -30,7 +30,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"购物车";
-    self.view.backgroundColor = [UIColor whiteColor];
     [self setupTableView]; // tableView
     [self createAllBtn];
 }
@@ -260,18 +259,19 @@
 //        cell.alpha = 1.0;
 //    }];
 //}
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	/*! 第二种：卡片式动画 */
-	static CGFloat initialDelay = 0.2f;
-	static CGFloat stutter = 0.06f;
-	
-	cell.contentView.transform =  CGAffineTransformMakeTranslation(DH_DeviceWidth, 0);
-	[UIView animateWithDuration:1.0f delay:initialDelay + ((indexPath.row) * stutter) usingSpringWithDamping:0.6 initialSpringVelocity:1 options:0.5 animations:^{
-		cell.contentView.transform = CGAffineTransformIdentity;
-	} completion:NULL];
-	
-}
+////增加点击动画
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    /*! 第二种：卡片式动画 */
+//    static CGFloat initialDelay = 0.2f;
+//    static CGFloat stutter = 0.06f;
+//
+//    cell.contentView.transform =  CGAffineTransformMakeTranslation(DH_DeviceWidth, 0);
+//    [UIView animateWithDuration:1.0f delay:initialDelay + ((indexPath.row) * stutter) usingSpringWithDamping:0.6 initialSpringVelocity:1 options:0.5 animations:^{
+//        cell.contentView.transform = CGAffineTransformIdentity;
+//    } completion:NULL];
+//
+//}
 
 /*
  #pragma mark - Navigation

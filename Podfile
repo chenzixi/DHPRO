@@ -27,10 +27,11 @@ target "CollegePro" do
   #MD5加密
   pod 'CocoaSecurity'
 
-  pod 'YYKit'
   pod 'BaiduMapKit'#百度地图SDK
   
+  pod 'pop','~>1.0'
   
+#pod 'YYKit'
 #pod 'FDFullscreenPopGesture'
 #pod 'WechatOpenSDK'
 #pod 'FBRetainCycleDetector'

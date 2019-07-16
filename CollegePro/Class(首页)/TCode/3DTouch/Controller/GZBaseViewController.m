@@ -7,6 +7,7 @@
 //
 
 #import "GZBaseViewController.h"
+#import "HWSlider.h"
 
 @interface GZBaseViewController ()
 
@@ -47,7 +48,9 @@
     _Label.backgroundColor = [UIColor redColor];
     [self.view addSubview:_Label];
     
-
+    //滑动条
+    HWSlider *slider = [[HWSlider alloc] initWithFrame:CGRectMake(10, 70, 300, 75)];
+    [self.view addSubview:slider];
     // Do any additional setup after loading the view.
 }
 //// slider变动时改变label值

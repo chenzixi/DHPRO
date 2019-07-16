@@ -7,13 +7,18 @@
 //
 
 #import "TurntableViewController.h"
-
+#import "HCWProgressHUD.h"
+#import "AppDelegate.h"
 @interface TurntableViewController ()<CAAnimationDelegate>
 {
     UIImageView *_bgImageView;
     BOOL _isAnimation;
     float _circleAngle;
 }
+@property (nonatomic,assign) BOOL isFullPlay;
+@property (nonatomic,strong) UIButton * offlineBtn;
+
+
 @end
 
 @implementation TurntableViewController
@@ -21,7 +26,106 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
+    [self indeHD];
+    [self.view addSubview:self.offlineBtn];
     // Do any additional setup after loading the view.
+}
+- (void)viewDidDisappear:(BOOL)animated {
+    
+    [super viewDidDisappear:animated];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.allowRotate = NO;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.allowRotate = YES;
+}
+-(void)fullScreen{
+
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willResignActive) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    //此方案为转屏
+    AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    delegate.allowRotate = YES;
+    if (self.isFullPlay == NO) {
+        self.isFullPlay = YES;
+        
+        if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+            SEL selector = NSSelectorFromString(@"setOrientation:");
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
+            [invocation setSelector:selector];
+            [invocation setTarget:[UIDevice currentDevice]];
+            int val = UIInterfaceOrientationLandscapeRight;//这里可以改变旋转的方向
+            [invocation setArgument:&val atIndex:2];
+            [invocation invoke];
+        }
+    } else {
+        self.isFullPlay = NO;
+        
+        if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+            SEL selector = NSSelectorFromString(@"setOrientation:");
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
+            [invocation setSelector:selector];
+            [invocation setTarget:[UIDevice currentDevice]];
+            int val = UIInterfaceOrientationPortrait;//这里可以改变旋转的方向
+            [invocation setArgument:&val atIndex:2];
+            [invocation invoke];
+        }
+    }
+}
+- (void)orientChange:(NSNotification *)noti {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
+        if (orientation == UIDeviceOrientationLandscapeLeft || orientation == UIDeviceOrientationLandscapeRight) {
+            self.isFullPlay = YES;
+
+        }else{
+            if (orientation == UIDeviceOrientationPortrait) {
+                self.isFullPlay = NO;
+                
+            }
+        }
+        AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        delegate.allowRotate = NO;
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
+    });
+    
+}
+- (void)willResignActive{
+    
+    [self fullScreen];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+-(void)indeHD{
+    HCWProgressHUD *hud = [HCWProgressHUD showHUDAddedTo:self.view animated:YES tapContentBlock:^(HCWProgressHUDMode mode) {
+        
+    } clickButtonBlock:^(HCWProgressHUDMode mode) {
+        
+    }];
+    
+    hud.buttonCorlor = [UIColor blueColor];
+    
+    // 没有网络
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        hud.mode = HCWProgressHUDModeNoInternet;
+        
+        // 没有数据
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            hud.mode = HCWProgressHUDModeNoData;
+            
+            // 隐藏
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [HCWProgressHUD hideHUDForView:self.view animated:YES];
+            });
+        });
+    });
 }
 #pragma mark 初始化View
 -(void)initView{
@@ -147,6 +251,23 @@
     }
     UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:title delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
     [alert show];
+}
+/**
+ 离线状态下播放按钮
+ 
+ @return 播放按钮
+ */
+-(UIButton *)offlineBtn{
+    
+    if (!_offlineBtn) {
+        
+        _offlineBtn = [[UIButton alloc] initWithFrame:CGRectMake(30 , 80 , 30.2, 34.8)];
+        [_offlineBtn setImage:[UIImage imageNamed:@"play_def"] forState:UIControlStateNormal];
+        [_offlineBtn addTarget:self action:@selector(fullScreen) forControlEvents:UIControlEventTouchUpInside];
+        _offlineBtn.layer.borderColor = [UIColor blueColor].CGColor;
+        _offlineBtn.layer.borderWidth = 1.0;
+    }
+    return _offlineBtn;
 }
 /*
 #pragma mark - Navigation

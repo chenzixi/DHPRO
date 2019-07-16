@@ -14,7 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - BaiduMapKit (4.3.2)
+  - BaiduMapKit (4.4.0)
   - CocoaSecurity (1.2.4)
   - IQKeyboardManager (6.4.0)
   - JCore (1.2.6)
@@ -26,15 +26,13 @@ PODS:
     - MBProgressHUD (~> 0.9.2)
   - MJExtension (3.0.17)
   - MJRefresh (3.2.0)
+  - pop (1.0.12)
   - SDAutoLayout (2.2.1)
   - SDWebImage (5.0.6):
     - SDWebImage/Core (= 5.0.6)
   - SDWebImage/Core (5.0.6)
   - SVProgressHUD (2.2.5)
   - TZImagePickerController (3.2.1)
-  - YYKit (1.0.9):
-    - YYKit/no-arc (= 1.0.9)
-  - YYKit/no-arc (1.0.9)
 
 DEPENDENCIES:
   - AFNetworking
@@ -46,11 +44,11 @@ DEPENDENCIES:
   - "MBProgressHUD+JDragon"
   - MJExtension
   - MJRefresh
+  - pop (~> 1.0)
   - SDAutoLayout
   - SDWebImage
   - SVProgressHUD
   - TZImagePickerController
-  - YYKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -65,15 +63,15 @@ SPEC REPOS:
     - "MBProgressHUD+JDragon"
     - MJExtension
     - MJRefresh
+    - pop
     - SDAutoLayout
     - SDWebImage
     - SVProgressHUD
     - TZImagePickerController
-    - YYKit
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  BaiduMapKit: a5d9580553355d39a91b24c5eb91ebf298c64038
+  BaiduMapKit: 19a568e238d6d5a91b93daf7819b868d39cb2206
   CocoaSecurity: d288a6f87e0f363823d2cb83e753814a6944f71a
   IQKeyboardManager: fcef267266379c003181fc3592f6bdb8bf4db839
   JCore: cae516dd2bf1a73b578ce6e1065abd49e709e0f7
@@ -83,12 +81,12 @@ SPEC CHECKSUMS:
   "MBProgressHUD+JDragon": 51958736b3a9f97adc176371544ffa257a0ba058
   MJExtension: 74ec83124a68891619fb7ba9c5c811bbf1691076
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
+  pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   SDAutoLayout: 8bf6b3bbc8b01f775d4defbb4fda2ace805461be
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TZImagePickerController: bf4c57b98d8707fce41ea6be872414a71c7a8c9d
-  YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 14477bbcfdf460501226763781eb1304d927d96a
+PODFILE CHECKSUM: f07d45a837979677326d6b6e6303902c4bc001ce
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.2

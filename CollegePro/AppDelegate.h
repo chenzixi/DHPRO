@@ -10,6 +10,9 @@
 #import <AVFoundation/AVFoundation.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (nonatomic, assign)BOOL allowRotate;
+
 @property(nonatomic,strong) NSTimer * timer;  //定时器// 循环请求计数，后台开启，前台关闭。
 @property(nonatomic,strong) AVAudioPlayer * player;
 @property(nonatomic,assign) NSInteger number;// Demo自加参数
