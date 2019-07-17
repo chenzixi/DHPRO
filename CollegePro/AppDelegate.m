@@ -264,7 +264,7 @@
     NSLog(@"调用过用户注册通知方法之后执行");
     
 }
-#pragma mark -程序即将退出
+#pragma mark -程序即将退出 App完全退出
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }

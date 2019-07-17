@@ -333,7 +333,7 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
     if (readview) {
         [readview stop];
         readview.is_Anmotion = YES;

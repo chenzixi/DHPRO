@@ -217,15 +217,8 @@
 //    [self testDataL];//排序方式
 //    [self testDataM];//排序
 //    //    [self testDataK];
-//    [self testDataN];//KVO进阶
-//    self.user = [[KYUser alloc] init];
-//    self.user.dog = [[KYDog alloc] init];
-//    self.user.dog.age = 12;
-//    self.user.dog.name = @"大大";
-//    self.user.userId = @"35325";
-//    // MRC下
-//    Persion *test = [[Persion alloc] init];
-//    [test test];
+    [self testDataN];//KVO进阶
+
 }
 - (void)testDataH{
     int a = 10;
@@ -725,6 +718,15 @@ static UILabel *myLabel;
     NSLog(@"filterName = %@",[dataSource valueForKeyPath:@"@distinctUnionOfObjects.sex"]);
     
     
+    self.user = [[KYUser alloc] init];
+    self.user.dog = [[KYDog alloc] init];
+    self.user.dog.age = 12;
+    self.user.dog.name = @"大大";
+    self.user.userId = @"35325";
+    // MRC下
+    Persion *test = [[Persion alloc] init];
+    [test test];
+    
     // 1、添加KVO监听
     //NSKeyValueObservingOptionInitial 观察最初的值 在注册观察服务时会调用一次
     //NSKeyValueObservingOptionPrior 分别在被观察值的前后触发一次 一次修改两次触发
@@ -783,7 +785,7 @@ static UILabel *myLabel;
     myLabel.text = [self.user.dog valueForKeyPath:@"name"];
     
     //else   若当前类无法捕捉到这个KVO，那很有可能是在他的superClass，或者super-superClass...中
-    //    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+//        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     
 }
 // 3、触发修改属性值
