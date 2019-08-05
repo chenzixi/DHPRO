@@ -1,3 +1,9 @@
+## 截图 - ScreenShot
+
+<p align="center">
+<img width=33% alt="wx20170601-170002 2x" src="https://github.com/Andrew5/DHPRO/blob/master/IMG_0037.PNG"> <img width=33% alt="wx20170601-170002 2x" src="https://github.com/Andrew5/DHPRO/blob/master/IMG_0038.PNG"> <img width=33% alt="wx20170601-170002 2x" src="https://github.com/Andrew5/DHPRO/blob/master/IMG_0039.PNG">
+</p>
+
 ![Image text]:(https://github.com/Andrew5/DHPRO/blob/master/IMG_0037.PNG)
 ![Image text]:https://github.com/Andrew5/DHPRO/blob/master/IMG_0038.PNG
 ![Image text]:https://github.com/Andrew5/DHPRO/blob/master/IMG_0039.PNG
