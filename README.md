@@ -23,12 +23,11 @@
 [AFNetworking](https://github.com/AFNetworking/AFNetworking) | 仅使用UIKit+AFNetworking，类似 [SDWebImage](https://github.com/rs/SDWebImage)
 
 以下第三方使用pod更新
-[BaiduMapKit]()
+[BaiduMapKit]()| 仅使用地图线路绘制，线路跟踪
 [CocoaSecurity]()
-[IQKeyboardManager]()
-[Masonry]()
-[SDWebImage]()
-[TZImagePickerController]()
-[SVProgressHUD]()
+[Masonry]()| 仅使用布局文件，纯code开发
+[SDWebImage]()| 仅使用本地图片加载，后续增加网络加载图片
+[TZImagePickerController]()| 仅使用相册加载
+[SVProgressHUD]()| 仅使用加载框提示，类似于MBProgressHUD
 #### Swift版
 [Code版] 正在编写中……尽情期待！
