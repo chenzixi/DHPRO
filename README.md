@@ -19,5 +19,13 @@
 [MJRefresh](https://github.com/CoderMJLee/MJRefresh) | 下拉加载更多聊天记录
 [AFNetworking](https://github.com/AFNetworking/AFNetworking) | 仅使用UIKit+AFNetworking，类似 [SDWebImage](https://github.com/rs/SDWebImage)
 
+以下第三方使用pod更新
+[BaiduMapKit]()
+[CocoaSecurity]()
+[IQKeyboardManager]()
+[Masonry]()
+[SDWebImage]()
+[TZImagePickerController]()
+[SVProgressHUD]()
 #### Swift版
 [Code版] 正在编写中……尽情期待！
