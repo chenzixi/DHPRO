@@ -54,5 +54,5 @@
 -(UIBarButtonItem *)dh_tBarIconButtonItemWithImage:(NSString *)text action:(SEL)selctor;
 -(UIBarButtonItem *)dh_tBarIconButtonItem:(NSString *)text action:(SEL)selctor;
 
-
+- (void)closeCurruntPage;
 @end

@@ -33,13 +33,14 @@
 - (void)backBlockNilMetnod{
 	
 	self.myReturnTextBlock(@"backBlockNilMetnodshu");
+    [self closeCurruntPage];
 
-	[self dismissViewControllerAnimated:YES completion:nil];
-
-	
-	// Do any additional setup after loading the view.
 }
-
++(void)numberInfor:(void (^)(NSString *))inforBlock{
+    inforBlock = ^(NSString *d){
+        NSLog(@"%@",d);
+    };
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

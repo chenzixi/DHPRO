@@ -11,7 +11,8 @@
 #import "LabelNilMethodBlockViewController.h"
 #import "ALiAlertView.h"
 //#import "RadioButton.h"
-//#import <objc/runtime.h>
+#import <objc/message.h>
+
 
 
 @interface LabelMethodBlockVC ()<UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource>{
@@ -148,7 +149,13 @@
     [pushButton addTarget:self action:@selector(pushBlockMetnod:) forControlEvents:(UIControlEventTouchUpInside)];
     [self.view addSubview:pushButton];
     
-    
+    UIButton *pushNillButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [pushNillButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [pushNillButton setFrame:CGRectMake(10.0 ,150.0 ,120.0 ,20.0)];
+    pushNillButton.backgroundColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.00];
+    [pushNillButton setTitle:@"不带方法的Block" forState:(UIControlStateNormal)];
+    [pushNillButton addTarget:self action:@selector(pushBlockNilMetnod) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.view addSubview:pushNillButton];
 }
 //-(void)radioButtonSelectedAtIndex:(NSUInteger)index inGroup:(NSString *)groupId{
 //    NSLog(@"changed to %lu in %@",(unsigned long)index,groupId);
@@ -252,11 +259,13 @@
 
 - (void)pushBlockNilMetnod{
 	LabelNilMethodBlockViewController *subVC = [[LabelNilMethodBlockViewController alloc]init];
-	
+    
+
 	subVC.myReturnTextBlock = ^(NSString *showText){
 		NSLog(@"showText  %@",showText);
 		
 	};
+    ((void(*)(id,SEL,id))objc_msgSend)(NSClassFromString(@"LabelNilMethodBlockViewController"), NSSelectorFromString(@"numberInfor:"), subVC.myReturnTextBlock);
 	
 //    [self presentViewController:subVC animated:YES completion:^{
 //

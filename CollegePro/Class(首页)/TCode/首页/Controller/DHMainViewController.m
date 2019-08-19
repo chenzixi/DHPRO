@@ -235,7 +235,9 @@
     [self addCell:@"联网游戏" class:@"Menu"];
     [self addCell:@"下拉列表" class:@"ExpandTableVC"];
     [self addCell:@"网络测试" class:@"NetTestViewController"];
+    [self addCell:@"block" class:@"LabelMethodBlockVC"];
     [self addCell:@"block" class:@"LabelMethodBlockSubVC"];
+    
 //    [self addCell:@"购物车" class:@"TShopAnimationViewController"];
     [self addCell:@"文档" class:@"DocumentViewController"];
     [self addCell:@"iCloud文件" class:@"iCloudViewController"];
