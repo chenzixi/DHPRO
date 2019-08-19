@@ -20,20 +20,24 @@
 @implementation DHTool
 
 #pragma mark - ***** 判断字符串是否为空
+//根据需求 待修改
 + (BOOL)IsNSStringNULL:(NSString *)stirng
 {
 	if([stirng isKindOfClass:[NSNull class]]) return YES;
 	if(![stirng isKindOfClass:[NSString class]]) return YES;
 	
 	if(stirng == nil) return YES;
-	
+    if([stirng isEqualToString:@"(null)"]) return YES;
+    if([stirng isEqualToString:@"NULL"]) return YES;
+    if([stirng isEqualToString:@"<null>"]) return YES;
+    if([stirng isEqualToString:@"null"]) return YES;
+
+    if(stirng == nil || stirng == NULL) return YES;
 	NSString * string1 = [stirng stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 	NSUInteger len=[string1 length];
 	if (len <= 0) return YES;
 	return NO;
 }
-
-
 
 + (UIColor *) colorWithHexString: (NSString *) stringToConvert{  //@"#5a5a5a"
     NSString *cString = [[stringToConvert stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
