@@ -49,7 +49,9 @@
     [self.view addSubview:_Label];
     
     //滑动条
-    HWSlider *slider = [[HWSlider alloc] initWithFrame:CGRectMake(10, 70, 300, 75)];
+    HWSlider *slider = [[HWSlider alloc] initWithFrame:CGRectMake(50, 100, 300, 75)];
+    slider.layer.borderColor = [UIColor greenColor].CGColor;
+    slider.layer.borderWidth = 1.0;
     [self.view addSubview:slider];
     // Do any additional setup after loading the view.
 }
@@ -62,7 +64,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-//3Dtouch会自动调用
+//3Dtouch会自动调用 预览页面 底部Action Items
 - (NSArray<id<UIPreviewActionItem>> *)previewActionItems {
     //
     UIPreviewAction *action1 = [UIPreviewAction actionWithTitle:@"删除" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {

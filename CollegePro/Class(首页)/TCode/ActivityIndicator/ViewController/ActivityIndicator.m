@@ -61,7 +61,7 @@
         CGFloat width = self.view.bounds.size.width / 5.0f;
         CGFloat height = self.view.bounds.size.height / 7.0f;
         
-        activityIndicatorView.frame = CGRectMake(width * (i % 7), height * (int)(i / 7), width, height);
+        activityIndicatorView.frame = CGRectMake(width * (i % 7), 64 + height * (int)(i / 7), width, height - 64);
         [self.view addSubview:activityIndicatorView];
         [activityIndicatorView startAnimating];
     }

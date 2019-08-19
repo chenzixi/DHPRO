@@ -28,7 +28,13 @@
 	self.tableViews.backgroundColor = [UIColor orangeColor];
 	//1.该页面必需遵循UIViewControllerPreviewingDelegate代理
 	// 重要 注册3dtouch功能
-	[self registerForPreviewingWithDelegate:self sourceView:self.view];
+    /**
+     *  如果支持3DTouch，就添加3DTouch的代理
+     */
+    if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
+        [self registerForPreviewingWithDelegate:self sourceView:self.view];
+    }
+//    [NSString stringWithFormat:@"****妈妈再也不用担心我装逼了****\n\n我的设备: %@\n\n我的内存: %.2f MB\n\n我的储空间: %qi GB\n\n********************************",[PhoneInfoManager getCurrentDeviceModel],[PhoneInfoManager logMemoryInfo],[PhoneInfoManager freeDiskSpaceInBytes]];
 }
 #pragma mark - UIViewControllerPreviewingDelegate（实现代理的方法）
 - (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
@@ -43,6 +49,13 @@
 
 - (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
 	[self tableView:self.tableViews didSelectRowAtIndexPath:[self.tableViews indexPathForCell:self.selectedCell]];
+    //然后3秒后移除
+    double delayInSeconds = 3.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [viewControllerToCommit dismissViewControllerAnimated:YES completion:^{
+        }];
+    });
 }
 
 // 根据一个点寻找对应cell并返回cell
@@ -115,7 +128,7 @@
 	if (!_items) {
 		_items = [[NSMutableArray alloc]init];
 		for (NSInteger i = 0; i < 20; i++) {
-			[_items addObject:[NSString stringWithFormat:@"3DTouch(GZ)--%li",(long)i]];
+			[_items addObject:[NSString stringWithFormat:@"3DTouch((⁄ ⁄•⁄ω⁄•⁄ ⁄))--%li",(long)i]];
 		}
 	}
 	return _items;

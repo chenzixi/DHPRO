@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 
 @interface AppDelegate (DHCategory)
+
++ (AppDelegate* )shareAppDelegate;
 /*! 版本  */
 - (void)VersonUpdate;
 ////*! 保存当前时间  */

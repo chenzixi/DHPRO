@@ -147,7 +147,12 @@
 {
     if (self.navigationController) {
         if (self.navigationController.viewControllers.count == 1) {
-            [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+            UIViewController *rootVC = self.presentingViewController;
+            while (rootVC.presentingViewController) {
+                rootVC = rootVC.presentingViewController;
+            }
+            [rootVC dismissViewControllerAnimated:YES completion:nil];
+            
         }else{
             [self.navigationController popViewControllerAnimated:YES];
         }

@@ -8,6 +8,8 @@
 
 #import "DHMyInfoViewController.h"
 #import "InternetViewController.h"
+
+
 @interface DHMyInfoViewController ()
 
 @end
@@ -19,7 +21,6 @@
     self.isShowleftBtn = YES;
     InternetViewController *interVC = [[InternetViewController alloc]init];
     [self.navigationController pushViewController:interVC animated:YES];
-
     // Do any additional setup after loading the view.
 }
 

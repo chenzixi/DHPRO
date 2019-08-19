@@ -20,7 +20,7 @@
     NSTimer * _timer;  //定时器
 }
 @property(nonatomic, weak)UIDatePicker * picker;
-@property(nonatomic,strong) UIAlertView * alert;
+//@property(nonatomic,strong) UIAlertView * alert;
 @property(nonatomic,weak) UILabel * label;
 
 @property(nonatomic,assign)NSInteger lt;
@@ -254,27 +254,27 @@
     _label.text=str;
     if (_lt == 0) {
         [_timer setFireDate:[NSDate distantFuture]];
-        self.alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"关闭闹钟" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-        
-        
-        self.alert.delegate=self;
-        
-        
-        [self.alert show];
+//        self.alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"关闭闹钟" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+//
+//
+//        self.alert.delegate=self;
+//
+//
+//        [self.alert show];
         
         
     }
     
 }
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-
-{
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    [appDelegate.player stop];
-    [appDelegate.timer setFireDate:[NSDate distantFuture]];
-    
-    [_player stop];
-}
+//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+//
+//{
+//    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+//    [appDelegate.player stop];
+//    [appDelegate.timer setFireDate:[NSDate distantFuture]];
+//
+//    [_player stop];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

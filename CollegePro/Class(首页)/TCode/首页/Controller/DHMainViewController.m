@@ -76,6 +76,7 @@
 #import "CodeViewController.h"//卡片
 #import "CardAnimateViewController.h"//卡片
 #import "DivisionCircleViewController.h"//表盘
+#import "ThreeDimensionalSphericalLayout.h"//三维球型
 #import "LabelMethodBlockVC.h"
 #import "LabelMethodBlockSubVC.h"
 //#import "CardViewController.h"
@@ -256,7 +257,8 @@
     [self addCell:@"卡片" class:@"CodeViewController"];
     [self addCell:@"卡片" class:@"CardAnimateViewController"];
     [self addCell:@"表盘" class:@"DivisionCircleViewController"];
-    
+    [self addCell:@"三维球" class:@"ThreeDimensionalSphericalLayout"];
+
     [_collectionView reloadData];
     
 #pragma mark- 底部网络状态显示
@@ -325,7 +327,7 @@
         pushVC(detailVC);
         return;
     }
-    
+  
     /*
      NSURL *appBUrl = [NSURL URLWithString:@"mqqOpensdkSSoLogin://"];
      // 2.判断手机中是否安装了对应程序 参考 http://www.cnblogs.com/isItOk/p/4869499.html

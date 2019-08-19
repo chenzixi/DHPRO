@@ -13,7 +13,6 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "DHGuidepageViewController.h"
 #import "ScreenBlurry.h"
-#import "DropViewController.h"//拖拽
 #import "TMotionViewController.h"//碰撞
 //极光推送
 // 引入 JPush 功能所需头文件
@@ -38,7 +37,7 @@
    __block int num;//成员变量
     
 }
-@property(nonatomic,strong) UIMutableUserNotificationCategory* categorys;
+//@property(nonatomic,strong) UIMutableUserNotificationCategory* categorys;
 @property (strong, nonatomic)UIVisualEffectView *visualEffectView;
 
 @end
@@ -77,7 +76,7 @@
     manager.shouldResignOnTouchOutside = YES;//控制点击背景是否收起键盘。
     manager.shouldToolbarUsesTextFieldTintColor = YES;//控制键盘上的工具条文字颜色是否用户自定义。
     manager.enableAutoToolbar = NO;//控制是否显示键盘上的工具条。
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     /*! 版本更新  */
     //    [self VersonUpdate];
     /*! 保存当前时间  */
@@ -135,20 +134,71 @@
     //    }
 
     //如果已经获得发送通知哦的授权则创建本地通知，否则请求授权（注意：如果不请求授权在设置中是没有对应的通知设置项的，也就是说如果从来没有发送过请求，即使通过设置也打不开消息允许设置）
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        center.delegate = self;
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert + UNAuthorizationOptionSound)
+                              completionHandler:^(BOOL granted, NSError * _Nullable error) {
+                                  
+                              }];
+        [center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
+            
+        }];
+        //  > 通知内容
+        UNMutableNotificationContent* content = [[UNMutableNotificationContent alloc] init];
+        // > 通知的title
+        content.title = [NSString localizedUserNotificationStringForKey:@"推送的标题" arguments:nil];
+        // > 通知的要通知内容
+        content.body = [NSString localizedUserNotificationStringForKey:@"======推送的消息体======"
+                                                             arguments:nil];
+        // > 通知的提示声音
+        content.sound = [UNNotificationSound defaultSound];
+        //  > 通知的延时执行
+        UNTimeIntervalNotificationTrigger* trigger = [UNTimeIntervalNotificationTrigger
+                                                      triggerWithTimeInterval:5 repeats:NO];
+        UNNotificationRequest* request = [UNNotificationRequest requestWithIdentifier:@"FiveSecond"
+                                                                              content:content trigger:trigger];
+        //添加推送通知，等待通知即可！
+        [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+            // > 可在此设置添加后的一些设置
+            // > 例如alertVC。。
+        }];
+    }
+/*
+
+    //    接收通知参数
+    UILocalNotification *notification=[launchOptions valueForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    NSDictionary *userInfo= notification.userInfo;
+    if(userInfo)
+        //        NSLog(@"appdelegate收到userInfo:%@",userInfo);
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            // 处理耗时操作的代码块...
+            //            while (YES) {
+            //                [NSThread sleepForTimeInterval:8];
+            //            }
+            //        //通知主线程刷新
+            //        dispatch_async(dispatch_get_main_queue(), ^{
+            //            //回调或者说是通知主线程刷新，
+            //        });
+        });
+    
+    
+    
+    
     if ([[UIApplication sharedApplication] currentUserNotificationSettings].types != UIUserNotificationTypeNone) {
         //        [self addLocationForAlert];
     }else{
         [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound   categories:nil]];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Alarm:) name:@"Alarm" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Alarm:) name:@"Alarm" object:nil];
     //关闭程序后再通过点击通知打开应用获取userInfo
     //接收通知参数
     UILocalNotification *notification=[launchOptions valueForKey:UIApplicationLaunchOptionsLocalNotificationKey];
     NSDictionary *userInfo= notification.userInfo;
-    
+
     NSLog(@"didFinishLaunchingWithOptions:The userInfo is %@.",userInfo);
-    
+*/
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[DHGuidepageViewController alloc] init]];
     
@@ -231,6 +281,15 @@
     // 图标上的数字设置为0
     NSLog(@"noti: %@",notification.userInfo);
     //    application.applicationIconBadgeNumber = 0;
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:NSLocalizedStringFromTable(@"twenty-EIGHT", @"Localizable", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alert show];
+    AudioServicesPlaySystemSound (kSystemSoundID_Vibrate);
+    //    [[NSNotificationCenter defaultCenter] postNotificationName:@"playMusicNotification" object:nil];
+    if (notification) {
+        //        NSDictionary *userInfo =  notification.userInfo;
+        //        NSString *obj = [userInfo objectForKey:@"user"];
+        //        NSLog(@"在后台时，接收本地通知时触发:%@",obj);
+    }
 }
 #pragma mark -远程通知(个推)注册成功委托
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {    // Required
@@ -281,14 +340,21 @@
 #pragma mark -3DTouch 接收点击事件
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void(^)(BOOL succeeded))completionHandler API_AVAILABLE(ios(9.0)){
     NSLog(@"shortcutItem %@",shortcutItem.type);
-    if ([shortcutItem.type  isEqualToString:@"Scan"]){
-        BaseTabBarViewController *tab = (BaseTabBarViewController *)self.window.rootViewController;
-        //跳转首页的第二个控制器
-        UINavigationController *nav = (UINavigationController *)tab.viewControllers[0];
-        DropViewController *proCtl = [[DropViewController alloc]init];
-        [nav pushViewController:proCtl animated:YES];
-    }
+    BaseTabBarViewController *tab = (BaseTabBarViewController *)self.window.rootViewController;
     
+
+    if ([shortcutItem.type  isEqualToString:@"Scan"]){
+        Class cls = NSClassFromString(@"GKHScanQCodeViewController");
+        UIViewController *tempVCTL = [[cls alloc] init];
+        UINavigationController *nav = (UINavigationController *)tab.viewControllers[0];
+        [nav pushViewController:tempVCTL animated:YES];
+    }
+    if ([shortcutItem.type  isEqualToString:@"listen"]){
+        Class cls = NSClassFromString(@"DropViewController");
+        UIViewController *tempVCTL = [[cls alloc] init];
+        UINavigationController *nav = (UINavigationController *)tab.viewControllers[0];
+        [nav pushViewController:tempVCTL animated:YES];
+    }
 }
 //在非本App界面时收到本地消息，下拉消息会有快捷回复的按钮，点击按钮后调用的方法，根据identifier来判断点击的哪个按钮，notification为消息内容
 //void (^ _Nonnull __strong)()' vs '
@@ -401,41 +467,41 @@
 #pragma mark -极光推送⬆️
 #pragma mark 移除本地通知，在不需要此通知时记得移除
 -(void)removeNotification{
-    [[UIApplication sharedApplication]cancelAllLocalNotifications];
-}
-#pragma mark - 私有方法
-#pragma mark 添加本地通知
-- (void) addLocalNotification{
-    
-    //    NSLog(@"22222");
-    [UIApplication sharedApplication].delegate = self;
-
-    UILocalNotification * notification=[[UILocalNotification alloc] init];
-    
-    notification.fireDate=[NSDate dateWithTimeIntervalSinceNow:0];
-    
-    notification.alertBody=@"闹钟响了。。。。。。";
-    
-    notification.repeatInterval=NSCalendarUnitDay;
-    
-    notification.applicationIconBadgeNumber=1;
-    notification.hasAction = YES;
-    notification.category = KNotificationCategoryIdentifile;
-    
-    notification.userInfo=@{@"name":@"zhangsan"};
-    
-    
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
-    //调用通知
-    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
-    
 }
+//#pragma mark - 私有方法
+//#pragma mark 添加本地通知
+//- (void) addLocalNotification{
+//
+//    //    NSLog(@"22222");
+//    [UIApplication sharedApplication].delegate = self;
+//
+//    UILocalNotification * notification=[[UILocalNotification alloc] init];
+//
+//    notification.fireDate=[NSDate dateWithTimeIntervalSinceNow:0];
+//
+//    notification.alertBody=@"闹钟响了。。。。。。";
+//
+//    notification.repeatInterval=NSCalendarUnitDay;
+//
+//    notification.applicationIconBadgeNumber=1;
+//    notification.hasAction = YES;
+//    notification.category = KNotificationCategoryIdentifile;
+//
+//    notification.userInfo=@{@"name":@"zhangsan"};
+//
+//
+//    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+//    //调用通知
+//    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+//
+//}
 
 
 - (void)Alarm:(NSNotification *)noti{
     NSDictionary *dict = noti.object;
-    //    NSLog(@"%@",dict[@"Alarm"]) ;
-    [self ViewControllerSendTime:(NSUInteger)dict[@"length"]];
+    NSLog(@"闹钟-%@",dict[@"Alarm"]) ;
+//    [self ViewControllerSendTime:(NSUInteger)dict[@"length"]];
 }
 - (void)newMethod{
     NSLog(@"### -->backgroundinghandler");
@@ -527,64 +593,64 @@
     });
     
 }
-- (void) timerMethod:(NSTimer *)paramSender{
-    
-    _number  ++;
-    
-    NSTimeInterval backgroundTimeRemaining =[[UIApplication sharedApplication] backgroundTimeRemaining];
-    
-    if (backgroundTimeRemaining == DBL_MAX){
-        [[UIApplication sharedApplication]setApplicationIconBadgeNumber:_number];
-        if (_number>=5*60){
-            [self addLocationForAlert:_number];
-            [self endBackgroundTask];
-            
-        }
-        //        if (_number % 5 == 0) {
-        //            NSLog(@"_numFlag %ld",(long)_number);
-        //            if (_number>=100){[self endBackgroundTask];}
-        //        }
-        
-    } else {
-        
-        NSLog(@"Background Time Remaining = %.02f Seconds", backgroundTimeRemaining);
-        
-    }
-    
-}
-- (void)startEnterForground{
-    [self.timer invalidate];
-    
-    self.timer = nil;
-    
-    [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTaskIdentifier];
-    
-    self.backgroundTaskIdentifier = UIBackgroundTaskInvalid;
-    
-    if (_number==5*60){
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"applicationWillEnterForeground" object:nil userInfo:@{@"dict" : [NSNumber numberWithInteger:_number]}];
-    }
-}
-- (void) addLocationForAlert:(NSInteger)num{
-    
-    //定义本地通知对象
-    UILocalNotification *notification = [[UILocalNotification alloc]init];
-    //设置调用时间
-    notification.fireDate = [NSDate dateWithTimeIntervalSinceNow:0];//通知触发时间，10s之后
-    notification.repeatInterval = 0; //通知重复次数
-    
-    //设置通知属性
-    notification.alertBody = @"后台执行时间已到";//通知主体
-    notification.applicationIconBadgeNumber = num;//应用程序右上角显示的未读消息数
-    notification.alertAction = @"滑动打开";//待机界面的滑动动作提示
-    [notification setAlertTitle:@"xxxxApp名称"];
-    notification.alertLaunchImage = @"Default";//通过点击通知打开应用时的启动图片，这里使用程序启动图片
-    notification.soundName= UILocalNotificationDefaultSoundName;//收到通知时播放的声音，默认消息声音
-    notification.soundName=@"msg.caf";//通知声音（需要真机才能听到声音）
-    //调用通知
-    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
-    
-}
+//- (void) timerMethod:(NSTimer *)paramSender{
+//
+//    _number  ++;
+//
+//    NSTimeInterval backgroundTimeRemaining =[[UIApplication sharedApplication] backgroundTimeRemaining];
+//
+//    if (backgroundTimeRemaining == DBL_MAX){
+//        [[UIApplication sharedApplication]setApplicationIconBadgeNumber:_number];
+//        if (_number>=5*60){
+//            [self addLocationForAlert:_number];
+//            [self endBackgroundTask];
+//
+//        }
+//        //        if (_number % 5 == 0) {
+//        //            NSLog(@"_numFlag %ld",(long)_number);
+//        //            if (_number>=100){[self endBackgroundTask];}
+//        //        }
+//
+//    } else {
+//
+//        NSLog(@"Background Time Remaining = %.02f Seconds", backgroundTimeRemaining);
+//
+//    }
+//
+//}
+//- (void)startEnterForground{
+//    [self.timer invalidate];
+//
+//    self.timer = nil;
+//
+//    [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTaskIdentifier];
+//
+//    self.backgroundTaskIdentifier = UIBackgroundTaskInvalid;
+//
+//    if (_number==5*60){
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"applicationWillEnterForeground" object:nil userInfo:@{@"dict" : [NSNumber numberWithInteger:_number]}];
+//    }
+//}
+//- (void) addLocationForAlert:(NSInteger)num{
+//
+//    //定义本地通知对象
+//    UILocalNotification *notification = [[UILocalNotification alloc]init];
+//    //设置调用时间
+//    notification.fireDate = [NSDate dateWithTimeIntervalSinceNow:0];//通知触发时间，10s之后
+//    notification.repeatInterval = 0; //通知重复次数
+//
+//    //设置通知属性
+//    notification.alertBody = @"后台执行时间已到";//通知主体
+//    notification.applicationIconBadgeNumber = num;//应用程序右上角显示的未读消息数
+//    notification.alertAction = @"滑动打开";//待机界面的滑动动作提示
+//    [notification setAlertTitle:@"xxxxApp名称"];
+//    notification.alertLaunchImage = @"Default";//通过点击通知打开应用时的启动图片，这里使用程序启动图片
+//    notification.soundName= UILocalNotificationDefaultSoundName;//收到通知时播放的声音，默认消息声音
+//    notification.soundName=@"msg.caf";//通知声音（需要真机才能听到声音）
+//    //调用通知
+//    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+//
+//}
 
 - (void)writeFile{
     ///  路径 如无则自动创建一个
@@ -672,47 +738,47 @@
         [_timer_alarm setFireDate:[NSDate distantFuture]];
         
         [_player play];
-        [self registerLocalNotification];
+//        [self registerLocalNotification];
     }
 }
 
-- (void)registerLocalNotification
-{
-    NSLog(@"4444");
-    
-    UIMutableUserNotificationAction* action1 = [[UIMutableUserNotificationAction alloc] init];
-    
-    action1.identifier = KNotificationActionIdentifileStar;
-    action1.authenticationRequired = NO;
-    action1.destructive = NO;
-    action1.activationMode = UIUserNotificationActivationModeBackground;
-    action1.title = @"五分钟后响";
-    UIMutableUserNotificationAction* action2 = [[UIMutableUserNotificationAction alloc] init];
-    
-    action2.identifier = KNotificationActionIdentifileComment;
-    action2.title = @"关闭闹钟";
-    action2.authenticationRequired = NO;
-    action2.destructive = NO;
-    action2.activationMode = UIUserNotificationActivationModeBackground;
-    
-    self.categorys = [[UIMutableUserNotificationCategory alloc] init];
-    self.categorys.identifier = KNotificationCategoryIdentifile;
-    [self.categorys setActions:@[action1,action2] forContext:UIUserNotificationActionContextDefault];
-    UIUserNotificationSettings* newSetting= [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:[NSSet setWithObject:self.categorys]];
-    
-    [[UIApplication sharedApplication] registerUserNotificationSettings:newSetting];
-    
-    if(newSetting.types==UIUserNotificationTypeNone){
-        NSLog(@"aaaaaaaaaaa");
-        UIUserNotificationSettings* newSetting= [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:[NSSet setWithObject:self.categorys]];
-        
-        [[UIApplication sharedApplication] registerUserNotificationSettings:newSetting];
-    }else{
-        NSLog(@"bbbbbbbbbbb");
-        [[UIApplication sharedApplication] cancelAllLocalNotifications];
-        [self addLocalNotification];
-    }
-}
+//- (void)registerLocalNotification
+//{
+//    NSLog(@"4444");
+//
+//    UIMutableUserNotificationAction* action1 = [[UIMutableUserNotificationAction alloc] init];
+//
+//    action1.identifier = KNotificationActionIdentifileStar;
+//    action1.authenticationRequired = NO;
+//    action1.destructive = NO;
+//    action1.activationMode = UIUserNotificationActivationModeBackground;
+//    action1.title = @"五分钟后响";
+//    UIMutableUserNotificationAction* action2 = [[UIMutableUserNotificationAction alloc] init];
+//
+//    action2.identifier = KNotificationActionIdentifileComment;
+//    action2.title = @"关闭闹钟";
+//    action2.authenticationRequired = NO;
+//    action2.destructive = NO;
+//    action2.activationMode = UIUserNotificationActivationModeBackground;
+//
+//    self.categorys = [[UIMutableUserNotificationCategory alloc] init];
+//    self.categorys.identifier = KNotificationCategoryIdentifile;
+//    [self.categorys setActions:@[action1,action2] forContext:UIUserNotificationActionContextDefault];
+//    UIUserNotificationSettings* newSetting= [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:[NSSet setWithObject:self.categorys]];
+//
+//    [[UIApplication sharedApplication] registerUserNotificationSettings:newSetting];
+//
+//    if(newSetting.types==UIUserNotificationTypeNone){
+//        NSLog(@"aaaaaaaaaaa");
+//        UIUserNotificationSettings* newSetting= [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:[NSSet setWithObject:self.categorys]];
+//
+//        [[UIApplication sharedApplication] registerUserNotificationSettings:newSetting];
+//    }else{
+//        NSLog(@"bbbbbbbbbbb");
+//        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+//        [self addLocalNotification];
+//    }
+//}
 
 
 

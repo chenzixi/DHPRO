@@ -9,6 +9,7 @@
 #import "NetTestViewController.h"
 #import "SFNetWorkManager.h"
 #import "CommentsModel.h"
+#import <objc/message.h>
 #import "DataModel.h"
 @interface NetTestViewController ()
 {
@@ -97,6 +98,8 @@ static  BOOL y;
 //    _queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 //    [self asyncGlobalQueue];//异步
 //	[self asyncSerialQueue];//同步
+    [self asyncGroup];
+    [self asyncSemaphore];
 }
 -(void)getdata{
 	NSString *URL = @"https://testapi.iuoooo.com/jrtc.api/Jinher.AMP.JRTC.RealTime.svc/GetChannelToken";
@@ -369,7 +372,10 @@ static  BOOL y;
 	});
     
 }
-
+#pragma mark GCD- 依赖
+- (void)relyOperation{
+//    NSOperation
+}
 /**
  调度组异步执行
  */
@@ -790,6 +796,59 @@ static  BOOL y;
     
     // 开始必须在添加其他操作之后
     [op start];
+}
+- (void)other{
+    NSLog(@"%s",__func__);
+}
+
+//消息动态解析
++ (BOOL)resolveInstanceMethod:(SEL)sel
+{
+    if (sel == @selector(test)) {
+        
+        Method method = class_getInstanceMethod(self, @selector(other));
+        
+        class_addMethod(self, sel, method_getImplementation(method), method_getTypeEncoding(method));
+        
+        return YES;
+        
+    }
+    return [super resolveInstanceMethod:sel];
+}
+//消息转发
+//第一种1.0
+- (id)forwardingTargetForSelector:(SEL)aSelector
+{
+    if (aSelector == @selector(test)) {
+        //返回值为nil,相当于没有实现这个方法
+        return [[DataModel alloc] init];
+    }
+    return [super forwardingTargetForSelector:aSelector];
+}
+
+//第二种2.0
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
+{
+    //返回方法签名
+    return [NSMethodSignature signatureWithObjCTypes:"v16@:"];
+}
+//NSInvocation 里面包含了: 方法调用者,方法名,参数
+- (void)forwardInvocation:(NSInvocation *)anInvocation
+{
+    //修改方法调用者
+    anInvocation.target = [[DataModel alloc] init];
+    //调用方法
+    [anInvocation invoke];
+}
+- (void)model
+{
+    DataModel *persion = ((DataModel *(*)(id, SEL))(void *)objc_msgSend)((id)((DataModel *(*)(id, SEL))(void *)objc_msgSend)((id)objc_getClass("DataModel"), sel_registerName("alloc")), sel_registerName("init"));
+    //第一个参数是消息接受者(receive)persion, 第二个参数是方法签名sel_registerName("teset")
+    ((void (*)(id, SEL))(void *)objc_msgSend)((id)persion, sel_registerName("teset"));
+    
+    //简化后
+    [persion teset];
+    objc_msgSend(persion, sel_registerName("teset"));
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -30,12 +30,7 @@
 #if kUseScreenShotGesture
 @property (strong, nonatomic) ScreenShotView *screenshotView;
 #endif
-
-
-+ (AppDelegate* )shareAppDelegate;
 + (void)playSound:(int)soundID;
-+ (void)addBlurryScreenImage;       //从后台进入前台添加模糊效果
-+ (void)removeBlurryScreenImage;
 
 @end
 
