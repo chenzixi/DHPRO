@@ -139,7 +139,7 @@
     //    [self playVoiceBackground];
     CGFloat c = sqrt( pow(2, 3));
     NSLog(@"%.2f",c);
-
+    [UIColor colorWithRGBHex:12];
     // 监听有物品靠近还是离开
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(proximityStateDidChange) name:UIDeviceProximityStateDidChangeNotification object:nil];
 //    [UIDevice currentDevice].proximityMonitoringEnabled = YES;

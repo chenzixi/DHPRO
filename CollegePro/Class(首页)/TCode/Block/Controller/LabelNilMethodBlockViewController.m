@@ -7,13 +7,25 @@
 //
 
 #import "LabelNilMethodBlockViewController.h"
+#import "UIColor+expanded.h"
 
 @interface LabelNilMethodBlockViewController ()
 
 @end
 
 @implementation LabelNilMethodBlockViewController
-
+//+ (LabelNilMethodBlockViewController *)shareManage;
+//{
+//    //设置静态变量
+//    static LabelNilMethodBlockViewController *s=nil;
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        if (s==nil) {
+//            s = [[LabelNilMethodBlockViewController alloc] init];
+//        }
+//    });
+//    return s;
+//}
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.view.backgroundColor = [UIColor whiteColor];
@@ -30,6 +42,9 @@
 	
 	// Do any additional setup after loading the view.
 }
+- (void)getStr{
+    NSLog(@"调用到的");
+}
 - (void)backBlockNilMetnod{
 	
 	self.myReturnTextBlock(@"backBlockNilMetnodshu");
@@ -37,11 +52,19 @@
 
 }
 +(void)numberInfor:(void (^)(NSString *))inforBlock{
-    inforBlock = ^(NSString *d){
-        NSLog(@"%@",d);
-    };
+    if (inforBlock) {
+        inforBlock(@"中文");
+    }
 }
-
++(BOOL)isWhiteSkinColor{
+    //白色皮肤颜色
+    UIColor * whiteColor = [UIColor colorWithString:@"fbfcf9"];
+    if (whiteColor)
+    {
+        return YES;
+    }
+    return NO;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

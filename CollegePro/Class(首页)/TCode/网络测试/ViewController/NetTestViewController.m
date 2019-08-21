@@ -850,6 +850,50 @@ static  BOOL y;
     [persion teset];
     objc_msgSend(persion, sel_registerName("teset"));
 }
+//        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+//
+//        [request addValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+//        [request setHTTPMethod:@"POST"];
+//
+//
+//        // NSString * employeeIdStr = @"050f0146-0481-4ca2-ad10-9b70409d9df4";
+//
+//        // NSDictionary *json = @{@"EmployeeId": employeeIdStr,@"Key" :@"Signature",@"Value":@"卧室已经改过的的哦"};
+//        NSDictionary *json = @{@"EmployeeId": employeeIdStr,@"Key" :self.keyStr,@"Value":self.editTextView.text};
+//
+//        NSData *data = [NSJSONSerialization dataWithJSONObject:json options:NSJSONWritingPrettyPrinted error:nil];
+//
+//        [request setHTTPBody:data];
+//
+//
+//        [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+//            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+//            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+//            NSLog(@"请求回来的内容-----%@",dict);
+//            NSLog(@"==＝%@",[dict objectForKey:@"Message"]);
+//            // [MBProgressHUD displayHudError:@"保存成功"];
+//
+//            NSString * errStr = @"上传中...";
+//            MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:[UIApplication sharedApplication].keyWindow];
+//            hud.labelText = errStr;
+//            hud.labelFont = [UIFont systemFontOfSize:14.0f];
+//            hud.removeFromSuperViewOnHide = YES;
+//            [hud setMode:MBProgressHUDModeCustomView];
+//            [[UIApplication sharedApplication].keyWindow addSubview:hud];
+//            [hud show:YES];
+//            double fDelay = 4.0f;
+//
+//            if (errStr.length > 10)
+//            {
+//                fDelay = 4.0f;
+//            }
+//            [LoginAndRegister getEmployeeInfoForPC];
+//            [hud performSelector:@selector(hide:) withObject:@"1" afterDelay:fDelay];
+//
+//            [self performSelector:@selector(back) withObject:nil afterDelay:4];
+//            // [self.navigationController popViewControllerAnimated:YES];
+//
+//        }];
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

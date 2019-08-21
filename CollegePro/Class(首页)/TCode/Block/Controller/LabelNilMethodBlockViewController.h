@@ -12,5 +12,6 @@ typedef void (^MyReturnTextBlock)(NSString *showText);
 @interface LabelNilMethodBlockViewController : BaseViewController
 @property (nonatomic, copy) MyReturnTextBlock myReturnTextBlock;
 +(void)numberInfor:(void(^)(NSString * infor))inforBlock;
++(BOOL)isWhiteSkinColor;
 
 @end

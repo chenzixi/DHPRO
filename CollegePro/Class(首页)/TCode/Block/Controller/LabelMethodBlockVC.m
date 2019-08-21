@@ -259,17 +259,25 @@
 
 - (void)pushBlockNilMetnod{
 	LabelNilMethodBlockViewController *subVC = [[LabelNilMethodBlockViewController alloc]init];
-    
 
 	subVC.myReturnTextBlock = ^(NSString *showText){
 		NSLog(@"showText  %@",showText);
 		
 	};
-    ((void(*)(id,SEL,id))objc_msgSend)(NSClassFromString(@"LabelNilMethodBlockViewController"), NSSelectorFromString(@"numberInfor:"), subVC.myReturnTextBlock);
-	
-//    [self presentViewController:subVC animated:YES completion:^{
-//
-//    }];
+    
+    void(^infoBlock)(NSString *dic) = ^(NSString * infor){
+        NSLog(@"%@",infor);
+    };
+    ((void(*)(id,SEL,id))objc_msgSend)(NSClassFromString(@"LabelNilMethodBlockViewController"), NSSelectorFromString(@"numberInfor:"), infoBlock);
+
+    
+    BOOL isWhiteSkinColor = ((BOOL(*)(id, SEL))objc_msgSend)(NSClassFromString(@"LabelNilMethodBlockViewController"), @selector(isWhiteSkinColor));
+    NSLog(@"isWhiteSkinColor %d",isWhiteSkinColor);
+    
+    id(*ins)(id, SEL) = (id(*)(id, SEL))objc_msgSend;
+    id gm = ins(NSClassFromString(@"LabelNilMethodBlockViewController"), NSSelectorFromString(@"isWhiteSkinColor"));
+    ((id (*)(id, SEL))objc_msgSend)(gm, NSSelectorFromString(@"getStr"));
+    
     [self.navigationController pushViewController:subVC animated:NO];
 
 }

@@ -62,7 +62,7 @@
                 NSTextCheckingResult *parse = [parsingRegex firstMatchInString:string
                                                                        options:0
                                                                          range:NSMakeRange(0, [string length])];
-                NSLog(@"Ranges: %d", parse.numberOfRanges);
+                NSLog(@"Ranges: %lu", (unsigned long)parse.numberOfRanges);
                 NSString *modifier = [string substringWithRange:[parse rangeAtIndex:1]];
                 if ([modifier isEqualToString:@"float"]) {
                     // Float modifier, one argument
