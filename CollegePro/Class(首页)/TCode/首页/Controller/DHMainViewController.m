@@ -76,6 +76,7 @@
 #import "CodeViewController.h"//卡片
 #import "CardAnimateViewController.h"//卡片
 #import "DivisionCircleViewController.h"//表盘
+#import "CreditNumViewController.h"//分值表
 #import "ThreeDimensionalSphericalLayout.h"//三维球型
 #import "LabelMethodBlockVC.h"
 #import "LabelMethodBlockSubVC.h"
@@ -146,6 +147,7 @@
     
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(getinternet) userInfo:nil repeats:YES];
     [timer fireDate];
+    
 }
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
@@ -260,6 +262,7 @@
     [self addCell:@"卡片" class:@"CardAnimateViewController"];
     [self addCell:@"表盘" class:@"DivisionCircleViewController"];
     [self addCell:@"三维球" class:@"ThreeDimensionalSphericalLayout"];
+    [self addCell:@"分值表" class:@"CreditNumViewController"];
 
     [_collectionView reloadData];
     

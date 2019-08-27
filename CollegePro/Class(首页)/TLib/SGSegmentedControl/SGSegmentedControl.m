@@ -18,7 +18,7 @@
 #define IndicatorWidth 41
 #import "SGSegmentedControl.h"
 #import "SGImageButton.h"
-#import "UIView+SGExtension.h"
+#import "UIView+Extension.h"
 
 #define SG_screenWidth [UIScreen mainScreen].bounds.size.width
 #define indicatorViewColorDefualt [UIColor redColor]
@@ -167,17 +167,17 @@ static CGFloat const indicatorViewTimeOfAnimation = 0.4;
         // 添加指示器
         self.indicatorView = [[UIView alloc] init];
         _indicatorView.backgroundColor = indicatorViewColorDefualt;
-        _indicatorView.SG_height = indicatorViewHeight;
-        _indicatorView.SG_y = self.frame.size.height - 2 * indicatorViewHeight;
-		NSLog(@"---%f",_indicatorView.SG_y);
+        _indicatorView.height = indicatorViewHeight;
+        _indicatorView.y = self.frame.size.height - 2 * indicatorViewHeight;
+		NSLog(@"---%f",_indicatorView.y);
         [self addSubview:_indicatorView];
 
 		
         // 指示器默认在第一个选中位置
         // 计算TitleLabel内容的Size
         CGSize buttonSize = [self sizeWithText:firstButton.titleLabel.text font:[UIFont systemFontOfSize:btn_fondOfSize] maxSize:CGSizeMake(MAXFLOAT, self.frame.size.height)];
-        _indicatorView.SG_width = buttonSize.width;
-        _indicatorView.SG_centerX = firstButton.SG_centerX;
+        _indicatorView.width = buttonSize.width;
+        _indicatorView.centerX = firstButton.centerX;
         
     } else {
         
@@ -222,15 +222,15 @@ static CGFloat const indicatorViewTimeOfAnimation = 0.4;
         // 添加指示器
         self.indicatorView = [[UIView alloc] init];
         _indicatorView.backgroundColor = indicatorViewColorDefualt;
-        _indicatorView.SG_height = indicatorViewHeight;
-        _indicatorView.SG_y = self.frame.size.height - 2 * indicatorViewHeight;
+        _indicatorView.height = indicatorViewHeight;
+        _indicatorView.y = self.frame.size.height - 2 * indicatorViewHeight;
         [self addSubview:_indicatorView];
         
         // 指示器默认在第一个选中位置
         // 计算TitleLabel内容的Size
         CGSize buttonSize = [self sizeWithText:firstButton.titleLabel.text font:[UIFont systemFontOfSize:btn_fondOfSize] maxSize:CGSizeMake(MAXFLOAT, self.frame.size.height)];
-        _indicatorView.SG_width = _indicatorView.width = buttonSize.width;//75;
-        _indicatorView.SG_centerX = firstButton.SG_centerX;
+        _indicatorView.width = _indicatorView.width = buttonSize.width;//75;
+        _indicatorView.centerX = firstButton.centerX;
     }
 }
 
@@ -289,16 +289,16 @@ static CGFloat const indicatorViewTimeOfAnimation = 0.4;
         // 添加指示器
         self.indicatorView = [[UIView alloc] init];
         _indicatorView.backgroundColor = indicatorViewColorDefualt;
-        _indicatorView.SG_height = indicatorViewHeight;
-        _indicatorView.SG_y = self.frame.size.height - indicatorViewHeight;
+        _indicatorView.height = indicatorViewHeight;
+        _indicatorView.y = self.frame.size.height - indicatorViewHeight;
         [self addSubview:_indicatorView];
 
 
         // 指示器默认在第一个选中位置
         // 计算TitleLabel内容的Size
         CGSize buttonSize = [self sizeWithText:firstButton.titleLabel.text font:[UIFont systemFontOfSize:btn_fondOfSize] maxSize:CGSizeMake(MAXFLOAT, self.frame.size.height)];
-        _indicatorView.SG_width = 75;
-        _indicatorView.SG_centerX = firstButton.SG_centerX;
+        _indicatorView.width = 75;
+        _indicatorView.centerX = firstButton.centerX;
         
     } else {
         
@@ -345,15 +345,15 @@ static CGFloat const indicatorViewTimeOfAnimation = 0.4;
         // 添加指示器
         self.indicatorView = [[UIView alloc] init];
         _indicatorView.backgroundColor = indicatorViewColorDefualt;
-        _indicatorView.SG_height = indicatorViewHeight;
-        _indicatorView.SG_y = self.frame.size.height - indicatorViewHeight;
+        _indicatorView.height = indicatorViewHeight;
+        _indicatorView.y = self.frame.size.height - indicatorViewHeight;
         [self addSubview:_indicatorView];
         
         // 指示器默认在第一个选中位置
         // 计算TitleLabel内容的Size
         CGSize buttonSize = [self sizeWithText:firstButton.titleLabel.text font:[UIFont systemFontOfSize:btn_fondOfSize] maxSize:CGSizeMake(MAXFLOAT, self.frame.size.height)];
-        _indicatorView.SG_width = 75;
-        _indicatorView.SG_centerX = firstButton.SG_centerX;
+        _indicatorView.width = 75;
+        _indicatorView.centerX = firstButton.centerX;
     }
 }
 
@@ -379,14 +379,14 @@ static CGFloat const indicatorViewTimeOfAnimation = 0.4;
 - (void)titleBtnSelected:(UIButton *)button {
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(indicatorViewTimeOfAnimation * 0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if (_temp_btn == nil) {
+        if (self->_temp_btn == nil) {
             button.selected = YES;
-            _temp_btn = button;
-        }else if (_temp_btn != nil && _temp_btn == button){
+            self->_temp_btn = button;
+        }else if (self->_temp_btn != nil && self->_temp_btn == button){
             button.selected = YES;
-        }else if (_temp_btn != button && _temp_btn != nil){
-            _temp_btn.selected = NO;
-            button.selected = YES; _temp_btn = button;
+        }else if (self->_temp_btn != button && self->_temp_btn != nil){
+            self->_temp_btn.selected = NO;
+            button.selected = YES; self->_temp_btn = button;
         }
     });
 
@@ -394,19 +394,19 @@ static CGFloat const indicatorViewTimeOfAnimation = 0.4;
         // 改变指示器位置
         if (self.segmentedControlIndicatorType == SGSegmentedControlIndicatorTypeCenter) {
             [UIView animateWithDuration:0.20 animations:^{
-                self.indicatorView.SG_width = button.SG_width - btn_Margin;
-                self.indicatorView.SG_centerX = button.SG_centerX;
+                self.indicatorView.width = button.width - btn_Margin;
+                self.indicatorView.centerX = button.centerX;
             }];
         } else if (self.segmentedControlIndicatorType == SGSegmentedControlIndicatorTypeBankground) {
             [UIView animateWithDuration:0.20 animations:^{
-                self.indicatorView.SG_width = button.SG_width;
-                self.bgIndicatorView.SG_width = button.SG_width;
-                self.indicatorView.SG_centerX = button.SG_centerX;
+                self.indicatorView.width = button.width;
+                self.bgIndicatorView.width = button.width;
+                self.indicatorView.centerX = button.centerX;
             }];
         } else {
             [UIView animateWithDuration:0.20 animations:^{
-                self.indicatorView.SG_width = button.SG_width - 2 * btn_Margin;
-                self.indicatorView.SG_centerX = button.SG_centerX;
+                self.indicatorView.width = button.width - 2 * btn_Margin;
+                self.indicatorView.centerX = button.centerX;
             }];
         }
         
@@ -421,8 +421,8 @@ static CGFloat const indicatorViewTimeOfAnimation = 0.4;
             [UIView animateWithDuration:indicatorViewTimeOfAnimation animations:^{
                 // 计算内容的Size
                 CGSize buttonSize = [self sizeWithText:button.titleLabel.text font:[UIFont systemFontOfSize:btn_fondOfSize] maxSize:CGSizeMake(MAXFLOAT, self.frame.size.height - indicatorViewHeight)];
-                self.indicatorView.SG_width = buttonSize.width + btn_Margin;
-                self.indicatorView.SG_centerX = button.SG_centerX;
+                self.indicatorView.width = buttonSize.width + btn_Margin;
+                self.indicatorView.centerX = button.centerX;
             }];
             
         } else if (self.segmentedControlIndicatorType == SGSegmentedControlIndicatorTypeBankground){
@@ -431,8 +431,8 @@ static CGFloat const indicatorViewTimeOfAnimation = 0.4;
             [UIView animateWithDuration:indicatorViewTimeOfAnimation animations:^{
                 // 计算内容的Size
                 //                CGSize buttonSize = [self sizeWithText:sender.titleLabel.text font:[UIFont systemFontOfSize:btn_fondOfSize] maxSize:CGSizeMake(MAXFLOAT, self.frame.size.height - indicatorViewHeight)];
-                self.indicatorView.SG_width = self.SG_width / _title_Arr.count;
-                self.indicatorView.SG_centerX = button.SG_centerX;
+                self.indicatorView.width = self.width / self->_title_Arr.count;
+                self.indicatorView.centerX = button.centerX;
             }];
             
         } else {
@@ -441,8 +441,8 @@ static CGFloat const indicatorViewTimeOfAnimation = 0.4;
             [UIView animateWithDuration:indicatorViewTimeOfAnimation animations:^{
                 // 计算内容的Size
                 CGSize buttonSize = [self sizeWithText:button.titleLabel.text font:[UIFont systemFontOfSize:btn_fondOfSize] maxSize:CGSizeMake(MAXFLOAT, self.frame.size.height - indicatorViewHeight)];
-                self.indicatorView.SG_width = buttonSize.width +IndicatorWidth;
-                self.indicatorView.SG_centerX = button.SG_centerX;
+                self.indicatorView.width = buttonSize.width +IndicatorWidth;
+                self.indicatorView.centerX = button.centerX;
             }];
         }
     }
@@ -558,12 +558,12 @@ static CGFloat const indicatorViewTimeOfAnimation = 0.4;
         // 指示器默认在第一个选中位置
         // 计算TitleLabel内容的Size
         CGSize buttonSize = [self sizeWithText:firstButton.titleLabel.text font:[UIFont systemFontOfSize:btn_fondOfSize] maxSize:CGSizeMake(MAXFLOAT, self.frame.size.height)];
-        _indicatorView.SG_width = 75;
-        _indicatorView.SG_centerX = firstButton.SG_centerX;
+        _indicatorView.width = 75;
+        _indicatorView.centerX = firstButton.centerX;
         
         CGFloat indicatorViewHeight = 25;
-        self.indicatorView.SG_height = indicatorViewHeight;
-        self.indicatorView.SG_y = (self.frame.size.height - indicatorViewHeight) * 0.5;
+        self.indicatorView.height = indicatorViewHeight;
+        self.indicatorView.y = (self.frame.size.height - indicatorViewHeight) * 0.5;
     
         self.indicatorView.alpha = 0.3;
         self.indicatorView.layer.cornerRadius = 7;
@@ -578,16 +578,16 @@ static CGFloat const indicatorViewTimeOfAnimation = 0.4;
         // 计算TitleLabel内容的Size
         CGSize buttonSize = [self sizeWithText:firstButton.titleLabel.text font:[UIFont systemFontOfSize:btn_fondOfSize] maxSize:CGSizeMake(MAXFLOAT, self.frame.size.height)];
         if (self.segmentedControlType == SGSegmentedControlTypeScroll) {
-            _indicatorView.SG_x = firstButton.SG_x;
-            _indicatorView.SG_width = buttonSize.width + 2 * btn_Margin;
+            _indicatorView.x = firstButton.x;
+            _indicatorView.width = buttonSize.width + 2 * btn_Margin;
         } else {
-            _indicatorView.SG_x = 0;
-            _indicatorView.SG_width = self.SG_width / _title_Arr.count;
+            _indicatorView.x = 0;
+            _indicatorView.width = self.width / _title_Arr.count;
         }
         
         CGFloat indicatorViewHeight = self.frame.size.height;
-        self.indicatorView.SG_height = indicatorViewHeight;
-        self.indicatorView.SG_y = 0;
+        self.indicatorView.height = indicatorViewHeight;
+        self.indicatorView.y = 0;
         
         self.indicatorView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
         
@@ -596,16 +596,16 @@ static CGFloat const indicatorViewTimeOfAnimation = 0.4;
         _bgIndicatorView.backgroundColor = [UIColor redColor];
         
         if (self.segmentedControlType == SGSegmentedControlTypeScroll) {
-            _bgIndicatorView.SG_x = firstButton.SG_x;
-            _bgIndicatorView.SG_width = buttonSize.width + 2 * btn_Margin;
+            _bgIndicatorView.x = firstButton.x;
+            _bgIndicatorView.width = buttonSize.width + 2 * btn_Margin;
         } else {
-            _bgIndicatorView.SG_x = _indicatorView.SG_x;
-            _bgIndicatorView.SG_width = self.SG_width / _title_Arr.count;
+            _bgIndicatorView.x = _indicatorView.x;
+            _bgIndicatorView.width = self.width / _title_Arr.count;
         }
         
         CGFloat bgIndicatorViewHeight = 3;
-        _bgIndicatorView.SG_height = bgIndicatorViewHeight;
-        _bgIndicatorView.SG_y = _indicatorView.SG_height - bgIndicatorViewHeight;
+        _bgIndicatorView.height = bgIndicatorViewHeight;
+        _bgIndicatorView.y = _indicatorView.height - bgIndicatorViewHeight;
         [self.indicatorView addSubview:_bgIndicatorView];
     }
 }

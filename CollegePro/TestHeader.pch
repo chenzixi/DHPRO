@@ -100,6 +100,7 @@ alpha:1.0]
 #import "DHTool.h"
 #import "LHKeyChain.h"
 #import "IQKeyboardManager.h"
+#import "IQUIView+Hierarchy.h"
 #import "AFNetworking.h"
 #import "SVProgressHUD.h"
 #import "MBProgressHUD.h"

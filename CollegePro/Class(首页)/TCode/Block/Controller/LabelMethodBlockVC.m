@@ -14,11 +14,13 @@
 #import <objc/message.h>
 
 
-
+typedef void(^MyBlock)(void);
 @interface LabelMethodBlockVC ()<UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource>{
 	NSString *u;
 	BOOL snState;
 }
+@property (nonatomic,copy)MyBlock block;//定义一个MyBlock属性
+
 @property (nonatomic, strong) ALiAlertView *alert;
 
 @end
@@ -264,6 +266,14 @@
 		NSLog(@"showText  %@",showText);
 		
 	};
+    __weak typeof(self) weakSelf = self;
+    Class cls =  NSClassFromString(@"LabelNilMethodBlockViewController");
+    UIViewController *viewController = [[cls alloc] init];
+    void(^block)(void) = ^{
+        NSLog(@"----");
+    };
+    weakSelf.block = block;
+    ((void(*)(id,SEL,id))objc_msgSend)(viewController, NSSelectorFromString(@"setReception:"),block);
     
     void(^infoBlock)(NSString *dic) = ^(NSString * infor){
         NSLog(@"%@",infor);

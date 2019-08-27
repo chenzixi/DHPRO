@@ -21,4 +21,16 @@
 @property (nonatomic, assign) CGFloat width;
 @property (nonatomic, assign) CGFloat height;
 @property (nonatomic, assign) CGSize size;
+
++ (instancetype)DViewFromXib;
+@end
+
+
+@interface UIScrollView (AdjustInsets)
+
+@property (nonatomic, assign) CGFloat contentInsetTop;
+@property (nonatomic, assign) CGFloat contentInsetLeft;
+@property (nonatomic, assign) CGFloat contentInsetBottom;
+@property (nonatomic, assign) CGFloat contentInsetRight;
+
 @end

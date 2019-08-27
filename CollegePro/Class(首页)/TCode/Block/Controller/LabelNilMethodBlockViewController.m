@@ -45,6 +45,12 @@
 - (void)getStr{
     NSLog(@"调用到的");
 }
+-(void)setReception:(receiveNoti)reception{
+    if (reception) {
+        self.reception(@"reception");
+    }
+
+}
 - (void)backBlockNilMetnod{
 	
 	self.myReturnTextBlock(@"backBlockNilMetnodshu");

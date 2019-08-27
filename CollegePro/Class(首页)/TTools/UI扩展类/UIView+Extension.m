@@ -9,6 +9,9 @@
 #import "UIView+Extension.h"
 
 @implementation UIView (Extension)
++ (instancetype)DViewFromXib {
+    return [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil].lastObject;
+}
 //----
 - (void)setX:(CGFloat)x
 {
@@ -127,6 +130,50 @@
 - (CGSize)size
 {
     return self.frame.size;
+}
+
+@end
+
+@implementation UIScrollView (AdjustInsets)
+
+- (void)setContentInsetTop:(CGFloat)contentInsetTop {
+    UIEdgeInsets edgeInsets = self.contentInset;
+    edgeInsets.top = contentInsetTop;
+    self.contentInset = edgeInsets;
+}
+
+- (void)setContentInsetLeft:(CGFloat)contentInsetLeft {
+    UIEdgeInsets edgeInsets = self.contentInset;
+    edgeInsets.left = contentInsetLeft;
+    self.contentInset = edgeInsets;
+}
+
+- (void)setContentInsetBottom:(CGFloat)contentInsetBottom {
+    UIEdgeInsets edgeInsets = self.contentInset;
+    edgeInsets.bottom = contentInsetBottom;
+    self.contentInset = edgeInsets;
+}
+
+- (void)setContentInsetRight:(CGFloat)contentInsetRight {
+    UIEdgeInsets edgeInsets = self.contentInset;
+    edgeInsets.right = contentInsetRight;
+    self.contentInset = edgeInsets;
+}
+
+- (CGFloat)contentInsetTop {
+    return self.contentInset.top;
+}
+
+- (CGFloat)contentInsetLeft {
+    return self.contentInset.left;
+}
+
+- (CGFloat)contentInsetBottom {
+    return self.contentInset.bottom;
+}
+
+- (CGFloat)contentInsetRight {
+    return self.contentInset.right;
 }
 
 @end
