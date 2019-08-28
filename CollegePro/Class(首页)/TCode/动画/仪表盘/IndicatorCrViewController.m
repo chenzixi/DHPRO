@@ -23,7 +23,7 @@
     UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn1 setTitle:@"闪动" forState:UIControlStateNormal];
     [btn1 addTarget:self action:@selector(circleIndicatorShine) forControlEvents:UIControlEventTouchUpInside];
-    btn1.frame = CGRectMake(321, 16, 31, 30);
+    btn1.frame = CGRectMake(DH_DeviceWidth-50, 70, 31, 30);
     [self.view addSubview:btn1];
     btn1.layer.borderColor = [UIColor greenColor].CGColor;
     btn1.layer.borderWidth = 1.0;
@@ -31,7 +31,7 @@
     UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn2 setTitle:@"闪动" forState:UIControlStateNormal];
     [btn2 addTarget:self action:@selector(rectangleIndicatorShine) forControlEvents:UIControlEventTouchUpInside];
-    btn2.frame = CGRectMake(321, 200, 31, 30);
+    btn2.frame = CGRectMake(DH_DeviceWidth-50, 300, 31, 30);
     [self.view addSubview:btn2];
     btn2.layer.borderColor = [UIColor greenColor].CGColor;
     btn2.layer.borderWidth = 1.0;
@@ -80,13 +80,13 @@
     }];
 }
 
-- (IBAction)circleIndicatorShine {
+- (void)circleIndicatorShine {
     [self.circleIndicatorView shineWithTimeInterval:0.01 pauseDuration:0 finalValue:70 finishBlock:^{
         //NSLog(@"---------- 执行完毕");
     }];
 }
 
-- (IBAction)rectangleIndicatorShine {
+- (void)rectangleIndicatorShine {
     [self.rectangleIndicatorView shineWithTimeInterval:0.01 pauseDuration:0 finalValue:50 finishBlock:^{
         //NSLog(@"---------- 执行完毕");
     }];
