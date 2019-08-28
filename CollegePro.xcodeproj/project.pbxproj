@@ -52,6 +52,9 @@
 		383EAFE322981D1E00A2AA1E /* JHDownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 383EAFE222981D1D00A2AA1E /* JHDownButton.m */; };
 		383F11F823155966005F085F /* CreditNumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 383F11F723155966005F085F /* CreditNumView.m */; };
 		383F11FC23155A37005F085F /* CreditNumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 383F11FB23155A37005F085F /* CreditNumViewController.m */; };
+		383F16DE23169B76005F085F /* IndicatorCrViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 383F16DD23169B76005F085F /* IndicatorCrViewController.m */; };
+		383F16E123169D2C005F085F /* indicatorCrView.m in Sources */ = {isa = PBXBuildFile; fileRef = 383F16E023169D2C005F085F /* indicatorCrView.m */; };
+		383F16E423169D56005F085F /* RectangleIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 383F16E323169D56005F085F /* RectangleIndicatorView.m */; };
 		384C3FC622887D7900F01586 /* CustomCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FA122887D7800F01586 /* CustomCollectionViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		384C3FC722887D7900F01586 /* MyHeadCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FA422887D7800F01586 /* MyHeadCollectionReusableView.m */; };
 		384C3FC822887D7A00F01586 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FA522887D7800F01586 /* CustomCell.m */; };
@@ -1022,6 +1025,12 @@
 		383F11F723155966005F085F /* CreditNumView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreditNumView.m; sourceTree = "<group>"; };
 		383F11FA23155A37005F085F /* CreditNumViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreditNumViewController.h; sourceTree = "<group>"; };
 		383F11FB23155A37005F085F /* CreditNumViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreditNumViewController.m; sourceTree = "<group>"; };
+		383F16DC23169B76005F085F /* IndicatorCrViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndicatorCrViewController.h; sourceTree = "<group>"; };
+		383F16DD23169B76005F085F /* IndicatorCrViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IndicatorCrViewController.m; sourceTree = "<group>"; };
+		383F16DF23169D2C005F085F /* indicatorCrView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = indicatorCrView.h; sourceTree = "<group>"; };
+		383F16E023169D2C005F085F /* indicatorCrView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = indicatorCrView.m; sourceTree = "<group>"; };
+		383F16E223169D56005F085F /* RectangleIndicatorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RectangleIndicatorView.h; sourceTree = "<group>"; };
+		383F16E323169D56005F085F /* RectangleIndicatorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RectangleIndicatorView.m; sourceTree = "<group>"; };
 		384C3FA022887D7800F01586 /* CustomCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCollectionViewController.h; sourceTree = "<group>"; };
 		384C3FA122887D7800F01586 /* CustomCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCollectionViewController.m; sourceTree = "<group>"; };
 		384C3FA322887D7800F01586 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
@@ -2638,6 +2647,19 @@
 				383F11FB23155A37005F085F /* CreditNumViewController.m */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		383F16DB23169B45005F085F /* 仪表盘 */ = {
+			isa = PBXGroup;
+			children = (
+				383F16DC23169B76005F085F /* IndicatorCrViewController.h */,
+				383F16DD23169B76005F085F /* IndicatorCrViewController.m */,
+				383F16DF23169D2C005F085F /* indicatorCrView.h */,
+				383F16E023169D2C005F085F /* indicatorCrView.m */,
+				383F16E223169D56005F085F /* RectangleIndicatorView.h */,
+				383F16E323169D56005F085F /* RectangleIndicatorView.m */,
+			);
+			path = "仪表盘";
 			sourceTree = "<group>";
 		};
 		384C3F9E22887D7800F01586 /* 长按移动 */ = {
@@ -5741,6 +5763,7 @@
 		38C8489F227827F000BCAD87 /* 动画 */ = {
 			isa = PBXGroup;
 			children = (
+				383F16DB23169B45005F085F /* 仪表盘 */,
 				383F11F42315524C005F085F /* 分值表盘 */,
 				38C848A0227827F000BCAD87 /*  碰撞球 */,
 				38C848A4227827F000BCAD87 /* 动画练习1 */,
@@ -6521,6 +6544,7 @@
 				38C84A32227827F200BCAD87 /* DHImagePickerViewController.m in Sources */,
 				38C84973227827F100BCAD87 /* ScreenBlurry.m in Sources */,
 				38C849E7227827F200BCAD87 /* SmoothLineView.m in Sources */,
+				383F16DE23169B76005F085F /* IndicatorCrViewController.m in Sources */,
 				38C84940227827F100BCAD87 /* WMDragView.m in Sources */,
 				38C84A4E227827F200BCAD87 /* MLSelectPhotoPickerCollectionView.m in Sources */,
 				386BBB0922DB76ED005E6054 /* SlideMenuViewController.m in Sources */,
@@ -6761,6 +6785,7 @@
 				38C2D0CF22D5E27700CF30CA /* Reachability.m in Sources */,
 				38C849D2227827F200BCAD87 /* DHNoteViewController.m in Sources */,
 				386BBD9F22DDA7FF005E6054 /* GPUImageDifferenceBlendFilter.m in Sources */,
+				383F16E423169D56005F085F /* RectangleIndicatorView.m in Sources */,
 				386BBDBE22DDA7FF005E6054 /* GPUImageBuffer.m in Sources */,
 				386BBBD622DD7441005E6054 /* GXButton.m in Sources */,
 				386BBB2E22DC8C2E005E6054 /* UIDrawView.m in Sources */,
@@ -6919,6 +6944,7 @@
 				381B6BB022C0EE890018C0C2 /* DataItem.m in Sources */,
 				38C84A65227827F200BCAD87 /* TMotionViewController.m in Sources */,
 				38C84A06227827F200BCAD87 /* EditNoteViewController.m in Sources */,
+				383F16E123169D2C005F085F /* indicatorCrView.m in Sources */,
 				38C84975227827F100BCAD87 /* THomeCollectionViewCell.m in Sources */,
 				386BBD9822DDA7FE005E6054 /* GPUImage3x3TextureSamplingFilter.m in Sources */,
 				38C84955227827F100BCAD87 /* XHMenuButton.m in Sources */,

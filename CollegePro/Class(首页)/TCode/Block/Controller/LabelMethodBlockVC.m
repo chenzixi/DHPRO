@@ -12,7 +12,7 @@
 #import "ALiAlertView.h"
 //#import "RadioButton.h"
 #import <objc/message.h>
-
+#import "UIViewExt.h"
 
 typedef void(^MyBlock)(void);
 @interface LabelMethodBlockVC ()<UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource>{
@@ -264,7 +264,10 @@ typedef void(^MyBlock)(void);
 
 	subVC.myReturnTextBlock = ^(NSString *showText){
 		NSLog(@"showText  %@",showText);
-		
+//        instancetype用来在编译期确定实例的类型,而使用id的话,编译器不检查类型, 运行时检查类型
+//        instancetype和id一样,不做具体类型检查
+//        id可以作为方法的参数,但instancetype不可以
+//        instancetype只适用于初始化方法和便利构造器的返回值类型
 	};
     __weak typeof(self) weakSelf = self;
     Class cls =  NSClassFromString(@"LabelNilMethodBlockViewController");

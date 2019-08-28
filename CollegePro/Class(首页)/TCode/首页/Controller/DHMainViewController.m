@@ -77,6 +77,7 @@
 #import "CardAnimateViewController.h"//卡片
 #import "DivisionCircleViewController.h"//表盘
 #import "CreditNumViewController.h"//分值表
+#import "IndicatorCrViewController.h"//分值表
 #import "ThreeDimensionalSphericalLayout.h"//三维球型
 #import "LabelMethodBlockVC.h"
 #import "LabelMethodBlockSubVC.h"
@@ -263,6 +264,7 @@
     [self addCell:@"表盘" class:@"DivisionCircleViewController"];
     [self addCell:@"三维球" class:@"ThreeDimensionalSphericalLayout"];
     [self addCell:@"分值表" class:@"CreditNumViewController"];
+    [self addCell:@"分值表" class:@"IndicatorCrViewController"];
 
     [_collectionView reloadData];
     
