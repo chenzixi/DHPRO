@@ -42,6 +42,7 @@
 - (UIColor *)       colorByAddingColor:(UIColor *)color;
 - (UIColor *) colorByLighteningToColor:(UIColor *)color;
 - (UIColor *)  colorByDarkeningToColor:(UIColor *)color;
+-(UIColor *)colorAtPoint:(CGPoint)point WithImageSize:(CGSize)size;
 
 - (NSString *)stringFromColor;
 - (NSString *)hexStringFromColor;
@@ -52,6 +53,7 @@
 + (UIColor *)colorWithString:(NSString *)stringToConvert;
 + (UIColor *)colorWithRGBHex:(UInt32)hex;
 + (UIColor *)colorWithHexString:(NSString *)stringToConvert;
++ (UIColor *)colorWithHexThreeString:(NSString *)hexColorString;
 + (UIColor *)colorWithHexString:(NSString *)stringToConvert andAlpha:(CGFloat)alpha;
 
 + (UIColor *)colorWithName:(NSString *)cssColorName;

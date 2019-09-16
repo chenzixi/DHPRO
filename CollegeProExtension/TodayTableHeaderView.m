@@ -26,7 +26,8 @@
     return self;
 }
 - (void)mas_layoutSubviews{
-    self.imageView.frame = CGRectMake(15, 10, 50, 50);
+    
+    self.imageView.frame = CGRectMake(50, 0, 50, 98);
     self.label.frame = CGRectMake(self.imageView.frame.origin.x+self.imageView.frame.size.width + 10 , self.imageView.center.y-10, 100, 20);
 //    [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.top.left.mas_offset(15.0);
@@ -46,7 +47,7 @@
         _imageView = [[UIImageView alloc]init];
         _imageView.image = [UIImage imageNamed:@"精灵球"];
         _imageView.layer.cornerRadius = 8.0;
-        _imageView.layer.borderColor = [UIColor redColor].CGColor;
+        _imageView.layer.borderColor = [UIColor blackColor].CGColor;
         _imageView.layer.borderWidth = 1.0;
         _imageView.layer.masksToBounds = YES;
     }
@@ -56,7 +57,7 @@
 - (UILabel *)label {
     if (!_label) {
         _label = [[UILabel alloc]init];
-        _label.text = @"我是标题";
+        _label.text = @"我是标题98像素";
     }
     return _label;
 }

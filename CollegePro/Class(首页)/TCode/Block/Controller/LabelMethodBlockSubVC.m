@@ -33,8 +33,6 @@
 @property(nonatomic,strong) NSString *rtcMessageID;
 //测试字符串⬆️⬆️⬆️
 
-@property (nonatomic,assign) float tmp;
-
 @property(nonatomic, strong)SFTextView *textF;
 
 @property (nonatomic, strong)KYUser *user;
@@ -101,6 +99,19 @@
  
  - (void)viewDidLayoutSubviews
  */
+//自定义View的init方法会默认调用initWithFrame方法
+//1、动态查找到CustomView的init方法
+//2、调用[super init]方法
+//3、super init方法内部执行的的是[super initWithFrame:CGRectZero]
+//4、若super发现CustomView实现了initWithFrame方法
+//5、转而执行self(CustomView)的initWithFrame方法
+//6、最后在执行init的其余部分
+//OC中的super实际上是让某个类去调用父类的方法，而不是父类去调用某个方法，方法动态调用过程顺序是由下而上的（这也是为什么在init方法中进行createUI不会执行多次的原因，因为父类的initWithFrame没做createUI操作）。
+//createUI方法最好在initWithFrame中调用，外部使用init或initWithFrame均可以正常执行createUI方法.
+//addSubview的文档描述
+//This method establishes a strong reference to view and sets its next responder to the receiver, which is its new superview.
+//Views can have only one superview. If view already has a superview and that view is not the receiver, this method removes the previous superview before making the receiver its new superview.
+//View有且仅有一个父视图，如果新的父视图与原父视图不一样，会将View在原视图中移除，添加到新视图上。
 
 - (void)loadViewIfNeeded{//1
     [super loadViewIfNeeded];
@@ -185,6 +196,8 @@
     [super viewDidLoad];
 	self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"Block知识";
+//    函数式编程、链式编程优缺点
+//Block的底层实现原理
     [self baseBlock];
 
     if (@available(iOS 11.0, *)) {
@@ -217,9 +230,11 @@
 //    [self testDataL];//排序方式
 //    [self testDataM];//排序
 //    //    [self testDataK];
-    [self testDataN];//KVO进阶
+//    [self testDataN];//KVO进阶
+    [self testDataO];
 
 }
+
 - (void)testDataH{
     int a = 10;
     int b = 12;
@@ -314,14 +329,7 @@ static int numB = 100;
     TestNumber(86);
     NSLog(@"S3、num的h值是 %d",numB);
 }
-- (void (^)(float))add
-{
-    __weak typeof(self) wself = self;
-    void (^result)(float) = ^(float value){
-        wself.tmp += value;
-    };
-    return result;
-}
+
 
 // 静态全局变量
 //static int static_global_var = 5;
@@ -726,7 +734,7 @@ static UILabel *myLabel;
     // MRC下
     Persion *test = [[Persion alloc] init];
     [test test];
-    
+
     // 1、添加KVO监听
     //NSKeyValueObservingOptionInitial 观察最初的值 在注册观察服务时会调用一次
     //NSKeyValueObservingOptionPrior 分别在被观察值的前后触发一次 一次修改两次触发
@@ -797,7 +805,14 @@ static UILabel *myLabel;
     
 }
 
+/*
+ // 获取 该view与window 交叉的 Rect
+ CGRect screenRect = [UIScreen mainScreen].bounds;
+ CGRect intersectionRect = CGRectIntersection(rect, screenRect);
+ if (CGRectIsEmpty(intersectionRect) || CGRectIsNull(intersectionRect)) {
+ return FALSE;
 
+*/
 //YYKit中提供了一个同步扔任务到主线程的安全方法：
 //static inline void dispatch_sync_on_main_queue(void (^block)(void)) {
 //    NSLog(@"1、执行");
@@ -811,8 +826,29 @@ static UILabel *myLabel;
 //    //    });
 //    //    NSLog(@"3、执行");
 //};
-
-
+- (void)testDataO{
+    int x = 42;
+    void (^foo)(void) = ^ {
+        NSLog(@"%d", x);
+    };
+    x = 17;
+    foo ();
+    //830,831,834,835,831,832,833,837
+}
+- (void)testDataP{
+    //这样做的好处：切割的圆角不会产生混合图层，提高效率。
+    //这样做的坏处：代码量偏多，且很多 UIView 都是使用约束布局，必须搭配 dispatch_after 函数来设置自身的 mask。因为只有在此时，才能把 UIView 的正确的 bounds 设置到 CAShapeLayer 的 frame 上。
+    UIImageView *userHeaderImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header"]];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        CAShapeLayer *cornerLayer = [CAShapeLayer layer];
+        UIBezierPath *cornerPath = [UIBezierPath bezierPathWithRoundedRect:userHeaderImgView.bounds cornerRadius:39];
+        cornerLayer.path = cornerPath.CGPath;
+        cornerLayer.frame = userHeaderImgView.bounds;
+        userHeaderImgView.layer.mask = cornerLayer;
+    });
+    
+}
 - (void)backBlockNilMetnod{
 	self.returnTextBlock(@"backBlockNilMetnod");
 	[self dismissViewControllerAnimated:YES completion:nil];

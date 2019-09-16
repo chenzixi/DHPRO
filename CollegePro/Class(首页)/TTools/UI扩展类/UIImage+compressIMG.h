@@ -26,4 +26,6 @@
  方法中的borderColor参数指的是最终显示的圆形图像的边框的颜色，可以可以根据自己的需要设置颜色。
  */
 + (instancetype)circleOldImage:(UIImage *)originalImage borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor;
+-(UIImage *)reSizeImage:(UIImage *)image toSize:(CGSize)reSize;
+
 @end

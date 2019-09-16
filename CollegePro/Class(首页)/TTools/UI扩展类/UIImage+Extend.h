@@ -12,5 +12,10 @@
 
 + (UIImage *)getImageStream:(CVImageBufferRef)imageBuffer;
 + (UIImage *)getSubImage:(CGRect)rect inImage:(UIImage*)image;
-
+- (UIImage *)cuttingWithEdge:(UIEdgeInsets)edge;
++ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
+/**
+ *  根据图片url获取网络图片尺寸
+ */
++ (CGSize)getImageSizeWithURL:(id)URL;
 @end

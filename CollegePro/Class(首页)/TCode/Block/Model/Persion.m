@@ -8,8 +8,120 @@
 //
 
 #import "Persion.h"
+@interface Persion()
+//1 计算的结果
+@property(nonatomic,assign) CGFloat resultCalculator;
 
+//2 处理后的字符串
+@property(nonatomic,strong) NSString *resultString;
+@end
 @implementation Persion
+
+/*************************** 计算(加减乘除) *******************************/
++(CGFloat)makeCalculator:(void (^)(Persion *))block{
+    if (block) {
+        Persion *tool = [[Persion alloc] init];
+        block(tool);
+        return tool.resultCalculator;
+    }
+    return 0;
+}
+/*
+ void (^testBlock3)(void) = ^(){
+ age = age+1-1;
+ };
+ blockSave x = ^{
+ NSLog(@"(++age):%d", ++age);    // 变量前不加__block的情况下，会报错，变量的值只能获取，不能更改
+ };
+ 
+ subVC.myReturnTextBlock = ^(NSString *showText){
+ NSLog(@"showText  %@",showText);
+ //        instancetype用来在编译期确定实例的类型,而使用id的话,编译器不检查类型, 运行时检查类型
+ //        instancetype和id一样,不做具体类型检查
+ //        id可以作为方法的参数,但instancetype不可以
+ //        instancetype只适用于初始化方法和便利构造器的返回值类型
+ };
+ */
+- (void)useBlock{
+    NSLog(@"计算结果1-->%f",[Persion makeCalculator:^(Persion *rj_tool) {
+        rj_tool.plus(10).subtract(2).multiply(5).divide(8);
+    }]);
+    
+    NSLog(@"计算结果2-->%f",[Persion makeCalculator:^(Persion *rj_tool) {
+        rj_tool.plus(10);
+        rj_tool.subtract(2);
+        rj_tool.multiply(5);
+        rj_tool.divide(5);
+    }]);
+    
+    NSLog(@"计算结果:-->%@",[Persion makeAppendingString:^(Persion *rj_tool) {
+        rj_tool.date(@"今天").who(@"我和她").note(@"嘿嘿嘿");
+    }]);
+}
+-(RJCalculator)plus{
+    return [[^(CGFloat num){
+        self.resultCalculator += num;
+        return self;
+    }copy]autorelease] ;
+}
+-(RJCalculator)subtract{
+    return [[^(CGFloat num){
+        self.resultCalculator -= num;
+        
+        return self;
+    }copy]autorelease];
+}
+-(RJCalculator)multiply{
+    return [[^(CGFloat num){
+        self.resultCalculator *= num;
+        
+        return self;
+    }copy]autorelease];
+}
+-(RJCalculator)divide{
+    return [[^(CGFloat num){
+        self.resultCalculator /= num;
+        
+        return self;
+    }copy]autorelease];
+}
+/*************************** 计算(加减乘除) *******************************/
+
+
+
+/*************************** 拼接字符串 *******************************/
++(NSString *)makeAppendingString:(void (^)(Persion *))block{
+    if (block) {
+        Persion *tool = [[Persion alloc] init];
+        tool.resultString = @"date,who一起去看电影,备注:note";
+        block(tool);
+        return tool.resultString;
+    }
+    return @"为什么你什么都不说?";
+}
+-(Persion *(^)(NSString *))date{
+    return [[^(NSString *str){
+        self.resultString = [self.resultString stringByReplacingOccurrencesOfString:@"date" withString:str];
+        
+        return self;
+    }copy]autorelease];
+}
+-(Persion *(^)(NSString *))who{
+    return [[^(NSString *str){
+        self.resultString = [self.resultString stringByReplacingOccurrencesOfString:@"who" withString:str];
+        
+        return self;
+    }copy]autorelease];
+}
+-(Persion *(^)(NSString *))note{
+    return [[^(NSString *str){
+        self.resultString = [self.resultString stringByReplacingOccurrencesOfString:@"note" withString:str];
+        
+        return self;
+    }copy]autorelease];
+}
+
+/*************************** 拼接字符串 *******************************/
 - (void)test
 {
     __block int age = 20;
@@ -48,5 +160,14 @@
     void (^testBlock4)(void) = [testBlock3 copy];
     NSLog(@"Test: testBlock3: %@, testBlock4: %@", testBlock3, testBlock4);
     [testBlock4 release];
+}
+
+- (void (^)(float))add
+{
+    __weak typeof(self) wself = self;
+    void (^result)(float) = ^(float value){
+        wself.tmp += value;
+    };
+    return result;
 }
 @end

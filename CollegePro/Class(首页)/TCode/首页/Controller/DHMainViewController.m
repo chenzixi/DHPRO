@@ -46,6 +46,7 @@
 #import "ACEViewController.h"//textView自适应高度变化
 #import "DHNoteJoyViewController.h"//记事本
 #import "WaveProgressViewController.h"//水波动画
+#import "RoppleViewController.h"//水波动画
 #import "iCloudViewController.h"//获取iCloud文件
 #import "CustomKeyBoardViewController.h"//键盘
 #import "TRViewController.h"//闹铃
@@ -78,7 +79,10 @@
 #import "DivisionCircleViewController.h"//表盘
 #import "CreditNumViewController.h"//分值表
 #import "IndicatorCrViewController.h"//分值表
+#import "MyRectangleViewController.h"//分值表
 #import "ThreeDimensionalSphericalLayout.h"//三维球型
+#import "MatrixDimensionalViewController.h"//三维球相册
+#import "anitimalViewController.h"//仪表
 #import "LabelMethodBlockVC.h"
 #import "LabelMethodBlockSubVC.h"
 //#import "CardViewController.h"
@@ -228,6 +232,7 @@
     [self addCell:@"CEll自适应高度" class:@"ACEViewController"];
     [self addCell:@"记事本" class:@"DHNoteJoyViewController"];
     [self addCell:@"水波动画" class:@"WaveProgressViewController"];
+    [self addCell:@"水波按钮" class:@"RoppleViewController"];
     [self addCell:@"游戏" class:@"IndexViewController"];
     [self addCell:@"自适应列表" class:@"AdaptionListViewController"];
     [self addCell:@"铃声" class:@"SectionsViewController"];
@@ -265,6 +270,9 @@
     [self addCell:@"三维球" class:@"ThreeDimensionalSphericalLayout"];
     [self addCell:@"分值表" class:@"CreditNumViewController"];
     [self addCell:@"分值表" class:@"IndicatorCrViewController"];
+    [self addCell:@"分值表" class:@"anitimalViewController"];
+    [self addCell:@"分值表" class:@"MyRectangleViewController"];
+    [self addCell:@"三维球相册" class:@"MatrixDimensionalViewController"];
 
     [_collectionView reloadData];
     

@@ -27,11 +27,11 @@
 }
 - (void)mas_layoutSubviews{
     self.imageViewMy.frame = CGRectMake(15, 10, 50, 50);
-    self.labelTitleName.frame = CGRectMake(self.imageViewMy.frame.origin.x+self.imageViewMy.frame.size.width + 10 , self.imageViewMy.center.y-10, 100, 20);
+    self.labelTitleName.frame = CGRectMake(self.imageViewMy.frame.origin.x+self.imageViewMy.frame.size.width + 10 , self.imageViewMy.center.y-10, 145, 20);
 }
 - (void)setModel:(TodayItemModel *)model{
     _model = model;
-    _labelTitleName.text = model.titlename;
+    _labelTitleName.text = [model.titlename stringByAppendingString:@"69.6像素"];
     [_imageViewMy setImage:[UIImage imageNamed:model.icon]];
 }
 #pragma mark - lazy load

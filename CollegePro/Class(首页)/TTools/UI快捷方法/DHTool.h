@@ -15,14 +15,12 @@
 //+ (NSDictionary *)getPropertys;
 ///** 获取所有属性，包含主键pk */
 //+ (NSDictionary *)getAllProperties;
-//颜色色值
-+ (UIColor *) colorWithHexString: (NSString *) stringToConvert;  //@"#5a5a5a"
-+ (UIColor *) colorWithHexString:(NSString *)color alpha:(CGFloat)alpha;
 
 + (void)setBorderWithView:(UIView *)view top:(BOOL)top left:(BOOL)left bottom:(BOOL)bottom right:(BOOL)right borderColor:(UIColor *)color borderWidth:(CGFloat)width otherBorderWidth:(CGFloat)otherWidth topColor:(UIColor *)topColor leftColor:(UIColor *)leftColor bottomColor:(UIColor *)bottomColor  rightColor:(UIColor *)rightColor;
 
 
 /*获取网络流量信息*/
++ (NSString *)getByteRate;
 + (long long) getInterfaceBytes;
 //获得行高
 + (CGFloat)contentSizeWithText:(NSString *)text;

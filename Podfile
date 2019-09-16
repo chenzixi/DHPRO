@@ -5,6 +5,9 @@ target "CollegePro" do
     ## REACT开发-> https://www.runoob.com/react/react-tutorial.html
     ## Vue.js
     ## flutter实战 -> https://flutterchina.club
+    ## react
+    ## element
+    ## rem+viewport
   pod 'AFNetworking'
   #自动布局界面库
   pod 'Masonry'

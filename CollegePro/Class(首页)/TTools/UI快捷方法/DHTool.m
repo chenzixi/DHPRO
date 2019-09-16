@@ -39,99 +39,7 @@
 	return NO;
 }
 
-+ (UIColor *) colorWithHexString: (NSString *) stringToConvert{  //@"#5a5a5a"
-    NSString *cString = [[stringToConvert stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
-    
-    // String should be 6 or 8 characters
-    
-    if ([cString length] < 6) return [UIColor blackColor];
-    // strip 0X if it appears
-    if ([cString hasPrefix:@"0X"]) cString = [cString substringFromIndex:2];
-    if ([cString hasPrefix:@"#"]) cString = [cString substringFromIndex:1];
-    if ([cString length] != 6) return [UIColor blackColor];
-    
-    // Separate into r, g, b substrings
-    
-    NSRange range;
-    
-    range.location = 0;
-    
-    range.length = 2;
-    
-    NSString *rString = [cString substringWithRange:range];
-    
-    range.location = 2;
-    
-    NSString *gString = [cString substringWithRange:range];
-    
-    range.location = 4;
-    
-    NSString *bString = [cString substringWithRange:range];
-    
-    // Scan values
-    
-    unsigned int r, g, b;
-    
-    [[NSScanner scannerWithString:rString] scanHexInt:&r];
-    
-    [[NSScanner scannerWithString:gString] scanHexInt:&g];
-    
-    [[NSScanner scannerWithString:bString] scanHexInt:&b];
-    
-    return [UIColor colorWithRed:((CGFloat) r / 255.0f)
-            
-                           green:((CGFloat) g / 255.0f)
-            
-                            blue:((CGFloat) b / 255.0f)
-            
-                           alpha:1.0f];
-    
-}
-+ (UIColor *)colorWithHexString:(NSString *)color alpha:(CGFloat)alpha
-{
-    //删除字符串中的空格
-    NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
-    // String should be 6 or 8 characters
-    if ([cString length] < 6)
-    {
-        return [UIColor clearColor];
-    }
-    // strip 0X if it appears
-    //如果是0x开头的，那么截取字符串，字符串从索引为2的位置开始，一直到末尾
-    if ([cString hasPrefix:@"0X"])
-    {
-        cString = [cString substringFromIndex:2];
-    }
-    //如果是#开头的，那么截取字符串，字符串从索引为1的位置开始，一直到末尾
-    if ([cString hasPrefix:@"#"])
-    {
-        cString = [cString substringFromIndex:1];
-    }
-    if ([cString length] != 6)
-    {
-        return [UIColor clearColor];
-    }
-    
-    // Separate into r, g, b substrings
-    NSRange range;
-    range.location = 0;
-    range.length = 2;
-    //r
-    NSString *rString = [cString substringWithRange:range];
-    //g
-    range.location = 2;
-    NSString *gString = [cString substringWithRange:range];
-    //b
-    range.location = 4;
-    NSString *bString = [cString substringWithRange:range];
-    
-    // Scan values
-    unsigned int r, g, b;
-    [[NSScanner scannerWithString:rString] scanHexInt:&r];
-    [[NSScanner scannerWithString:gString] scanHexInt:&g];
-    [[NSScanner scannerWithString:bString] scanHexInt:&b];
-    return [UIColor colorWithRed:((float)r / 255.0f) green:((float)g / 255.0f) blue:((float)b / 255.0f) alpha:alpha];
-}
+
 
 + (void)setBorderWithView:(UIView *)view top:(BOOL)top left:(BOOL)left bottom:(BOOL)bottom right:(BOOL)right borderColor:(UIColor *)color borderWidth:(CGFloat)width otherBorderWidth:(CGFloat)otherWidth topColor:(UIColor *)topColor leftColor:(UIColor *)leftColor bottomColor:(UIColor *)bottomColor  rightColor:(UIColor *)rightColor
 {
@@ -573,4 +481,99 @@
     return linesArray;
     
 }
+//// 这种是路径遮盖法
+
++ (UIImage*)maskImage:(UIImage*)originImage toPath:(UIBezierPath*)path{
+    
+    UIGraphicsBeginImageContextWithOptions(originImage.size, NO, 0);
+    [path addClip];
+    [originImage drawAtPoint:CGPointZero];
+    UIImage* img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return img;
+}
+////为图像创建透明区域
++ (CGImageRef)CopyImageAndAddAlphaChannel:(CGImageRef)sourceImage{
+   CGImageRef retVal = NULL;
+   size_t width = CGImageGetWidth(sourceImage);
+   size_t height = CGImageGetHeight(sourceImage);
+   CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+   CGContextRef offscreenContext = CGBitmapContextCreate(NULL, width, height,8,0, colorSpace,kCGImageAlphaPremultipliedFirst | kCGBitmapByteOrder32Little);
+    if (offscreenContext != NULL){
+        CGContextDrawImage(offscreenContext,CGRectMake(0, 0, width, height), sourceImage);
+        retVal = CGBitmapContextCreateImage(offscreenContext);
+        CGContextRelease(offscreenContext);
+    }
+    CGColorSpaceRelease(colorSpace);
+    return retVal;
+}
+
+/////利用图像遮盖
+
+//+ (UIImage*)maskImage:(UIImage *)image withMask:(UIImage *)maskImage
+//
+//{
+//
+//    CGImageRef maskRef = maskImage.CGImage;
+//
+//    CGImageRef mask = CGImageMaskCreate(CGImageGetWidth(maskRef),
+//
+//                                                                                CGImageGetHeight(maskRef),
+//
+//                                                                                CGImageGetBitsPerComponent(maskRef),
+//
+//                                                                                CGImageGetBitsPerPixel(maskRef),
+//
+//                                                                                CGImageGetBytesPerRow(maskRef),
+//
+//                                                                                CGImageGetDataProvider(maskRef), NULL, true);
+//
+//
+//
+//    CGImageRef sourceImage = [image CGImage];
+//
+//    CGImageRef imageWithAlpha = sourceImage;
+//
+//
+//
+//    //add alpha channel for images that don't have one (ie GIF, JPEG, etc...)
+//
+//    //this however has a computational cost
+//
+//    if (CGImageGetAlphaInfo(sourceImage) == kCGImageAlphaNone) {
+//
+//        imageWithAlpha = [ImageUtil CopyImageAndAddAlphaChannel:sourceImage];
+//
+//    }
+//
+//
+//
+//    CGImageRef masked = CGImageCreateWithMask(imageWithAlpha, mask);
+//
+//    CGImageRelease(mask);
+//
+//
+//
+//    //release imageWithAlpha if it was created by CopyImageAndAddAlphaChannel
+//
+//        if (sourceImage != imageWithAlpha) {
+//
+//                CGImageRelease(imageWithAlpha);
+//
+//            }
+//
+//
+//
+//    UIImage* retImage = [UIImage imageWithCGImage:masked];
+//
+//    CGImageRelease(masked);
+//
+//
+//
+//    return retImage;
+//
+//
+//
+//}
+
 @end

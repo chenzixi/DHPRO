@@ -8,8 +8,9 @@
 #define ScreenSize      [UIScreen mainScreen].bounds.size
 #define ScrollWidth     ScreenSize.width
 #define ScrollHeight    450
-#import "CollectionImageView.h"
 
+#import "CollectionImageView.h"
+#import "CricleScrollViewController.h"
 #import "ScrollImageViewViewController.h"
 #import "ScrollImageView.h"
 
@@ -46,6 +47,7 @@
     [self.view addSubview:_imgVAnimation];
 
     [self demo1];
+    [self demo2];
     // Do any additional setup after loading the view.
 }
 
@@ -240,6 +242,18 @@
     //设置媒体调速运动；默认为 kCAMediaTimingFunctionLinear，即为线型间隔；这里设置为 kCAMediaTimingFunctionEaseIn，即先慢后快，相当于有个加速度
     animationGroup.autoreverses = YES; //设置自动倒退，即动画回放；默认值为NO
     [_imgVAnimation.layer addAnimation:animationGroup forKey:nil];
+}
+- (void)demo2{
+    UIImageView *imageView0 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"组-3"]];
+    imageView0.frame = CGRectMake(0, 0, self.view.bounds.size.width, 200);
+    UIImageView *imageView1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"0"]];
+    imageView1.frame = CGRectMake(0, 0, self.view.bounds.size.width, 200);
+    UIImageView *imageView2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cell"]];
+    imageView2.frame = CGRectMake(0, 0, self.view.bounds.size.width, 200);
+    
+    NSArray *imageArray = [NSArray arrayWithObjects:imageView0, imageView1, imageView2, nil];
+    CricleScrollViewController *cricleScrollerView = [[CricleScrollViewController alloc] initWithFrame:CGRectMake(0.0, 200.0, self.view.bounds.size.width, 200) andImagesArray:imageArray];
+    [self.view addSubview:cricleScrollerView.view];
 }
 /*
 #pragma mark - Navigation

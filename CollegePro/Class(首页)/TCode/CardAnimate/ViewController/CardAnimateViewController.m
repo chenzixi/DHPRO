@@ -30,6 +30,7 @@
     [self showCardZone];
     UIPanGestureRecognizer * pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panHandle:)];
     [self.view addGestureRecognizer:pan];
+    
 }
 -(void)viewWillAppear:(BOOL)animated
 {

@@ -142,6 +142,42 @@
     }
     return _buttonBack;
 }
+/*
+ NSLocalizedString(a, nil)
+ [self presentAlertTitle:NSLocalizedString(@"Warning",nil) message:NSLocalizedString(@"Are you sure to reboot camera?",nil) alertStyle:UIAlertControllerStyleAlert actionDefaultTitle:NSLocalizedString(@"Yes",nil) actionDefaultBlock:^{
+ 
+ [self.camera setReconnectTimes:10];
+ [weakSelf.camera request:HI_P2P_SET_REBOOT dson:nil];
+ weakSelf.commandType = CommandTypeReboot;
+ 
+ } actionCancelTitle:NSLocalizedString(@"No",nil) actionCancelBlock:^{
+ 
+ }];
+ */
+- (void)presentAlertTitle:(NSString *)title message:(NSString *)message alertStyle:(UIAlertControllerStyle)style actionDefaultTitle:(NSString *)defaultTitle actionDefaultBlock:(void (^)(void))defaultBlock actionCancelTitle:(NSString *)cancelTitle actionCancelBlock:(void (^)(void))cancelBlock {
+    
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:style];
+    
+    UIAlertAction *actionOk = [UIAlertAction actionWithTitle:defaultTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        defaultBlock();
+    }];
+    
+    UIAlertAction *actionNO = [UIAlertAction actionWithTitle:cancelTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+        cancelBlock();
+    }];
+    
+    //    [actionNO setValue:LightBlueColor forKey:@"_titleTextColor"];
+    //    [actionOk setValue:LightBlueColor forKey:@"_titleTextColor"];
+    
+    [alertController addAction:actionNO];
+    [alertController addAction:actionOk];
+    
+    [self presentViewController:alertController animated:YES completion:^{
+        
+    }];
+}
 //关闭页面
 - (void)closeCurruntPage
 {

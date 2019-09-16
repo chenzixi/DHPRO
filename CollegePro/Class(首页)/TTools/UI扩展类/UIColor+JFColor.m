@@ -24,9 +24,9 @@
     }
     
     // strip 0X if it appears
-    if ([cString hasPrefix:@"0X"])
+    if ([cString hasPrefix:@"0X"])//检查开头是0x
         cString = [cString substringFromIndex:2];
-    if ([cString hasPrefix:@"#"])
+    if ([cString hasPrefix:@"#"])//检查开头是#
         cString = [cString substringFromIndex:1];
     if ([cString length] != 6)
         return [UIColor clearColor];
