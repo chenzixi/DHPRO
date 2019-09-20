@@ -14,7 +14,7 @@
   <img width=33% alt="wx20170601-170002 2x" src="https://github.com/Andrew5/DHPRO/blob/master/IMG_0046.PNG">
   <img width=33% alt="wx20170601-170002 2x" src="https://github.com/Andrew5/DHPRO/blob/master/IMG_0072.PNG"> 
   <img width=33% alt="wx20170601-170002 2x" src="https://github.com/Andrew5/DHPRO/blob/master/IMG_0073.PNG"> 
-
+  <img width=33% alt="wx20170601-170002 2x" src="https://github.com/Andrew5/DHPRO/blob/master/SCREENSHOT.gif">
 </p>
 #### GIF 动画演示
 [演示项] 正在编写中……尽情期待！
