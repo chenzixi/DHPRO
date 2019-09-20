@@ -2,8 +2,8 @@
 //  QDExceptionTool.h
 //  UncaughtExceptionHandler
 //
-//  Created by 陈博文 on 16/8/23.
-//  Copyright © 2016年 Cocoa with Love. All rights reserved.
+//  Created by jabraknight on 19/9/20.
+//  Copyright © 2019年 Cocoa with Love. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -16,6 +16,8 @@
 - (void)storeExceptionWithExceptionDictionary:(NSDictionary *)dictionary;
 
 - (void)deleteException;
+
++ (void)saveCreash:(NSString *)exceptionInfo;
 
 - (NSMutableArray *)getExceptionArray;
 

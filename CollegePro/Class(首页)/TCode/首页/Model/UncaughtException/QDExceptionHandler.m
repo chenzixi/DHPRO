@@ -2,12 +2,14 @@
 //  QDExceptionHandler.m
 //  UncaughtExceptionHandler
 //
-//  Created by 陈博文 on 16/8/23.
-//  Copyright © 2016年 Cocoa with Love. All rights reserved.
+//  Created by jabraknight on 19/9/20.
+//  Copyright © 2019年 Cocoa with Love. All rights reserved.
 //
 
 #import "QDExceptionHandler.h"
 #import "QDExceptionTool.h"
+#include <libkern/OSAtomic.h>
+#include <execinfo.h>
 
 @implementation QDExceptionHandler
 
@@ -59,6 +61,52 @@ void UncaughtExceptionHandler(NSException *exception){
 
     
 }
+void SignalExceptionHandler(int signal)
+{
+    NSMutableString *mstr = [[NSMutableString alloc] init];
+    [mstr appendString:@"Stack:\n"];
+    void* callstack[128];
+    int i, frames = backtrace(callstack, 128);
+    char** strs = backtrace_symbols(callstack, frames);
+    for (i = 0; i <frames; ++i) {
+        [mstr appendFormat:@"%s\n", strs[i]];
+    }
+    [QDExceptionTool saveCreash:mstr];
+    
+}
+void InstallSignalHandler(void)
+{
+    signal(SIGHUP, SignalExceptionHandler);
+    signal(SIGINT, SignalExceptionHandler);
+    signal(SIGQUIT, SignalExceptionHandler);
+    
+    signal(SIGABRT, SignalExceptionHandler);
+    signal(SIGILL, SignalExceptionHandler);
+    signal(SIGSEGV, SignalExceptionHandler);
+    signal(SIGFPE, SignalExceptionHandler);
+    signal(SIGBUS, SignalExceptionHandler);
+    signal(SIGPIPE, SignalExceptionHandler);
+}
+void HandleException(NSException *exception)
+{
+    // 异常的堆栈信息
+    NSArray *stackArray = [exception callStackSymbols];
+    
+    // 出现异常的原因
+    NSString *reason = [exception reason];
+    
+    // 异常名称
+    NSString *name = [exception name];
+    
+    NSString *exceptionInfo = [NSString stringWithFormat:@"Exception reason：%@\nException name：%@\nException stack：%@",name, reason, stackArray];
+    
+    NSLog(@"%@", exceptionInfo);
+    
+    [QDExceptionTool saveCreash:exceptionInfo];
+}
 
-
+void InstallUncaughtExceptionHandler(void)
+{
+    NSSetUncaughtExceptionHandler(&HandleException);
+}
 @end

@@ -28,6 +28,7 @@
 #import "ViewController.h"
 #import "BaseTabBarViewController.h"
 #import "BaseNavigationController.h"
+
 #import "QDExceptionHandler.h"
 
 #define kUseScreenShotGesture 1
@@ -71,6 +72,8 @@
 
     //获取异常
     NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
+    InstallSignalHandler();//信号量截断
+    InstallUncaughtExceptionHandler();
     
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
     [SVProgressHUD setMinimumDismissTimeInterval:1.0];

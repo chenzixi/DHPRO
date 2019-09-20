@@ -5,6 +5,7 @@
 //  Created by Rillakkuma on 2017/7/27.
 //  Copyright © 2017年 Rillakkuma. All rights reserved.
 //
+#define NSEaseLocalizedString(key, comment) [[NSBundle bundleWithURL:[[NSBundle mainBundle] URLForResource:@"EaseUIResource" withExtension:@"bundle"]] localizedStringForKey:(key) value:@"" table:nil]
 
 #import "DHMainViewController.h"
 #import "MeasurNetTools.h"
@@ -12,6 +13,8 @@
 #import "UIColor+Expanded.h"
 
 //功能展示
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 #import <CoreMotion/CoreMotion.h>
 #import "ViewController.h"
 #import "THomeCollectionViewCell.h"//主页
@@ -99,7 +102,7 @@
 
 #include <net/if.h>
 
-@interface DHMainViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,QRScanViewDelegate,UIAccelerometerDelegate,AVAudioPlayerDelegate>{
+@interface DHMainViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,QRScanViewDelegate,UIAccelerometerDelegate,AVAudioPlayerDelegate,MKMapViewDelegate,CLLocationManagerDelegate>{
     NSMutableArray *valueArr;
     
     UICollectionView *_collectionView;
@@ -108,7 +111,17 @@
     NSTimer *timer;
     UILabel  *displayLabel;//提示语
     
+    CLLocationCoordinate2D _currentLocationCoordinate;
+
 }
+//定位信息
+@property(nonatomic,strong)CLLocationManager * locationManager;
+@property(nonatomic,strong)MKPointAnnotation * annotation;
+
+@property(nonatomic,strong)MKMapView * mapView;
+
+@property (nonatomic,strong) CLGeocoder * geocoder;
+
 @property(nonatomic,strong)AVAudioPlayer * audioPlayer;
 //指针imageView
 @property (nonatomic,strong) UIImageView * pointImageView;
@@ -140,6 +153,7 @@
     [super viewDidLoad];
     [self setUPUI];
     self.isShowleftBtn = YES;
+    [self createMap];
     //    applicationWillEnterForeground
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveHMethod:) name:@"applicationWillEnterForeground" object:nil];
     //    [self playVoiceBackground];
@@ -159,6 +173,55 @@
     //移除距离感应通知
     //    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceProximityStateDidChangeNotification object:nil];
 }
+-(void)createMap{
+    //请求定位服务
+    self.locationManager = [[CLLocationManager alloc]init];
+    if (![CLLocationManager locationServicesEnabled] || [CLLocationManager authorizationStatus]!=kCLAuthorizationStatusAuthorizedWhenInUse) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    
+    CGRect rect=[UIScreen mainScreen].bounds;
+    self.mapView = [[MKMapView alloc]initWithFrame:rect];
+    //设置地图类型
+    self.mapView.mapType = MKMapTypeStandard;
+    self.mapView.userTrackingMode = MKUserTrackingModeFollowWithHeading;
+    //缩放程度
+    MKCoordinateSpan theSpan;
+    
+    theSpan.latitudeDelta=0.00001;
+    
+    theSpan.longitudeDelta=0.00001;
+    
+    
+    //  定义一个区域（用定义的经纬度和范围来定义）
+    
+    MKCoordinateRegion theRegion;
+    
+    theRegion.span=theSpan;
+    [self.mapView setRegion:theRegion];
+
+    //设置代理
+    self.mapView.delegate = self;
+    self.mapView.zoomEnabled = YES;
+    self.mapView.showsUserLocation = YES;//显示当前位置
+    self.mapView.showsPointsOfInterest = YES;
+    self.mapView.scrollEnabled = YES;
+    //是否显示建筑物
+    self.mapView.showsBuildings = YES;
+    //是否可以旋转
+    self.mapView.rotateEnabled = NO;
+
+    [self.view addSubview:self.mapView];
+    
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.delegate = self;
+    _locationManager.distanceFilter = 5;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    [_locationManager requestWhenInUseAuthorization];
+
+}
+
+
 - (void)setUPUI{
     //网速显示
     displayLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, DH_DeviceHeight-50, DH_DeviceWidth, 40)];
@@ -273,7 +336,7 @@
     [self addCell:@"分值表" class:@"anitimalViewController"];
     [self addCell:@"分值表" class:@"MyRectangleViewController"];
     [self addCell:@"三维球相册" class:@"MatrixDimensionalViewController"];
-
+    [self addCell:@"变换矩阵" class:@"DBSphereViewController"];
     [_collectionView reloadData];
     
 #pragma mark- 底部网络状态显示
@@ -434,7 +497,68 @@
 - (BOOL)shouldUpdateFocusInContext:(nonnull UIFocusUpdateContext *)context {
     return YES;
 }
+#pragma mark - MKMapViewDelegate
 
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+    
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:userLocation.location completionHandler:^(NSArray *array, NSError *error) {
+        if (!error && array.count > 0) {
+            CLPlacemark *placemark = [array objectAtIndex:0];
+//            weakSelf.addressString = placemark.name;
+            NSLog(@"---%@---%@---%@---%@---%@---%@---%@---%@---%@---%@---%@",placemark.name,placemark.thoroughfare,placemark.subThoroughfare,placemark.locality,placemark.subLocality,placemark.administrativeArea,placemark.ISOcountryCode,placemark.country,placemark.inlandWater,placemark.ocean,placemark.addressDictionary);
+            [self removeToLocation:userLocation.coordinate];
+        }
+    }];
+}
+- (void)removeToLocation:(CLLocationCoordinate2D)locationCoordinate
+{
+    
+    _currentLocationCoordinate = locationCoordinate;
+    float zoomLevel = 0.01;
+    MKCoordinateRegion region = MKCoordinateRegionMake(_currentLocationCoordinate, MKCoordinateSpanMake(zoomLevel, zoomLevel));
+    [_mapView setRegion:[_mapView regionThatFits:region] animated:YES];
+    CLLocation * tapLocation = [[CLLocation alloc] initWithLatitude:locationCoordinate.latitude longitude:locationCoordinate.longitude];
+    //根据经纬度反向地理编译出地址信息
+    CLGeocoder * geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:tapLocation completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        if (placemarks.count > 0){
+            CLPlacemark * placemark = placemarks.lastObject;
+            NSDictionary *address = [placemark addressDictionary];
+            //City（市） Country(国家)  CountryCode（） FormattedAddressLines（）   Name（）  State(省)  Street(路) SubLocality(区县)  Thoroughfare（）
+            NSLog(@"address %@",address.allKeys);
+        }
+    }];
+    [self createAnnotationWithCoords:_currentLocationCoordinate];
+}
+- (void)mapView:(MKMapView *)mapView didFailToLocateUserWithError:(NSError *)error
+{
+    if (error.code == 0) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
+                                                            message:[error.userInfo objectForKey:NSLocalizedRecoverySuggestionErrorKey]
+                                                           delegate:nil
+                                                  cancelButtonTitle:NSEaseLocalizedString(@"ok", @"OK")
+                                                  otherButtonTitles:nil, nil];
+        [alertView show];
+    }
+}
+-(void)createAnnotationWithCoords:(CLLocationCoordinate2D)coords
+{
+    
+
+    if (_annotation == nil) {
+        _annotation = [[MKPointAnnotation alloc] init];
+    }
+    else{
+        [_mapView removeAnnotation:_annotation];
+    }
+    _annotation.coordinate = coords;
+    [_mapView addAnnotation:_annotation];
+}
+- (void)GKHScanQCodeViewController:(GKHScanQCodeViewController *)lhScanQCodeViewController readerScanResult:(NSString *)result {
+    NSLog(@"GKHScanQCodeViewController---%@",result);
+}
 - (void)updateFocusIfNeeded {
     
 }
@@ -708,8 +832,10 @@
 -(void)dealloc{
     //移除距离感应通知
 //    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceProximityStateDidChangeNotification object:nil];
-
+    [super dealloc];
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
+
+
 @end
 

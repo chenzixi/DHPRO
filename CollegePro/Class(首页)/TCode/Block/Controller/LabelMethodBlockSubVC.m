@@ -196,9 +196,6 @@
     [super viewDidLoad];
 	self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"Block知识";
-//    函数式编程、链式编程优缺点
-//Block的底层实现原理
-    [self baseBlock];
 
     if (@available(iOS 11.0, *)) {
         NSString *edgeStr = NSStringFromUIEdgeInsets(self.view.safeAreaInsets);
@@ -215,7 +212,9 @@
 	[pushNillButton setTitle:@"回去" forState:(UIControlStateNormal)];
 	[pushNillButton addTarget:self action:@selector(backBlockNilMetnod) forControlEvents:(UIControlEventTouchUpInside)];
 //    [self.view addSubview:pushNillButton];
-    
+    //函数式编程、链式编程优缺点
+    //Block的底层实现原理
+    [self baseBlock];
 }
 - (void)baseBlock{
     numC = 100;
@@ -229,24 +228,13 @@
 //    [self testDataH];//交换
 //    [self testDataL];//排序方式
 //    [self testDataM];//排序
-//    //    [self testDataK];
-//    [self testDataN];//KVO进阶
-    [self testDataO];
+//    [self testDataK];
+    [self testDataN];//KVO进阶
+//    [self testDataO];
 
 }
 
-- (void)testDataH{
-    int a = 10;
-    int b = 12;
-    //    a = b + 0 * ( b = a);//a=12;b=10
-    //    NSLog(@"%d",a);
-    a = b - a; //a=2;b=12
-    b = b - a; //a=2;b=10
-    a = a + b; //a=10;b=10
-    NSLog(@"%d",a);
-    //    UITableView *_tableView = [];
-    //    [_tableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
-}
+
 /*
  内存管理语义
  
@@ -535,8 +523,20 @@ void (^outFuncBlock)(void) = ^{
     }else{
         self.rtcMessageID = str;
     }
-
 }
+- (void)testDataH{
+    int a = 10;
+    int b = 12;
+    //    a = b + 0 * ( b = a);//a=12;b=10
+    //    NSLog(@"%d",a);
+    a = b - a; //a=2;b=12
+    b = b - a; //a=2;b=10
+    a = a + b; //a=10;b=10
+    NSLog(@"%d",a);
+    //    UITableView *_tableView = [];
+    //    [_tableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
+}
+
 
 - (void)testDataL{
     //    NSMutableArray *arr = [@[@"24", @"17", @"85", @"13", @"9", @"54", @"76", @"45", @"5", @"63"]mutableCopy];
@@ -676,7 +676,7 @@ void (^outFuncBlock)(void) = ^{
 //    dispatch_sync_on_main_queue(^{
 //        image = [UIImage imageNamed:@"Resource/img"];
 //    });
-    testPathForKey(@"123",@"789");
+    NSLog(@"内联函数 %@",testPathForKey(@"123",@"789"));
 }
 - (NSInteger)gcdWithNumber1:(NSInteger)num1 Number2:(NSInteger)num2{
     
@@ -688,6 +688,29 @@ void (^outFuncBlock)(void) = ^{
         }
     }
     return num1;
+}
+- (void)testDataO{
+    int x = 42;
+    void (^foo)(void) = ^ {
+        NSLog(@"%d", x);
+    };
+    x = 17;
+    foo ();
+    //830,831,834,835,831,832,833,837
+}
+- (void)testDataP{
+    //这样做的好处：切割的圆角不会产生混合图层，提高效率。
+    //这样做的坏处：代码量偏多，且很多 UIView 都是使用约束布局，必须搭配 dispatch_after 函数来设置自身的 mask。因为只有在此时，才能把 UIView 的正确的 bounds 设置到 CAShapeLayer 的 frame 上。
+    UIImageView *userHeaderImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header"]];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        CAShapeLayer *cornerLayer = [CAShapeLayer layer];
+        UIBezierPath *cornerPath = [UIBezierPath bezierPathWithRoundedRect:userHeaderImgView.bounds cornerRadius:39];
+        cornerLayer.path = cornerPath.CGPath;
+        cornerLayer.frame = userHeaderImgView.bounds;
+        userHeaderImgView.layer.mask = cornerLayer;
+    });
+    
 }
 static inline NSString* testPathForKey(NSString* directory, NSString* key) {
     //  stringByAppendingString 字符串拼接
@@ -747,11 +770,15 @@ static UILabel *myLabel;
     [self.view addSubview:myLabel];
     
 }
-////  3秒钟后改变当前button的enabled状态
-//dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//    self.button.enabled = YES;
-//});
+//手动实现键值观察时会用到
+- (void)willChangeValueForKey:(NSString *)key{
+    
+}
+- (void)didChangeValueForKey:(NSString *)key{
+    
+}
 
+// 1、设置属性
 // 返回一个容器，里面放字符串类型，监听容器中的属性
 + (NSSet<NSString *> *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
     NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
@@ -826,29 +853,11 @@ static UILabel *myLabel;
 //    //    });
 //    //    NSLog(@"3、执行");
 //};
-- (void)testDataO{
-    int x = 42;
-    void (^foo)(void) = ^ {
-        NSLog(@"%d", x);
-    };
-    x = 17;
-    foo ();
-    //830,831,834,835,831,832,833,837
-}
-- (void)testDataP{
-    //这样做的好处：切割的圆角不会产生混合图层，提高效率。
-    //这样做的坏处：代码量偏多，且很多 UIView 都是使用约束布局，必须搭配 dispatch_after 函数来设置自身的 mask。因为只有在此时，才能把 UIView 的正确的 bounds 设置到 CAShapeLayer 的 frame 上。
-    UIImageView *userHeaderImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header"]];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        CAShapeLayer *cornerLayer = [CAShapeLayer layer];
-        UIBezierPath *cornerPath = [UIBezierPath bezierPathWithRoundedRect:userHeaderImgView.bounds cornerRadius:39];
-        cornerLayer.path = cornerPath.CGPath;
-        cornerLayer.frame = userHeaderImgView.bounds;
-        userHeaderImgView.layer.mask = cornerLayer;
-    });
-    
-}
+////  3秒钟后改变当前button的enabled状态
+//dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//    self.button.enabled = YES;
+//});
+
 - (void)backBlockNilMetnod{
 	self.returnTextBlock(@"backBlockNilMetnod");
 	[self dismissViewControllerAnimated:YES completion:nil];

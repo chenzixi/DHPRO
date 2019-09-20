@@ -41,6 +41,9 @@
 		381B6BE922C0F2B10018C0C2 /* AliRTCSdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 381B6BA322C0EE400018C0C2 /* AliRTCSdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		38274D53229EB00F00185C09 /* DHSendRunObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 38274D52229EB00F00185C09 /* DHSendRunObject.m */; };
 		38274D56229EB80000185C09 /* DHTimeoutAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38274D55229EB80000185C09 /* DHTimeoutAppDelegate.m */; };
+		382B6F7523347CC100CD2497 /* DBSphereViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 382B6F7423347CC100CD2497 /* DBSphereViewController.m */; };
+		382B6F7B23347D0200CD2497 /* DBSphereView.m in Sources */ = {isa = PBXBuildFile; fileRef = 382B6F7A23347D0200CD2497 /* DBSphereView.m */; };
+		382B6F832334BFE900CD2497 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 382B6F822334BFE900CD2497 /* HealthKit.framework */; };
 		382FFA39231CAEE30062080E /* YoungSphere.m in Sources */ = {isa = PBXBuildFile; fileRef = 382FFA37231CAEE30062080E /* YoungSphere.m */; };
 		382FFA3E231CAF2E0062080E /* ChildGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 382FFA3B231CAF2D0062080E /* ChildGestureRecognizer.m */; };
 		382FFA3F231CAF2E0062080E /* ChildLongPress.m in Sources */ = {isa = PBXBuildFile; fileRef = 382FFA3D231CAF2E0062080E /* ChildLongPress.m */; };
@@ -81,7 +84,7 @@
 		384C3FD022887D7A00F01586 /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FBC22887D7900F01586 /* BaseViewModel.m */; };
 		384C3FD122887D7A00F01586 /* MVVMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FBD22887D7900F01586 /* MVVMViewController.m */; };
 		384C3FD422887FE100F01586 /* HAMLogOutputWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FD322887FE100F01586 /* HAMLogOutputWindow.m */; };
-		384C3FDE228881F800F01586 /* Persion.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FDA228881F700F01586 /* Persion.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		384C3FDE228881F800F01586 /* Persion.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FDA228881F700F01586 /* Persion.m */; };
 		384C3FDF228881F800F01586 /* KYDog.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FDB228881F700F01586 /* KYDog.m */; };
 		384C3FE922888DBF00F01586 /* ZQVariableMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FE222888DBF00F01586 /* ZQVariableMenuView.m */; };
 		384C3FEA22888DBF00F01586 /* ZQVariableMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FE422888DBF00F01586 /* ZQVariableMenuCell.m */; };
@@ -398,6 +401,7 @@
 		386BC0D622DDBC1E005E6054 /* DivisionCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386BC0D522DDBC1E005E6054 /* DivisionCircleViewController.m */; };
 		386BC0DB22DDBC3F005E6054 /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 386BC0D922DDBC3D005E6054 /* UICountingLabel.m */; };
 		386BC0DC22DDBC3F005E6054 /* LJInstrumentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 386BC0DA22DDBC3F005E6054 /* LJInstrumentView.m */; };
+		3874BB422331CB1400C05C90 /* CViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3874BB402331CB1200C05C90 /* CViewController.m */; };
 		387AE6422321103B00EADE4B /* MyCreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 387AE6412321103B00EADE4B /* MyCreView.m */; };
 		387AE6452321109900EADE4B /* MyRectangleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 387AE6442321109900EADE4B /* MyRectangleViewController.m */; };
 		38862C4322BA004800231140 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38862C4222BA004800231140 /* CFNetwork.framework */; };
@@ -1018,6 +1022,13 @@
 		38274D52229EB00F00185C09 /* DHSendRunObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DHSendRunObject.m; sourceTree = "<group>"; };
 		38274D54229EB80000185C09 /* DHTimeoutAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHTimeoutAppDelegate.h; sourceTree = "<group>"; };
 		38274D55229EB80000185C09 /* DHTimeoutAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DHTimeoutAppDelegate.m; sourceTree = "<group>"; };
+		382B6F7323347CC100CD2497 /* DBSphereViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBSphereViewController.h; sourceTree = "<group>"; };
+		382B6F7423347CC100CD2497 /* DBSphereViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBSphereViewController.m; sourceTree = "<group>"; };
+		382B6F7723347D0200CD2497 /* DBPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBPoint.h; sourceTree = "<group>"; };
+		382B6F7823347D0200CD2497 /* DBSphereView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBSphereView.h; sourceTree = "<group>"; };
+		382B6F7923347D0200CD2497 /* DBMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBMatrix.h; sourceTree = "<group>"; };
+		382B6F7A23347D0200CD2497 /* DBSphereView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBSphereView.m; sourceTree = "<group>"; };
+		382B6F822334BFE900CD2497 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		382FFA35231CAEDD0062080E /* YoungMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YoungMatrix.h; sourceTree = "<group>"; };
 		382FFA36231CAEDD0062080E /* YoungPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YoungPoint.h; sourceTree = "<group>"; };
 		382FFA37231CAEE30062080E /* YoungSphere.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YoungSphere.m; sourceTree = "<group>"; };
@@ -1637,6 +1648,8 @@
 		386BC0D822DDBC3B005E6054 /* LJInstrumentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJInstrumentView.h; sourceTree = "<group>"; };
 		386BC0D922DDBC3D005E6054 /* UICountingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICountingLabel.m; sourceTree = "<group>"; };
 		386BC0DA22DDBC3F005E6054 /* LJInstrumentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJInstrumentView.m; sourceTree = "<group>"; };
+		3874BB402331CB1200C05C90 /* CViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CViewController.m; sourceTree = "<group>"; };
+		3874BB412331CB1300C05C90 /* CViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CViewController.h; sourceTree = "<group>"; };
 		387AE6402321103B00EADE4B /* MyCreView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCreView.h; sourceTree = "<group>"; };
 		387AE6412321103B00EADE4B /* MyCreView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCreView.m; sourceTree = "<group>"; };
 		387AE6432321109900EADE4B /* MyRectangleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyRectangleViewController.h; sourceTree = "<group>"; };
@@ -2547,6 +2560,7 @@
 				38560ACA22AF7C7300A68F5D /* AssetsLibrary.framework in Frameworks */,
 				380F9F8E227839F200D515E3 /* SystemConfiguration.framework in Frameworks */,
 				380F9F8C227839EC00D515E3 /* Security.framework in Frameworks */,
+				382B6F832334BFE900CD2497 /* HealthKit.framework in Frameworks */,
 				381B6BA622C0EE410018C0C2 /* UTDID.framework in Frameworks */,
 				380F9F8A227839E700D515E3 /* QuartzCore.framework in Frameworks */,
 				380F9F88227839E000D515E3 /* OpenGLES.framework in Frameworks */,
@@ -2633,6 +2647,27 @@
 				381B6BD022C0EF3E0018C0C2 /* JSONKit.h */,
 			);
 			path = JSONKit;
+			sourceTree = "<group>";
+		};
+		382B6F7223347C9200CD2497 /* DBSphere */ = {
+			isa = PBXGroup;
+			children = (
+				382B6F7623347D0200CD2497 /* DBSphereTagCloud */,
+				382B6F7323347CC100CD2497 /* DBSphereViewController.h */,
+				382B6F7423347CC100CD2497 /* DBSphereViewController.m */,
+			);
+			path = DBSphere;
+			sourceTree = "<group>";
+		};
+		382B6F7623347D0200CD2497 /* DBSphereTagCloud */ = {
+			isa = PBXGroup;
+			children = (
+				382B6F7723347D0200CD2497 /* DBPoint.h */,
+				382B6F7823347D0200CD2497 /* DBSphereView.h */,
+				382B6F7923347D0200CD2497 /* DBMatrix.h */,
+				382B6F7A23347D0200CD2497 /* DBSphereView.m */,
+			);
+			path = DBSphereTagCloud;
 			sourceTree = "<group>";
 		};
 		382FFA31231CAE440062080E /* YoungSphere */ = {
@@ -4459,6 +4494,7 @@
 		38C84631227827EF00BCAD87 /* TCode */ = {
 			isa = PBXGroup;
 			children = (
+				382B6F7223347C9200CD2497 /* DBSphere */,
 				382FFA31231CAE440062080E /* YoungSphere */,
 				38C031882301661500B4B364 /* ThreeDimensional */,
 				386BC0D122DDBBF8005E6054 /* DivisionCircle */,
@@ -6063,6 +6099,8 @@
 				38EA8532228D57F300A28136 /* SFTextView.m */,
 				386BBBB822DD6DE1005E6054 /* CustomerAlertController.h */,
 				386BBBB922DD6DE1005E6054 /* CustomerAlertController.m */,
+				3874BB412331CB1300C05C90 /* CViewController.h */,
+				3874BB402331CB1200C05C90 /* CViewController.m */,
 				38C848CD227827F100BCAD87 /* LabelMethodBlockSubVC.h */,
 				38C848CA227827F100BCAD87 /* LabelMethodBlockSubVC.m */,
 				38C848C9227827F100BCAD87 /* LabelMethodBlockVC.h */,
@@ -6164,6 +6202,7 @@
 		F3734FE496F0FE515FCEE2E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				382B6F822334BFE900CD2497 /* HealthKit.framework */,
 				38862C4822BA009900231140 /* UserNotifications.framework */,
 				38862C4622BA007000231140 /* CoreTelephony.framework */,
 				38862C4422BA006A00231140 /* CoreFoundation.framework */,
@@ -6893,6 +6932,7 @@
 				386BBD7922DDA7FE005E6054 /* GPUImageHistogramFilter.m in Sources */,
 				38C849F0227827F200BCAD87 /* MyView.m in Sources */,
 				386BBDAA22DDA7FF005E6054 /* GPUImageSourceOverBlendFilter.m in Sources */,
+				382B6F7B23347D0200CD2497 /* DBSphereView.m in Sources */,
 				386BBD6722DDA7FE005E6054 /* GPUImageTwoPassTextureSamplingFilter.m in Sources */,
 				386BBD8F22DDA7FE005E6054 /* GPUImageOpeningFilter.m in Sources */,
 				38C849C8227827F200BCAD87 /* ZLShowBigImgViewController.m in Sources */,
@@ -6998,6 +7038,7 @@
 				384C3FC922887D7A00F01586 /* TurntableViewController.m in Sources */,
 				38C8494A227827F100BCAD87 /* TestThreeVC.m in Sources */,
 				386BBB5722DC9BE3005E6054 /* LuckyMainViewController.m in Sources */,
+				3874BB422331CB1400C05C90 /* CViewController.m in Sources */,
 				38C84A66227827F200BCAD87 /* ZLDashboardViewController.m in Sources */,
 				384C3FD122887D7A00F01586 /* MVVMViewController.m in Sources */,
 				386BC0A722DDB1CC005E6054 /* CodeViewController.m in Sources */,
@@ -7112,6 +7153,7 @@
 				386BC04C22DDABA7005E6054 /* DGActivityIndicatorThreeDotsAnimation.m in Sources */,
 				386BC0A422DDB1CA005E6054 /* CustomCardView.m in Sources */,
 				38C849E8227827F200BCAD87 /* SmoothLineViewController.m in Sources */,
+				382B6F7523347CC100CD2497 /* DBSphereViewController.m in Sources */,
 				386BBDA422DDA7FF005E6054 /* GPUImagePosterizeFilter.m in Sources */,
 				38C849C9227827F200BCAD87 /* ZLThumbnailViewController.m in Sources */,
 				38C84903227827F100BCAD87 /* SZAddImage.m in Sources */,

@@ -59,31 +59,31 @@
     }]);
 }
 -(RJCalculator)plus{
-    return [[^(CGFloat num){
+    return [^(CGFloat num){
         self.resultCalculator += num;
         return self;
-    }copy]autorelease] ;
+    }copy];
 }
 -(RJCalculator)subtract{
-    return [[^(CGFloat num){
+    return [^(CGFloat num){
         self.resultCalculator -= num;
         
         return self;
-    }copy]autorelease];
+    }copy];
 }
 -(RJCalculator)multiply{
-    return [[^(CGFloat num){
+    return [^(CGFloat num){
         self.resultCalculator *= num;
         
         return self;
-    }copy]autorelease];
+    }copy];
 }
 -(RJCalculator)divide{
-    return [[^(CGFloat num){
+    return [^(CGFloat num){
         self.resultCalculator /= num;
         
         return self;
-    }copy]autorelease];
+    }copy];
 }
 /*************************** 计算(加减乘除) *******************************/
 
@@ -100,25 +100,25 @@
     return @"为什么你什么都不说?";
 }
 -(Persion *(^)(NSString *))date{
-    return [[^(NSString *str){
+    return [^(NSString *str){
         self.resultString = [self.resultString stringByReplacingOccurrencesOfString:@"date" withString:str];
         
         return self;
-    }copy]autorelease];
+    }copy];
 }
 -(Persion *(^)(NSString *))who{
-    return [[^(NSString *str){
+    return [^(NSString *str){
         self.resultString = [self.resultString stringByReplacingOccurrencesOfString:@"who" withString:str];
         
         return self;
-    }copy]autorelease];
+    }copy];
 }
 -(Persion *(^)(NSString *))note{
-    return [[^(NSString *str){
+    return [^(NSString *str){
         self.resultString = [self.resultString stringByReplacingOccurrencesOfString:@"note" withString:str];
         
         return self;
-    }copy]autorelease];
+    }copy];
 }
 
 /*************************** 拼接字符串 *******************************/
@@ -136,7 +136,9 @@
     //    [textBlock copy];
     //    [textBlock release];
     
-    NSLog(@"Test: textBlock:%@, (*ptr):%d, %lu", textBlock, *ptr, (unsigned long)[textBlock retainCount]);
+//    NSLog(@"Test: textBlock:%@, (*ptr):%d, %lu", textBlock, *ptr, (unsigned long)[textBlock retainCount]);
+    NSLog(@"Test: textBlock:%@, (*ptr):%d", textBlock, *ptr);
+
     /**
      MRC下：(++age):21   (*ptr):21
      */
@@ -151,7 +153,7 @@
     };
     void (^testBlock2)(void) = [testBlock1 copy];
     NSLog(@"Test: testBlock1: %@, testBlock2: %@", testBlock1, testBlock2);
-    [testBlock2 release];
+//    [testBlock2 release];
     
     // 引用外部变量，block为__NSStackBlock__类型
     void (^testBlock3)(void) = ^(){
@@ -159,7 +161,7 @@
     };
     void (^testBlock4)(void) = [testBlock3 copy];
     NSLog(@"Test: testBlock3: %@, testBlock4: %@", testBlock3, testBlock4);
-    [testBlock4 release];
+//    [testBlock4 release];
 }
 
 - (void (^)(float))add

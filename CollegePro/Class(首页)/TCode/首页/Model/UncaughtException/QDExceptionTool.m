@@ -2,8 +2,8 @@
 //  QDExceptionTool.m
 //  UncaughtExceptionHandler
 //
-//  Created by 陈博文 on 16/8/23.
-//  Copyright © 2016年 Cocoa with Love. All rights reserved.
+//  Created by jabraknight on 19/9/20.
+//  Copyright © 2019年 Cocoa with Love. All rights reserved.
 //
 
 #import "QDExceptionTool.h"
@@ -33,7 +33,23 @@ static id _instance;
     return _instance;
 }
 
-
++ (void)saveCreash:(NSString *)exceptionInfo
+{
+    NSString * _libPath  = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"SigCrash"];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:_libPath]){
+        [[NSFileManager defaultManager] createDirectoryAtPath:_libPath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    
+    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSTimeInterval a=[dat timeIntervalSince1970];
+    NSString *timeString = [NSString stringWithFormat:@"%f", a];
+    
+    NSString * savePath = [_libPath stringByAppendingFormat:@"/error%@.log",timeString];
+    
+    BOOL sucess = [exceptionInfo writeToFile:savePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    
+    NSLog(@"YES sucess:%d",sucess);
+}
 
 - (void)storeExceptionWithExceptionDictionary:(NSDictionary *)dictionary{
     

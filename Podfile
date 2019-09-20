@@ -1,6 +1,11 @@
 platform :ios, "8.0"
 target "CollegePro" do
 	use_frameworks!
+  
+    ##kvc 监听对象
+    ##runtime实现后台停留3分钟后执行任务
+    ##控制器生命周期
+    ##两个页面相互间的生命周期
     ## 未来技术发展前沿：
     ## REACT开发-> https://www.runoob.com/react/react-tutorial.html
     ## Vue.js
@@ -33,8 +38,8 @@ target "CollegePro" do
   pod 'BaiduMapKit'#百度地图SDK
   
   pod 'pop','~>1.0'
-  
-#pod 'YYKit'
+
+  pod 'YYKit'
 #pod 'FDFullscreenPopGesture'
 #pod 'WechatOpenSDK'
 #pod 'FBRetainCycleDetector'
