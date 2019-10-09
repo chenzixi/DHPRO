@@ -22,27 +22,10 @@
 		380F9F8C227839EC00D515E3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380F9F8B227839EC00D515E3 /* Security.framework */; };
 		380F9F8E227839F200D515E3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380F9F8D227839F200D515E3 /* SystemConfiguration.framework */; };
 		380F9F902278475200D515E3 /* TabbarBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 380F9F8F2278475200D515E3 /* TabbarBundle.bundle */; };
-		381B6B9F22C0EE110018C0C2 /* AliBaseHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6B9C22C0EE100018C0C2 /* AliBaseHttpClient.m */; };
-		381B6BA022C0EE110018C0C2 /* RTCSampleUserAuthrization.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6B9D22C0EE100018C0C2 /* RTCSampleUserAuthrization.m */; };
-		381B6BA122C0EE110018C0C2 /* AliRequestList.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6B9E22C0EE100018C0C2 /* AliRequestList.m */; };
-		381B6BA522C0EE410018C0C2 /* AliRTCSdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 381B6BA322C0EE400018C0C2 /* AliRTCSdk.framework */; };
-		381B6BA622C0EE410018C0C2 /* UTDID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 381B6BA422C0EE410018C0C2 /* UTDID.framework */; };
-		381B6BAF22C0EE890018C0C2 /* JHMessageEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BA722C0EE850018C0C2 /* JHMessageEntity.m */; };
-		381B6BB022C0EE890018C0C2 /* DataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BAB22C0EE870018C0C2 /* DataItem.m */; };
-		381B6BB222C0EE890018C0C2 /* DataCreatHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BAE22C0EE890018C0C2 /* DataCreatHomeModel.m */; };
-		381B6BB522C0EE910018C0C2 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BB422C0EE900018C0C2 /* MessageTableViewCell.m */; };
-		381B6BBA22C0EE9B0018C0C2 /* AliRTCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BB622C0EE990018C0C2 /* AliRTCViewController.m */; };
-		381B6BBB22C0EE9B0018C0C2 /* AliRTCLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BB722C0EE990018C0C2 /* AliRTCLiveViewController.m */; };
 		381B6BD822C0EF3F0018C0C2 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BCF22C0EF3E0018C0C2 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		381B6BDB22C0EF9E0018C0C2 /* NSURL+changProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BD922C0EF9E0018C0C2 /* NSURL+changProtocol.m */; };
-		381B6BE422C0F06A0018C0C2 /* RTCSampleRemoteUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BDC22C0F0670018C0C2 /* RTCSampleRemoteUserModel.m */; };
-		381B6BE522C0F06A0018C0C2 /* RTCSampleRemoteUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BDD22C0F0680018C0C2 /* RTCSampleRemoteUserManager.m */; };
-		381B6BE822C0F2B10018C0C2 /* AliRTCSdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 381B6BA322C0EE400018C0C2 /* AliRTCSdk.framework */; };
-		381B6BE922C0F2B10018C0C2 /* AliRTCSdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 381B6BA322C0EE400018C0C2 /* AliRTCSdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		38274D53229EB00F00185C09 /* DHSendRunObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 38274D52229EB00F00185C09 /* DHSendRunObject.m */; };
 		38274D56229EB80000185C09 /* DHTimeoutAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38274D55229EB80000185C09 /* DHTimeoutAppDelegate.m */; };
-		382A31D7234E30EB0020FD29 /* SphericaLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 382A31D3234E30EB0020FD29 /* SphericaLayout.m */; };
-		382A31D8234E30EB0020FD29 /* ThreeDimensionalSphericalLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 382A31D5234E30EB0020FD29 /* ThreeDimensionalSphericalLayout.m */; };
 		382B6F7523347CC100CD2497 /* DBSphereViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 382B6F7423347CC100CD2497 /* DBSphereViewController.m */; };
 		382B6F7B23347D0200CD2497 /* DBSphereView.m in Sources */ = {isa = PBXBuildFile; fileRef = 382B6F7A23347D0200CD2497 /* DBSphereView.m */; };
 		382B6F832334BFE900CD2497 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 382B6F822334BFE900CD2497 /* HealthKit.framework */; };
@@ -410,7 +393,6 @@
 		38862C4522BA006A00231140 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38862C4422BA006A00231140 /* CoreFoundation.framework */; };
 		38862C4722BA007000231140 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38862C4622BA007000231140 /* CoreTelephony.framework */; };
 		38862C4922BA009900231140 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38862C4822BA009900231140 /* UserNotifications.framework */; };
-		38862C5722BA257700231140 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38862C5622BA257600231140 /* opencv2.framework */; };
 		38862C6C22BA5BFB00231140 /* SwizzManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 38862C6622BA5BFB00231140 /* SwizzManager.m */; };
 		38862C7322BB17F900231140 /* UINavigationController+DHLeak.m in Sources */ = {isa = PBXBuildFile; fileRef = 38862C7022BB17F800231140 /* UINavigationController+DHLeak.m */; };
 		38862C7422BB17F900231140 /* UIViewController+DHLeak.m in Sources */ = {isa = PBXBuildFile; fileRef = 38862C7122BB17F800231140 /* UIViewController+DHLeak.m */; };
@@ -928,6 +910,22 @@
 		38E97EE422D5CEC100A70112 /* HCWProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 38E97EE222D5CEC100A70112 /* HCWProgressHUD.bundle */; };
 		38EA8533228D57F300A28136 /* SFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EA8532228D57F300A28136 /* SFTextView.m */; };
 		38EBA07D22CF24F400AAD44F /* FoodListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EBA07C22CF24F400AAD44F /* FoodListViewController.m */; };
+		69231657234E31B400A92110 /* SphericaLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 69231653234E31B400A92110 /* SphericaLayout.m */; };
+		69231658234E31B400A92110 /* ThreeDimensionalSphericalLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 69231655234E31B400A92110 /* ThreeDimensionalSphericalLayout.m */; };
+		69231674234E328800A92110 /* AliRTCLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6923165B234E328800A92110 /* AliRTCLiveViewController.m */; };
+		69231675234E328800A92110 /* JHMessageEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6923165E234E328800A92110 /* JHMessageEntity.m */; };
+		69231676234E328800A92110 /* RTCSampleRemoteUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 69231666234E328800A92110 /* RTCSampleRemoteUserManager.m */; };
+		69231677234E328800A92110 /* DataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 69231667234E328800A92110 /* DataItem.m */; };
+		69231678234E328800A92110 /* AliRTCSdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6923166A234E328800A92110 /* AliRTCSdk.framework */; };
+		69231679234E328800A92110 /* UTDID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6923166B234E328800A92110 /* UTDID.framework */; };
+		6923167A234E328800A92110 /* DataCreatHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6923166D234E328800A92110 /* DataCreatHomeModel.m */; };
+		6923167B234E328800A92110 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6923166E234E328800A92110 /* MessageTableViewCell.m */; };
+		6923167C234E328800A92110 /* AliBaseHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6923166F234E328800A92110 /* AliBaseHttpClient.m */; };
+		6923167D234E328800A92110 /* RTCSampleRemoteUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 69231670234E328800A92110 /* RTCSampleRemoteUserModel.m */; };
+		6923167E234E328800A92110 /* RTCSampleUserAuthrization.m in Sources */ = {isa = PBXBuildFile; fileRef = 69231671234E328800A92110 /* RTCSampleUserAuthrization.m */; };
+		6923167F234E328800A92110 /* AliRTCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69231672234E328800A92110 /* AliRTCViewController.m */; };
+		69231680234E328800A92110 /* AliRequestList.m in Sources */ = {isa = PBXBuildFile; fileRef = 69231673234E328800A92110 /* AliRequestList.m */; };
+		69231683234E331400A92110 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69231682234E331400A92110 /* opencv2.framework */; };
 		73869E513ABCF28AE9B6C239 /* Pods_CollegePro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CBC72DE2C175A4CF5A210DB /* Pods_CollegePro.framework */; };
 /* End PBXBuildFile section */
 
@@ -948,7 +946,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				381B6BE922C0F2B10018C0C2 /* AliRTCSdk.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -991,42 +988,14 @@
 		380F9F8F2278475200D515E3 /* TabbarBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TabbarBundle.bundle; sourceTree = "<group>"; };
 		380FDC2A22B24D29009E9D24 /* CollegePro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CollegePro.entitlements; sourceTree = "<group>"; };
 		380FDC2B22B24D44009E9D24 /* CollegeProExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CollegeProExtension.entitlements; sourceTree = "<group>"; };
-		381B6B9922C0EE100018C0C2 /* AliBaseHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliBaseHttpClient.h; sourceTree = "<group>"; };
-		381B6B9A22C0EE100018C0C2 /* AliRequestList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliRequestList.h; sourceTree = "<group>"; };
-		381B6B9B22C0EE100018C0C2 /* RTCSampleUserAuthrization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCSampleUserAuthrization.h; sourceTree = "<group>"; };
-		381B6B9C22C0EE100018C0C2 /* AliBaseHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliBaseHttpClient.m; sourceTree = "<group>"; };
-		381B6B9D22C0EE100018C0C2 /* RTCSampleUserAuthrization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTCSampleUserAuthrization.m; sourceTree = "<group>"; };
-		381B6B9E22C0EE100018C0C2 /* AliRequestList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliRequestList.m; sourceTree = "<group>"; };
-		381B6BA322C0EE400018C0C2 /* AliRTCSdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AliRTCSdk.framework; sourceTree = "<group>"; };
-		381B6BA422C0EE410018C0C2 /* UTDID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UTDID.framework; sourceTree = "<group>"; };
-		381B6BA722C0EE850018C0C2 /* JHMessageEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHMessageEntity.m; sourceTree = "<group>"; };
-		381B6BA922C0EE860018C0C2 /* DataCreatHomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCreatHomeModel.h; sourceTree = "<group>"; };
-		381B6BAA22C0EE870018C0C2 /* DataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataItem.h; sourceTree = "<group>"; };
-		381B6BAB22C0EE870018C0C2 /* DataItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataItem.m; sourceTree = "<group>"; };
-		381B6BAD22C0EE880018C0C2 /* JHMessageEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHMessageEntity.h; sourceTree = "<group>"; };
-		381B6BAE22C0EE890018C0C2 /* DataCreatHomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCreatHomeModel.m; sourceTree = "<group>"; };
-		381B6BB322C0EE900018C0C2 /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
-		381B6BB422C0EE900018C0C2 /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
-		381B6BB622C0EE990018C0C2 /* AliRTCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliRTCViewController.m; sourceTree = "<group>"; };
-		381B6BB722C0EE990018C0C2 /* AliRTCLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliRTCLiveViewController.m; sourceTree = "<group>"; };
-		381B6BB822C0EE9A0018C0C2 /* AliRTCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliRTCViewController.h; sourceTree = "<group>"; };
-		381B6BB922C0EE9B0018C0C2 /* AliRTCLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliRTCLiveViewController.h; sourceTree = "<group>"; };
 		381B6BCF22C0EF3E0018C0C2 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		381B6BD022C0EF3E0018C0C2 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		381B6BD922C0EF9E0018C0C2 /* NSURL+changProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+changProtocol.m"; sourceTree = "<group>"; };
 		381B6BDA22C0EF9E0018C0C2 /* NSURL+changProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+changProtocol.h"; sourceTree = "<group>"; };
-		381B6BDC22C0F0670018C0C2 /* RTCSampleRemoteUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTCSampleRemoteUserModel.m; sourceTree = "<group>"; };
-		381B6BDD22C0F0680018C0C2 /* RTCSampleRemoteUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTCSampleRemoteUserManager.m; sourceTree = "<group>"; };
-		381B6BDE22C0F0680018C0C2 /* RTCSampleRemoteUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCSampleRemoteUserManager.h; sourceTree = "<group>"; };
-		381B6BE122C0F0690018C0C2 /* RTCSampleRemoteUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCSampleRemoteUserModel.h; sourceTree = "<group>"; };
 		38274D51229EB00F00185C09 /* DHSendRunObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHSendRunObject.h; sourceTree = "<group>"; };
 		38274D52229EB00F00185C09 /* DHSendRunObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DHSendRunObject.m; sourceTree = "<group>"; };
 		38274D54229EB80000185C09 /* DHTimeoutAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHTimeoutAppDelegate.h; sourceTree = "<group>"; };
 		38274D55229EB80000185C09 /* DHTimeoutAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DHTimeoutAppDelegate.m; sourceTree = "<group>"; };
-		382A31D2234E30EB0020FD29 /* SphericaLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SphericaLayout.h; sourceTree = "<group>"; };
-		382A31D3234E30EB0020FD29 /* SphericaLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SphericaLayout.m; sourceTree = "<group>"; };
-		382A31D5234E30EB0020FD29 /* ThreeDimensionalSphericalLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeDimensionalSphericalLayout.m; sourceTree = "<group>"; };
-		382A31D6234E30EB0020FD29 /* ThreeDimensionalSphericalLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeDimensionalSphericalLayout.h; sourceTree = "<group>"; };
 		382B6F7323347CC100CD2497 /* DBSphereViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBSphereViewController.h; sourceTree = "<group>"; };
 		382B6F7423347CC100CD2497 /* DBSphereViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBSphereViewController.m; sourceTree = "<group>"; };
 		382B6F7723347D0200CD2497 /* DBPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBPoint.h; sourceTree = "<group>"; };
@@ -1663,7 +1632,6 @@
 		38862C4422BA006A00231140 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		38862C4622BA007000231140 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		38862C4822BA009900231140 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
-		38862C5622BA257600231140 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		38862C6622BA5BFB00231140 /* SwizzManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwizzManager.m; sourceTree = "<group>"; };
 		38862C6922BA5BFB00231140 /* SwizzManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwizzManager.h; sourceTree = "<group>"; };
 		38862C6F22BB17F800231140 /* UIViewController+DHLeak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DHLeak.h"; sourceTree = "<group>"; };
@@ -1698,7 +1666,6 @@
 		38A99B3E229BD1C000D52230 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		38A99B41229BD1C000D52230 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		38A99B43229BD1C000D52230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		38C031402300553600B4B364 /* DHTabbarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHTabbarViewController.h; sourceTree = "<group>"; };
 		38C031412300553600B4B364 /* DHTabbarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DHTabbarViewController.m; sourceTree = "<group>"; };
 		38C2D0B222D5E27600CF30CA /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
 		38C2D0B322D5E27600CF30CA /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
@@ -2533,6 +2500,37 @@
 		38EBA07B22CF24F400AAD44F /* FoodListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodListViewController.h; sourceTree = "<group>"; };
 		38EBA07C22CF24F400AAD44F /* FoodListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodListViewController.m; sourceTree = "<group>"; };
 		5CBC72DE2C175A4CF5A210DB /* Pods_CollegePro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CollegePro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		69231652234E31B400A92110 /* SphericaLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SphericaLayout.h; sourceTree = "<group>"; };
+		69231653234E31B400A92110 /* SphericaLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SphericaLayout.m; sourceTree = "<group>"; };
+		69231655234E31B400A92110 /* ThreeDimensionalSphericalLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeDimensionalSphericalLayout.m; sourceTree = "<group>"; };
+		69231656234E31B400A92110 /* ThreeDimensionalSphericalLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeDimensionalSphericalLayout.h; sourceTree = "<group>"; };
+		69231659234E322400A92110 /* CollegeProDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CollegeProDebug.entitlements; sourceTree = "<group>"; };
+		6923165B234E328800A92110 /* AliRTCLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliRTCLiveViewController.m; sourceTree = "<group>"; };
+		6923165C234E328800A92110 /* DataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataItem.h; sourceTree = "<group>"; };
+		6923165D234E328800A92110 /* RTCSampleRemoteUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCSampleRemoteUserManager.h; sourceTree = "<group>"; };
+		6923165E234E328800A92110 /* JHMessageEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHMessageEntity.m; sourceTree = "<group>"; };
+		6923165F234E328800A92110 /* RTCSampleRemoteUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCSampleRemoteUserModel.h; sourceTree = "<group>"; };
+		69231660234E328800A92110 /* AliBaseHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliBaseHttpClient.h; sourceTree = "<group>"; };
+		69231661234E328800A92110 /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
+		69231662234E328800A92110 /* DataCreatHomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCreatHomeModel.h; sourceTree = "<group>"; };
+		69231663234E328800A92110 /* AliRequestList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliRequestList.h; sourceTree = "<group>"; };
+		69231664234E328800A92110 /* AliRTCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliRTCViewController.h; sourceTree = "<group>"; };
+		69231665234E328800A92110 /* RTCSampleUserAuthrization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCSampleUserAuthrization.h; sourceTree = "<group>"; };
+		69231666234E328800A92110 /* RTCSampleRemoteUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTCSampleRemoteUserManager.m; sourceTree = "<group>"; };
+		69231667234E328800A92110 /* DataItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataItem.m; sourceTree = "<group>"; };
+		69231668234E328800A92110 /* AliRTCLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliRTCLiveViewController.h; sourceTree = "<group>"; };
+		6923166A234E328800A92110 /* AliRTCSdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AliRTCSdk.framework; sourceTree = "<group>"; };
+		6923166B234E328800A92110 /* UTDID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UTDID.framework; sourceTree = "<group>"; };
+		6923166C234E328800A92110 /* JHMessageEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHMessageEntity.h; sourceTree = "<group>"; };
+		6923166D234E328800A92110 /* DataCreatHomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCreatHomeModel.m; sourceTree = "<group>"; };
+		6923166E234E328800A92110 /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
+		6923166F234E328800A92110 /* AliBaseHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliBaseHttpClient.m; sourceTree = "<group>"; };
+		69231670234E328800A92110 /* RTCSampleRemoteUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTCSampleRemoteUserModel.m; sourceTree = "<group>"; };
+		69231671234E328800A92110 /* RTCSampleUserAuthrization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTCSampleUserAuthrization.m; sourceTree = "<group>"; };
+		69231672234E328800A92110 /* AliRTCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliRTCViewController.m; sourceTree = "<group>"; };
+		69231673234E328800A92110 /* AliRequestList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliRequestList.m; sourceTree = "<group>"; };
+		69231682234E331400A92110 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
+		69231685234E34B200A92110 /* DHTabbarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHTabbarViewController.h; sourceTree = "<group>"; };
 		B94442A678D5676362354ED8 /* Pods-CollegePro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollegePro.release.xcconfig"; path = "Pods/Target Support Files/Pods-CollegePro/Pods-CollegePro.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2549,12 +2547,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				381B6BE822C0F2B10018C0C2 /* AliRTCSdk.framework in Frameworks */,
 				38862C4922BA009900231140 /* UserNotifications.framework in Frameworks */,
 				38862C4722BA007000231140 /* CoreTelephony.framework in Frameworks */,
 				38862C4522BA006A00231140 /* CoreFoundation.framework in Frameworks */,
 				38862C4322BA004800231140 /* CFNetwork.framework in Frameworks */,
 				384EE3D222B0967E00F20C0A /* VideoToolbox.framework in Frameworks */,
+				69231679234E328800A92110 /* UTDID.framework in Frameworks */,
 				384EE3D022B0967700F20C0A /* AudioToolbox.framework in Frameworks */,
 				384EE3CE22B0966700F20C0A /* libresolv.tbd in Frameworks */,
 				384EE3CC22B0965B00F20C0A /* libz.tbd in Frameworks */,
@@ -2562,17 +2560,16 @@
 				384EE3C822B0960D00F20C0A /* CoreMedia.framework in Frameworks */,
 				38560ACA22AF7C7300A68F5D /* AssetsLibrary.framework in Frameworks */,
 				380F9F8E227839F200D515E3 /* SystemConfiguration.framework in Frameworks */,
+				69231678234E328800A92110 /* AliRTCSdk.framework in Frameworks */,
 				380F9F8C227839EC00D515E3 /* Security.framework in Frameworks */,
 				382B6F832334BFE900CD2497 /* HealthKit.framework in Frameworks */,
-				381B6BA622C0EE410018C0C2 /* UTDID.framework in Frameworks */,
 				380F9F8A227839E700D515E3 /* QuartzCore.framework in Frameworks */,
 				380F9F88227839E000D515E3 /* OpenGLES.framework in Frameworks */,
-				38862C5722BA257700231140 /* opencv2.framework in Frameworks */,
+				69231683234E331400A92110 /* opencv2.framework in Frameworks */,
 				380F9F86227839D800D515E3 /* libsqlite3.0.tbd in Frameworks */,
 				380F9F84227839C700D515E3 /* CoreLocation.framework in Frameworks */,
 				380F9F82227839BD00D515E3 /* CoreGraphics.framework in Frameworks */,
 				380F9F80227835CD00D515E3 /* libc++.tbd in Frameworks */,
-				381B6BA522C0EE410018C0C2 /* AliRTCSdk.framework in Frameworks */,
 				73869E513ABCF28AE9B6C239 /* Pods_CollegePro.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2604,45 +2601,6 @@
 			path = "水波纹";
 			sourceTree = "<group>";
 		};
-		381B6B9822C0EE100018C0C2 /* 阿里音视频通话 */ = {
-			isa = PBXGroup;
-			children = (
-				381B6B9922C0EE100018C0C2 /* AliBaseHttpClient.h */,
-				381B6B9C22C0EE100018C0C2 /* AliBaseHttpClient.m */,
-				381B6B9A22C0EE100018C0C2 /* AliRequestList.h */,
-				381B6B9E22C0EE100018C0C2 /* AliRequestList.m */,
-				381B6BB922C0EE9B0018C0C2 /* AliRTCLiveViewController.h */,
-				381B6BB722C0EE990018C0C2 /* AliRTCLiveViewController.m */,
-				381B6BA222C0EE400018C0C2 /* AliRTCSdk */,
-				381B6BB822C0EE9A0018C0C2 /* AliRTCViewController.h */,
-				381B6BB622C0EE990018C0C2 /* AliRTCViewController.m */,
-				381B6BA922C0EE860018C0C2 /* DataCreatHomeModel.h */,
-				381B6BAE22C0EE890018C0C2 /* DataCreatHomeModel.m */,
-				381B6BAA22C0EE870018C0C2 /* DataItem.h */,
-				381B6BAB22C0EE870018C0C2 /* DataItem.m */,
-				381B6BAD22C0EE880018C0C2 /* JHMessageEntity.h */,
-				381B6BA722C0EE850018C0C2 /* JHMessageEntity.m */,
-				381B6BB322C0EE900018C0C2 /* MessageTableViewCell.h */,
-				381B6BB422C0EE900018C0C2 /* MessageTableViewCell.m */,
-				381B6BDE22C0F0680018C0C2 /* RTCSampleRemoteUserManager.h */,
-				381B6BDD22C0F0680018C0C2 /* RTCSampleRemoteUserManager.m */,
-				381B6BE122C0F0690018C0C2 /* RTCSampleRemoteUserModel.h */,
-				381B6BDC22C0F0670018C0C2 /* RTCSampleRemoteUserModel.m */,
-				381B6B9B22C0EE100018C0C2 /* RTCSampleUserAuthrization.h */,
-				381B6B9D22C0EE100018C0C2 /* RTCSampleUserAuthrization.m */,
-			);
-			path = "阿里音视频通话";
-			sourceTree = "<group>";
-		};
-		381B6BA222C0EE400018C0C2 /* AliRTCSdk */ = {
-			isa = PBXGroup;
-			children = (
-				381B6BA322C0EE400018C0C2 /* AliRTCSdk.framework */,
-				381B6BA422C0EE410018C0C2 /* UTDID.framework */,
-			);
-			path = AliRTCSdk;
-			sourceTree = "<group>";
-		};
 		381B6BCE22C0EF3E0018C0C2 /* JSONKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -2650,33 +2608,6 @@
 				381B6BD022C0EF3E0018C0C2 /* JSONKit.h */,
 			);
 			path = JSONKit;
-			sourceTree = "<group>";
-		};
-		382A31D0234E30EB0020FD29 /* ThreeDimensional */ = {
-			isa = PBXGroup;
-			children = (
-				382A31D1234E30EB0020FD29 /* Model */,
-				382A31D4234E30EB0020FD29 /* ViewController */,
-			);
-			path = ThreeDimensional;
-			sourceTree = "<group>";
-		};
-		382A31D1234E30EB0020FD29 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				382A31D2234E30EB0020FD29 /* SphericaLayout.h */,
-				382A31D3234E30EB0020FD29 /* SphericaLayout.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		382A31D4234E30EB0020FD29 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				382A31D5234E30EB0020FD29 /* ThreeDimensionalSphericalLayout.m */,
-				382A31D6234E30EB0020FD29 /* ThreeDimensionalSphericalLayout.h */,
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		382B6F7223347C9200CD2497 /* DBSphere */ = {
@@ -3885,14 +3816,6 @@
 			path = "仪表哦盘";
 			sourceTree = "<group>";
 		};
-		38862C5522BA257600231140 /* opencv */ = {
-			isa = PBXGroup;
-			children = (
-				38862C5622BA257600231140 /* opencv2.framework */,
-			);
-			path = opencv;
-			sourceTree = "<group>";
-		};
 		38862C6522BA5BFB00231140 /* DHLeak */ = {
 			isa = PBXGroup;
 			children = (
@@ -4075,6 +3998,7 @@
 		38C845352278249900BCAD87 /* CollegePro */ = {
 			isa = PBXGroup;
 			children = (
+				69231659234E322400A92110 /* CollegeProDebug.entitlements */,
 				380FDC2A22B24D29009E9D24 /* CollegePro.entitlements */,
 				38C8454D227827EF00BCAD87 /* Class(首页) */,
 				38C845362278249900BCAD87 /* AppDelegate.h */,
@@ -4144,7 +4068,7 @@
 				38C84594227827EF00BCAD87 /* Macro */,
 				38E97ED922D5CD8900A70112 /* MQHButtonsView.h */,
 				38E97EDA22D5CD8D00A70112 /* MQHButtonsView.m */,
-				38862C5522BA257600231140 /* opencv */,
+				69231681234E331400A92110 /* opencv */,
 				386BBB5A22DC9F45005E6054 /* PhotoTweaks */,
 				38C845A5227827EF00BCAD87 /* pinyin.c */,
 				38C84563227827EF00BCAD87 /* pinyin.h */,
@@ -4365,7 +4289,7 @@
 				38C845DC227827EF00BCAD87 /* BaseTabBarViewController.m */,
 				38C845E1227827EF00BCAD87 /* BaseViewController.h */,
 				38C845DD227827EF00BCAD87 /* BaseViewController.m */,
-				38C031402300553600B4B364 /* DHTabbarViewController.h */,
+				69231685234E34B200A92110 /* DHTabbarViewController.h */,
 				38C031412300553600B4B364 /* DHTabbarViewController.m */,
 			);
 			path = TBaseData;
@@ -4491,7 +4415,7 @@
 		38C84631227827EF00BCAD87 /* TCode */ = {
 			isa = PBXGroup;
 			children = (
-				382A31D0234E30EB0020FD29 /* ThreeDimensional */,
+				69231650234E31B400A92110 /* ThreeDimensional */,
 				382B6F7223347C9200CD2497 /* DBSphere */,
 				382FFA31231CAE440062080E /* YoungSphere */,
 				386BC0D122DDBBF8005E6054 /* DivisionCircle */,
@@ -4506,10 +4430,10 @@
 				386BBB3822DC8EE0005E6054 /* 图片找不同 */,
 				3893F39022CDE317005C30AE /* 列表联动 */,
 				3807246322CDCC5E0035E5B1 /* 画圆角 */,
-				381B6B9822C0EE100018C0C2 /* 阿里音视频通话 */,
 				38560AB922AF5B0700A68F5D /* 识别相机 */,
 				38C9773422AE02D200F978C1 /* 联网游戏 */,
 				384C3F9E22887D7800F01586 /* 长按移动 */,
+				6923165A234E328800A92110 /* 阿里音视频通话 */,
 				384C3FA722887D7900F01586 /* 转盘 */,
 				384C3FAC22887D7900F01586 /* MVP&MVVM */,
 				38C84632227827EF00BCAD87 /* 三消除 */,
@@ -6187,6 +6111,80 @@
 			path = HCWProgressHUD;
 			sourceTree = "<group>";
 		};
+		69231650234E31B400A92110 /* ThreeDimensional */ = {
+			isa = PBXGroup;
+			children = (
+				69231651234E31B400A92110 /* Model */,
+				69231654234E31B400A92110 /* ViewController */,
+			);
+			path = ThreeDimensional;
+			sourceTree = "<group>";
+		};
+		69231651234E31B400A92110 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				69231652234E31B400A92110 /* SphericaLayout.h */,
+				69231653234E31B400A92110 /* SphericaLayout.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		69231654234E31B400A92110 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				69231655234E31B400A92110 /* ThreeDimensionalSphericalLayout.m */,
+				69231656234E31B400A92110 /* ThreeDimensionalSphericalLayout.h */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		6923165A234E328800A92110 /* 阿里音视频通话 */ = {
+			isa = PBXGroup;
+			children = (
+				6923165B234E328800A92110 /* AliRTCLiveViewController.m */,
+				6923165C234E328800A92110 /* DataItem.h */,
+				6923165D234E328800A92110 /* RTCSampleRemoteUserManager.h */,
+				6923165E234E328800A92110 /* JHMessageEntity.m */,
+				6923165F234E328800A92110 /* RTCSampleRemoteUserModel.h */,
+				69231660234E328800A92110 /* AliBaseHttpClient.h */,
+				69231661234E328800A92110 /* MessageTableViewCell.h */,
+				69231662234E328800A92110 /* DataCreatHomeModel.h */,
+				69231663234E328800A92110 /* AliRequestList.h */,
+				69231664234E328800A92110 /* AliRTCViewController.h */,
+				69231665234E328800A92110 /* RTCSampleUserAuthrization.h */,
+				69231666234E328800A92110 /* RTCSampleRemoteUserManager.m */,
+				69231667234E328800A92110 /* DataItem.m */,
+				69231668234E328800A92110 /* AliRTCLiveViewController.h */,
+				69231669234E328800A92110 /* AliRTCSdk */,
+				6923166C234E328800A92110 /* JHMessageEntity.h */,
+				6923166D234E328800A92110 /* DataCreatHomeModel.m */,
+				6923166E234E328800A92110 /* MessageTableViewCell.m */,
+				6923166F234E328800A92110 /* AliBaseHttpClient.m */,
+				69231670234E328800A92110 /* RTCSampleRemoteUserModel.m */,
+				69231671234E328800A92110 /* RTCSampleUserAuthrization.m */,
+				69231672234E328800A92110 /* AliRTCViewController.m */,
+				69231673234E328800A92110 /* AliRequestList.m */,
+			);
+			path = "阿里音视频通话";
+			sourceTree = "<group>";
+		};
+		69231669234E328800A92110 /* AliRTCSdk */ = {
+			isa = PBXGroup;
+			children = (
+				6923166A234E328800A92110 /* AliRTCSdk.framework */,
+				6923166B234E328800A92110 /* UTDID.framework */,
+			);
+			path = AliRTCSdk;
+			sourceTree = "<group>";
+		};
+		69231681234E331400A92110 /* opencv */ = {
+			isa = PBXGroup;
+			children = (
+				69231682234E331400A92110 /* opencv2.framework */,
+			);
+			path = opencv;
+			sourceTree = "<group>";
+		};
 		DB7A53478EBF97A0FF9F1D0C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -6759,15 +6757,16 @@
 				38C84A42227827F200BCAD87 /* MLSelectPhotoPickerGroupViewController.m in Sources */,
 				386BBDC922DDA7FF005E6054 /* GPUImageScreenBlendFilter.m in Sources */,
 				38C848E0227827F100BCAD87 /* TZAssetModel.m in Sources */,
-				381B6BE522C0F06A0018C0C2 /* RTCSampleRemoteUserManager.m in Sources */,
 				38C84948227827F100BCAD87 /* DetailsDrawViewController.m in Sources */,
 				386BBDDB22DDA7FF005E6054 /* GPUImageFalseColorFilter.m in Sources */,
 				386BC05622DDABA7005E6054 /* DGActivityIndicatorBallPulseAnimation.m in Sources */,
 				38C8496D227827F100BCAD87 /* DHAdressViewController.m in Sources */,
 				38C84942227827F100BCAD87 /* TestOneVC.m in Sources */,
+				69231676234E328800A92110 /* RTCSampleRemoteUserManager.m in Sources */,
 				386BBDAF22DDA7FF005E6054 /* GPUImageVoroniConsumerFilter.m in Sources */,
 				38C849D3227827F200BCAD87 /* BaseAdressBookViewController.m in Sources */,
 				38C84A2F227827F200BCAD87 /* UnscrollTabController.m in Sources */,
+				6923167A234E328800A92110 /* DataCreatHomeModel.m in Sources */,
 				386BBDBF22DDA7FF005E6054 /* GPUImageView.m in Sources */,
 				38D5CEF5229661C400323648 /* ShowAnimationView.m in Sources */,
 				386BBC6222DD9C18005E6054 /* DPPhotoGroupViewController.m in Sources */,
@@ -6777,7 +6776,6 @@
 				386BC0DC22DDBC3F005E6054 /* LJInstrumentView.m in Sources */,
 				38C8453B2278249900BCAD87 /* ViewController.mm in Sources */,
 				38C848F6227827F100BCAD87 /* GYChangeTextView.m in Sources */,
-				381B6BE422C0F06A0018C0C2 /* RTCSampleRemoteUserModel.m in Sources */,
 				38C84A6E227827F200BCAD87 /* SectionsViewController.m in Sources */,
 				38C2D0CB22D5E27700CF30CA /* ASIFormDataRequest.m in Sources */,
 				38C977E522AE02D300F978C1 /* Options.m in Sources */,
@@ -6812,13 +6810,11 @@
 				38C8496F227827F100BCAD87 /* DHWorkViewController.m in Sources */,
 				384C3FCA22887D7A00F01586 /* Present.m in Sources */,
 				386BBD6B22DDA7FE005E6054 /* GPUImageFilterGroup.m in Sources */,
-				381B6BAF22C0EE890018C0C2 /* JHMessageEntity.m in Sources */,
 				386BBD8822DDA7FE005E6054 /* GPUImageColorMatrixFilter.m in Sources */,
 				38C977E422AE02D300F978C1 /* Themes.m in Sources */,
 				38E97EE322D5CEC100A70112 /* HCWProgressHUD.m in Sources */,
 				386BBD7A22DDA7FE005E6054 /* GPUImageMissEtikateFilter.m in Sources */,
 				386BBD7C22DDA7FE005E6054 /* GPUImageSketchFilter.m in Sources */,
-				381B6BA122C0EE110018C0C2 /* AliRequestList.m in Sources */,
 				38C84936227827F100BCAD87 /* HYBHeaderView.m in Sources */,
 				3830BC7622CB649E005C7915 /* JSONModelError.m in Sources */,
 				38C849AD227827F100BCAD87 /* ZLProgressHUD.m in Sources */,
@@ -6923,7 +6919,6 @@
 				38C8493A227827F100BCAD87 /* SidebarViewController.m in Sources */,
 				38C84A21227827F200BCAD87 /* ZSDSetPasswordView.m in Sources */,
 				3807246622CDCC8C0035E5B1 /* CornerViewController.m in Sources */,
-				381B6BA022C0EE110018C0C2 /* RTCSampleUserAuthrization.m in Sources */,
 				38C84A3D227827F200BCAD87 /* UIImage+MLTint.m in Sources */,
 				386BBD7922DDA7FE005E6054 /* GPUImageHistogramFilter.m in Sources */,
 				38C849F0227827F200BCAD87 /* MyView.m in Sources */,
@@ -6931,6 +6926,7 @@
 				382B6F7B23347D0200CD2497 /* DBSphereView.m in Sources */,
 				386BBD6722DDA7FE005E6054 /* GPUImageTwoPassTextureSamplingFilter.m in Sources */,
 				386BBD8F22DDA7FE005E6054 /* GPUImageOpeningFilter.m in Sources */,
+				6923167E234E328800A92110 /* RTCSampleUserAuthrization.m in Sources */,
 				38C849C8227827F200BCAD87 /* ZLShowBigImgViewController.m in Sources */,
 				386BBDB222DDA7FF005E6054 /* GPUImageThresholdEdgeDetection.m in Sources */,
 				38C84A3C227827F200BCAD87 /* UIView+MLExtension.m in Sources */,
@@ -6944,7 +6940,6 @@
 				386BBD7F22DDA7FE005E6054 /* GPUImageAmatorkaFilter.m in Sources */,
 				38C9779722AE02D200F978C1 /* Menu.m in Sources */,
 				386BC04022DDABA7005E6054 /* DGActivityIndicatorView.m in Sources */,
-				381B6BB522C0EE910018C0C2 /* MessageTableViewCell.m in Sources */,
 				387AE6422321103B00EADE4B /* MyCreView.m in Sources */,
 				386BBB6222DC9F45005E6054 /* PhotoTweakView.m in Sources */,
 				386BC05222DDABA7005E6054 /* DGActivityIndicatorBallGridBeatAnimation.m in Sources */,
@@ -6962,6 +6957,7 @@
 				38C84A07227827F200BCAD87 /* DisplayNoteViewController.m in Sources */,
 				38C2D0CF22D5E27700CF30CA /* Reachability.m in Sources */,
 				38C849D2227827F200BCAD87 /* DHNoteViewController.m in Sources */,
+				6923167F234E328800A92110 /* AliRTCViewController.m in Sources */,
 				386BBD9F22DDA7FF005E6054 /* GPUImageDifferenceBlendFilter.m in Sources */,
 				383F16E423169D56005F085F /* RectangleIndicatorView.m in Sources */,
 				386BBDBE22DDA7FF005E6054 /* GPUImageBuffer.m in Sources */,
@@ -6977,7 +6973,7 @@
 				38C848FE227827F100BCAD87 /* IncludeNibTableViewCell.m in Sources */,
 				386BBB3D22DC8EE0005E6054 /* FFKPViewController.m in Sources */,
 				38C849DB227827F200BCAD87 /* GZTableViewCell.m in Sources */,
-				382A31D8234E30EB0020FD29 /* ThreeDimensionalSphericalLayout.m in Sources */,
+				69231658234E31B400A92110 /* ThreeDimensionalSphericalLayout.m in Sources */,
 				38C8492F227827F100BCAD87 /* LHCacheTool.m in Sources */,
 				38C848D3227827F100BCAD87 /* DHGuidePageHUD.m in Sources */,
 				386BBDD422DDA7FF005E6054 /* GPUImageCrosshatchFilter.m in Sources */,
@@ -7051,7 +7047,7 @@
 				386BBD9322DDA7FE005E6054 /* GPUImageSaturationFilter.m in Sources */,
 				38C84931227827F100BCAD87 /* SFNetWorkManager.m in Sources */,
 				38C84A54227827F200BCAD87 /* QRCodeViewController.m in Sources */,
-				382A31D7234E30EB0020FD29 /* SphericaLayout.m in Sources */,
+				69231657234E31B400A92110 /* SphericaLayout.m in Sources */,
 				38C849E2227827F200BCAD87 /* ZJBLTimerButton.m in Sources */,
 				38C84907227827F100BCAD87 /* CustomDateView.m in Sources */,
 				386BBD9622DDA7FE005E6054 /* GPUImagePixellateFilter.m in Sources */,
@@ -7113,7 +7109,6 @@
 				38C84A3F227827F200BCAD87 /* MLSelectPhotoPickerDatas.m in Sources */,
 				38C84A45227827F200BCAD87 /* MLSelectPhotoPickerAssetsViewController.m in Sources */,
 				386BC0AE22DDB588005E6054 /* CardAnimateViewController.m in Sources */,
-				381B6BBA22C0EE9B0018C0C2 /* AliRTCViewController.m in Sources */,
 				386BC07F22DDB18C005E6054 /* CCDraggableCardView.m in Sources */,
 				38C84A2C227827F200BCAD87 /* DynamicItemWidthTabController.m in Sources */,
 				38D5CEF222965C6000323648 /* backgroundView.m in Sources */,
@@ -7122,12 +7117,11 @@
 				386BBD8C22DDA7FE005E6054 /* GPUImagePicture.m in Sources */,
 				38C848F4227827F100BCAD87 /* WLBallTool.m in Sources */,
 				386BBDB622DDA7FF005E6054 /* GPUImageSubtractBlendFilter.m in Sources */,
+				69231680234E328800A92110 /* AliRequestList.m in Sources */,
 				38C84A70227827F200BCAD87 /* CustomerTitleModel.m in Sources */,
-				381B6BB222C0EE890018C0C2 /* DataCreatHomeModel.m in Sources */,
 				38C84939227827F100BCAD87 /* TSidebarViewController.m in Sources */,
 				38C849D8227827F200BCAD87 /* HanyuPinyinOutputFormat.m in Sources */,
 				38C848E3227827F100BCAD87 /* TZPhotoPreviewController.m in Sources */,
-				381B6BB022C0EE890018C0C2 /* DataItem.m in Sources */,
 				38C84A65227827F200BCAD87 /* TMotionViewController.m in Sources */,
 				387F18F4233C674100C25F63 /* DHRadianLayerView.m in Sources */,
 				38C84A06227827F200BCAD87 /* EditNoteViewController.m in Sources */,
@@ -7162,12 +7156,14 @@
 				386BBDD322DDA7FF005E6054 /* GPUImageNobleCornerDetectionFilter.m in Sources */,
 				386BBBBA22DD6DE1005E6054 /* CustomerAlertController.m in Sources */,
 				386BBD9C22DDA7FF005E6054 /* GPUImageSepiaFilter.m in Sources */,
+				6923167B234E328800A92110 /* MessageTableViewCell.m in Sources */,
 				38C84926227827F100BCAD87 /* KeyBoardView.m in Sources */,
 				386BC05422DDABA7005E6054 /* DGActivityIndicatorBallTrianglePathAnimation.m in Sources */,
 				386BBD6822DDA7FE005E6054 /* GPUImageUnsharpMaskFilter.m in Sources */,
 				38C848EE227827F100BCAD87 /* WebServiceRequest.m in Sources */,
 				38C84A08227827F200BCAD87 /* AddNoteTableViewController.m in Sources */,
 				38C84A63227827F200BCAD87 /* QRCodeAreaView.m in Sources */,
+				6923167C234E328800A92110 /* AliBaseHttpClient.m in Sources */,
 				386BBD6E22DDA7FE005E6054 /* GPUImageTwoPassFilter.m in Sources */,
 				38C848E8227827F100BCAD87 /* TZPhotoPreviewCell.m in Sources */,
 				38C849DE227827F200BCAD87 /* GZBaseViewController.m in Sources */,
@@ -7208,10 +7204,12 @@
 				386BBD7D22DDA7FE005E6054 /* GPUImageTransformFilter.m in Sources */,
 				384C3FCB22887D7A00F01586 /* MVPViewController.m in Sources */,
 				38C84A0A227827F200BCAD87 /* DHAboutViewController.m in Sources */,
+				69231674234E328800A92110 /* AliRTCLiveViewController.m in Sources */,
 				38862C7322BB17F900231140 /* UINavigationController+DHLeak.m in Sources */,
 				384C3FD022887D7A00F01586 /* BaseViewModel.m in Sources */,
 				38C849AB227827F100BCAD87 /* ZLPhotoBrowserCell.m in Sources */,
 				38345BDA22B1207C00FBE78B /* SFHttpSessionReq.m in Sources */,
+				6923167D234E328800A92110 /* RTCSampleRemoteUserModel.m in Sources */,
 				386BBC4F22DD9C18005E6054 /* UIView+AAToolkit.m in Sources */,
 				38C84A1E227827F200BCAD87 /* CountdownViewController.m in Sources */,
 				386BC08022DDB18C005E6054 /* CCDraggableContainer.m in Sources */,
@@ -7241,6 +7239,7 @@
 				386BBDB722DDA7FF005E6054 /* GPUImageCrosshairGenerator.m in Sources */,
 				38C8495F227827F100BCAD87 /* ESMHomeViewController.m in Sources */,
 				38C849B0227827F100BCAD87 /* ToastUtils.m in Sources */,
+				69231677234E328800A92110 /* DataItem.m in Sources */,
 				386BC05B22DDABA7005E6054 /* DGActivityIndicatorNineDotsAnimation.m in Sources */,
 				382FFA3F231CAF2E0062080E /* ChildLongPress.m in Sources */,
 				38C84A48227827F200BCAD87 /* MLSelectPhotoPickerCollectionViewCell.m in Sources */,
@@ -7250,7 +7249,6 @@
 				38C84A46227827F200BCAD87 /* MLSelectPhotoBrowserViewController.m in Sources */,
 				38C848DD227827F100BCAD87 /* TZImageCropManager.m in Sources */,
 				38C8495B227827F100BCAD87 /* ESMTabBarVC.m in Sources */,
-				381B6B9F22C0EE110018C0C2 /* AliBaseHttpClient.m in Sources */,
 				386BBD8722DDA7FE005E6054 /* GPUImageOpenGLESContext.m in Sources */,
 				386BC05E22DDABA7005E6054 /* DGActivityIndicatorBallZigZagDeflectAnimation.m in Sources */,
 				386BBD9022DDA7FE005E6054 /* GPUImageErosionFilter.m in Sources */,
@@ -7260,7 +7258,6 @@
 				3807246F22CDCCE00035E5B1 /* MasonryCustomView.m in Sources */,
 				3893F39D22CDE472005C30AE /* DHMonthListViewController.m in Sources */,
 				38C8496E227827F100BCAD87 /* DHMyInfoViewController.m in Sources */,
-				381B6BBB22C0EE9B0018C0C2 /* AliRTCLiveViewController.m in Sources */,
 				38C84A47227827F200BCAD87 /* MLSelectPhotoPickerBrowserPhotoImageView.m in Sources */,
 				386BBD7422DDA7FE005E6054 /* GPUImageEmbossFilter.m in Sources */,
 				38C84A3A227827F200BCAD87 /* LxGridViewFlowLayout.m in Sources */,
@@ -7296,6 +7293,7 @@
 				386BBC5922DD9C18005E6054 /* LHStickerView.m in Sources */,
 				38C848FA227827F100BCAD87 /* SGImageButton.m in Sources */,
 				386BBD7822DDA7FE005E6054 /* GPUImageCannyEdgeDetectionFilter.m in Sources */,
+				69231675234E328800A92110 /* JHMessageEntity.m in Sources */,
 				381B6BD822C0EF3F0018C0C2 /* JSONKit.m in Sources */,
 				386BC0D622DDBC1E005E6054 /* DivisionCircleViewController.m in Sources */,
 				38C845382278249900BCAD87 /* AppDelegate.m in Sources */,
@@ -7357,7 +7355,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZV477U5U2X;
+				DEVELOPMENT_TEAM = 74W795UZRB;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				INFOPLIST_FILE = CollegeProExtension/Info.plist;
@@ -7367,7 +7365,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dhTool.CollegePro.CollegeProExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dhTool.selfpro.CollegeProExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -7517,10 +7515,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_ENTITLEMENTS = CollegePro/CollegePro.entitlements;
+				CODE_SIGN_ENTITLEMENTS = CollegePro/CollegeProDebug.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZV477U5U2X;
+				DEVELOPMENT_TEAM = 74W795UZRB;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7608,7 +7606,7 @@
 					"-weak_framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dhTool.CollegePro;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dhTool.selfpro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
