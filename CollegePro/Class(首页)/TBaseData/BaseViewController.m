@@ -196,6 +196,18 @@
         [self dismissViewControllerAnimated:NO completion:nil];
     }
 }
+-(void)backBtnClicked{
+    if (self.navigationController.topViewController == self) {
+        UIViewController *rootVC = self.presentingViewController;
+        while (rootVC.presentingViewController) {
+            rootVC = rootVC.presentingViewController;
+        }
+        [rootVC dismissViewControllerAnimated:YES completion:nil];
+        
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
 -(void)popBack{
 	
 	[self.navigationController popViewControllerAnimated:YES];

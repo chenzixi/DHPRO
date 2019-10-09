@@ -279,6 +279,19 @@ static UILabel *labelLay;
         make.height.equalTo(buttonleft.mas_height);
         make.bottom.equalTo(self.view.mas_bottom);
     }];
+    //增加闪动动画
+    CAMediaTimingFunction *anticipateTiming = [CAMediaTimingFunction functionWithControlPoints:0.42 :-0.30 :1.00 :1.00];
+    CAKeyframeAnimation *kfAnimation = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
+    kfAnimation.duration = 2.000;
+    kfAnimation.values = @[@(1.000), @(0.400), @(1.000)];
+    kfAnimation.keyTimes = @[@(0.000), @(0.500), @(1.000)];
+    kfAnimation.timingFunctions = @[anticipateTiming, anticipateTiming];
+    kfAnimation.repeatCount = HUGE_VALF;
+    kfAnimation.beginTime = 0.23;
+    kfAnimation.fillMode = kCAFillModeBoth;
+    kfAnimation.removedOnCompletion = YES;
+    [buttonleft.layer addAnimation:kfAnimation forKey:@"Untitled Animation_Opacity"];
+
     
     //    [self cres];
     /*

@@ -14,9 +14,10 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - BaiduMapKit (4.4.2)
+  - BaiduMapKit (5.0.0)
   - CocoaSecurity (1.2.4)
-  - IQKeyboardManager (6.4.2)
+  - FBRetainCycleDetector (0.1.4)
+  - IQKeyboardManager (6.5.0)
   - JCore (1.2.6)
   - JPush (3.1.0):
     - JCore (~> 1.2.0)
@@ -24,15 +25,18 @@ PODS:
   - MBProgressHUD (0.9.2)
   - "MBProgressHUD+JDragon (0.0.4)":
     - MBProgressHUD (~> 0.9.2)
-  - MJExtension (3.1.2)
+  - MJExtension (3.2.0)
   - MJRefresh (3.2.0)
+  - MLeaksFinder (1.0.0):
+    - FBRetainCycleDetector
   - pop (1.0.12)
   - SDAutoLayout (2.2.1)
   - SDWebImage (5.1.1):
     - SDWebImage/Core (= 5.1.1)
   - SDWebImage/Core (5.1.1)
   - SVProgressHUD (2.2.5)
-  - TZImagePickerController (3.2.3)
+  - TZImagePickerController (3.2.4)
+  - WKVCDeallocMonitor (0.1.7)
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
@@ -47,11 +51,13 @@ DEPENDENCIES:
   - "MBProgressHUD+JDragon"
   - MJExtension
   - MJRefresh
+  - MLeaksFinder
   - pop (~> 1.0)
   - SDAutoLayout
   - SDWebImage
   - SVProgressHUD
   - TZImagePickerController
+  - WKVCDeallocMonitor
   - YYKit
 
 SPEC REPOS:
@@ -59,6 +65,7 @@ SPEC REPOS:
     - AFNetworking
     - BaiduMapKit
     - CocoaSecurity
+    - FBRetainCycleDetector
     - IQKeyboardManager
     - JCore
     - JPush
@@ -67,32 +74,37 @@ SPEC REPOS:
     - "MBProgressHUD+JDragon"
     - MJExtension
     - MJRefresh
+    - MLeaksFinder
     - pop
     - SDAutoLayout
     - SDWebImage
     - SVProgressHUD
     - TZImagePickerController
+    - WKVCDeallocMonitor
     - YYKit
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  BaiduMapKit: 11acde2e7c06e31b7de60b323880a5eb7c4dccb6
+  BaiduMapKit: 3a875b001293a9ee6692febd549d8bf82108dbac
   CocoaSecurity: d288a6f87e0f363823d2cb83e753814a6944f71a
-  IQKeyboardManager: b41e0a4943fbac4c11a239d31a688667675f962e
+  FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
+  IQKeyboardManager: 700e5155d6a292383b54e8678aec769e14fc78fc
   JCore: cae516dd2bf1a73b578ce6e1065abd49e709e0f7
   JPush: 5921e25ad13e0386351079217b009f2039084eac
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   "MBProgressHUD+JDragon": 51958736b3a9f97adc176371544ffa257a0ba058
-  MJExtension: 81e8e411ced318561dd09334b0c83d8227cef79c
+  MJExtension: e22bed65fdcd38e957242982b7384f2984c9088e
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
+  MLeaksFinder: 8c435bd2f6d070af18cff082b503b21adc130fc0
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   SDAutoLayout: 8bf6b3bbc8b01f775d4defbb4fda2ace805461be
   SDWebImage: 96d7f03415ccb28d299d765f93557ff8a617abd8
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  TZImagePickerController: f321e8db6cd18dc6ac8e23694961c158a9345a87
+  TZImagePickerController: d259369c5c2cc96299e53da868ae5be1b24353cd
+  WKVCDeallocMonitor: be8973246aabdfa9b05504ae0a4ad83d18e6ebbf
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: a63d8de7ba1ae9399e2cae574cae14f59fd43f4e
+PODFILE CHECKSUM: 72e25d607ac4da8554c4301dce911a14e04904b7
 
 COCOAPODS: 1.7.5

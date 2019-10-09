@@ -10,6 +10,49 @@
 
 @implementation UIImage (compressIMG)
 
+/**
+ 渐变色
+
+ @param colors 渐变颜色组
+ @param gradientType 渐变方向 0从上到下 1从左到右
+ @param imgSize 渐变区域
+ @return 返回图片
+ 事例：
+ UIImage *im = [UIImage getGradientImageFromColors:@[[UIColor redColor],[UIColor blueColor]] gradientType:1 imgSize:CGSizeMake(100, 100)];
+
+ */
++ (UIImage *)getGradientImageFromColors:(NSArray*)colors gradientType:(GradientType)gradientType imgSize:(CGSize)imgSize {
+    NSMutableArray *ar = [NSMutableArray array];
+    for(UIColor *c in colors) {
+        [ar addObject:(id)c.CGColor];
+    }
+    UIGraphicsBeginImageContextWithOptions(imgSize, YES, 1);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSaveGState(context);
+    CGColorSpaceRef colorSpace = CGColorGetColorSpace([[colors lastObject] CGColor]);
+    CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef)ar, NULL);
+    CGPoint start;
+    CGPoint end;
+    switch (gradientType) {
+        case GradientTypeTopToBottom:
+            start = CGPointMake(0.0, 0.0);
+            end = CGPointMake(0.0, imgSize.height);
+            break;
+        case GradientTypeLeftToRight:
+            start = CGPointMake(0.0, 0.0);
+            end = CGPointMake(imgSize.width, 0.0);
+            break;
+        default:
+            break;
+    }
+    CGContextDrawLinearGradient(context, gradient, start, end, kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    CGGradientRelease(gradient);
+    CGContextRestoreGState(context);
+    CGColorSpaceRelease(colorSpace);
+    UIGraphicsEndImageContext();
+    return image;
+}
 +(UIImage *)IMGCompressed:(UIImage *)sourceImage targetWidth:(CGFloat)defineWidth
 {
     

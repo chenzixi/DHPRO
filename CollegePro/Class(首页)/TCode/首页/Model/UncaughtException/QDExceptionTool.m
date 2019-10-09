@@ -11,9 +11,6 @@
 static id _instance;
 
 @implementation QDExceptionTool
-
-
-
 + (instancetype)shareExceptionTool{
     
     return [[self alloc]init];

@@ -23,17 +23,14 @@
 -(void)createUI {
     self.backgroundColor = [UIColor clearColor];
     self.frame = CGRectMake(0, 0, DH_DeviceWidth, DH_DeviceHeight);
-
-            UIView *imageView = [[UIView alloc]init];
+    UIView *imageView = [[UIView alloc]init];
     imageView.backgroundColor = [UIColor blueColor];
-            imageView.frame = CGRectMake(0, 0, DH_DeviceWidth, DH_DeviceWidth);
-            imageView.userInteractionEnabled = YES;
+    imageView.frame = CGRectMake(0, 0, DH_DeviceWidth, DH_DeviceWidth);
+    imageView.userInteractionEnabled = YES;
     imageView.tag = 1000;
-            [self addSubview:imageView];
-            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(touchImageView:)];
-            [imageView addGestureRecognizer:tap];
-    
-
+    [self addSubview:imageView];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(touchImageView:)];
+    [imageView addGestureRecognizer:tap];
     [self show];
 }
 - (void)touchImageView:(UITapGestureRecognizer*)tap {

@@ -40,12 +40,14 @@ target "CollegePro" do
   pod 'pop','~>1.0'
 
   pod 'YYKit'
+  
+  pod 'WKVCDeallocMonitor'##内寸检测
+  pod 'MLeaksFinder'
 #pod 'FDFullscreenPopGesture'
 #pod 'WechatOpenSDK'
 #pod 'FBRetainCycleDetector'
 #pod 'AliPaySDK', '~> 1.0'
 #pod 'FSCalendar', '~> 2.6.0'
-#pod 'MLeaksFinder'
 #pod 'YYCache'
 #pod 'ReactiveCocoa', '~> 7.0.1'
 #pod 'ReactiveCocoa', '2.3.1'

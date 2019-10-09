@@ -4,7 +4,7 @@
 //
 //  Created by 谭真 on 15/12/24.
 //  Copyright © 2015年 谭真. All rights reserved.
-//  version 3.2.3 - 2019.09.04
+//  version 3.2.4 - 2019.09.21
 //  更多信息，请前往项目的github地址：https://github.com/banchichen/TZImagePickerController
 
 #import "TZImagePickerController.h"
@@ -21,6 +21,7 @@
     UIButton *_settingBtn;
     BOOL _pushPhotoPickerVc;
     BOOL _didPushPhotoPickerVc;
+    CGRect _cropRect;
     
     UIButton *_progressHUD;
     UIView *_HUDContainer;
@@ -493,6 +494,18 @@
     _cropRectLandscape = CGRectMake((self.view.tz_height - widthHeight) / 2, cropRect.origin.x, widthHeight, widthHeight);
 }
 
+- (CGRect)cropRect {
+    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+    BOOL isFullScreen = self.view.tz_height == screenHeight;
+    if (isFullScreen) {
+        return _cropRect;
+    } else {
+        CGRect newCropRect = _cropRect;
+        newCropRect.origin.y -= ((screenHeight - self.view.tz_height) / 2);
+        return newCropRect;
+    }
+}
+
 - (void)setTimeout:(NSInteger)timeout {
     _timeout = timeout;
     if (timeout < 5) {
@@ -782,9 +795,10 @@
     CGFloat tableViewHeight = 0;
     CGFloat naviBarHeight = self.navigationController.navigationBar.tz_height;
     BOOL isStatusBarHidden = [UIApplication sharedApplication].isStatusBarHidden;
+    BOOL isFullScreen = self.view.tz_height == [UIScreen mainScreen].bounds.size.height;
     if (self.navigationController.navigationBar.isTranslucent) {
         top = naviBarHeight;
-        if (!isStatusBarHidden) top += [TZCommonTools tz_statusBarHeight];
+        if (!isStatusBarHidden && isFullScreen) top += [TZCommonTools tz_statusBarHeight];
         tableViewHeight = self.view.tz_height - top;
     } else {
         tableViewHeight = self.view.tz_height;

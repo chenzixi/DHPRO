@@ -90,6 +90,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 	CustomerTitleModel *model = chatArray[indexPath.row];
 	LHLog(@"");
+    
 	return model.cellHeight;
 }
 

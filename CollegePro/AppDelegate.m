@@ -21,7 +21,14 @@
 //#ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 //#endif
-
+//
+#import <MediaPlayer/MediaPlayerDefines.h>
+#import <MediaPlayer/MPRemoteCommandCenter.h>
+#import <MediaPlayer/MPRemoteCommand.h>
+#import <MediaPlayer/MPNowPlayingInfoCenter.h>
+#import <MediaPlayer/MPContentItem.h>
+#import <MediaPlayer/MPMediaItem.h>
+//
 #import "showView.h"
 #import "DHGuidePageHUD.h"
 #import "TRViewController.h"
@@ -69,11 +76,16 @@
     [overlayClass performSelector:NSSelectorFromString(@"prepareDebuggingOverlay")];
     
 #endif
-
+    //测试
+    [self remoteControlEventHandler];
+    [self updatelockScreenInfo];
     //获取异常
     NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
     InstallSignalHandler();//信号量截断
     InstallUncaughtExceptionHandler();
+    
+    // 在App启动后开启远程控制事件, 接收来自锁屏界面和上拉菜单的控制
+    [application beginReceivingRemoteControlEvents];
     
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
     [SVProgressHUD setMinimumDismissTimeInterval:1.0];
@@ -142,34 +154,40 @@
 
     //如果已经获得发送通知哦的授权则创建本地通知，否则请求授权（注意：如果不请求授权在设置中是没有对应的通知设置项的，也就是说如果从来没有发送过请求，即使通过设置也打不开消息允许设置）
     if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-        center.delegate = self;
-        [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert + UNAuthorizationOptionSound)
-                              completionHandler:^(BOOL granted, NSError * _Nullable error) {
-                                  
-                              }];
-        [center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
-            
-        }];
-        //  > 通知内容
-        UNMutableNotificationContent* content = [[UNMutableNotificationContent alloc] init];
-        // > 通知的title
-        content.title = [NSString localizedUserNotificationStringForKey:@"推送的标题" arguments:nil];
-        // > 通知的要通知内容
-        content.body = [NSString localizedUserNotificationStringForKey:@"======推送的消息体======"
-                                                             arguments:nil];
-        // > 通知的提示声音
-        content.sound = [UNNotificationSound defaultSound];
-        //  > 通知的延时执行
-        UNTimeIntervalNotificationTrigger* trigger = [UNTimeIntervalNotificationTrigger
-                                                      triggerWithTimeInterval:5 repeats:NO];
-        UNNotificationRequest* request = [UNNotificationRequest requestWithIdentifier:@"FiveSecond"
-                                                                              content:content trigger:trigger];
-        //添加推送通知，等待通知即可！
-        [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
-            // > 可在此设置添加后的一些设置
-            // > 例如alertVC。。
-        }];
+        if (@available(iOS 10.0, *)) {
+            UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+            center.delegate = self;
+            [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert + UNAuthorizationOptionSound)
+                                  completionHandler:^(BOOL granted, NSError * _Nullable error) {
+                                      
+                                  }];
+            [center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
+                
+            }];
+            //  > 通知内容
+            UNMutableNotificationContent* content = [[UNMutableNotificationContent alloc] init];
+            // > 通知的title
+            content.title = [NSString localizedUserNotificationStringForKey:@"推送的标题" arguments:nil];
+            // > 通知的要通知内容
+            content.body = [NSString localizedUserNotificationStringForKey:@"======推送的消息体======"
+                                                                 arguments:nil];
+            NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"RTCResource" ofType:@"bundle"];
+            NSBundle *resourceBundle = [NSBundle bundleWithPath:@"/Users/jabraknight/Downloads/综合项目/ColligateDHPro/DHPRO/CollegePro/Class(首页)/TCode/记事本/Resources/oppo.mp3"];
+            // > 通知的提示声音
+            content.sound = bundlePath;//[UNNotificationSound defaultSound];
+            //  > 通知的延时执行
+            UNTimeIntervalNotificationTrigger* trigger = [UNTimeIntervalNotificationTrigger
+                                                          triggerWithTimeInterval:5 repeats:NO];
+            UNNotificationRequest* request = [UNNotificationRequest requestWithIdentifier:@"FiveSecond"
+                                                                                  content:content trigger:trigger];
+            //添加推送通知，等待通知即可！
+            [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+                // > 可在此设置添加后的一些设置
+                // > 例如alertVC。。
+            }];
+        } else {
+            // Fallback on earlier versions
+        }
     }
 /*
 
@@ -333,6 +351,8 @@
 #pragma mark -程序即将退出 App完全退出
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    // 在App要终止前结束接收远程控制事件, 也可以在需要终止时调用该方法终止
+    [application endReceivingRemoteControlEvents];
 }
 #pragma mark  -iOS 10: 点击通知进入App时触发，在该方法内统计有效用户点击数
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler  API_AVAILABLE(ios(10.0)){
@@ -463,7 +483,7 @@
 }
 
 // iOS 10 Support
-- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler  API_AVAILABLE(ios(10.0)) API_AVAILABLE(ios(10.0)){
     // Required
     NSDictionary * userInfo = response.notification.request.content.userInfo;
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
@@ -471,10 +491,131 @@
     }
     completionHandler();  // 系统要求执行这个方法
 }
+
 #pragma mark -极光推送⬆️
 #pragma mark 移除本地通知，在不需要此通知时记得移除
 -(void)removeNotification{
+
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
+}
+// 在具体的控制器或其它类中捕获处理远程控制事件
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event
+{
+    // 根据事件的子类型(subtype) 来判断具体的事件类型, 并做出处理
+    switch (event.subtype) {
+        case UIEventSubtypeRemoteControlPlay:
+        case UIEventSubtypeRemoteControlPause: {
+            NSLog(@"执行播放或暂停的相关操作 (锁屏界面和上拉快捷功能菜单处的播放按钮)");
+            break;
+        }
+        case UIEventSubtypeRemoteControlPreviousTrack: {
+            NSLog(@"执行上一曲的相关操作 (锁屏界面和上拉快捷功能菜单处的上一曲按钮)");
+            break;
+        }
+        case UIEventSubtypeRemoteControlNextTrack: {
+            NSLog(@"执行下一曲的相关操作 (锁屏界面和上拉快捷功能菜单处的下一曲按钮)");
+            break;
+        }
+        case UIEventSubtypeRemoteControlTogglePlayPause: {
+            NSLog(@"进行播放/暂停的相关操作 (耳机的播放/暂停按钮)");
+            break;
+        }
+        default:
+            break;
+    }
+}
+// 在需要处理远程控制事件的具体控制器或其它类中实现
+- (void)remoteControlEventHandler
+{
+    // 直接使用sharedCommandCenter来获取MPRemoteCommandCenter的shared实例
+    MPRemoteCommandCenter *commandCenter = [MPRemoteCommandCenter sharedCommandCenter];
+    
+    // 启用播放命令 (锁屏界面和上拉快捷功能菜单处的播放按钮触发的命令)
+    commandCenter.playCommand.enabled = YES;
+    // 为播放命令添加响应事件, 在点击后触发
+    [commandCenter.playCommand addTarget:self action:@selector(playAction:)];
+    
+    // 播放, 暂停, 上下曲的命令默认都是启用状态, 即enabled默认为YES
+    // 为暂停, 上一曲, 下一曲分别添加对应的响应事件
+    [commandCenter.pauseCommand addTarget:self action:@selector(pauseAction:)];
+    [commandCenter.previousTrackCommand addTarget:self action:@selector(previousTrackAction:)];
+    [commandCenter.nextTrackCommand addTarget:self action:@selector(nextTrackAction:)];
+
+    // 启用耳机的播放/暂停命令 (耳机上的播放按钮触发的命令)
+    commandCenter.togglePlayPauseCommand.enabled = YES;
+    // 为耳机的按钮操作添加相关的响应事件
+    [commandCenter.togglePlayPauseCommand addTarget:self action:@selector(playOrPauseAction:)];
+    
+    // 添加"喜欢"按钮, 需要启用, 并且设置了相关Action后才会生效
+    [MPRemoteCommandCenter sharedCommandCenter].likeCommand.enabled = YES;
+    [[MPRemoteCommandCenter sharedCommandCenter].likeCommand addTarget:self action:@selector(likeItemAction)];
+    [MPRemoteCommandCenter sharedCommandCenter].likeCommand.localizedTitle = @"喜欢";
+    
+    // 添加"不喜欢"按钮
+    [MPRemoteCommandCenter sharedCommandCenter].dislikeCommand.enabled = YES;
+    // 自定义该按钮的响应事件, 实现在点击"不喜欢"时去执行上一首的功能
+    [[MPRemoteCommandCenter sharedCommandCenter].dislikeCommand
+     addTarget:self action:@selector(previousCommandAction)];
+    [MPRemoteCommandCenter
+     // 自定义"不喜欢"的标题, 伪装成"上一首"
+     sharedCommandCenter].dislikeCommand.localizedTitle = @"上一首";
+}
+- (void)updatelockScreenInfo
+{
+    // 直接使用defaultCenter来获取MPNowPlayingInfoCenter的默认唯一实例
+    MPNowPlayingInfoCenter *infoCenter = [MPNowPlayingInfoCenter defaultCenter];
+    
+    // MPMediaItemArtwork 用来表示锁屏界面图片的类型
+//    MPMediaItemArtwork *artwork = [[MPMediaItemArtwork alloc]     initWithImage:[UIImage imageNamed:@"cell.png"]];
+    UIImage *img = [UIImage imageNamed:@"cell.png"];
+    if (@available(iOS 10.0, *)) {
+        MPMediaItemArtwork *artwork = [[MPMediaItemArtwork alloc]     initWithBoundsSize:CGSizeMake(100, 100) requestHandler:^UIImage * _Nonnull(CGSize size) {
+            return img;
+        }];
+        
+        
+        // 通过配置nowPlayingInfo的值来更新锁屏界面的信息
+        infoCenter.nowPlayingInfo = @{
+                                      // 歌曲名
+                                      MPMediaItemPropertyTitle : @"过火",
+                                      // 艺术家名
+                                      MPMediaItemPropertyArtist : @"张信哲",
+                                      // 专辑名字
+                                      MPMediaItemPropertyAlbumTitle : @"宽容",
+                                      // 歌曲总时长
+                                      MPMediaItemPropertyPlaybackDuration : @(3.0),
+                                      // 歌曲的当前时间
+                                      MPNowPlayingInfoPropertyElapsedPlaybackTime : @(0.0),
+                                      // 歌曲的插图, 类型是MPMeidaItemArtwork对象
+                                      MPMediaItemPropertyArtwork : artwork,
+                                      
+                                      // 无效的, 歌词的展示是通过图片绘制完成的, 即将歌词绘制到歌曲插图, 通过更新插图来实现歌词的更新的
+                                      // MPMediaItemPropertyLyrics : lyric.content,
+                                      };
+    } else {
+        // Fallback on earlier versions
+    }
+}
+- (void)playAction:(id)action{
+    NSLog(@"播放");
+}
+- (void)pauseAction:(id)action{
+    NSLog(@"暂停");
+}
+- (void)nextTrackAction:(id)action{
+    NSLog(@"下一曲");
+}
+- (void)previousTrackAction:(id)action{
+    NSLog(@"暂停");
+}
+- (void)playOrPauseAction:(id)action{
+    NSLog(@"耳机的按钮");
+}
+- (void)likeItemAction{
+    NSLog(@"喜欢");
+}
+- (void)previousCommandAction{
+    NSLog(@"不喜欢");
 }
 //#pragma mark - 私有方法
 //#pragma mark 添加本地通知
@@ -685,13 +826,17 @@
 - (void)keepRunning {
     [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil];
     __weak typeof(self) weakSelf = self;
-    self.timer_alarm = [NSTimer timerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
-        NSLog(@"后台运行时间 %d",num);
-        weakSelf.number_alarm++;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [UIApplication sharedApplication].applicationIconBadgeNumber = weakSelf.number_alarm;
-        });
-    }];
+    if (@available(iOS 10.0, *)) {
+        self.timer_alarm = [NSTimer timerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+            NSLog(@"后台运行时间 %d",self->num);
+            weakSelf.number_alarm++;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [UIApplication sharedApplication].applicationIconBadgeNumber = weakSelf.number_alarm;
+            });
+        }];
+    } else {
+        // Fallback on earlier versions
+    }
     [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
 }
 

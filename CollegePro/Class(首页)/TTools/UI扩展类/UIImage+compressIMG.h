@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+//gradientType 渐变方向 0从上到下 1从左到右
+typedef NS_ENUM(NSInteger, GradientType) {
+    GradientTypeTopToBottom,
+    GradientTypeLeftToRight
+};
 @interface UIImage (compressIMG)
-
++ (UIImage *)getGradientImageFromColors:(NSArray*)colors gradientType:(GradientType)gradientType imgSize:(CGSize)imgSize;
 /**
  *  图片的压缩方法
  *

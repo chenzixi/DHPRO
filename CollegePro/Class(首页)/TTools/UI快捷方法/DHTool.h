@@ -93,4 +93,5 @@
  */
 + (NSMutableAttributedString *)addWithName:(UILabel *)label more:(NSString *)morestr nameDict:(NSDictionary *)nameDict moreDict:(NSDictionary *)moreDict numberOfLines:(NSInteger)num;
 
++(NSString *)dataInMyCollectionData:(NSString *)dateStr;
 @end

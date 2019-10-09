@@ -217,7 +217,7 @@
 - (void)runCompletionBlock {
     
     if (self.completionBlock) {
-        self.completionBlock();
+        self.completionBlock(0.0);
         self.completionBlock = nil;
     }
 }

@@ -422,7 +422,13 @@
         ctrl.title = _titles[indexPath.row];
         pushVC(ctrl);
     }
-    
+    /* //ios 13
+     [AppDelegate sharedAppDelegate].rootTabbar = [[RootViewController alloc]init];
+     [AppDelegate sharedAppDelegate].rootTabbar.modalPresentationStyle = UIModalPresentationFullScreen;
+     [self presentViewController:[AppDelegate sharedAppDelegate].rootTabbar animated:YES completion:^{
+     
+     }];
+     */
     
 }
 //l多少列

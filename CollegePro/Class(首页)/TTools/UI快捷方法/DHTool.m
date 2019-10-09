@@ -507,7 +507,66 @@
     CGColorSpaceRelease(colorSpace);
     return retVal;
 }
++(NSString *)dataInMyCollectionData:(NSString *)dateStr {
+    NSRange rangeBegin = [dateStr rangeOfString:@"("];
+    NSRange rangeEnd = [dateStr rangeOfString:@"+"];
+    if (rangeBegin.location != NSNotFound && rangeEnd.location != NSNotFound) {
+        NSString *realtme = [dateStr substringWithRange:NSMakeRange(rangeBegin.location + 1, rangeEnd.location - rangeBegin.location - 1)];
+        return [self getTimeStringWithTimeInterval:[realtme doubleValue]/1000];
+    } else {
+        return dateStr;
+    }
+}
 
++ (NSString *)getTimeStringWithTimeInterval:(double)tInterval {
+    //    发布时间显示规则：发布新闻的时间与手机系统时间的差值，时间间隔为，一个小时内则显示xx分钟前，如11分钟前，52分钟前，10分钟前显示刚刚；一小时后显示xx小时前，如3小时前，23小时前；超过一天则显示具体月日，如01-21；跨年则显示具体年月日，如2014-01-02
+    NSDate *origion = [NSDate dateWithTimeIntervalSince1970:tInterval];
+    NSDate *currentDate = [NSDate date];
+    NSString *str = nil;
+    NSInteger startYear=[[NSCalendar currentCalendar] ordinalityOfUnit:NSYearCalendarUnit inUnit: NSEraCalendarUnit forDate:origion];
+    NSInteger endYear=[[NSCalendar currentCalendar] ordinalityOfUnit:NSYearCalendarUnit inUnit: NSEraCalendarUnit forDate:currentDate];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"zh-CN"]];
+    if (endYear > startYear) {
+        formatter.dateFormat = @"yyyy-MM-dd";
+        NSDate *dt = origion;
+        str = [formatter stringFromDate:dt];
+    } else {
+        NSTimeInterval time=[currentDate timeIntervalSinceDate:origion];
+        long nMinutes = time/60;
+        if (nMinutes >= 24 * 60  ) {
+            formatter.dateFormat = @"MM-dd";
+            NSDate *dt = origion;
+            str = [formatter stringFromDate:dt];
+        } else if (nMinutes >= 20*60){
+            str = [NSString stringWithFormat:@"20小时前"];
+        } else if (nMinutes >= 10*60){
+            str = [NSString stringWithFormat:@"10小时前"];
+        } else if (nMinutes >= 5*60){
+            str = [NSString stringWithFormat:@"5小时前"];
+        } else if (nMinutes >= 3*60){
+            str = [NSString stringWithFormat:@"3小时前"];
+        } else if (nMinutes >= 1*60) {
+            str = [NSString stringWithFormat:@"1小时前"];
+        } else if (nMinutes >= 50){
+            str = [NSString stringWithFormat:@"50分钟前"];
+        } else if (nMinutes >= 40){
+            str = [NSString stringWithFormat:@"40分钟前"];
+        } else if (nMinutes >= 30){
+            str = [NSString stringWithFormat:@"30分钟前"];
+        } else if (nMinutes >= 20){
+            str = [NSString stringWithFormat:@"20分钟前"];
+        } else if (nMinutes >= 10) {
+            str = [NSString stringWithFormat:@"10分钟前"];
+        } else {
+            str = @"刚刚";
+        }
+    }
+    if (!str) {
+        str = [NSString stringWithFormat:@"%f",tInterval];
+    }
+    return str;
+}
 /////利用图像遮盖
 
 //+ (UIImage*)maskImage:(UIImage *)image withMask:(UIImage *)maskImage

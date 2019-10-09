@@ -83,7 +83,6 @@
 		384C3FCF22887D7A00F01586 /* MVVMViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FBB22887D7900F01586 /* MVVMViewModel.m */; };
 		384C3FD022887D7A00F01586 /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FBC22887D7900F01586 /* BaseViewModel.m */; };
 		384C3FD122887D7A00F01586 /* MVVMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FBD22887D7900F01586 /* MVVMViewController.m */; };
-		384C3FD422887FE100F01586 /* HAMLogOutputWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FD322887FE100F01586 /* HAMLogOutputWindow.m */; };
 		384C3FDE228881F800F01586 /* Persion.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FDA228881F700F01586 /* Persion.m */; };
 		384C3FDF228881F800F01586 /* KYDog.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FDB228881F700F01586 /* KYDog.m */; };
 		384C3FE922888DBF00F01586 /* ZQVariableMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FE222888DBF00F01586 /* ZQVariableMenuView.m */; };
@@ -404,6 +403,7 @@
 		3874BB422331CB1400C05C90 /* CViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3874BB402331CB1200C05C90 /* CViewController.m */; };
 		387AE6422321103B00EADE4B /* MyCreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 387AE6412321103B00EADE4B /* MyCreView.m */; };
 		387AE6452321109900EADE4B /* MyRectangleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 387AE6442321109900EADE4B /* MyRectangleViewController.m */; };
+		387F18F4233C674100C25F63 /* DHRadianLayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F18F3233C674000C25F63 /* DHRadianLayerView.m */; };
 		38862C4322BA004800231140 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38862C4222BA004800231140 /* CFNetwork.framework */; };
 		38862C4522BA006A00231140 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38862C4422BA006A00231140 /* CoreFoundation.framework */; };
 		38862C4722BA007000231140 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38862C4622BA007000231140 /* CoreTelephony.framework */; };
@@ -921,6 +921,7 @@
 		38D5CEF222965C6000323648 /* backgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38D5CEF122965C6000323648 /* backgroundView.m */; };
 		38D5CEF5229661C400323648 /* ShowAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38D5CEF4229661C400323648 /* ShowAnimationView.m */; };
 		38D9CEEF229D0B6200CDBA88 /* TodayTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38D9CEEE229D0B6200CDBA88 /* TodayTableHeaderView.m */; };
+		38E416AD2338800600FD84D8 /* HAMLogOutputWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E416AB2338800600FD84D8 /* HAMLogOutputWindow.m */; };
 		38E97EDB22D5CD8E00A70112 /* MQHButtonsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E97EDA22D5CD8D00A70112 /* MQHButtonsView.m */; };
 		38E97EDE22D5CD9B00A70112 /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E97EDC22D5CD9500A70112 /* PopoverView.m */; };
 		38E97EE322D5CEC100A70112 /* HCWProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E97EE022D5CEC100A70112 /* HCWProgressHUD.m */; };
@@ -1110,8 +1111,6 @@
 		384C3FBE22887D7900F01586 /* MVVMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVVMViewController.h; sourceTree = "<group>"; };
 		384C3FBF22887D7900F01586 /* MVVMViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVVMViewModel.h; sourceTree = "<group>"; };
 		384C3FC022887D7900F01586 /* BaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewModel.h; sourceTree = "<group>"; };
-		384C3FD222887FE100F01586 /* HAMLogOutputWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAMLogOutputWindow.h; path = "../../../../../../项目/TuBo/TuBo/HAMLogOutputWindow.h"; sourceTree = "<group>"; };
-		384C3FD322887FE100F01586 /* HAMLogOutputWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAMLogOutputWindow.m; path = "../../../../../../项目/TuBo/TuBo/HAMLogOutputWindow.m"; sourceTree = "<group>"; };
 		384C3FDA228881F700F01586 /* Persion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Persion.m; sourceTree = "<group>"; };
 		384C3FDB228881F700F01586 /* KYDog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYDog.m; sourceTree = "<group>"; };
 		384C3FDC228881F700F01586 /* Persion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Persion.h; sourceTree = "<group>"; };
@@ -1654,6 +1653,8 @@
 		387AE6412321103B00EADE4B /* MyCreView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCreView.m; sourceTree = "<group>"; };
 		387AE6432321109900EADE4B /* MyRectangleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyRectangleViewController.h; sourceTree = "<group>"; };
 		387AE6442321109900EADE4B /* MyRectangleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyRectangleViewController.m; sourceTree = "<group>"; };
+		387F18F2233C674000C25F63 /* DHRadianLayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHRadianLayerView.h; sourceTree = "<group>"; };
+		387F18F3233C674000C25F63 /* DHRadianLayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHRadianLayerView.m; sourceTree = "<group>"; };
 		38862C4222BA004800231140 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		38862C4422BA006A00231140 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		38862C4622BA007000231140 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -2518,6 +2519,8 @@
 		38D5CEF4229661C400323648 /* ShowAnimationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowAnimationView.m; sourceTree = "<group>"; };
 		38D9CEED229D0B6100CDBA88 /* TodayTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayTableHeaderView.h; sourceTree = "<group>"; };
 		38D9CEEE229D0B6200CDBA88 /* TodayTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayTableHeaderView.m; sourceTree = "<group>"; };
+		38E416AB2338800600FD84D8 /* HAMLogOutputWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAMLogOutputWindow.m; sourceTree = "<group>"; };
+		38E416AC2338800600FD84D8 /* HAMLogOutputWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAMLogOutputWindow.h; sourceTree = "<group>"; };
 		38E97ED922D5CD8900A70112 /* MQHButtonsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQHButtonsView.h; sourceTree = "<group>"; };
 		38E97EDA22D5CD8D00A70112 /* MQHButtonsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQHButtonsView.m; sourceTree = "<group>"; };
 		38E97EDC22D5CD9500A70112 /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverView.m; sourceTree = "<group>"; };
@@ -4113,8 +4116,12 @@
 		38C8454E227827EF00BCAD87 /* TLib */ = {
 			isa = PBXGroup;
 			children = (
+				38E416AC2338800600FD84D8 /* HAMLogOutputWindow.h */,
+				38E416AB2338800600FD84D8 /* HAMLogOutputWindow.m */,
 				38C84589227827EF00BCAD87 /* ALiAlertView.h */,
 				38C845B5227827EF00BCAD87 /* ALiAlertView.m */,
+				387F18F2233C674000C25F63 /* DHRadianLayerView.h */,
+				387F18F3233C674000C25F63 /* DHRadianLayerView.m */,
 				38C2D0B122D5E27600CF30CA /* ASIHttpRequest */,
 				38C84588227827EF00BCAD87 /* ChineseString.h */,
 				38C845B6227827EF00BCAD87 /* ChineseString.m */,
@@ -4126,8 +4133,6 @@
 				38C8458A227827EF00BCAD87 /* GragView.h */,
 				38C84551227827EF00BCAD87 /* GragView.m */,
 				38C845B2227827EF00BCAD87 /* GYChangeTextView */,
-				384C3FD222887FE100F01586 /* HAMLogOutputWindow.h */,
-				384C3FD322887FE100F01586 /* HAMLogOutputWindow.m */,
 				38E97EDF22D5CEC100A70112 /* HCWProgressHUD */,
 				38C84593227827EF00BCAD87 /* iCarousel.h */,
 				38C8454F227827EF00BCAD87 /* iCarousel.m */,
@@ -5936,7 +5941,7 @@
 				387AE63F2321101C00EADE4B /* 仪表哦盘 */,
 				383F16DB23169B45005F085F /* 仪表盘 */,
 				383F11F42315524C005F085F /* 分值表盘 */,
-				38C848A0227827F000BCAD87 /*  碰撞球 */,
+				38C848A0227827F000BCAD87 /* 碰撞球 */,
 				38C848A4227827F000BCAD87 /* 动画练习1 */,
 				38C848AB227827F000BCAD87 /* 购物车动画 */,
 				38C848AF227827F000BCAD87 /* 咖啡机 */,
@@ -5944,12 +5949,12 @@
 			path = "动画";
 			sourceTree = "<group>";
 		};
-		38C848A0227827F000BCAD87 /*  碰撞球 */ = {
+		38C848A0227827F000BCAD87 /* 碰撞球 */ = {
 			isa = PBXGroup;
 			children = (
 				38C848A1227827F000BCAD87 /* Controller */,
 			);
-			path = " 碰撞球";
+			path = "碰撞球";
 			sourceTree = "<group>";
 		};
 		38C848A1227827F000BCAD87 /* Controller */ = {
@@ -6795,7 +6800,6 @@
 				38C84A05227827F200BCAD87 /* DHNoteJoyViewController.m in Sources */,
 				38C8490D227827F100BCAD87 /* BaseNavigationController.m in Sources */,
 				38C8492A227827F100BCAD87 /* NetWork.m in Sources */,
-				384C3FD422887FE100F01586 /* HAMLogOutputWindow.m in Sources */,
 				38C849EA227827F200BCAD87 /* JPCarModel.m in Sources */,
 				38C84A20227827F200BCAD87 /* PayViewController.m in Sources */,
 				386BBDE122DDA7FF005E6054 /* GPUImageLightenBlendFilter.m in Sources */,
@@ -7074,6 +7078,7 @@
 				38C84949227827F100BCAD87 /* AutoLayoutViewController.m in Sources */,
 				383F11FC23155A37005F085F /* CreditNumViewController.m in Sources */,
 				386BBDC322DDA7FF005E6054 /* GPUImageMonochromeFilter.m in Sources */,
+				38E416AD2338800600FD84D8 /* HAMLogOutputWindow.m in Sources */,
 				38C84A58227827F200BCAD87 /* QRCodeBacgrouView.m in Sources */,
 				38345BA322B0BD4300FBE78B /* PictureSelectionController.mm in Sources */,
 				38C84934227827F100BCAD87 /* QQListViewController.m in Sources */,
@@ -7130,6 +7135,7 @@
 				38C848E3227827F100BCAD87 /* TZPhotoPreviewController.m in Sources */,
 				381B6BB022C0EE890018C0C2 /* DataItem.m in Sources */,
 				38C84A65227827F200BCAD87 /* TMotionViewController.m in Sources */,
+				387F18F4233C674100C25F63 /* DHRadianLayerView.m in Sources */,
 				38C84A06227827F200BCAD87 /* EditNoteViewController.m in Sources */,
 				383F16E123169D2C005F085F /* indicatorCrView.m in Sources */,
 				382FFA52231CBD710062080E /* anitimalViewController.m in Sources */,
@@ -7536,7 +7542,7 @@
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CollegePro/TestHeader.pch";
 				INFOPLIST_FILE = CollegePro/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -7641,7 +7647,7 @@
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CollegePro/TestHeader.pch";
 				INFOPLIST_FILE = CollegePro/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
