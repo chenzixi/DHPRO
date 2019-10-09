@@ -41,6 +41,8 @@
 		381B6BE922C0F2B10018C0C2 /* AliRTCSdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 381B6BA322C0EE400018C0C2 /* AliRTCSdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		38274D53229EB00F00185C09 /* DHSendRunObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 38274D52229EB00F00185C09 /* DHSendRunObject.m */; };
 		38274D56229EB80000185C09 /* DHTimeoutAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38274D55229EB80000185C09 /* DHTimeoutAppDelegate.m */; };
+		382A31D7234E30EB0020FD29 /* SphericaLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 382A31D3234E30EB0020FD29 /* SphericaLayout.m */; };
+		382A31D8234E30EB0020FD29 /* ThreeDimensionalSphericalLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 382A31D5234E30EB0020FD29 /* ThreeDimensionalSphericalLayout.m */; };
 		382B6F7523347CC100CD2497 /* DBSphereViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 382B6F7423347CC100CD2497 /* DBSphereViewController.m */; };
 		382B6F7B23347D0200CD2497 /* DBSphereView.m in Sources */ = {isa = PBXBuildFile; fileRef = 382B6F7A23347D0200CD2497 /* DBSphereView.m */; };
 		382B6F832334BFE900CD2497 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 382B6F822334BFE900CD2497 /* HealthKit.framework */; };
@@ -429,8 +431,6 @@
 		38A99B42229BD1C000D52230 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38A99B40229BD1C000D52230 /* MainInterface.storyboard */; };
 		38A99B46229BD1C000D52230 /* CollegeProExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 38A99B39229BD1C000D52230 /* CollegeProExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		38C031422300553600B4B364 /* DHTabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C031412300553600B4B364 /* DHTabbarViewController.m */; };
-		38C0318E2301665F00B4B364 /* ThreeDimensionalSphericalLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C0318D2301665F00B4B364 /* ThreeDimensionalSphericalLayout.m */; };
-		38C03191230166F200B4B364 /* SphericaLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C03190230166F200B4B364 /* SphericaLayout.m */; };
 		38C2D0C922D5E27700CF30CA /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C2D0B222D5E27600CF30CA /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		38C2D0CA22D5E27700CF30CA /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C2D0B322D5E27600CF30CA /* ASIHTTPRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		38C2D0CB22D5E27700CF30CA /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C2D0B622D5E27600CF30CA /* ASIFormDataRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -1023,6 +1023,10 @@
 		38274D52229EB00F00185C09 /* DHSendRunObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DHSendRunObject.m; sourceTree = "<group>"; };
 		38274D54229EB80000185C09 /* DHTimeoutAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHTimeoutAppDelegate.h; sourceTree = "<group>"; };
 		38274D55229EB80000185C09 /* DHTimeoutAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DHTimeoutAppDelegate.m; sourceTree = "<group>"; };
+		382A31D2234E30EB0020FD29 /* SphericaLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SphericaLayout.h; sourceTree = "<group>"; };
+		382A31D3234E30EB0020FD29 /* SphericaLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SphericaLayout.m; sourceTree = "<group>"; };
+		382A31D5234E30EB0020FD29 /* ThreeDimensionalSphericalLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeDimensionalSphericalLayout.m; sourceTree = "<group>"; };
+		382A31D6234E30EB0020FD29 /* ThreeDimensionalSphericalLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeDimensionalSphericalLayout.h; sourceTree = "<group>"; };
 		382B6F7323347CC100CD2497 /* DBSphereViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBSphereViewController.h; sourceTree = "<group>"; };
 		382B6F7423347CC100CD2497 /* DBSphereViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBSphereViewController.m; sourceTree = "<group>"; };
 		382B6F7723347D0200CD2497 /* DBPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBPoint.h; sourceTree = "<group>"; };
@@ -1696,10 +1700,6 @@
 		38A99B43229BD1C000D52230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38C031402300553600B4B364 /* DHTabbarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHTabbarViewController.h; sourceTree = "<group>"; };
 		38C031412300553600B4B364 /* DHTabbarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DHTabbarViewController.m; sourceTree = "<group>"; };
-		38C0318C2301665F00B4B364 /* ThreeDimensionalSphericalLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThreeDimensionalSphericalLayout.h; sourceTree = "<group>"; };
-		38C0318D2301665F00B4B364 /* ThreeDimensionalSphericalLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThreeDimensionalSphericalLayout.m; sourceTree = "<group>"; };
-		38C0318F230166F200B4B364 /* SphericaLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SphericaLayout.h; sourceTree = "<group>"; };
-		38C03190230166F200B4B364 /* SphericaLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SphericaLayout.m; sourceTree = "<group>"; };
 		38C2D0B222D5E27600CF30CA /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
 		38C2D0B322D5E27600CF30CA /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
 		38C2D0B422D5E27600CF30CA /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
@@ -2650,6 +2650,33 @@
 				381B6BD022C0EF3E0018C0C2 /* JSONKit.h */,
 			);
 			path = JSONKit;
+			sourceTree = "<group>";
+		};
+		382A31D0234E30EB0020FD29 /* ThreeDimensional */ = {
+			isa = PBXGroup;
+			children = (
+				382A31D1234E30EB0020FD29 /* Model */,
+				382A31D4234E30EB0020FD29 /* ViewController */,
+			);
+			path = ThreeDimensional;
+			sourceTree = "<group>";
+		};
+		382A31D1234E30EB0020FD29 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				382A31D2234E30EB0020FD29 /* SphericaLayout.h */,
+				382A31D3234E30EB0020FD29 /* SphericaLayout.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		382A31D4234E30EB0020FD29 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				382A31D5234E30EB0020FD29 /* ThreeDimensionalSphericalLayout.m */,
+				382A31D6234E30EB0020FD29 /* ThreeDimensionalSphericalLayout.h */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		382B6F7223347C9200CD2497 /* DBSphere */ = {
@@ -3988,41 +4015,6 @@
 			path = CollegeProExtension;
 			sourceTree = "<group>";
 		};
-		38C031882301661500B4B364 /* ThreeDimensional */ = {
-			isa = PBXGroup;
-			children = (
-				38C031892301661500B4B364 /* Model */,
-				38C0318A2301661500B4B364 /* View */,
-				38C0318B2301661500B4B364 /* ViewController */,
-			);
-			path = ThreeDimensional;
-			sourceTree = "<group>";
-		};
-		38C031892301661500B4B364 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				38C0318F230166F200B4B364 /* SphericaLayout.h */,
-				38C03190230166F200B4B364 /* SphericaLayout.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		38C0318A2301661500B4B364 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		38C0318B2301661500B4B364 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				38C0318C2301665F00B4B364 /* ThreeDimensionalSphericalLayout.h */,
-				38C0318D2301665F00B4B364 /* ThreeDimensionalSphericalLayout.m */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
 		38C2D0B122D5E27600CF30CA /* ASIHttpRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -4499,9 +4491,9 @@
 		38C84631227827EF00BCAD87 /* TCode */ = {
 			isa = PBXGroup;
 			children = (
+				382A31D0234E30EB0020FD29 /* ThreeDimensional */,
 				382B6F7223347C9200CD2497 /* DBSphere */,
 				382FFA31231CAE440062080E /* YoungSphere */,
-				38C031882301661500B4B364 /* ThreeDimensional */,
 				386BC0D122DDBBF8005E6054 /* DivisionCircle */,
 				386BC0A922DDB543005E6054 /* CardAnimate */,
 				386BC07722DDB16A005E6054 /* DraggableCard */,
@@ -6985,6 +6977,7 @@
 				38C848FE227827F100BCAD87 /* IncludeNibTableViewCell.m in Sources */,
 				386BBB3D22DC8EE0005E6054 /* FFKPViewController.m in Sources */,
 				38C849DB227827F200BCAD87 /* GZTableViewCell.m in Sources */,
+				382A31D8234E30EB0020FD29 /* ThreeDimensionalSphericalLayout.m in Sources */,
 				38C8492F227827F100BCAD87 /* LHCacheTool.m in Sources */,
 				38C848D3227827F100BCAD87 /* DHGuidePageHUD.m in Sources */,
 				386BBDD422DDA7FF005E6054 /* GPUImageCrosshatchFilter.m in Sources */,
@@ -7058,6 +7051,7 @@
 				386BBD9322DDA7FE005E6054 /* GPUImageSaturationFilter.m in Sources */,
 				38C84931227827F100BCAD87 /* SFNetWorkManager.m in Sources */,
 				38C84A54227827F200BCAD87 /* QRCodeViewController.m in Sources */,
+				382A31D7234E30EB0020FD29 /* SphericaLayout.m in Sources */,
 				38C849E2227827F200BCAD87 /* ZJBLTimerButton.m in Sources */,
 				38C84907227827F100BCAD87 /* CustomDateView.m in Sources */,
 				386BBD9622DDA7FE005E6054 /* GPUImagePixellateFilter.m in Sources */,
@@ -7263,7 +7257,6 @@
 				3830BC7822CB649E005C7915 /* JSONModelClassProperty.m in Sources */,
 				38E97EDB22D5CD8E00A70112 /* MQHButtonsView.m in Sources */,
 				38C84987227827F100BCAD87 /* ShowViewController.m in Sources */,
-				38C03191230166F200B4B364 /* SphericaLayout.m in Sources */,
 				3807246F22CDCCE00035E5B1 /* MasonryCustomView.m in Sources */,
 				3893F39D22CDE472005C30AE /* DHMonthListViewController.m in Sources */,
 				38C8496E227827F100BCAD87 /* DHMyInfoViewController.m in Sources */,
@@ -7311,7 +7304,6 @@
 				386BBD7222DDA7FE005E6054 /* GPUImageNonMaximumSuppressionFilter.m in Sources */,
 				38C8495A227827F100BCAD87 /* ESMTwoViewController.m in Sources */,
 				386BBDDD22DDA7FF005E6054 /* GPUImageBulgeDistortionFilter.m in Sources */,
-				38C0318E2301665F00B4B364 /* ThreeDimensionalSphericalLayout.m in Sources */,
 				38C84913227827F100BCAD87 /* NSMutableArray+Util.m in Sources */,
 				386BBD8222DDA7FE005E6054 /* GPUImageHistogramGenerator.m in Sources */,
 				386BBD9D22DDA7FF005E6054 /* GLProgram.m in Sources */,
