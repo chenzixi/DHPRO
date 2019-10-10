@@ -45,6 +45,20 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>MPMediaItemPropertyAlbumTitle</key>
+	<string>专辑的标题</string>
+	<key>MPMediaItemPropertyArtist</key>
+	<string> media item的创作者</string>
+	<key>MPMediaItemPropertyArtwork</key>
+	<string>media item的插图</string>
+	<key>MPMediaItemPropertyPlaybackDuration</key>
+	<string>media item的播放总时长，value是表示包装了时长秒数(NSTimeInterval)的NSNumber类型</string>
+	<key>MPMediaItemPropertyTitle</key>
+	<string>media item的名字或标题. 该属性与MPMediaItemPropertyAlbumTitle属性无关, value是NSString对象</string>
+	<key>MPNowPlayingInfoPropertyElapsedPlaybackTime</key>
+	<string>当前播放的item所消逝的时间(歌曲当前时间), 单位为秒</string>
+	<key>MPNowPlayingInfoPropertyPlaybackRate</key>
+	<string>当前播放的item的播放速率, value为1.0表示正常的播放速率</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -79,25 +93,11 @@
 	<key>NSMotionUsageDescription - 2</key>
 	<string>访问运动与健身</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>动画工具&quot;需要访问您的相册</string>
+	<string>动画工具"需要访问您的相册</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Photo Library Usage Description</string>
 	<key>NSPhotoLibraryUsageDescription - 2</key>
 	<string>Photo Library Usage Description</string>
-	<key>MPMediaItemPropertyAlbumTitle</key>
-	<string>专辑的标题</string>
-	<key>MPMediaItemPropertyArtwork</key>
-	<string>media item的插图</string>
-	<key>MPMediaItemPropertyArtist</key>
-	<string> media item的创作者</string>
-	<key>MPMediaItemPropertyPlaybackDuration</key>
-	<string>media item的播放总时长，value是表示包装了时长秒数(NSTimeInterval)的NSNumber类型</string>
-	<key>MPMediaItemPropertyTitle</key>
-	<string>media item的名字或标题. 该属性与MPMediaItemPropertyAlbumTitle属性无关, value是NSString对象</string>
-	<key>MPNowPlayingInfoPropertyElapsedPlaybackTime</key>
-	<string>当前播放的item所消逝的时间(歌曲当前时间), 单位为秒</string>
-	<key>MPNowPlayingInfoPropertyPlaybackRate</key>
-	<string>当前播放的item的播放速率, value为1.0表示正常的播放速率</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
