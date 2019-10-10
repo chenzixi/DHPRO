@@ -22,12 +22,9 @@
 		380F9F8C227839EC00D515E3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380F9F8B227839EC00D515E3 /* Security.framework */; };
 		380F9F8E227839F200D515E3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380F9F8D227839F200D515E3 /* SystemConfiguration.framework */; };
 		380F9F902278475200D515E3 /* TabbarBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 380F9F8F2278475200D515E3 /* TabbarBundle.bundle */; };
-		381B6BD822C0EF3F0018C0C2 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BCF22C0EF3E0018C0C2 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		381B6BDB22C0EF9E0018C0C2 /* NSURL+changProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 381B6BD922C0EF9E0018C0C2 /* NSURL+changProtocol.m */; };
 		38274D53229EB00F00185C09 /* DHSendRunObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 38274D52229EB00F00185C09 /* DHSendRunObject.m */; };
 		38274D56229EB80000185C09 /* DHTimeoutAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38274D55229EB80000185C09 /* DHTimeoutAppDelegate.m */; };
-        382A31D7234E30EB0020FD29 /* SphericaLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 382A31D3234E30EB0020FD29 /* SphericaLayout.m */; };
-        382A31D8234E30EB0020FD29 /* ThreeDimensionalSphericalLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 382A31D5234E30EB0020FD29 /* ThreeDimensionalSphericalLayout.m */; };
 		382B6F7523347CC100CD2497 /* DBSphereViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 382B6F7423347CC100CD2497 /* DBSphereViewController.m */; };
 		382B6F7B23347D0200CD2497 /* DBSphereView.m in Sources */ = {isa = PBXBuildFile; fileRef = 382B6F7A23347D0200CD2497 /* DBSphereView.m */; };
 		382B6F832334BFE900CD2497 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 382B6F822334BFE900CD2497 /* HealthKit.framework */; };
@@ -42,14 +39,6 @@
 		382FFA52231CBD710062080E /* anitimalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 382FFA51231CBD710062080E /* anitimalViewController.m */; };
 		382FFA55231CC0750062080E /* GradualColor_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 382FFA54231CC0750062080E /* GradualColor_View.m */; };
 		382FFA58231CDDAA0062080E /* CricleScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 382FFA57231CDDAA0062080E /* CricleScrollViewController.m */; };
-		3830BC7222CB649E005C7915 /* NSArray+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3830BC5B22CB649E005C7915 /* NSArray+JSONModel.m */; };
-		3830BC7322CB649E005C7915 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3830BC5E22CB649E005C7915 /* JSONValueTransformer.m */; };
-		3830BC7422CB649E005C7915 /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3830BC6122CB649E005C7915 /* JSONKeyMapper.m */; };
-		3830BC7522CB649E005C7915 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3830BC6322CB649E005C7915 /* JSONModel.m */; };
-		3830BC7622CB649E005C7915 /* JSONModelError.m in Sources */ = {isa = PBXBuildFile; fileRef = 3830BC6522CB649E005C7915 /* JSONModelError.m */; };
-		3830BC7722CB649E005C7915 /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 3830BC6822CB649E005C7915 /* JSONModelArray.m */; };
-		3830BC7822CB649E005C7915 /* JSONModelClassProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3830BC6922CB649E005C7915 /* JSONModelClassProperty.m */; };
-		38345BA322B0BD4300FBE78B /* PictureSelectionController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 38345BA222B0BD4300FBE78B /* PictureSelectionController.mm */; };
 		38345BDA22B1207C00FBE78B /* SFHttpSessionReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 38345BD922B1207C00FBE78B /* SFHttpSessionReq.m */; };
 		383AEB4222970F03002F3A22 /* MaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 383AEB4122970F03002F3A22 /* MaskView.m */; };
 		383EAFE322981D1E00A2AA1E /* JHDownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 383EAFE222981D1D00A2AA1E /* JHDownButton.m */; };
@@ -124,15 +113,12 @@
 		384EE3CE22B0966700F20C0A /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 384EE3CD22B0966700F20C0A /* libresolv.tbd */; };
 		384EE3D022B0967700F20C0A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384EE3CF22B0967700F20C0A /* AudioToolbox.framework */; };
 		384EE3D222B0967E00F20C0A /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384EE3D122B0967D00F20C0A /* VideoToolbox.framework */; };
-		38548373234F14290053AB46 /* BlueToothViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38548372234F14290053AB46 /* BlueToothViewController.swift */; };
-		38548384234F14660053AB46 /* BLEPeripheralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 38548375234F14650053AB46 /* BLEPeripheralManager.m */; };
-		38548386234F14660053AB46 /* BLEConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 3854837C234F14660053AB46 /* BLEConnector.m */; };
-		38548387234F14660053AB46 /* BLECentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3854837F234F14660053AB46 /* BLECentralManager.m */; };
-		38548388234F14660053AB46 /* BLEDataPack.m in Sources */ = {isa = PBXBuildFile; fileRef = 38548381234F14660053AB46 /* BLEDataPack.m */; };
-		38548389234F14660053AB46 /* BLEDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 38548382234F14660053AB46 /* BLEDeviceInfo.m */; };
-		3854838B234F1A2B0053AB46 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3854838A234F1A2B0053AB46 /* CoreBluetooth.framework */; };
-		38560AC222AF5B2500A68F5D /* PictureSelectionComponentInitModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 38560AC122AF5B2500A68F5D /* PictureSelectionComponentInitModel.m */; };
-		38560AC522AF765200A68F5D /* CameraResultLayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38560AC422AF765200A68F5D /* CameraResultLayerView.m */; };
+		385483DA234F4A450053AB46 /* BLEPeripheralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 385483CC234F4A440053AB46 /* BLEPeripheralManager.m */; };
+		385483DB234F4A450053AB46 /* BLEConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 385483D0234F4A440053AB46 /* BLEConnector.m */; };
+		385483DC234F4A450053AB46 /* BLECentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 385483D3234F4A440053AB46 /* BLECentralManager.m */; };
+		385483DD234F4A450053AB46 /* BLEDataPack.m in Sources */ = {isa = PBXBuildFile; fileRef = 385483D5234F4A440053AB46 /* BLEDataPack.m */; };
+		385483DE234F4A450053AB46 /* BLEDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 385483D6234F4A440053AB46 /* BLEDeviceInfo.m */; };
+		385483E2234F4B5C0053AB46 /* BlueToothViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385483E1234F4B5C0053AB46 /* BlueToothViewController.swift */; };
 		38560ACA22AF7C7300A68F5D /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38560AC922AF7C7200A68F5D /* AssetsLibrary.framework */; };
 		386422CB228AC3F2006DB570 /* SliderMainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 386422CA228AC3F2006DB570 /* SliderMainStoryboard.storyboard */; };
 		386422CE228AC455006DB570 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386422CD228AC455006DB570 /* MenuViewController.m */; };
@@ -402,7 +388,6 @@
 		38862C4522BA006A00231140 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38862C4422BA006A00231140 /* CoreFoundation.framework */; };
 		38862C4722BA007000231140 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38862C4622BA007000231140 /* CoreTelephony.framework */; };
 		38862C4922BA009900231140 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38862C4822BA009900231140 /* UserNotifications.framework */; };
-        38862C5722BA257700231140 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38862C5622BA257600231140 /* opencv2.framework */; };
 		38862C6C22BA5BFB00231140 /* SwizzManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 38862C6622BA5BFB00231140 /* SwizzManager.m */; };
 		38862C7322BB17F900231140 /* UINavigationController+DHLeak.m in Sources */ = {isa = PBXBuildFile; fileRef = 38862C7022BB17F800231140 /* UINavigationController+DHLeak.m */; };
 		38862C7422BB17F900231140 /* UIViewController+DHLeak.m in Sources */ = {isa = PBXBuildFile; fileRef = 38862C7122BB17F800231140 /* UIViewController+DHLeak.m */; };
@@ -922,7 +907,6 @@
 		38EBA07D22CF24F400AAD44F /* FoodListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EBA07C22CF24F400AAD44F /* FoodListViewController.m */; };
 		69231657234E31B400A92110 /* SphericaLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 69231653234E31B400A92110 /* SphericaLayout.m */; };
 		69231658234E31B400A92110 /* ThreeDimensionalSphericalLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 69231655234E31B400A92110 /* ThreeDimensionalSphericalLayout.m */; };
-		69231683234E331400A92110 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69231682234E331400A92110 /* opencv2.framework */; };
 		73869E513ABCF28AE9B6C239 /* Pods_CollegePro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CBC72DE2C175A4CF5A210DB /* Pods_CollegePro.framework */; };
 /* End PBXBuildFile section */
 
@@ -985,18 +969,12 @@
 		380F9F8F2278475200D515E3 /* TabbarBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TabbarBundle.bundle; sourceTree = "<group>"; };
 		380FDC2A22B24D29009E9D24 /* CollegePro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CollegePro.entitlements; sourceTree = "<group>"; };
 		380FDC2B22B24D44009E9D24 /* CollegeProExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CollegeProExtension.entitlements; sourceTree = "<group>"; };
-		381B6BCF22C0EF3E0018C0C2 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
-		381B6BD022C0EF3E0018C0C2 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		381B6BD922C0EF9E0018C0C2 /* NSURL+changProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+changProtocol.m"; sourceTree = "<group>"; };
 		381B6BDA22C0EF9E0018C0C2 /* NSURL+changProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+changProtocol.h"; sourceTree = "<group>"; };
 		38274D51229EB00F00185C09 /* DHSendRunObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHSendRunObject.h; sourceTree = "<group>"; };
 		38274D52229EB00F00185C09 /* DHSendRunObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DHSendRunObject.m; sourceTree = "<group>"; };
 		38274D54229EB80000185C09 /* DHTimeoutAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHTimeoutAppDelegate.h; sourceTree = "<group>"; };
 		38274D55229EB80000185C09 /* DHTimeoutAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DHTimeoutAppDelegate.m; sourceTree = "<group>"; };
-        382A31D2234E30EB0020FD29 /* SphericaLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SphericaLayout.h; sourceTree = "<group>"; };
-        382A31D3234E30EB0020FD29 /* SphericaLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SphericaLayout.m; sourceTree = "<group>"; };
-        382A31D5234E30EB0020FD29 /* ThreeDimensionalSphericalLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeDimensionalSphericalLayout.m; sourceTree = "<group>"; };
-        382A31D6234E30EB0020FD29 /* ThreeDimensionalSphericalLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeDimensionalSphericalLayout.h; sourceTree = "<group>"; };
 		382B6F7323347CC100CD2497 /* DBSphereViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBSphereViewController.h; sourceTree = "<group>"; };
 		382B6F7423347CC100CD2497 /* DBSphereViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBSphereViewController.m; sourceTree = "<group>"; };
 		382B6F7723347D0200CD2497 /* DBPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBPoint.h; sourceTree = "<group>"; };
@@ -1028,22 +1006,6 @@
 		382FFA54231CC0750062080E /* GradualColor_View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradualColor_View.m; sourceTree = "<group>"; };
 		382FFA56231CDDAA0062080E /* CricleScrollViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CricleScrollViewController.h; sourceTree = "<group>"; };
 		382FFA57231CDDAA0062080E /* CricleScrollViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CricleScrollViewController.m; sourceTree = "<group>"; };
-		3830BC5B22CB649E005C7915 /* NSArray+JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JSONModel.m"; sourceTree = "<group>"; };
-		3830BC5C22CB649E005C7915 /* NSArray+JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+JSONModel.h"; sourceTree = "<group>"; };
-		3830BC5E22CB649E005C7915 /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
-		3830BC5F22CB649E005C7915 /* JSONKeyMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKeyMapper.h; sourceTree = "<group>"; };
-		3830BC6022CB649E005C7915 /* JSONValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONValueTransformer.h; sourceTree = "<group>"; };
-		3830BC6122CB649E005C7915 /* JSONKeyMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKeyMapper.m; sourceTree = "<group>"; };
-		3830BC6322CB649E005C7915 /* JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModel.m; sourceTree = "<group>"; };
-		3830BC6422CB649E005C7915 /* JSONModelArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelArray.h; sourceTree = "<group>"; };
-		3830BC6522CB649E005C7915 /* JSONModelError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelError.m; sourceTree = "<group>"; };
-		3830BC6622CB649E005C7915 /* JSONModelClassProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelClassProperty.h; sourceTree = "<group>"; };
-		3830BC6722CB649E005C7915 /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
-		3830BC6822CB649E005C7915 /* JSONModelArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelArray.m; sourceTree = "<group>"; };
-		3830BC6922CB649E005C7915 /* JSONModelClassProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelClassProperty.m; sourceTree = "<group>"; };
-		3830BC6A22CB649E005C7915 /* JSONModelError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelError.h; sourceTree = "<group>"; };
-		38345B9F22B0BBE600FBE78B /* PictureSelectionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PictureSelectionController.h; sourceTree = "<group>"; };
-		38345BA222B0BD4300FBE78B /* PictureSelectionController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PictureSelectionController.mm; sourceTree = "<group>"; };
 		38345BD822B1207C00FBE78B /* SFHttpSessionReq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFHttpSessionReq.h; sourceTree = "<group>"; };
 		38345BD922B1207C00FBE78B /* SFHttpSessionReq.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFHttpSessionReq.m; sourceTree = "<group>"; };
 		383AEB4022970F03002F3A22 /* MaskView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaskView.h; sourceTree = "<group>"; };
@@ -1145,24 +1107,19 @@
 		384EE3CD22B0966700F20C0A /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		384EE3CF22B0967700F20C0A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		384EE3D122B0967D00F20C0A /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
-		38548371234F14290053AB46 /* CollegePro-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CollegePro-Bridging-Header.h"; sourceTree = "<group>"; };
-		38548372234F14290053AB46 /* BlueToothViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueToothViewController.swift; sourceTree = "<group>"; };
-		38548375234F14650053AB46 /* BLEPeripheralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEPeripheralManager.m; sourceTree = "<group>"; };
-		38548376234F14650053AB46 /* BLEPeripheralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEPeripheralManager.h; sourceTree = "<group>"; };
-		38548379234F14660053AB46 /* BLEConfigDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEConfigDefine.h; sourceTree = "<group>"; };
-		3854837B234F14660053AB46 /* BLECentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLECentralManager.h; sourceTree = "<group>"; };
-		3854837C234F14660053AB46 /* BLEConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEConnector.m; sourceTree = "<group>"; };
-		3854837D234F14660053AB46 /* BLEDataPack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEDataPack.h; sourceTree = "<group>"; };
-		3854837E234F14660053AB46 /* BLEDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEDeviceInfo.h; sourceTree = "<group>"; };
-		3854837F234F14660053AB46 /* BLECentralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLECentralManager.m; sourceTree = "<group>"; };
-		38548380234F14660053AB46 /* BLEConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEConnector.h; sourceTree = "<group>"; };
-		38548381234F14660053AB46 /* BLEDataPack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEDataPack.m; sourceTree = "<group>"; };
-		38548382234F14660053AB46 /* BLEDeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEDeviceInfo.m; sourceTree = "<group>"; };
-		3854838A234F1A2B0053AB46 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		38560AC022AF5B2500A68F5D /* PictureSelectionComponentInitModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PictureSelectionComponentInitModel.h; sourceTree = "<group>"; };
-		38560AC122AF5B2500A68F5D /* PictureSelectionComponentInitModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PictureSelectionComponentInitModel.m; sourceTree = "<group>"; };
-		38560AC322AF765200A68F5D /* CameraResultLayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraResultLayerView.h; sourceTree = "<group>"; };
-		38560AC422AF765200A68F5D /* CameraResultLayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraResultLayerView.m; sourceTree = "<group>"; };
+		385483CA234F4A440053AB46 /* BLEConfigDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEConfigDefine.h; sourceTree = "<group>"; };
+		385483CC234F4A440053AB46 /* BLEPeripheralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEPeripheralManager.m; sourceTree = "<group>"; };
+		385483CD234F4A440053AB46 /* BLEPeripheralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEPeripheralManager.h; sourceTree = "<group>"; };
+		385483CF234F4A440053AB46 /* BLECentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLECentralManager.h; sourceTree = "<group>"; };
+		385483D0234F4A440053AB46 /* BLEConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEConnector.m; sourceTree = "<group>"; };
+		385483D1234F4A440053AB46 /* BLEDataPack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEDataPack.h; sourceTree = "<group>"; };
+		385483D2234F4A440053AB46 /* BLEDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEDeviceInfo.h; sourceTree = "<group>"; };
+		385483D3234F4A440053AB46 /* BLECentralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLECentralManager.m; sourceTree = "<group>"; };
+		385483D4234F4A440053AB46 /* BLEConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEConnector.h; sourceTree = "<group>"; };
+		385483D5234F4A440053AB46 /* BLEDataPack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEDataPack.m; sourceTree = "<group>"; };
+		385483D6234F4A440053AB46 /* BLEDeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEDeviceInfo.m; sourceTree = "<group>"; };
+		385483E0234F4B5B0053AB46 /* CollegePro-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CollegePro-Bridging-Header.h"; sourceTree = "<group>"; };
+		385483E1234F4B5C0053AB46 /* BlueToothViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueToothViewController.swift; sourceTree = "<group>"; };
 		38560AC922AF7C7200A68F5D /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		386422CA228AC3F2006DB570 /* SliderMainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SliderMainStoryboard.storyboard; sourceTree = "<group>"; };
 		386422CC228AC455006DB570 /* MenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
@@ -1647,7 +1604,6 @@
 		38862C4422BA006A00231140 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		38862C4622BA007000231140 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		38862C4822BA009900231140 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
-		38862C5622BA257600231140 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		38862C6622BA5BFB00231140 /* SwizzManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwizzManager.m; sourceTree = "<group>"; };
 		38862C6922BA5BFB00231140 /* SwizzManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwizzManager.h; sourceTree = "<group>"; };
 		38862C6F22BB17F800231140 /* UIViewController+DHLeak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DHLeak.h"; sourceTree = "<group>"; };
@@ -1682,7 +1638,6 @@
 		38A99B3E229BD1C000D52230 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		38A99B41229BD1C000D52230 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		38A99B43229BD1C000D52230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		38C031402300553600B4B364 /* DHTabbarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHTabbarViewController.h; sourceTree = "<group>"; };
 		38C031412300553600B4B364 /* DHTabbarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DHTabbarViewController.m; sourceTree = "<group>"; };
 		38C2D0B222D5E27600CF30CA /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
 		38C2D0B322D5E27600CF30CA /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
@@ -2522,7 +2477,6 @@
 		69231655234E31B400A92110 /* ThreeDimensionalSphericalLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeDimensionalSphericalLayout.m; sourceTree = "<group>"; };
 		69231656234E31B400A92110 /* ThreeDimensionalSphericalLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeDimensionalSphericalLayout.h; sourceTree = "<group>"; };
 		69231659234E322400A92110 /* CollegeProDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CollegeProDebug.entitlements; sourceTree = "<group>"; };
-		69231682234E331400A92110 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		69231685234E34B200A92110 /* DHTabbarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHTabbarViewController.h; sourceTree = "<group>"; };
 		B94442A678D5676362354ED8 /* Pods-CollegePro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollegePro.release.xcconfig"; path = "Pods/Target Support Files/Pods-CollegePro/Pods-CollegePro.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2540,7 +2494,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3854838B234F1A2B0053AB46 /* CoreBluetooth.framework in Frameworks */,
 				38862C4922BA009900231140 /* UserNotifications.framework in Frameworks */,
 				38862C4722BA007000231140 /* CoreTelephony.framework in Frameworks */,
 				38862C4522BA006A00231140 /* CoreFoundation.framework in Frameworks */,
@@ -2557,7 +2510,6 @@
 				382B6F832334BFE900CD2497 /* HealthKit.framework in Frameworks */,
 				380F9F8A227839E700D515E3 /* QuartzCore.framework in Frameworks */,
 				380F9F88227839E000D515E3 /* OpenGLES.framework in Frameworks */,
-				69231683234E331400A92110 /* opencv2.framework in Frameworks */,
 				380F9F86227839D800D515E3 /* libsqlite3.0.tbd in Frameworks */,
 				380F9F84227839C700D515E3 /* CoreLocation.framework in Frameworks */,
 				380F9F82227839BD00D515E3 /* CoreGraphics.framework in Frameworks */,
@@ -2593,42 +2545,6 @@
 			path = "水波纹";
 			sourceTree = "<group>";
 		};
-		381B6BCE22C0EF3E0018C0C2 /* JSONKit */ = {
-			isa = PBXGroup;
-			children = (
-				381B6BCF22C0EF3E0018C0C2 /* JSONKit.m */,
-				381B6BD022C0EF3E0018C0C2 /* JSONKit.h */,
-			);
-			path = JSONKit;
-			sourceTree = "<group>";
-		};
-        382A31D0234E30EB0020FD29 /* ThreeDimensional */ = {
-        isa = PBXGroup;
-        children = (
-        382A31D1234E30EB0020FD29 /* Model */,
-        382A31D4234E30EB0020FD29 /* ViewController */,
-        );
-        path = ThreeDimensional;
-        sourceTree = "<group>";
-        };
-        382A31D1234E30EB0020FD29 /* Model */ = {
-        isa = PBXGroup;
-        children = (
-        382A31D2234E30EB0020FD29 /* SphericaLayout.h */,
-        382A31D3234E30EB0020FD29 /* SphericaLayout.m */,
-        );
-        path = Model;
-        sourceTree = "<group>";
-        };
-        382A31D4234E30EB0020FD29 /* ViewController */ = {
-        isa = PBXGroup;
-        children = (
-        382A31D5234E30EB0020FD29 /* ThreeDimensionalSphericalLayout.m */,
-        382A31D6234E30EB0020FD29 /* ThreeDimensionalSphericalLayout.h */,
-        );
-        path = ViewController;
-        sourceTree = "<group>";
-        };
 		382B6F7223347C9200CD2497 /* DBSphere */ = {
 			isa = PBXGroup;
 			children = (
@@ -2700,51 +2616,6 @@
 				382FFA47231CB9380062080E /* QDExceptionTool.m */,
 			);
 			path = UncaughtException;
-			sourceTree = "<group>";
-		};
-		3830BC5922CB649E005C7915 /* JSONModel */ = {
-			isa = PBXGroup;
-			children = (
-				3830BC5A22CB649E005C7915 /* JSONModelCategories */,
-				3830BC5D22CB649E005C7915 /* JSONModelTransformations */,
-				3830BC6222CB649E005C7915 /* JSONModel */,
-			);
-			path = JSONModel;
-			sourceTree = "<group>";
-		};
-		3830BC5A22CB649E005C7915 /* JSONModelCategories */ = {
-			isa = PBXGroup;
-			children = (
-				3830BC5B22CB649E005C7915 /* NSArray+JSONModel.m */,
-				3830BC5C22CB649E005C7915 /* NSArray+JSONModel.h */,
-			);
-			path = JSONModelCategories;
-			sourceTree = "<group>";
-		};
-		3830BC5D22CB649E005C7915 /* JSONModelTransformations */ = {
-			isa = PBXGroup;
-			children = (
-				3830BC5E22CB649E005C7915 /* JSONValueTransformer.m */,
-				3830BC5F22CB649E005C7915 /* JSONKeyMapper.h */,
-				3830BC6022CB649E005C7915 /* JSONValueTransformer.h */,
-				3830BC6122CB649E005C7915 /* JSONKeyMapper.m */,
-			);
-			path = JSONModelTransformations;
-			sourceTree = "<group>";
-		};
-		3830BC6222CB649E005C7915 /* JSONModel */ = {
-			isa = PBXGroup;
-			children = (
-				3830BC6322CB649E005C7915 /* JSONModel.m */,
-				3830BC6422CB649E005C7915 /* JSONModelArray.h */,
-				3830BC6522CB649E005C7915 /* JSONModelError.m */,
-				3830BC6622CB649E005C7915 /* JSONModelClassProperty.h */,
-				3830BC6722CB649E005C7915 /* JSONModel.h */,
-				3830BC6822CB649E005C7915 /* JSONModelArray.m */,
-				3830BC6922CB649E005C7915 /* JSONModelClassProperty.m */,
-				3830BC6A22CB649E005C7915 /* JSONModelError.h */,
-			);
-			path = JSONModel;
 			sourceTree = "<group>";
 		};
 		383F11F42315524C005F085F /* 分值表盘 */ = {
@@ -2975,101 +2846,64 @@
 			path = menus;
 			sourceTree = "<group>";
 		};
-		3854836E234F13620053AB46 /* Bluetooth */ = {
+		385483C7234F4A440053AB46 /* Bluetooth */ = {
 			isa = PBXGroup;
 			children = (
-				38548370234F13CB0053AB46 /* BlueToolthCore */,
-				3854836F234F13BF0053AB46 /* ViewController */,
+				385483C8234F4A440053AB46 /* BlueToolthCore */,
+				385483D7234F4A440053AB46 /* ViewController */,
 			);
 			path = Bluetooth;
 			sourceTree = "<group>";
 		};
-		3854836F234F13BF0053AB46 /* ViewController */ = {
+		385483C8234F4A440053AB46 /* BlueToolthCore */ = {
 			isa = PBXGroup;
 			children = (
-				38548372234F14290053AB46 /* BlueToothViewController.swift */,
-				38548371234F14290053AB46 /* CollegePro-Bridging-Header.h */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		38548370234F13CB0053AB46 /* BlueToolthCore */ = {
-			isa = PBXGroup;
-			children = (
-				3854837A234F14660053AB46 /* Central */,
-				38548378234F14660053AB46 /* Common */,
-				38548374234F14650053AB46 /* Peripheral */,
+				385483C9234F4A440053AB46 /* Common */,
+				385483CB234F4A440053AB46 /* Peripheral */,
+				385483CE234F4A440053AB46 /* Central */,
 			);
 			path = BlueToolthCore;
 			sourceTree = "<group>";
 		};
-		38548374234F14650053AB46 /* Peripheral */ = {
+		385483C9234F4A440053AB46 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				38548375234F14650053AB46 /* BLEPeripheralManager.m */,
-				38548376234F14650053AB46 /* BLEPeripheralManager.h */,
-			);
-			path = Peripheral;
-			sourceTree = "<group>";
-		};
-		38548378234F14660053AB46 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				38548379234F14660053AB46 /* BLEConfigDefine.h */,
+				385483CA234F4A440053AB46 /* BLEConfigDefine.h */,
 			);
 			path = Common;
 			sourceTree = "<group>";
 		};
-		3854837A234F14660053AB46 /* Central */ = {
+		385483CB234F4A440053AB46 /* Peripheral */ = {
 			isa = PBXGroup;
 			children = (
-				3854837B234F14660053AB46 /* BLECentralManager.h */,
-				3854837C234F14660053AB46 /* BLEConnector.m */,
-				3854837D234F14660053AB46 /* BLEDataPack.h */,
-				3854837E234F14660053AB46 /* BLEDeviceInfo.h */,
-				3854837F234F14660053AB46 /* BLECentralManager.m */,
-				38548380234F14660053AB46 /* BLEConnector.h */,
-				38548381234F14660053AB46 /* BLEDataPack.m */,
-				38548382234F14660053AB46 /* BLEDeviceInfo.m */,
+				385483CC234F4A440053AB46 /* BLEPeripheralManager.m */,
+				385483CD234F4A440053AB46 /* BLEPeripheralManager.h */,
+			);
+			path = Peripheral;
+			sourceTree = "<group>";
+		};
+		385483CE234F4A440053AB46 /* Central */ = {
+			isa = PBXGroup;
+			children = (
+				385483CF234F4A440053AB46 /* BLECentralManager.h */,
+				385483D0234F4A440053AB46 /* BLEConnector.m */,
+				385483D1234F4A440053AB46 /* BLEDataPack.h */,
+				385483D2234F4A440053AB46 /* BLEDeviceInfo.h */,
+				385483D3234F4A440053AB46 /* BLECentralManager.m */,
+				385483D4234F4A440053AB46 /* BLEConnector.h */,
+				385483D5234F4A440053AB46 /* BLEDataPack.m */,
+				385483D6234F4A440053AB46 /* BLEDeviceInfo.m */,
 			);
 			path = Central;
 			sourceTree = "<group>";
 		};
-		38560AB922AF5B0700A68F5D /* 识别相机 */ = {
+		385483D7234F4A440053AB46 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				38560ABA22AF5B0700A68F5D /* Controller */,
-				38560ABD22AF5B0700A68F5D /* Model */,
-				38560ABE22AF5B0700A68F5D /* View */,
+				385483E1234F4B5C0053AB46 /* BlueToothViewController.swift */,
+				385483E0234F4B5B0053AB46 /* CollegePro-Bridging-Header.h */,
 			);
-			path = "识别相机";
-			sourceTree = "<group>";
-		};
-		38560ABA22AF5B0700A68F5D /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				38345B9F22B0BBE600FBE78B /* PictureSelectionController.h */,
-				38345BA222B0BD4300FBE78B /* PictureSelectionController.mm */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		38560ABD22AF5B0700A68F5D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				38560AC022AF5B2500A68F5D /* PictureSelectionComponentInitModel.h */,
-				38560AC122AF5B2500A68F5D /* PictureSelectionComponentInitModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		38560ABE22AF5B0700A68F5D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				38560AC322AF765200A68F5D /* CameraResultLayerView.h */,
-				38560AC422AF765200A68F5D /* CameraResultLayerView.m */,
-			);
-			path = View;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		386422C9228AC3AE006DB570 /* slidermenu */ = {
@@ -3895,14 +3729,6 @@
 			path = "仪表哦盘";
 			sourceTree = "<group>";
 		};
-        38862C5522BA257600231140 /* opencv */ = {
-        isa = PBXGroup;
-        children = (
-        38862C5622BA257600231140 /* opencv2.framework */,
-        );
-        path = opencv;
-        sourceTree = "<group>";
-        };
 		38862C6522BA5BFB00231140 /* DHLeak */ = {
 			isa = PBXGroup;
 			children = (
@@ -4141,8 +3967,6 @@
 				38C8454F227827EF00BCAD87 /* iCarousel.m */,
 				38C845A0227827EF00BCAD87 /* InfiniteRollScrollView.h */,
 				38C84558227827EF00BCAD87 /* InfiniteRollScrollView.m */,
-				381B6BCE22C0EF3E0018C0C2 /* JSONKit */,
-				3830BC5922CB649E005C7915 /* JSONModel */,
 				38C845A4227827EF00BCAD87 /* JSTextView.h */,
 				38C84564227827EF00BCAD87 /* JSTextView.m */,
 				38C8459E227827EF00BCAD87 /* KeychainItemWrapper.h */,
@@ -4155,7 +3979,6 @@
 				38C84594227827EF00BCAD87 /* Macro */,
 				38E97ED922D5CD8900A70112 /* MQHButtonsView.h */,
 				38E97EDA22D5CD8D00A70112 /* MQHButtonsView.m */,
-				69231681234E331400A92110 /* opencv */,
 				386BBB5A22DC9F45005E6054 /* PhotoTweaks */,
 				38C845A5227827EF00BCAD87 /* pinyin.c */,
 				38C84563227827EF00BCAD87 /* pinyin.h */,
@@ -4502,7 +4325,7 @@
 		38C84631227827EF00BCAD87 /* TCode */ = {
 			isa = PBXGroup;
 			children = (
-				3854836E234F13620053AB46 /* Bluetooth */,
+				385483C7234F4A440053AB46 /* Bluetooth */,
 				69231650234E31B400A92110 /* ThreeDimensional */,
 				382B6F7223347C9200CD2497 /* DBSphere */,
 				382FFA31231CAE440062080E /* YoungSphere */,
@@ -4518,7 +4341,6 @@
 				386BBB3822DC8EE0005E6054 /* 图片找不同 */,
 				3893F39022CDE317005C30AE /* 列表联动 */,
 				3807246322CDCC5E0035E5B1 /* 画圆角 */,
-				38560AB922AF5B0700A68F5D /* 识别相机 */,
 				38C9773422AE02D200F978C1 /* 联网游戏 */,
 				384C3F9E22887D7800F01586 /* 长按移动 */,
 				384C3FA722887D7900F01586 /* 转盘 */,
@@ -4535,7 +4357,6 @@
 				38C846D5227827EF00BCAD87 /* 网络测试 */,
 				38C846E0227827EF00BCAD87 /* 水波动画 */,
 				38C846EC227827EF00BCAD87 /* 弹出列表 */,
-				38C84700227827EF00BCAD87 /* UIDynamic */,
 				38C84701227827EF00BCAD87 /* 图片放大 */,
 				38C8474F227827F000BCAD87 /* 上下滑动 */,
 				38C84759227827F000BCAD87 /* 获得步数 */,
@@ -5011,13 +4832,6 @@
 				38C846FE227827EF00BCAD87 /* HXTagsCell.h */,
 			);
 			path = TagView;
-			sourceTree = "<group>";
-		};
-		38C84700227827EF00BCAD87 /* UIDynamic */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = UIDynamic;
 			sourceTree = "<group>";
 		};
 		38C84701227827EF00BCAD87 /* 图片放大 */ = {
@@ -6225,14 +6039,6 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		69231681234E331400A92110 /* opencv */ = {
-			isa = PBXGroup;
-			children = (
-				69231682234E331400A92110 /* opencv2.framework */,
-			);
-			path = opencv;
-			sourceTree = "<group>";
-		};
 		DB7A53478EBF97A0FF9F1D0C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -6245,7 +6051,6 @@
 		F3734FE496F0FE515FCEE2E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3854838A234F1A2B0053AB46 /* CoreBluetooth.framework */,
 				382B6F822334BFE900CD2497 /* HealthKit.framework */,
 				38862C4822BA009900231140 /* UserNotifications.framework */,
 				38862C4622BA007000231140 /* CoreTelephony.framework */,
@@ -6777,13 +6582,10 @@
 				38C849D6227827F200BCAD87 /* GZTimeLineModel.m in Sources */,
 				38C84A2D227827F200BCAD87 /* SegmentTabController.m in Sources */,
 				386BBB0F22DB7739005E6054 /* SlideNavigationController.m in Sources */,
-				38560AC522AF765200A68F5D /* CameraResultLayerView.m in Sources */,
 				386BC04722DDABA7005E6054 /* DGActivityIndicatorRotatingSquaresAnimation.m in Sources */,
 				38C8498B227827F100BCAD87 /* HXTagsView.m in Sources */,
-				3830BC7722CB649E005C7915 /* JSONModelArray.m in Sources */,
 				38C031422300553600B4B364 /* DHTabbarViewController.m in Sources */,
 				38C84947227827F100BCAD87 /* NTButton.m in Sources */,
-				38548384234F14660053AB46 /* BLEPeripheralManager.m in Sources */,
 				386BC0B522DDB5AB005E6054 /* cardView.m in Sources */,
 				386BC04B22DDABA7005E6054 /* DGActivityIndicatorBallZigZagAnimation.m in Sources */,
 				386BBBDA22DD7460005E6054 /* ScrollChangeViewController.m in Sources */,
@@ -6842,6 +6644,7 @@
 				38C849EA227827F200BCAD87 /* JPCarModel.m in Sources */,
 				38C84A20227827F200BCAD87 /* PayViewController.m in Sources */,
 				386BBDE122DDA7FF005E6054 /* GPUImageLightenBlendFilter.m in Sources */,
+				385483DA234F4A450053AB46 /* BLEPeripheralManager.m in Sources */,
 				38C849E6227827F200BCAD87 /* ExpandCell.m in Sources */,
 				38862C7422BB17F900231140 /* UIViewController+DHLeak.m in Sources */,
 				386BBDC722DDA7FF005E6054 /* GPUImageLocalBinaryPatternFilter.m in Sources */,
@@ -6851,6 +6654,7 @@
 				3893F3A022CDE492005C30AE /* DHMonthDetailViewController.m in Sources */,
 				3893F3AC22CDF549005C30AE /* NSDate+HDExtension.m in Sources */,
 				38C849B1227827F100BCAD87 /* ZLCollectionCell.m in Sources */,
+				385483DC234F4A450053AB46 /* BLECentralManager.m in Sources */,
 				38C2D0C922D5E27700CF30CA /* ASIDataCompressor.m in Sources */,
 				382FFA49231CB9380062080E /* QDExceptionTool.m in Sources */,
 				386BBDD922DDA7FF005E6054 /* GPUImageExposureFilter.m in Sources */,
@@ -6865,7 +6669,6 @@
 				386BBD7A22DDA7FE005E6054 /* GPUImageMissEtikateFilter.m in Sources */,
 				386BBD7C22DDA7FE005E6054 /* GPUImageSketchFilter.m in Sources */,
 				38C84936227827F100BCAD87 /* HYBHeaderView.m in Sources */,
-				3830BC7622CB649E005C7915 /* JSONModelError.m in Sources */,
 				38C849AD227827F100BCAD87 /* ZLProgressHUD.m in Sources */,
 				386BBDCB22DDA7FF005E6054 /* GPUImagePrewittEdgeDetectionFilter.m in Sources */,
 				386BBC5122DD9C18005E6054 /* UIImage+Watermark.m in Sources */,
@@ -6878,7 +6681,6 @@
 				38C849E3227827F200BCAD87 /* TGuideMViewController.m in Sources */,
 				38C8497D227827F100BCAD87 /* TRViewController.m in Sources */,
 				386BBD7122DDA7FE005E6054 /* GPUImageUIElement.m in Sources */,
-				38548373234F14290053AB46 /* BlueToothViewController.swift in Sources */,
 				386BC04822DDABA7005E6054 /* DGActivityIndicatorBallScaleMultipleAnimation.m in Sources */,
 				38C849AE227827F100BCAD87 /* ZLPhotoTool.m in Sources */,
 				386BBD7722DDA7FE005E6054 /* GPUImageMovie.m in Sources */,
@@ -6915,6 +6717,7 @@
 				382FFA42231CAFD00062080E /* MatrixDimensionalViewController.m in Sources */,
 				38C848E2227827F100BCAD87 /* UIView+Layout.m in Sources */,
 				38C84A4C227827F200BCAD87 /* MLSelectPhotoPickerGroupTableViewCell.m in Sources */,
+				385483DB234F4A450053AB46 /* BLEConnector.m in Sources */,
 				383AEB4222970F03002F3A22 /* MaskView.m in Sources */,
 				38C849F1227827F200BCAD87 /* ACEViewController.m in Sources */,
 				38C84A0C227827F200BCAD87 /* WXPaoPaoViewController.m in Sources */,
@@ -6938,12 +6741,12 @@
 				38C848D4227827F100BCAD87 /* InfiniteRollScrollView.m in Sources */,
 				386BBD9A22DDA7FE005E6054 /* GPUImageRGBClosingFilter.m in Sources */,
 				386BC06222DDABA7005E6054 /* DGActivityIndicatorLineScalePulseOutRapidAnimation.m in Sources */,
-				3830BC7522CB649E005C7915 /* JSONModel.m in Sources */,
 				386BBDC422DDA7FF005E6054 /* GPUImageClosingFilter.m in Sources */,
 				38C84A24227827F200BCAD87 /* ZSDPaymentView.m in Sources */,
 				386BBDA122DDA7FF005E6054 /* GPUImageDivideBlendFilter.m in Sources */,
 				38C848D9227827F100BCAD87 /* KeychainItemWrapper.m in Sources */,
 				38C848DE227827F100BCAD87 /* TZAssetCell.m in Sources */,
+				385483DD234F4A450053AB46 /* BLEDataPack.m in Sources */,
 				386BBD9222DDA7FE005E6054 /* GPUImageDissolveBlendFilter.m in Sources */,
 				38C84981227827F100BCAD87 /* NetTestViewController.m in Sources */,
 				38C8492D227827F100BCAD87 /* LHMD5.m in Sources */,
@@ -6959,7 +6762,6 @@
 				38C8491C227827F100BCAD87 /* UIColor+JFColor.m in Sources */,
 				381B6BDB22C0EF9E0018C0C2 /* NSURL+changProtocol.m in Sources */,
 				384C3FDE228881F800F01586 /* Persion.m in Sources */,
-				3830BC7322CB649E005C7915 /* JSONValueTransformer.m in Sources */,
 				386BBC5022DD9C18005E6054 /* PHAsset+Method.m in Sources */,
 				38862C6C22BA5BFB00231140 /* SwizzManager.m in Sources */,
 				386BBC5722DD9C18005E6054 /* LHWatermarkDataModel.m in Sources */,
@@ -6984,7 +6786,6 @@
 				38CC865822D8A35C0057405C /* SignalControl.m in Sources */,
 				38C848D8227827F100BCAD87 /* LLBlurSidebar.m in Sources */,
 				38C848E1227827F100BCAD87 /* NSBundle+TZImagePicker.m in Sources */,
-				38548389234F14660053AB46 /* BLEDeviceInfo.m in Sources */,
 				386BBDDE22DDA7FF005E6054 /* GPUImageLookupFilter.m in Sources */,
 				382FFA4C231CBBC70062080E /* CircleViewView.m in Sources */,
 				386BBD7F22DDA7FE005E6054 /* GPUImageAmatorkaFilter.m in Sources */,
@@ -7021,6 +6822,7 @@
 				386BBD7022DDA7FE005E6054 /* GPUImageWeakPixelInclusionFilter.m in Sources */,
 				38C848FE227827F100BCAD87 /* IncludeNibTableViewCell.m in Sources */,
 				386BBB3D22DC8EE0005E6054 /* FFKPViewController.m in Sources */,
+				385483E2234F4B5C0053AB46 /* BlueToothViewController.swift in Sources */,
 				38C849DB227827F200BCAD87 /* GZTableViewCell.m in Sources */,
 				69231658234E31B400A92110 /* ThreeDimensionalSphericalLayout.m in Sources */,
 				38C8492F227827F100BCAD87 /* LHCacheTool.m in Sources */,
@@ -7040,7 +6842,6 @@
 				38C2D0CA22D5E27700CF30CA /* ASIHTTPRequest.m in Sources */,
 				38C84A33227827F200BCAD87 /* ScrollImageViewViewController.m in Sources */,
 				38C84923227827F100BCAD87 /* UIColor+expanded.m in Sources */,
-				3830BC7422CB649E005C7915 /* JSONKeyMapper.m in Sources */,
 				384C3FC822887D7A00F01586 /* CustomCell.m in Sources */,
 				38E97EDE22D5CD9B00A70112 /* PopoverView.m in Sources */,
 				38C84920227827F100BCAD87 /* UIButton+EnlargeTouchArea.m in Sources */,
@@ -7060,6 +6861,7 @@
 				38C845462278249A00BCAD87 /* main.m in Sources */,
 				38C849EF227827F200BCAD87 /* ACEExpandableTextCell.m in Sources */,
 				3807246E22CDCCE00035E5B1 /* CustomView.m in Sources */,
+				385483DE234F4A450053AB46 /* BLEDeviceInfo.m in Sources */,
 				38080AF9232D3B630073EFAC /* RoppleViewController.m in Sources */,
 				38C848EC227827F100BCAD87 /* SoapUtil.m in Sources */,
 				386BBD6D22DDA7FE005E6054 /* GPUImageSoftEleganceFilter.m in Sources */,
@@ -7068,7 +6870,6 @@
 				38C84970227827F100BCAD87 /* DHMainViewController.m in Sources */,
 				38C8498E227827F100BCAD87 /* HXTagCollectionViewFlowLayout.m in Sources */,
 				38C849C7227827F200BCAD87 /* ZLShowBigImage.m in Sources */,
-				38560AC222AF5B2500A68F5D /* PictureSelectionComponentInitModel.m in Sources */,
 				386BBD9722DDA7FE005E6054 /* GPUImageTextureInput.m in Sources */,
 				386BC05C22DDABA7005E6054 /* DGActivityIndicatorTwoDotsAnimation.m in Sources */,
 				386BBC5322DD9C18005E6054 /* UIImage+Resize.m in Sources */,
@@ -7119,12 +6920,10 @@
 				386BBDC322DDA7FF005E6054 /* GPUImageMonochromeFilter.m in Sources */,
 				38E416AD2338800600FD84D8 /* HAMLogOutputWindow.m in Sources */,
 				38C84A58227827F200BCAD87 /* QRCodeBacgrouView.m in Sources */,
-				38345BA322B0BD4300FBE78B /* PictureSelectionController.mm in Sources */,
 				38C84934227827F100BCAD87 /* QQListViewController.m in Sources */,
 				38C8498C227827F100BCAD87 /* HXTagsCell.m in Sources */,
 				38C84905227827F100BCAD87 /* UDTableViewCell.m in Sources */,
 				38C2D0CC22D5E27700CF30CA /* ASIDataDecompressor.m in Sources */,
-				38548386234F14660053AB46 /* BLEConnector.m in Sources */,
 				384C3FEA22888DBF00F01586 /* ZQVariableMenuCell.m in Sources */,
 				38C848F2227827F100BCAD87 /* UIView+SDAutoLayout.m in Sources */,
 				38C849CC227827F200BCAD87 /* NaView.m in Sources */,
@@ -7176,7 +6975,6 @@
 				38C84A06227827F200BCAD87 /* EditNoteViewController.m in Sources */,
 				383F16E123169D2C005F085F /* indicatorCrView.m in Sources */,
 				382FFA52231CBD710062080E /* anitimalViewController.m in Sources */,
-				38548387234F14660053AB46 /* BLECentralManager.m in Sources */,
 				38C84975227827F100BCAD87 /* THomeCollectionViewCell.m in Sources */,
 				386BBD9822DDA7FE005E6054 /* GPUImage3x3TextureSamplingFilter.m in Sources */,
 				38C84955227827F100BCAD87 /* XHMenuButton.m in Sources */,
@@ -7226,7 +7024,6 @@
 				38C8490E227827F100BCAD87 /* HKHealthStore+AAPLExtensions.m in Sources */,
 				38EA8533228D57F300A28136 /* SFTextView.m in Sources */,
 				386BBDE222DDA7FF005E6054 /* GPUImageCGAColorspaceFilter.m in Sources */,
-				38548388234F14660053AB46 /* BLEDataPack.m in Sources */,
 				38C84961227827F100BCAD87 /* ESMMoneyViewController.m in Sources */,
 				38C849D0227827F200BCAD87 /* HealthViewController.m in Sources */,
 				386BC06722DDABF0005E6054 /* ActivityIndicator.m in Sources */,
@@ -7266,7 +7063,6 @@
 				38C8494B227827F100BCAD87 /* ReleaseViewController.m in Sources */,
 				386BC04A22DDABA7005E6054 /* DGActivityIndicatorBallRotateAnimation.m in Sources */,
 				386BBDDA22DDA7FF005E6054 /* GPUImageChromaKeyBlendFilter.m in Sources */,
-				3830BC7222CB649E005C7915 /* NSArray+JSONModel.m in Sources */,
 				38C84933227827F100BCAD87 /* IndexViewController.m in Sources */,
 				386BBD9422DDA7FE005E6054 /* GPUImageOpacityFilter.m in Sources */,
 				38C849CB227827F200BCAD87 /* ContentOffSetVC.m in Sources */,
@@ -7298,7 +7094,6 @@
 				386BBD8722DDA7FE005E6054 /* GPUImageOpenGLESContext.m in Sources */,
 				386BC05E22DDABA7005E6054 /* DGActivityIndicatorBallZigZagDeflectAnimation.m in Sources */,
 				386BBD9022DDA7FE005E6054 /* GPUImageErosionFilter.m in Sources */,
-				3830BC7822CB649E005C7915 /* JSONModelClassProperty.m in Sources */,
 				38E97EDB22D5CD8E00A70112 /* MQHButtonsView.m in Sources */,
 				38C84987227827F100BCAD87 /* ShowViewController.m in Sources */,
 				3807246F22CDCCE00035E5B1 /* MasonryCustomView.m in Sources */,
@@ -7339,7 +7134,6 @@
 				386BBC5922DD9C18005E6054 /* LHStickerView.m in Sources */,
 				38C848FA227827F100BCAD87 /* SGImageButton.m in Sources */,
 				386BBD7822DDA7FE005E6054 /* GPUImageCannyEdgeDetectionFilter.m in Sources */,
-				381B6BD822C0EF3F0018C0C2 /* JSONKit.m in Sources */,
 				386BC0D622DDBC1E005E6054 /* DivisionCircleViewController.m in Sources */,
 				38C845382278249900BCAD87 /* AppDelegate.m in Sources */,
 				38C84974227827F100BCAD87 /* showView.m in Sources */,
@@ -7564,15 +7358,13 @@
 				CODE_SIGN_ENTITLEMENTS = CollegePro/CollegeProDebug.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 74W795UZRB;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/CollegePro/Class(首页)/TLib/opencv",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/CollegePro/Class(首页)/TLib/AliRTCSdk",
 					"$(PROJECT_DIR)/CollegePro/Class(首页)/TLib",
-					"$(PROJECT_DIR)/CollegePro/Class(首页)/TCode/阿里音视频通话/AliRTCSdk",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_INPUT_FILETYPE = automatic;
@@ -7673,15 +7465,13 @@
 				CODE_SIGN_ENTITLEMENTS = CollegePro/CollegePro.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZV477U5U2X;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 74W795UZRB;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/CollegePro/Class(首页)/TLib/opencv",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/CollegePro/Class(首页)/TLib/AliRTCSdk",
 					"$(PROJECT_DIR)/CollegePro/Class(首页)/TLib",
-					"$(PROJECT_DIR)/CollegePro/Class(首页)/TCode/阿里音视频通话/AliRTCSdk",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_INPUT_FILETYPE = automatic;
@@ -7761,7 +7551,7 @@
 					"-weak_framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dhTool.CollegePro;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dhTool.selfpro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CollegePro/Class(首页)/TCode/Bluetooth/ViewController/CollegePro-Bridging-Header.h";

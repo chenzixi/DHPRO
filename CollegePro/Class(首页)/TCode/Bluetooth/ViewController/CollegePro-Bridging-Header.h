@@ -7,3 +7,4 @@
 #import "BLECentralManager.h"
 #import "BLEDeviceInfo.h"
 #import "BLEConnector.h"
+#import "BaseViewController.h"

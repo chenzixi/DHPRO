@@ -11,7 +11,7 @@
 #import "MeasurNetTools.h"
 #import "QBTools.h"
 #import "UIColor+Expanded.h"
-
+#import "CollegePro-Swift.h"
 //功能展示
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
@@ -55,7 +55,6 @@
 #import "TRViewController.h"//闹铃
 #import "SmoothLineViewController.h"//画画板
 #import "Menu.h"//联网游戏XIB
-#import "PictureSelectionController.h"//识别相机
 #import "IndexViewController.h"//苏宁小出、
 #import "AdaptionListViewController.h"//自适应列表
 #import "SectionsViewController.h"//铃声
@@ -263,7 +262,6 @@
     self.classNames = @[].mutableCopy;
 #pragma mark -跳转页面
     [self addCell:@"上下滑动" class:@"ContentOffSetVC"];
-    [self addCell:@"识别相机" class:@"PictureSelectionController"];
     [self addCell:@"二维码" class:@"GKHScanQCodeViewController"];
     [self addCell:@"凸起菜单栏" class:@"LBTabBarTextController"];
     [self addCell:@"导航栏" class:@"LSTabBarViewController"];
@@ -422,6 +420,11 @@
         UIViewController *ctrl = class.new;
         ctrl.title = _titles[indexPath.row];
         pushVC(ctrl);
+    }
+    if ([className isEqualToString:@"BlueToothViewController"]) {
+        // 使用Swift的类
+        BlueToothViewController *swiftVC = [[BlueToothViewController alloc] init];
+        [self presentViewController:swiftVC animated:YES completion:nil];
     }
     /* //ios 13
      [AppDelegate sharedAppDelegate].rootTabbar = [[RootViewController alloc]init];
