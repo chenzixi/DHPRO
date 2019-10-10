@@ -139,6 +139,13 @@
 		384EE3CE22B0966700F20C0A /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 384EE3CD22B0966700F20C0A /* libresolv.tbd */; };
 		384EE3D022B0967700F20C0A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384EE3CF22B0967700F20C0A /* AudioToolbox.framework */; };
 		384EE3D222B0967E00F20C0A /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384EE3D122B0967D00F20C0A /* VideoToolbox.framework */; };
+		38548373234F14290053AB46 /* BlueToothViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38548372234F14290053AB46 /* BlueToothViewController.swift */; };
+		38548384234F14660053AB46 /* BLEPeripheralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 38548375234F14650053AB46 /* BLEPeripheralManager.m */; };
+		38548386234F14660053AB46 /* BLEConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 3854837C234F14660053AB46 /* BLEConnector.m */; };
+		38548387234F14660053AB46 /* BLECentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3854837F234F14660053AB46 /* BLECentralManager.m */; };
+		38548388234F14660053AB46 /* BLEDataPack.m in Sources */ = {isa = PBXBuildFile; fileRef = 38548381234F14660053AB46 /* BLEDataPack.m */; };
+		38548389234F14660053AB46 /* BLEDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 38548382234F14660053AB46 /* BLEDeviceInfo.m */; };
+		3854838B234F1A2B0053AB46 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3854838A234F1A2B0053AB46 /* CoreBluetooth.framework */; };
 		38560AC222AF5B2500A68F5D /* PictureSelectionComponentInitModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 38560AC122AF5B2500A68F5D /* PictureSelectionComponentInitModel.m */; };
 		38560AC522AF765200A68F5D /* CameraResultLayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38560AC422AF765200A68F5D /* CameraResultLayerView.m */; };
 		38560ACA22AF7C7300A68F5D /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38560AC922AF7C7200A68F5D /* AssetsLibrary.framework */; };
@@ -1175,6 +1182,20 @@
 		384EE3CD22B0966700F20C0A /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		384EE3CF22B0967700F20C0A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		384EE3D122B0967D00F20C0A /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		38548371234F14290053AB46 /* CollegePro-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CollegePro-Bridging-Header.h"; sourceTree = "<group>"; };
+		38548372234F14290053AB46 /* BlueToothViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueToothViewController.swift; sourceTree = "<group>"; };
+		38548375234F14650053AB46 /* BLEPeripheralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEPeripheralManager.m; sourceTree = "<group>"; };
+		38548376234F14650053AB46 /* BLEPeripheralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEPeripheralManager.h; sourceTree = "<group>"; };
+		38548379234F14660053AB46 /* BLEConfigDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEConfigDefine.h; sourceTree = "<group>"; };
+		3854837B234F14660053AB46 /* BLECentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLECentralManager.h; sourceTree = "<group>"; };
+		3854837C234F14660053AB46 /* BLEConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEConnector.m; sourceTree = "<group>"; };
+		3854837D234F14660053AB46 /* BLEDataPack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEDataPack.h; sourceTree = "<group>"; };
+		3854837E234F14660053AB46 /* BLEDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEDeviceInfo.h; sourceTree = "<group>"; };
+		3854837F234F14660053AB46 /* BLECentralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLECentralManager.m; sourceTree = "<group>"; };
+		38548380234F14660053AB46 /* BLEConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEConnector.h; sourceTree = "<group>"; };
+		38548381234F14660053AB46 /* BLEDataPack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEDataPack.m; sourceTree = "<group>"; };
+		38548382234F14660053AB46 /* BLEDeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEDeviceInfo.m; sourceTree = "<group>"; };
+		3854838A234F1A2B0053AB46 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		38560AC022AF5B2500A68F5D /* PictureSelectionComponentInitModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PictureSelectionComponentInitModel.h; sourceTree = "<group>"; };
 		38560AC122AF5B2500A68F5D /* PictureSelectionComponentInitModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PictureSelectionComponentInitModel.m; sourceTree = "<group>"; };
 		38560AC322AF765200A68F5D /* CameraResultLayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraResultLayerView.h; sourceTree = "<group>"; };
@@ -2549,6 +2570,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3854838B234F1A2B0053AB46 /* CoreBluetooth.framework in Frameworks */,
 				381B6BE822C0F2B10018C0C2 /* AliRTCSdk.framework in Frameworks */,
 				38862C4922BA009900231140 /* UserNotifications.framework in Frameworks */,
 				38862C4722BA007000231140 /* CoreTelephony.framework in Frameworks */,
@@ -3023,6 +3045,66 @@
 				384C406C22888DF900F01586 /* 线索.png */,
 			);
 			path = menus;
+			sourceTree = "<group>";
+		};
+		3854836E234F13620053AB46 /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				38548370234F13CB0053AB46 /* BlueToolthCore */,
+				3854836F234F13BF0053AB46 /* ViewController */,
+			);
+			path = Bluetooth;
+			sourceTree = "<group>";
+		};
+		3854836F234F13BF0053AB46 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				38548372234F14290053AB46 /* BlueToothViewController.swift */,
+				38548371234F14290053AB46 /* CollegePro-Bridging-Header.h */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		38548370234F13CB0053AB46 /* BlueToolthCore */ = {
+			isa = PBXGroup;
+			children = (
+				3854837A234F14660053AB46 /* Central */,
+				38548378234F14660053AB46 /* Common */,
+				38548374234F14650053AB46 /* Peripheral */,
+			);
+			path = BlueToolthCore;
+			sourceTree = "<group>";
+		};
+		38548374234F14650053AB46 /* Peripheral */ = {
+			isa = PBXGroup;
+			children = (
+				38548375234F14650053AB46 /* BLEPeripheralManager.m */,
+				38548376234F14650053AB46 /* BLEPeripheralManager.h */,
+			);
+			path = Peripheral;
+			sourceTree = "<group>";
+		};
+		38548378234F14660053AB46 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				38548379234F14660053AB46 /* BLEConfigDefine.h */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		3854837A234F14660053AB46 /* Central */ = {
+			isa = PBXGroup;
+			children = (
+				3854837B234F14660053AB46 /* BLECentralManager.h */,
+				3854837C234F14660053AB46 /* BLEConnector.m */,
+				3854837D234F14660053AB46 /* BLEDataPack.h */,
+				3854837E234F14660053AB46 /* BLEDeviceInfo.h */,
+				3854837F234F14660053AB46 /* BLECentralManager.m */,
+				38548380234F14660053AB46 /* BLEConnector.h */,
+				38548381234F14660053AB46 /* BLEDataPack.m */,
+				38548382234F14660053AB46 /* BLEDeviceInfo.m */,
+			);
+			path = Central;
 			sourceTree = "<group>";
 		};
 		38560AB922AF5B0700A68F5D /* 识别相机 */ = {
@@ -4491,6 +4573,7 @@
 		38C84631227827EF00BCAD87 /* TCode */ = {
 			isa = PBXGroup;
 			children = (
+				3854836E234F13620053AB46 /* Bluetooth */,
 				382A31D0234E30EB0020FD29 /* ThreeDimensional */,
 				382B6F7223347C9200CD2497 /* DBSphere */,
 				382FFA31231CAE440062080E /* YoungSphere */,
@@ -6199,6 +6282,7 @@
 		F3734FE496F0FE515FCEE2E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3854838A234F1A2B0053AB46 /* CoreBluetooth.framework */,
 				382B6F822334BFE900CD2497 /* HealthKit.framework */,
 				38862C4822BA009900231140 /* UserNotifications.framework */,
 				38862C4622BA007000231140 /* CoreTelephony.framework */,
@@ -6293,6 +6377,7 @@
 					};
 					38C845322278249900BCAD87 = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1030;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -6735,6 +6820,7 @@
 				3830BC7722CB649E005C7915 /* JSONModelArray.m in Sources */,
 				38C031422300553600B4B364 /* DHTabbarViewController.m in Sources */,
 				38C84947227827F100BCAD87 /* NTButton.m in Sources */,
+				38548384234F14660053AB46 /* BLEPeripheralManager.m in Sources */,
 				386BC0B522DDB5AB005E6054 /* cardView.m in Sources */,
 				386BC04B22DDABA7005E6054 /* DGActivityIndicatorBallZigZagAnimation.m in Sources */,
 				386BBBDA22DD7460005E6054 /* ScrollChangeViewController.m in Sources */,
@@ -6833,6 +6919,7 @@
 				38C849E3227827F200BCAD87 /* TGuideMViewController.m in Sources */,
 				38C8497D227827F100BCAD87 /* TRViewController.m in Sources */,
 				386BBD7122DDA7FE005E6054 /* GPUImageUIElement.m in Sources */,
+				38548373234F14290053AB46 /* BlueToothViewController.swift in Sources */,
 				386BC04822DDABA7005E6054 /* DGActivityIndicatorBallScaleMultipleAnimation.m in Sources */,
 				38C849AE227827F100BCAD87 /* ZLPhotoTool.m in Sources */,
 				386BBD7722DDA7FE005E6054 /* GPUImageMovie.m in Sources */,
@@ -6939,6 +7026,7 @@
 				38CC865822D8A35C0057405C /* SignalControl.m in Sources */,
 				38C848D8227827F100BCAD87 /* LLBlurSidebar.m in Sources */,
 				38C848E1227827F100BCAD87 /* NSBundle+TZImagePicker.m in Sources */,
+				38548389234F14660053AB46 /* BLEDeviceInfo.m in Sources */,
 				386BBDDE22DDA7FF005E6054 /* GPUImageLookupFilter.m in Sources */,
 				382FFA4C231CBBC70062080E /* CircleViewView.m in Sources */,
 				386BBD7F22DDA7FE005E6054 /* GPUImageAmatorkaFilter.m in Sources */,
@@ -7079,6 +7167,7 @@
 				38C8498C227827F100BCAD87 /* HXTagsCell.m in Sources */,
 				38C84905227827F100BCAD87 /* UDTableViewCell.m in Sources */,
 				38C2D0CC22D5E27700CF30CA /* ASIDataDecompressor.m in Sources */,
+				38548386234F14660053AB46 /* BLEConnector.m in Sources */,
 				384C3FEA22888DBF00F01586 /* ZQVariableMenuCell.m in Sources */,
 				38C848F2227827F100BCAD87 /* UIView+SDAutoLayout.m in Sources */,
 				38C849CC227827F200BCAD87 /* NaView.m in Sources */,
@@ -7133,6 +7222,7 @@
 				38C84A06227827F200BCAD87 /* EditNoteViewController.m in Sources */,
 				383F16E123169D2C005F085F /* indicatorCrView.m in Sources */,
 				382FFA52231CBD710062080E /* anitimalViewController.m in Sources */,
+				38548387234F14660053AB46 /* BLECentralManager.m in Sources */,
 				38C84975227827F100BCAD87 /* THomeCollectionViewCell.m in Sources */,
 				386BBD9822DDA7FE005E6054 /* GPUImage3x3TextureSamplingFilter.m in Sources */,
 				38C84955227827F100BCAD87 /* XHMenuButton.m in Sources */,
@@ -7182,6 +7272,7 @@
 				38C8490E227827F100BCAD87 /* HKHealthStore+AAPLExtensions.m in Sources */,
 				38EA8533228D57F300A28136 /* SFTextView.m in Sources */,
 				386BBDE222DDA7FF005E6054 /* GPUImageCGAColorspaceFilter.m in Sources */,
+				38548388234F14660053AB46 /* BLEDataPack.m in Sources */,
 				38C84961227827F100BCAD87 /* ESMMoneyViewController.m in Sources */,
 				38C849D0227827F200BCAD87 /* HealthViewController.m in Sources */,
 				386BC06722DDABF0005E6054 /* ActivityIndicator.m in Sources */,
@@ -7516,6 +7607,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_ENTITLEMENTS = CollegePro/CollegePro.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -7611,6 +7703,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dhTool.CollegePro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "CollegePro/Class(首页)/TCode/Bluetooth/ViewController/CollegePro-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -7621,6 +7716,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_ENTITLEMENTS = CollegePro/CollegePro.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -7716,6 +7812,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dhTool.CollegePro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "CollegePro/Class(首页)/TCode/Bluetooth/ViewController/CollegePro-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

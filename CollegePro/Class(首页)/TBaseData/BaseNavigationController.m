@@ -139,13 +139,17 @@
 	[self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
 	
 }
+
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-	if (self.viewControllers.count)
-	{
-		viewController.hidesBottomBarWhenPushed = YES;
-	}
-	[super pushViewController:viewController animated:animated];
+    if (self.viewControllers.count > 0) {
+        viewController.hidesBottomBarWhenPushed = YES;
+    }
+    [super pushViewController:viewController animated:animated];
+    // 修改tabBra的frame
+    CGRect frame = self.tabBarController.tabBar.frame;
+    frame.origin.y = [UIScreen mainScreen].bounds.size.height - frame.size.height;
+    self.tabBarController.tabBar.frame = frame;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

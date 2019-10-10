@@ -153,7 +153,7 @@
     [super viewDidLoad];
     [self setUPUI];
     self.isShowleftBtn = YES;
-    [self createMap];
+//    [self createMap];
     //    applicationWillEnterForeground
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveHMethod:) name:@"applicationWillEnterForeground" object:nil];
     //    [self playVoiceBackground];
@@ -337,6 +337,7 @@
     [self addCell:@"分值表" class:@"MyRectangleViewController"];
     [self addCell:@"三维球相册" class:@"MatrixDimensionalViewController"];
     [self addCell:@"变换矩阵" class:@"DBSphereViewController"];
+    [self addCell:@"蓝牙" class:@"BlueToothViewController"];
     [_collectionView reloadData];
     
 #pragma mark- 底部网络状态显示
@@ -349,7 +350,7 @@
     _lb_showinfo.frame = CGRectMake(0, DH_DeviceHeight-44-30, DH_DeviceWidth, 25);
     [self.view addSubview:_lb_showinfo];
     [_lb_showinfo mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.view).offset(-44);
+        make.bottom.equalTo(self.view).offset(-88);
         make.left.with.right.equalTo(self.view);
         make.height.offset(25);
     }];
