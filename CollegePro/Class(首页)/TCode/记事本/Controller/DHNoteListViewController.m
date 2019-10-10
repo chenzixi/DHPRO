@@ -135,7 +135,8 @@
 	searchDisplayController.searchResultsDataSource = self;
 	self.mySearchDisplayController = searchDisplayController;
 //	[searchDisplayController release];
-	
+//	uisearchcontroller
+//    UISearchController
     // Do any additional setup after loading the view.
 }
 #pragma mark - Table view data source

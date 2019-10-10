@@ -330,6 +330,10 @@
 										  }];
 }
 
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
+    //在代理方法里dismiss这个VC
+    [viewController dismissViewControllerAnimated:YES completion:nil];
+}
 
 // leftbarbuttonitem返回
 -(void)popViewController:(UIBarButtonItem *)sender{

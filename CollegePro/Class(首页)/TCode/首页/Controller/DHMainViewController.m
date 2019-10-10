@@ -246,7 +246,7 @@
     //    flowLayout.minimumLineSpacing = 0.0;//minimumLineSpacing cell上下之间的距离
     //    flowLayout.minimumInteritemSpacing = 5.0;//cell左右之间的距离
     //    flowLayout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, 20);
-    _collectionView=[[UICollectionView alloc] initWithFrame:CGRectMake(15, 0, DH_DeviceWidth-30, DH_DeviceHeight-44-25) collectionViewLayout:flowLayout];
+    _collectionView=[[UICollectionView alloc] initWithFrame:CGRectMake(15, 0, DH_DeviceWidth-30, DH_DeviceHeight-44) collectionViewLayout:flowLayout];
     //    _collectionView=[[UICollectionView alloc] init];
     //    _collectionView.collectionViewLayout = flowLayout;
     
@@ -291,7 +291,7 @@
     //    [self addCell:@"身份证识别" class:@"XLIDScanViewController"];
     [self addCell:@"手势解锁" class:@"DisassemblyViewController"];
     [self addCell:@"CEll自适应高度" class:@"ACEViewController"];
-    [self addCell:@"记事本" class:@"DHNoteJoyViewController"];
+//    [self addCell:@"记事本" class:@"DHNoteJoyViewController"];
     [self addCell:@"水波动画" class:@"WaveProgressViewController"];
     [self addCell:@"水波按钮" class:@"RoppleViewController"];
     [self addCell:@"游戏" class:@"IndexViewController"];
@@ -346,12 +346,12 @@
     _lb_showinfo.layer.borderColor = [UIColor redColor].CGColor;
     _lb_showinfo.layer.borderWidth = 1.0;
     _lb_showinfo.frame = CGRectMake(0, DH_DeviceHeight-44-30, DH_DeviceWidth, 25);
-    [self.view addSubview:_lb_showinfo];
-    [_lb_showinfo mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.view).offset(-88);
-        make.left.with.right.equalTo(self.view);
-        make.height.offset(25);
-    }];
+//    [self.view addSubview:_lb_showinfo];
+//    [_lb_showinfo mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.equalTo(self.view).offset(-88);
+//        make.left.with.right.equalTo(self.view);
+//        make.height.offset(25);
+//    }];
 }
 - (void)addCell:(NSString *)title class:(NSString *)className {
     [self.titles addObject:title];

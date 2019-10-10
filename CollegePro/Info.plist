@@ -59,6 +59,8 @@
 	<string>当前播放的item所消逝的时间(歌曲当前时间), 单位为秒</string>
 	<key>MPNowPlayingInfoPropertyPlaybackRate</key>
 	<string>当前播放的item的播放速率, value为1.0表示正常的播放速率</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>App需要您的同意,才能访问蓝牙</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -93,7 +95,7 @@
 	<key>NSMotionUsageDescription - 2</key>
 	<string>访问运动与健身</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>动画工具"需要访问您的相册</string>
+	<string>动画工具&quot;需要访问您的相册</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Photo Library Usage Description</string>
 	<key>NSPhotoLibraryUsageDescription - 2</key>

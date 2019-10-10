@@ -77,8 +77,8 @@
     
 #endif
     //测试
-    [self remoteControlEventHandler];
-    [self updatelockScreenInfo];
+//    [self remoteControlEventHandler];
+//    [self updatelockScreenInfo];
     //获取异常
     NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
     InstallSignalHandler();//信号量截断
@@ -498,104 +498,104 @@
 
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
 }
-// 在具体的控制器或其它类中捕获处理远程控制事件
-- (void)remoteControlReceivedWithEvent:(UIEvent *)event
-{
-    // 根据事件的子类型(subtype) 来判断具体的事件类型, 并做出处理
-    switch (event.subtype) {
-        case UIEventSubtypeRemoteControlPlay:
-        case UIEventSubtypeRemoteControlPause: {
-            NSLog(@"执行播放或暂停的相关操作 (锁屏界面和上拉快捷功能菜单处的播放按钮)");
-            break;
-        }
-        case UIEventSubtypeRemoteControlPreviousTrack: {
-            NSLog(@"执行上一曲的相关操作 (锁屏界面和上拉快捷功能菜单处的上一曲按钮)");
-            break;
-        }
-        case UIEventSubtypeRemoteControlNextTrack: {
-            NSLog(@"执行下一曲的相关操作 (锁屏界面和上拉快捷功能菜单处的下一曲按钮)");
-            break;
-        }
-        case UIEventSubtypeRemoteControlTogglePlayPause: {
-            NSLog(@"进行播放/暂停的相关操作 (耳机的播放/暂停按钮)");
-            break;
-        }
-        default:
-            break;
-    }
-}
-// 在需要处理远程控制事件的具体控制器或其它类中实现
-- (void)remoteControlEventHandler
-{
-    // 直接使用sharedCommandCenter来获取MPRemoteCommandCenter的shared实例
-    MPRemoteCommandCenter *commandCenter = [MPRemoteCommandCenter sharedCommandCenter];
-    
-    // 启用播放命令 (锁屏界面和上拉快捷功能菜单处的播放按钮触发的命令)
-    commandCenter.playCommand.enabled = YES;
-    // 为播放命令添加响应事件, 在点击后触发
-    [commandCenter.playCommand addTarget:self action:@selector(playAction:)];
-    
-    // 播放, 暂停, 上下曲的命令默认都是启用状态, 即enabled默认为YES
-    // 为暂停, 上一曲, 下一曲分别添加对应的响应事件
-    [commandCenter.pauseCommand addTarget:self action:@selector(pauseAction:)];
-    [commandCenter.previousTrackCommand addTarget:self action:@selector(previousTrackAction:)];
-    [commandCenter.nextTrackCommand addTarget:self action:@selector(nextTrackAction:)];
-
-    // 启用耳机的播放/暂停命令 (耳机上的播放按钮触发的命令)
-    commandCenter.togglePlayPauseCommand.enabled = YES;
-    // 为耳机的按钮操作添加相关的响应事件
-    [commandCenter.togglePlayPauseCommand addTarget:self action:@selector(playOrPauseAction:)];
-    
-    // 添加"喜欢"按钮, 需要启用, 并且设置了相关Action后才会生效
-    [MPRemoteCommandCenter sharedCommandCenter].likeCommand.enabled = YES;
-    [[MPRemoteCommandCenter sharedCommandCenter].likeCommand addTarget:self action:@selector(likeItemAction)];
-    [MPRemoteCommandCenter sharedCommandCenter].likeCommand.localizedTitle = @"喜欢";
-    
-    // 添加"不喜欢"按钮
-    [MPRemoteCommandCenter sharedCommandCenter].dislikeCommand.enabled = YES;
-    // 自定义该按钮的响应事件, 实现在点击"不喜欢"时去执行上一首的功能
-    [[MPRemoteCommandCenter sharedCommandCenter].dislikeCommand
-     addTarget:self action:@selector(previousCommandAction)];
-    [MPRemoteCommandCenter
-     // 自定义"不喜欢"的标题, 伪装成"上一首"
-     sharedCommandCenter].dislikeCommand.localizedTitle = @"上一首";
-}
-- (void)updatelockScreenInfo
-{
-    // 直接使用defaultCenter来获取MPNowPlayingInfoCenter的默认唯一实例
-    MPNowPlayingInfoCenter *infoCenter = [MPNowPlayingInfoCenter defaultCenter];
-    
-    // MPMediaItemArtwork 用来表示锁屏界面图片的类型
-//    MPMediaItemArtwork *artwork = [[MPMediaItemArtwork alloc]     initWithImage:[UIImage imageNamed:@"cell.png"]];
-    UIImage *img = [UIImage imageNamed:@"cell.png"];
-    if (@available(iOS 10.0, *)) {
-        MPMediaItemArtwork *artwork = [[MPMediaItemArtwork alloc]     initWithBoundsSize:CGSizeMake(100, 100) requestHandler:^UIImage * _Nonnull(CGSize size) {
-            return img;
-        }];
-        
-        
-        // 通过配置nowPlayingInfo的值来更新锁屏界面的信息
-        infoCenter.nowPlayingInfo = @{
-                                      // 歌曲名
-                                      MPMediaItemPropertyTitle : @"过火",
-                                      // 艺术家名
-                                      MPMediaItemPropertyArtist : @"张信哲",
-                                      // 专辑名字
-                                      MPMediaItemPropertyAlbumTitle : @"宽容",
-                                      // 歌曲总时长
-                                      MPMediaItemPropertyPlaybackDuration : @(3.0),
-                                      // 歌曲的当前时间
-                                      MPNowPlayingInfoPropertyElapsedPlaybackTime : @(0.0),
-                                      // 歌曲的插图, 类型是MPMeidaItemArtwork对象
-                                      MPMediaItemPropertyArtwork : artwork,
-                                      
-                                      // 无效的, 歌词的展示是通过图片绘制完成的, 即将歌词绘制到歌曲插图, 通过更新插图来实现歌词的更新的
-                                      // MPMediaItemPropertyLyrics : lyric.content,
-                                      };
-    } else {
-        // Fallback on earlier versions
-    }
-}
+//// 在具体的控制器或其它类中捕获处理远程控制事件
+//- (void)remoteControlReceivedWithEvent:(UIEvent *)event
+//{
+//    // 根据事件的子类型(subtype) 来判断具体的事件类型, 并做出处理
+//    switch (event.subtype) {
+//        case UIEventSubtypeRemoteControlPlay:
+//        case UIEventSubtypeRemoteControlPause: {
+//            NSLog(@"执行播放或暂停的相关操作 (锁屏界面和上拉快捷功能菜单处的播放按钮)");
+//            break;
+//        }
+//        case UIEventSubtypeRemoteControlPreviousTrack: {
+//            NSLog(@"执行上一曲的相关操作 (锁屏界面和上拉快捷功能菜单处的上一曲按钮)");
+//            break;
+//        }
+//        case UIEventSubtypeRemoteControlNextTrack: {
+//            NSLog(@"执行下一曲的相关操作 (锁屏界面和上拉快捷功能菜单处的下一曲按钮)");
+//            break;
+//        }
+//        case UIEventSubtypeRemoteControlTogglePlayPause: {
+//            NSLog(@"进行播放/暂停的相关操作 (耳机的播放/暂停按钮)");
+//            break;
+//        }
+//        default:
+//            break;
+//    }
+//}
+//// 在需要处理远程控制事件的具体控制器或其它类中实现
+//- (void)remoteControlEventHandler
+//{
+//    // 直接使用sharedCommandCenter来获取MPRemoteCommandCenter的shared实例
+//    MPRemoteCommandCenter *commandCenter = [MPRemoteCommandCenter sharedCommandCenter];
+//
+//    // 启用播放命令 (锁屏界面和上拉快捷功能菜单处的播放按钮触发的命令)
+//    commandCenter.playCommand.enabled = YES;
+//    // 为播放命令添加响应事件, 在点击后触发
+//    [commandCenter.playCommand addTarget:self action:@selector(playAction:)];
+//
+//    // 播放, 暂停, 上下曲的命令默认都是启用状态, 即enabled默认为YES
+//    // 为暂停, 上一曲, 下一曲分别添加对应的响应事件
+//    [commandCenter.pauseCommand addTarget:self action:@selector(pauseAction:)];
+//    [commandCenter.previousTrackCommand addTarget:self action:@selector(previousTrackAction:)];
+//    [commandCenter.nextTrackCommand addTarget:self action:@selector(nextTrackAction:)];
+//
+//    // 启用耳机的播放/暂停命令 (耳机上的播放按钮触发的命令)
+//    commandCenter.togglePlayPauseCommand.enabled = YES;
+//    // 为耳机的按钮操作添加相关的响应事件
+//    [commandCenter.togglePlayPauseCommand addTarget:self action:@selector(playOrPauseAction:)];
+//
+//    // 添加"喜欢"按钮, 需要启用, 并且设置了相关Action后才会生效
+//    [MPRemoteCommandCenter sharedCommandCenter].likeCommand.enabled = YES;
+//    [[MPRemoteCommandCenter sharedCommandCenter].likeCommand addTarget:self action:@selector(likeItemAction)];
+//    [MPRemoteCommandCenter sharedCommandCenter].likeCommand.localizedTitle = @"喜欢";
+//
+//    // 添加"不喜欢"按钮
+//    [MPRemoteCommandCenter sharedCommandCenter].dislikeCommand.enabled = YES;
+//    // 自定义该按钮的响应事件, 实现在点击"不喜欢"时去执行上一首的功能
+//    [[MPRemoteCommandCenter sharedCommandCenter].dislikeCommand
+//     addTarget:self action:@selector(previousCommandAction)];
+//    [MPRemoteCommandCenter
+//     // 自定义"不喜欢"的标题, 伪装成"上一首"
+//     sharedCommandCenter].dislikeCommand.localizedTitle = @"上一首";
+//}
+//- (void)updatelockScreenInfo
+//{
+//    // 直接使用defaultCenter来获取MPNowPlayingInfoCenter的默认唯一实例
+//    MPNowPlayingInfoCenter *infoCenter = [MPNowPlayingInfoCenter defaultCenter];
+//
+//    // MPMediaItemArtwork 用来表示锁屏界面图片的类型
+////    MPMediaItemArtwork *artwork = [[MPMediaItemArtwork alloc]     initWithImage:[UIImage imageNamed:@"cell.png"]];
+//    UIImage *img = [UIImage imageNamed:@"cell.png"];
+//    if (@available(iOS 10.0, *)) {
+//        MPMediaItemArtwork *artwork = [[MPMediaItemArtwork alloc]     initWithBoundsSize:CGSizeMake(100, 100) requestHandler:^UIImage * _Nonnull(CGSize size) {
+//            return img;
+//        }];
+//
+//
+//        // 通过配置nowPlayingInfo的值来更新锁屏界面的信息
+//        infoCenter.nowPlayingInfo = @{
+//                                      // 歌曲名
+//                                      MPMediaItemPropertyTitle : @"过火",
+//                                      // 艺术家名
+//                                      MPMediaItemPropertyArtist : @"张信哲",
+//                                      // 专辑名字
+//                                      MPMediaItemPropertyAlbumTitle : @"宽容",
+//                                      // 歌曲总时长
+//                                      MPMediaItemPropertyPlaybackDuration : @(3.0),
+//                                      // 歌曲的当前时间
+//                                      MPNowPlayingInfoPropertyElapsedPlaybackTime : @(0.0),
+//                                      // 歌曲的插图, 类型是MPMeidaItemArtwork对象
+//                                      MPMediaItemPropertyArtwork : artwork,
+//
+//                                      // 无效的, 歌词的展示是通过图片绘制完成的, 即将歌词绘制到歌曲插图, 通过更新插图来实现歌词的更新的
+//                                      // MPMediaItemPropertyLyrics : lyric.content,
+//                                      };
+//    } else {
+//        // Fallback on earlier versions
+//    }
+//}
 - (void)playAction:(id)action{
     NSLog(@"播放");
 }
