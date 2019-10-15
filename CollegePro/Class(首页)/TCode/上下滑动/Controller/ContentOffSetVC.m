@@ -61,7 +61,8 @@
 -(void)loadData{
 	
 	_dataArray =[[NSMutableArray alloc]init];
-	
+    NSString *nilStr = nil;
+    NSArray *array = @[@"chenfanfang", nilStr];
 	for (int i = 0; i < 20; i++) {
 		
 		NSString * string=[NSString stringWithFormat:@"第%d行",i];

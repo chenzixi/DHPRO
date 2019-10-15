@@ -98,7 +98,18 @@ typedef void(^MyBlock)(void);
 //		
 //	}
 //i=0
-	
+     
+     RadianLayerView = [[DHRadianLayerView alloc]initWithFrame:CGRectMake(10, 350, [UIScreen mainScreen].bounds.size.width-20, 50)];
+     RadianLayerView.backgroundColor = [UIColor greenColor];
+     UIImage *im = [UIImage getGradientImageFromColors:@[[UIColor redColor],[UIColor blueColor]] gradientType:1 imgSize:CGSizeMake([UIScreen mainScreen].bounds.size.width-20, 100)];
+     UIImageView *iv = [[UIImageView alloc]initWithImage:im];
+     [RadianLayerView addSubview:iv];
+     RadianLayerView.direction = 0;
+     RadianLayerView.radian = 10;
+     //    RadianLayerView.transform = CGAffineTransformMakeRotation(M_PI);
+     //    RadianLayerView.alpha = 0.8;
+     [self.view addSubview:RadianLayerView];
+     
 //	NSArray *titleTxtArray = @[@"正常",@"故障"];
 //	for (int i = 0; i<titleTxtArray.count; i++) {
 //		btn = [LBChoose buttonWithType:UIButtonTypeCustom];
@@ -143,6 +154,18 @@ typedef void(^MyBlock)(void);
 	
 //    [RadioButton addObserverForGroupId:@"first group" observer:self];
 */
+    
+    NSString *url = [NSString stringWithFormat:@"%@:(%@)",@"https://www.jianshu.com/p/8b0d06bd5a01",NSStringFromClass([self class])];
+    NSMutableString * urlStr = [[NSMutableString alloc] initWithString:url];
+    NSRange firstRange = [urlStr rangeOfString:@"://"];
+    NSRange secondRange = [urlStr rangeOfString:@":("];
+    NSRange thirdRange = [urlStr rangeOfString:@")"];
+    NSString * businessName = [urlStr substringWithRange:NSMakeRange(firstRange.location + firstRange.length, secondRange.location - firstRange.location - firstRange.length)];
+    NSString * commandStr = [urlStr substringWithRange:NSMakeRange(secondRange.location + secondRange.length, thirdRange.location - secondRange.location - secondRange.length)];
+    NSMutableDictionary * dicdict = [[NSMutableDictionary alloc] init];
+    [dicdict setObject:businessName forKey:@"businessName"];
+    [dicdict setObject:commandStr forKey:@"commandStr"];
+    
     UIButton *pushButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [pushButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [pushButton setFrame:CGRectMake(10.0 ,100.0 ,120.0 ,20.0)];
@@ -158,6 +181,8 @@ typedef void(^MyBlock)(void);
     [pushNillButton setTitle:@"不带方法的Block" forState:(UIControlStateNormal)];
     [pushNillButton addTarget:self action:@selector(pushBlockNilMetnod) forControlEvents:(UIControlEventTouchUpInside)];
     [self.view addSubview:pushNillButton];
+    
+//    [url systemLayoutSizeFittingSize:UILayoutFittingExpandedSize]
 }
 //-(void)radioButtonSelectedAtIndex:(NSUInteger)index inGroup:(NSString *)groupId{
 //    NSLog(@"changed to %lu in %@",(unsigned long)index,groupId);
@@ -269,13 +294,14 @@ typedef void(^MyBlock)(void);
 //        id可以作为方法的参数,但instancetype不可以
 //        instancetype只适用于初始化方法和便利构造器的返回值类型
 	};
-    __weak typeof(self) weakSelf = self;
+//    __weak typeof(self) weakSelf = self;
     Class cls =  NSClassFromString(@"LabelNilMethodBlockViewController");
     UIViewController *viewController = [[cls alloc] init];
-    void(^block)(void) = ^{
-        NSLog(@"----");
-    };
-    weakSelf.block = block;
+//    void(^block)(void) = ^{
+//        NSLog(@"----");
+//    };
+    void(^block)(NSString * infor) = self.occupation;
+//    weakSelf.block = block;
     ((void(*)(id,SEL,id))objc_msgSend)(viewController, NSSelectorFromString(@"setReception:"),block);
     
     void(^infoBlock)(NSString *dic) = ^(NSString * infor){
@@ -293,6 +319,11 @@ typedef void(^MyBlock)(void);
     
     [self.navigationController pushViewController:subVC animated:NO];
 
+}
+- (void(^)(NSString *str))occupation {
+    return ^(NSString *str){
+        NSLog(@"职业：%@",@"工程师");
+    };
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

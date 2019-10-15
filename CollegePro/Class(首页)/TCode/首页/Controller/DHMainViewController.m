@@ -7,99 +7,97 @@
 //
 #define NSEaseLocalizedString(key, comment) [[NSBundle bundleWithURL:[[NSBundle mainBundle] URLForResource:@"EaseUIResource" withExtension:@"bundle"]] localizedStringForKey:(key) value:@"" table:nil]
 
+#include <ifaddrs.h>//MAC地址
+#include <arpa/inet.h>//网络编程常见的头文件
+#include <net/if.h>//配置ip地址,激活接口,配置MTU等接口信息
 #import "DHMainViewController.h"
 #import "MeasurNetTools.h"
 #import "QBTools.h"
 #import "UIColor+Expanded.h"
 #import "CollegePro-Swift.h"
-//功能展示
-#import <CoreLocation/CoreLocation.h>
-#import <MapKit/MapKit.h>
-#import <CoreMotion/CoreMotion.h>
-#import "ViewController.h"
-#import "THomeCollectionViewCell.h"//主页
-#import "T3DTouchViewController.h"//3DTouch
+#import <CoreLocation/CoreLocation.h>//定位
+#import <MapKit/MapKit.h>//系统地图
+#import <CoreMotion/CoreMotion.h>//提供实时的加速度值和旋转速度值,方向以及其他和方位或者位置有关的参数,
+#import <AVFoundation/AVFoundation.h>//音视频
+#import "ViewController.h"//主页
+#import "THomeCollectionViewCell.h"//主页列表样式
 #import "GKHScanQCodeViewController.h"//二维码
-#import "ContentOffSetVC.h"//滑动
-#import "LSTabBarViewController.h"//四个菜单栏
-#import "LBTabBarTextController.h"//中间突起的菜单栏
-#import "SignatureViewController.h"//签名
-#import "ZLDashboardViewController.h"//动画
-#import "ActionViewController.h"//咖啡机动画
-#import "TMotionViewController.h"//碰撞球
-#import "TShopAnimationViewController.h"//购物车动画
-#import "TSidebarViewController.h"//侧边栏
-#import "TGuideMViewController.h"//引导页
-#import "DHNoteViewController.h"//节点
-#import "DHZanViewController.h"//点赞
-#import "ScrollImageViewViewController.h"
-#import "DHImagePickerViewController.h"//高级定制添加图片
-#import "HealthViewController.h"//获取健康步数
-#import "PayViewController.h"//支付密码
-#import "NetTestViewController.h"//网络测试
-#import "CountdownViewController.h"//倒计时
-#import "SubparagraphRootViewController.h"//菜单栏
-#import "DropViewController.h"//拖拽
-#import "ScrollViewController.h"//滚动
-#import "WXPaoPaoViewController.h"//微信气泡聊天
-#import "BaseAdressBookViewController.h"//通讯刘
-#import "ShowViewController.h"//弹出框
-#import "QQListViewController.h"//仿照QQ列表
-#import "DisassemblyViewController.h"//手势解锁
-#import "ACEViewController.h"//textView自适应高度变化
-#import "DHNoteJoyViewController.h"//记事本
-#import "WaveProgressViewController.h"//水波动画
-#import "RoppleViewController.h"//水波动画
-#import "iCloudViewController.h"//获取iCloud文件
-#import "CustomKeyBoardViewController.h"//键盘
-#import "TRViewController.h"//闹铃
-#import "SmoothLineViewController.h"//画画板
-#import "Menu.h"//联网游戏XIB
-#import "IndexViewController.h"//苏宁小出、
-#import "AdaptionListViewController.h"//自适应列表
-#import "SectionsViewController.h"//铃声
-#import "MVPViewController.h"//MVP&MVVP架构
-#import "MVVMViewController.h"
-#import "CustomCollectionViewController.h"//长按拖动collectioncell
-#import "TurntableViewController.h"//转盘
-#import "MenuViewController.h"//storyboard
-#import "ExpandTableVC.h"//点击按钮出现下拉列表
-#import "CornerViewController.h"//圆角设置
-#import "DHMonthListlinkViewController.h"//日历
-#import "SlideMenuViewController.h"//侧边栏
-#import "JPShopCarController.h"//购物车
-#import "FFKPViewController.h"//图片找不同
-#import "IndexViewController.h"//消消乐
-#import "LuckyMainViewController.h"//抽奖
-#import "PhotoClipViewController.h"//图片裁剪
-#import "ScrollChangeViewController.h"//滑动切换控制器
-#import "LHCameraViewController.h"//水印相机
-#import "ShowcaseFilterListController.h"//图片滤镜处理
-#import "ActivityIndicator.h"//指示器
-#import "CodeViewController.h"//卡片
-#import "CardAnimateViewController.h"//卡片
-#import "DivisionCircleViewController.h"//表盘
-#import "CreditNumViewController.h"//分值表
-#import "IndicatorCrViewController.h"//分值表
-#import "MyRectangleViewController.h"//分值表
-#import "ThreeDimensionalSphericalLayout.h"//三维球型
-#import "MatrixDimensionalViewController.h"//三维球相册
-#import "anitimalViewController.h"//仪表
-#import "LabelMethodBlockVC.h"
-#import "LabelMethodBlockSubVC.h"
+//功能展示
+//#import "T3DTouchViewController.h"//3DTouch
+//#import "ContentOffSetVC.h"//滑动
+//#import "LSTabBarViewController.h"//四个菜单栏
+//#import "LBTabBarTextController.h"//中间突起的菜单栏
+//#import "SignatureViewController.h"//签名
+//#import "ZLDashboardViewController.h"//动画
+//#import "ActionViewController.h"//咖啡机动画
+//#import "TMotionViewController.h"//碰撞球
+//#import "TShopAnimationViewController.h"//购物车动画
+//#import "TSidebarViewController.h"//侧边栏
+//#import "TGuideMViewController.h"//引导页
+//#import "DHNoteViewController.h"//节点
+//#import "DHZanViewController.h"//点赞
+//#import "ScrollImageViewViewController.h"
+//#import "DHImagePickerViewController.h"//高级定制添加图片
+//#import "HealthViewController.h"//获取健康步数
+//#import "PayViewController.h"//支付密码
+//#import "NetTestViewController.h"//网络测试
+//#import "CountdownViewController.h"//倒计时
+//#import "SubparagraphRootViewController.h"//菜单栏
+//#import "DropViewController.h"//拖拽
+//#import "ScrollViewController.h"//滚动
+//#import "WXPaoPaoViewController.h"//微信气泡聊天
+//#import "BaseAdressBookViewController.h"//通讯刘
+//#import "ShowViewController.h"//弹出框
+//#import "QQListViewController.h"//仿照QQ列表
+//#import "DisassemblyViewController.h"//手势解锁
+//#import "ACEViewController.h"//textView自适应高度变化
+//#import "DHNoteJoyViewController.h"//记事本
+//#import "WaveProgressViewController.h"//水波动画
+//#import "RoppleViewController.h"//水波动画
+//#import "iCloudViewController.h"//获取iCloud文件
+//#import "CustomKeyBoardViewController.h"//键盘
+//#import "TRViewController.h"//闹铃
+//#import "SmoothLineViewController.h"//画画板
+//#import "Menu.h"//联网游戏XIB
+//#import "IndexViewController.h"//苏宁小出、
+//#import "AdaptionListViewController.h"//自适应列表
+//#import "SectionsViewController.h"//铃声
+//#import "MVPViewController.h"//MVP&MVVP架构
+//#import "MVVMViewController.h"
+//#import "CustomCollectionViewController.h"//长按拖动collectioncell
+//#import "TurntableViewController.h"//转盘
+//#import "MenuViewController.h"//storyboard
+//#import "ExpandTableVC.h"//点击按钮出现下拉列表
+//#import "CornerViewController.h"//圆角设置
+//#import "DHMonthListlinkViewController.h"//日历
+//#import "SlideMenuViewController.h"//侧边栏
+//#import "JPShopCarController.h"//购物车
+//#import "FFKPViewController.h"//图片找不同
+//#import "IndexViewController.h"//消消乐
+//#import "LuckyMainViewController.h"//抽奖
+//#import "PhotoClipViewController.h"//图片裁剪
+//#import "ScrollChangeViewController.h"//滑动切换控制器
+//#import "LHCameraViewController.h"//水印相机
+//#import "ShowcaseFilterListController.h"//图片滤镜处理
+//#import "ActivityIndicator.h"//指示器
+//#import "CodeViewController.h"//卡片
+//#import "CardAnimateViewController.h"//卡片
+//#import "DivisionCircleViewController.h"//表盘
+//#import "CreditNumViewController.h"//分值表
+//#import "IndicatorCrViewController.h"//分值表
+//#import "MyRectangleViewController.h"//分值表
+//#import "ThreeDimensionalSphericalLayout.h"//三维球型
+//#import "MatrixDimensionalViewController.h"//三维球相册
+//#import "anitimalViewController.h"//仪表
+//#import "LabelMethodBlockVC.h"
+//#import "LabelMethodBlockSubVC.h"
 //#import "CardViewController.h"
 //#import "IDCardViewController.h"
 //#import "BankCardViewController.h"//信用卡识别
 //#import "BankCartViewController.h"//银行卡扫描
 //#import "DocumentViewController.h"//文档
 //#import "AliRTCViewController.h"
-#import <AVFoundation/AVFoundation.h>
-#import <CoreMotion/CoreMotion.h>
-#include <ifaddrs.h>
 
-#include <arpa/inet.h>
-
-#include <net/if.h>
 
 @interface DHMainViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,QRScanViewDelegate,UIAccelerometerDelegate,AVAudioPlayerDelegate,MKMapViewDelegate,CLLocationManagerDelegate>{
     NSMutableArray *valueArr;
@@ -390,8 +388,8 @@
     [_collectionView deselectItemAtIndexPath:indexPath animated:NO];
     
     NSString *className = self.classNames[indexPath.row];
+    UIViewController *controller = [[NSClassFromString(className) alloc]initWithNibName:className bundle:nil];
     if ([className isEqualToString:@"SubparagraphRootViewController"]) {
-        SubparagraphRootViewController *controller = [[SubparagraphRootViewController alloc] init];
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
         navController.navigationBarHidden = YES;
         [UIApplication sharedApplication].keyWindow.rootViewController = navController;
@@ -400,11 +398,13 @@
     //storyboard
     if ([className isEqualToString:@"MenuViewController"]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SliderMainStoryboard" bundle:[NSBundle mainBundle]];
-        MenuViewController *detailVC = [storyboard instantiateViewControllerWithIdentifier:@"MenuViewController"];
-        pushVC(detailVC);
+        pushVC([storyboard instantiateViewControllerWithIdentifier:@"MenuViewController"]);
         return;
     }
-  
+    if ([className isEqualToString:@"BlueToothViewController"]) {
+        // 使用Swift的类
+        present(controller);
+    }
     /*
      NSURL *appBUrl = [NSURL URLWithString:@"mqqOpensdkSSoLogin://"];
      // 2.判断手机中是否安装了对应程序 参考 http://www.cnblogs.com/isItOk/p/4869499.html
@@ -421,11 +421,7 @@
         ctrl.title = _titles[indexPath.row];
         pushVC(ctrl);
     }
-    if ([className isEqualToString:@"BlueToothViewController"]) {
-        // 使用Swift的类
-        BlueToothViewController *swiftVC = [[BlueToothViewController alloc] init];
-        [self presentViewController:swiftVC animated:YES completion:nil];
-    }
+    
     /* //ios 13
      [AppDelegate sharedAppDelegate].rootTabbar = [[RootViewController alloc]init];
      [AppDelegate sharedAppDelegate].rootTabbar.modalPresentationStyle = UIModalPresentationFullScreen;
@@ -433,7 +429,6 @@
      
      }];
      */
-    
 }
 //l多少列
 #define BRANDSECTION 4

@@ -12,7 +12,6 @@
 @interface QDExceptionHandler : NSObject
 void InstallSignalHandler(void);
 
-
 void InstallUncaughtExceptionHandler(void);
 void UncaughtExceptionHandler(NSException *exception);
 

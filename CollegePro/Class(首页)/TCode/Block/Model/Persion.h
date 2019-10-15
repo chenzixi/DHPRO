@@ -31,6 +31,10 @@ typedef Persion *_Nullable(^RJCalculator)(CGFloat num);
 @property (nonatomic, strong, readonly) Persion *(^who)(NSString *str);
 @property (nonatomic, strong, readonly) Persion *(^note)(NSString *str);
 
+extern NSString *lhString;//跨文件访问的功能 全局变量
++(void)numberInforDic:(void(^)(NSDictionary * inforDic))inforBlock;
+- (instancetype)initWithProperty:(NSDictionary*)property;
+
 @end
 //__nullable表示对象可以是NULL或nil，而__nonnull表示对象不应该为空
 //复杂的指针类型(如id *)必须显示去指定是non null还是nullable。例如，指定一个指向nullable对象的nonnulla指针，可以使用”__nullable id * __nonnull”。

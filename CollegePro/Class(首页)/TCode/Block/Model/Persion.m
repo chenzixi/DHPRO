@@ -172,4 +172,16 @@
     };
     return result;
 }
+
+NSString *lhString=@"hello-extern";
+-(instancetype)initWithProperty:(NSDictionary *)property{
+    if (self =[super init]) {
+        NSLog(@"----%@",property);
+    }
+    return self;
+}
++(void)numberInforDic:(void (^)(NSDictionary * _Nonnull))inforBlock
+{
+    NSLog(@"----%@",inforBlock);
+}
 @end

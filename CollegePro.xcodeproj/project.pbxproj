@@ -47,6 +47,7 @@
 		383F16DE23169B76005F085F /* IndicatorCrViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 383F16DD23169B76005F085F /* IndicatorCrViewController.m */; };
 		383F16E123169D2C005F085F /* indicatorCrView.m in Sources */ = {isa = PBXBuildFile; fileRef = 383F16E023169D2C005F085F /* indicatorCrView.m */; };
 		383F16E423169D56005F085F /* RectangleIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 383F16E323169D56005F085F /* RectangleIndicatorView.m */; };
+		384017BA23545C8E002A2FB4 /* DHUncaughtExceptionHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 384017B923545C8E002A2FB4 /* DHUncaughtExceptionHandle.m */; };
 		384C3FC622887D7900F01586 /* CustomCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FA122887D7800F01586 /* CustomCollectionViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		384C3FC722887D7900F01586 /* MyHeadCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FA422887D7800F01586 /* MyHeadCollectionReusableView.m */; };
 		384C3FC822887D7A00F01586 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 384C3FA522887D7800F01586 /* CustomCell.m */; };
@@ -119,6 +120,7 @@
 		385483DD234F4A450053AB46 /* BLEDataPack.m in Sources */ = {isa = PBXBuildFile; fileRef = 385483D5234F4A440053AB46 /* BLEDataPack.m */; };
 		385483DE234F4A450053AB46 /* BLEDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 385483D6234F4A440053AB46 /* BLEDeviceInfo.m */; };
 		385483E2234F4B5C0053AB46 /* BlueToothViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385483E1234F4B5C0053AB46 /* BlueToothViewController.swift */; };
+		3854840123505AB90053AB46 /* NSObject+Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 3854840023505AB90053AB46 /* NSObject+Runtime.m */; };
 		38560ACA22AF7C7300A68F5D /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38560AC922AF7C7200A68F5D /* AssetsLibrary.framework */; };
 		386422CB228AC3F2006DB570 /* SliderMainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 386422CA228AC3F2006DB570 /* SliderMainStoryboard.storyboard */; };
 		386422CE228AC455006DB570 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386422CD228AC455006DB570 /* MenuViewController.m */; };
@@ -1022,6 +1024,8 @@
 		383F16E023169D2C005F085F /* indicatorCrView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = indicatorCrView.m; sourceTree = "<group>"; };
 		383F16E223169D56005F085F /* RectangleIndicatorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RectangleIndicatorView.h; sourceTree = "<group>"; };
 		383F16E323169D56005F085F /* RectangleIndicatorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RectangleIndicatorView.m; sourceTree = "<group>"; };
+		384017B823545C8E002A2FB4 /* DHUncaughtExceptionHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHUncaughtExceptionHandle.h; sourceTree = "<group>"; };
+		384017B923545C8E002A2FB4 /* DHUncaughtExceptionHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DHUncaughtExceptionHandle.m; sourceTree = "<group>"; };
 		384C3FA022887D7800F01586 /* CustomCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCollectionViewController.h; sourceTree = "<group>"; };
 		384C3FA122887D7800F01586 /* CustomCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCollectionViewController.m; sourceTree = "<group>"; };
 		384C3FA322887D7800F01586 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
@@ -1120,6 +1124,8 @@
 		385483D6234F4A440053AB46 /* BLEDeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEDeviceInfo.m; sourceTree = "<group>"; };
 		385483E0234F4B5B0053AB46 /* CollegePro-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CollegePro-Bridging-Header.h"; sourceTree = "<group>"; };
 		385483E1234F4B5C0053AB46 /* BlueToothViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueToothViewController.swift; sourceTree = "<group>"; };
+		385483FF23505AB90053AB46 /* NSObject+Runtime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Runtime.h"; sourceTree = "<group>"; };
+		3854840023505AB90053AB46 /* NSObject+Runtime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Runtime.m"; sourceTree = "<group>"; };
 		38560AC922AF7C7200A68F5D /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		386422CA228AC3F2006DB570 /* SliderMainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SliderMainStoryboard.storyboard; sourceTree = "<group>"; };
 		386422CC228AC455006DB570 /* MenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
@@ -2614,6 +2620,8 @@
 				382FFA44231CB9370062080E /* QDExceptionHandler.m */,
 				382FFA45231CB9370062080E /* QDExceptionTool.h */,
 				382FFA47231CB9380062080E /* QDExceptionTool.m */,
+				384017B823545C8E002A2FB4 /* DHUncaughtExceptionHandle.h */,
+				384017B923545C8E002A2FB4 /* DHUncaughtExceptionHandle.m */,
 			);
 			path = UncaughtException;
 			sourceTree = "<group>";
@@ -4259,6 +4267,8 @@
 				38C8460E227827EF00BCAD87 /* UIView+Extension.m */,
 				38C84611227827EF00BCAD87 /* UIViewExt.h */,
 				38C845F6227827EF00BCAD87 /* UIViewExt.m */,
+				385483FF23505AB90053AB46 /* NSObject+Runtime.h */,
+				3854840023505AB90053AB46 /* NSObject+Runtime.m */,
 			);
 			path = "UI扩展类";
 			sourceTree = "<group>";
@@ -5917,18 +5927,18 @@
 		38C848C7227827F100BCAD87 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				38C848C9227827F100BCAD87 /* LabelMethodBlockVC.h */,
+				38C848CB227827F100BCAD87 /* LabelMethodBlockVC.m */,
+				38C848CD227827F100BCAD87 /* LabelMethodBlockSubVC.h */,
+				38C848CA227827F100BCAD87 /* LabelMethodBlockSubVC.m */,
+				38C848C8227827F100BCAD87 /* LabelNilMethodBlockViewController.h */,
+				38C848CC227827F100BCAD87 /* LabelNilMethodBlockViewController.m */,
 				38EA8531228D57F300A28136 /* SFTextView.h */,
 				38EA8532228D57F300A28136 /* SFTextView.m */,
 				386BBBB822DD6DE1005E6054 /* CustomerAlertController.h */,
 				386BBBB922DD6DE1005E6054 /* CustomerAlertController.m */,
 				3874BB412331CB1300C05C90 /* CViewController.h */,
 				3874BB402331CB1200C05C90 /* CViewController.m */,
-				38C848CD227827F100BCAD87 /* LabelMethodBlockSubVC.h */,
-				38C848CA227827F100BCAD87 /* LabelMethodBlockSubVC.m */,
-				38C848C9227827F100BCAD87 /* LabelMethodBlockVC.h */,
-				38C848CB227827F100BCAD87 /* LabelMethodBlockVC.m */,
-				38C848C8227827F100BCAD87 /* LabelNilMethodBlockViewController.h */,
-				38C848CC227827F100BCAD87 /* LabelNilMethodBlockViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -6151,7 +6161,7 @@
 								enabled = 1;
 							};
 							com.apple.HealthKit = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.Push = {
 								enabled = 1;
@@ -6725,6 +6735,7 @@
 				386BC07622DDB081005E6054 /* CustomSliderView.m in Sources */,
 				38C848DC227827F100BCAD87 /* LXWaveProgressView.m in Sources */,
 				38C84A09227827F200BCAD87 /* DHNoteListViewController.m in Sources */,
+				384017BA23545C8E002A2FB4 /* DHUncaughtExceptionHandle.m in Sources */,
 				386BBDAC22DDA7FF005E6054 /* GPUImageTiltShiftFilter.m in Sources */,
 				386BBD8B22DDA7FE005E6054 /* GPUImageHardLightBlendFilter.m in Sources */,
 				38C84984227827F100BCAD87 /* WaveProgressViewController.m in Sources */,
@@ -6785,6 +6796,7 @@
 				38C84929227827F100BCAD87 /* AES.m in Sources */,
 				38CC865822D8A35C0057405C /* SignalControl.m in Sources */,
 				38C848D8227827F100BCAD87 /* LLBlurSidebar.m in Sources */,
+				3854840123505AB90053AB46 /* NSObject+Runtime.m in Sources */,
 				38C848E1227827F100BCAD87 /* NSBundle+TZImagePicker.m in Sources */,
 				386BBDDE22DDA7FF005E6054 /* GPUImageLookupFilter.m in Sources */,
 				382FFA4C231CBBC70062080E /* CircleViewView.m in Sources */,

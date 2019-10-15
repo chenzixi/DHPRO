@@ -215,7 +215,10 @@
     //函数式编程、链式编程优缺点
     //Block的底层实现原理
     [self baseBlock];
+    
+
 }
+
 - (void)baseBlock{
     numC = 100;
 //    [self testDataA];
@@ -227,7 +230,7 @@
 //    [self testDataG];//深、浅拷贝
 //    [self testDataH];//交换
 //    [self testDataL];//排序方式
-//    [self testDataM];//排序
+    [self testDataM];//排序
 //    [self testDataK];
     [self testDataN];//KVO进阶
 //    [self testDataO];
@@ -681,7 +684,7 @@ void (^outFuncBlock)(void) = ^{
     NSString *phoneRegex = @"1\\d{10}$";
     NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
     ;
-    NSLog(@"手机号BOOL %d",[phoneTest evaluateWithObject:@"手机号"]);
+    NSLog(@"手机号BOOL %d",[phoneTest evaluateWithObject:@"手机号1234"]);
 
 }
 - (NSInteger)gcdWithNumber1:(NSInteger)num1 Number2:(NSInteger)num2{
@@ -723,6 +726,7 @@ static inline NSString* testPathForKey(NSString* directory, NSString* key) {
     //    stringByAppendingPathComponent 路径拼接
     return [directory stringByAppendingString:key];
 }
+
 NSString* (^intToString)(NSUInteger) = ^(NSUInteger paramInteger){
     NSString *result = [NSString stringWithFormat:@"%lu",(unsigned long)paramInteger];
     return result;
@@ -777,6 +781,21 @@ static UILabel *myLabel;
     myLabel.text = self.user.dog.name;
     //    myLabel.text = [self.user.dog valueForKeyPath:@"name"];
     [self.view addSubview:myLabel];
+    
+    
+    UIViewController *vc = [UIViewController new];
+    NSDictionary *dic = @{@"vc":vc,@"item":test};
+    NSDictionary *dic1 = @{@"vc":vc,@"item":test};
+    //    NSArray *dic1 = @[@"vcc",@"2"];
+    NSDictionary *dic2 = @{@"vc":vc,@"item":test,@"vcc":@"3"};
+    
+    NSLog(@"dic %p",dic);
+    NSLog(@"dic1 %p",dic1);
+    NSMutableArray *tmpArray = [NSMutableArray new];
+    [tmpArray addObject:dic];
+    //    数组会直接忽略掉，不会崩溃，不会删除，无任何反应，无效果，而且不会崩溃
+    [tmpArray removeObject:dic2];
+    [tmpArray removeObject:dic2];
     
 }
 //手动实现键值观察时会用到

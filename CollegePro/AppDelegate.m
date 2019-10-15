@@ -14,6 +14,7 @@
 #import "DHGuidepageViewController.h"
 #import "ScreenBlurry.h"
 #import "TMotionViewController.h"//碰撞
+#import "AvoidCrash.h"
 //极光推送
 // 引入 JPush 功能所需头文件
 #import "JPUSHService.h"
@@ -83,7 +84,9 @@
     NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
     InstallSignalHandler();//信号量截断
     InstallUncaughtExceptionHandler();
-    
+    [AvoidCrash becomeEffective];
+    //监听通知:AvoidCrashNotification, 获取AvoidCrash捕获的崩溃日志的详细信息
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealwithCrashMessage:) name:@"AvoidCrashNotification" object:nil];
     // 在App启动后开启远程控制事件, 接收来自锁屏界面和上拉菜单的控制
     [application beginReceivingRemoteControlEvents];
     
@@ -96,6 +99,7 @@
     manager.shouldToolbarUsesTextFieldTintColor = YES;//控制键盘上的工具条文字颜色是否用户自定义。
     manager.enableAutoToolbar = NO;//控制是否显示键盘上的工具条。
 //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    /*分类实现*/
     /*! 版本更新  */
     //    [self VersonUpdate];
     /*! 保存当前时间  */
@@ -1004,4 +1008,13 @@
     
 }
 
+#pragma mark 崩溃日志收集
+- (void)dealwithCrashMessage:(NSNotification *)note {
+    //注意:所有的信息都在userInfo中
+    //你可以在这里收集相应的崩溃信息进行相应的处理(比如传到自己服务器)
+    NSLog(@"%@",note.userInfo);
+    //本地日志打印
+    [DHTool writeLocalCacheDataToCachesFolderWithKey:[NSString stringWithFormat:@"A_%@.log",[DHTool getCurrectTimeWithPar:@"yyyy-MM-dd-HH-mm-ss-SSS"]] fileName:@"exception"];
+
+}
 @end
