@@ -39,7 +39,7 @@
 	[pushNillButton setTitle:@"回去" forState:(UIControlStateNormal)];
 	[pushNillButton addTarget:self action:@selector(backBlockNilMetnod) forControlEvents:(UIControlEventTouchUpInside)];
 	[self.view addSubview:pushNillButton];
-	
+//    (返回类型)(^块名称)(参数类型) = ^(参数列表) {代码实现};
     //    __weak typeof(self) _weakSelf = self;
     void(^DicBlock)(NSDictionary *dicdic) = ^(NSDictionary * inforDic){
         NSLog(@"dic %@",inforDic);
