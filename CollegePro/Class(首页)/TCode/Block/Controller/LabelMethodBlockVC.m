@@ -317,6 +317,28 @@ typedef void(^MyBlock)(void);
     id gm = ins(NSClassFromString(@"LabelNilMethodBlockViewController"), NSSelectorFromString(@"isWhiteSkinColor"));
     ((id (*)(id, SEL))objc_msgSend)(gm, NSSelectorFromString(@"getStr"));
     
+    NSArray *a = @[@"https://rgslb.rtc.aliyuncs.com"];
+    NSDictionary *dictInfo = @{
+                               @"userid":@"00009c29-df77-4402-87e1-8641cc0ce4ef",
+                               @"callid":@"0b5d5478-c1e3-43b1-b82f-26bbec451a05",
+                               @"appid":@"zz2skc04",
+                               @"sysappid":@"df336665-c22b-4270-b9ff-3f602f758e80",
+                               @"channelid":@"d4a6b288-1230-4b4a-a62b-c368eb16440c",
+                               @"nonce":@"CK-7b6ae612898396e8c25b3ecf0d1b424d",
+                               @"timestamp":@"1561691423",
+                               @"token":@"259c262ca1b8e967c91e2f07658074b79d416ddf89ad0cbf8ca408762ce14474",
+                               @"calltype":@"0",
+                               @"gslb":a,
+                               @"turn":@{@"username":@"测试5",@"adminid":@"00009c29-df77-4402-87e1-8641cc0ce4ef",@"adminame":@"张三",@"adminphoto":@"1",@"photo":@"1",@"password":@"444"},
+                               @"Total":@0,
+                               @"Ret":[NSNumber numberWithBool:true],
+                               @"Msg":@"获取成功",
+                               @"Obj":@"200"
+                               };
+
+//    ((void(*)(id,SEL))objc_msgSend)(viewController, NSSelectorFromString(@"setNameP:"),@"获取成功");
+    ((NSString* (*)(id, SEL,id ))objc_msgSend)(viewController,NSSelectorFromString(@"nameP:"),@"asdf");
+    
     [self.navigationController pushViewController:subVC animated:NO];
 
 }

@@ -30,7 +30,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.view.backgroundColor = [UIColor whiteColor];
-
+    self.nameP = @"筛选数字";
+    NSLog(@"self.nameP");
     // Do any additional setup after loading the view.
 	UIButton *pushNillButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	[pushNillButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
@@ -81,7 +82,20 @@
     
     NSLog(@"--筛选数字：%@--",[self findNumFromStr:@"adsfadfe213234阿斯蒂芬"]);
     
+
 }
+
+- (NSString *)nameP:(NSString *)a{
+//    _nameP = @"筛选数字";
+
+    NSLog(@"nameP %@",_nameP);
+    return _nameP;
+}
+-(void)setCommunicationMessage:(NSDictionary *)communicationMessage{
+    _communicationMessage = communicationMessage;
+    NSLog(@"self.%@",self.communicationMessage);
+}
+
 void logBlock(int(^theBlock)(void))
 {
     NSLog( @"Closure var X: %i", theBlock() );
